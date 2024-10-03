@@ -1,0 +1,1 @@
+Sitemap: https://juliaSchedler.github.io/Stat416_CourseWebsite/sitemap.xml

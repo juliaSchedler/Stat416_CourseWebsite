@@ -1,0 +1,1749 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Welcome to Time Series!",
+    "section": "",
+    "text": "Welcome to Time Series!\nThe lecture slides and code here are heavily drawn from the book I have selected for this course with some additional examples and visualizations that I think would be helpful for learning these important concepts!\nAlso, big thanks to our Lab Assistant, Bena Smith, for serving as editor for these notes (assuming I get them to her in time. Don’t blame Bena for missed typos).",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Slides/SimulateAutocov/index.html#all-simulated-time-series",
+    "href": "LectureNotes/Slides/SimulateAutocov/index.html#all-simulated-time-series",
+    "title": "Lecture 4",
+    "section": "All Simulated Time Series",
+    "text": "All Simulated Time Series"
+  },
+  {
+    "objectID": "LectureNotes/Slides/SimulateAutocov/index.html#marginal-and-joint-distributions-t8-and-s-1",
+    "href": "LectureNotes/Slides/SimulateAutocov/index.html#marginal-and-joint-distributions-t8-and-s-1",
+    "title": "Lecture 4",
+    "section": "Marginal and Joint Distributions t=8 and s = 1",
+    "text": "Marginal and Joint Distributions t=8 and s = 1"
+  },
+  {
+    "objectID": "LectureNotes/Slides/SimulateAutocov/index.html#all-simulated-time-series-1",
+    "href": "LectureNotes/Slides/SimulateAutocov/index.html#all-simulated-time-series-1",
+    "title": "Lecture 4",
+    "section": "All Simulated Time Series",
+    "text": "All Simulated Time Series"
+  },
+  {
+    "objectID": "LectureNotes/Slides/SimulateAutocov/index.html#marginal-and-joint-distributions-t8-and-s-2",
+    "href": "LectureNotes/Slides/SimulateAutocov/index.html#marginal-and-joint-distributions-t8-and-s-2",
+    "title": "Lecture 4",
+    "section": "Marginal and Joint Distributions t=8 and s = 2",
+    "text": "Marginal and Joint Distributions t=8 and s = 2"
+  },
+  {
+    "objectID": "LectureNotes/Slides/SimulateAutocov/index.html#all-simulated-time-series-2",
+    "href": "LectureNotes/Slides/SimulateAutocov/index.html#all-simulated-time-series-2",
+    "title": "Lecture 4",
+    "section": "All Simulated Time Series",
+    "text": "All Simulated Time Series"
+  },
+  {
+    "objectID": "LectureNotes/Slides/SimulateAutocov/index.html#marginal-and-joint-distributions-t8-and-s-3",
+    "href": "LectureNotes/Slides/SimulateAutocov/index.html#marginal-and-joint-distributions-t8-and-s-3",
+    "title": "Lecture 4",
+    "section": "Marginal and Joint Distributions t=8 and s = 3",
+    "text": "Marginal and Joint Distributions t=8 and s = 3"
+  },
+  {
+    "objectID": "LectureNotes/Slides/SimulateAutocov/index.html#all-simulated-time-series-3",
+    "href": "LectureNotes/Slides/SimulateAutocov/index.html#all-simulated-time-series-3",
+    "title": "Lecture 4",
+    "section": "All Simulated Time Series",
+    "text": "All Simulated Time Series"
+  },
+  {
+    "objectID": "LectureNotes/Slides/SimulateAutocov/index.html#marginal-and-joint-distributions-t8-and-s-4",
+    "href": "LectureNotes/Slides/SimulateAutocov/index.html#marginal-and-joint-distributions-t8-and-s-4",
+    "title": "Lecture 4",
+    "section": "Marginal and Joint Distributions t=8 and s = 4",
+    "text": "Marginal and Joint Distributions t=8 and s = 4"
+  },
+  {
+    "objectID": "LectureNotes/Slides/SimulateAutocov/index.html#all-simulated-time-series-4",
+    "href": "LectureNotes/Slides/SimulateAutocov/index.html#all-simulated-time-series-4",
+    "title": "Lecture 4",
+    "section": "All Simulated Time Series",
+    "text": "All Simulated Time Series"
+  },
+  {
+    "objectID": "LectureNotes/Slides/SimulateAutocov/index.html#marginal-and-joint-distributions-t8-and-s-5",
+    "href": "LectureNotes/Slides/SimulateAutocov/index.html#marginal-and-joint-distributions-t8-and-s-5",
+    "title": "Lecture 4",
+    "section": "Marginal and Joint Distributions t=8 and s = 5",
+    "text": "Marginal and Joint Distributions t=8 and s = 5"
+  },
+  {
+    "objectID": "LectureNotes/Slides/SimulateAutocov/index.html#all-simulated-time-series-5",
+    "href": "LectureNotes/Slides/SimulateAutocov/index.html#all-simulated-time-series-5",
+    "title": "Lecture 4",
+    "section": "All Simulated Time Series",
+    "text": "All Simulated Time Series"
+  },
+  {
+    "objectID": "LectureNotes/Slides/SimulateAutocov/index.html#marginal-and-joint-distributions-t8-and-s-6",
+    "href": "LectureNotes/Slides/SimulateAutocov/index.html#marginal-and-joint-distributions-t8-and-s-6",
+    "title": "Lecture 4",
+    "section": "Marginal and Joint Distributions t=8 and s = 6",
+    "text": "Marginal and Joint Distributions t=8 and s = 6"
+  },
+  {
+    "objectID": "LectureNotes/Slides/SimulateAutocov/index.html#all-simulated-time-series-6",
+    "href": "LectureNotes/Slides/SimulateAutocov/index.html#all-simulated-time-series-6",
+    "title": "Lecture 4",
+    "section": "All Simulated Time Series",
+    "text": "All Simulated Time Series"
+  },
+  {
+    "objectID": "LectureNotes/Slides/SimulateAutocov/index.html#marginal-and-joint-distributions-t8-and-s-7",
+    "href": "LectureNotes/Slides/SimulateAutocov/index.html#marginal-and-joint-distributions-t8-and-s-7",
+    "title": "Lecture 4",
+    "section": "Marginal and Joint Distributions t=8 and s = 7",
+    "text": "Marginal and Joint Distributions t=8 and s = 7"
+  },
+  {
+    "objectID": "LectureNotes/Slides/SimulateAutocov/index.html#all-simulated-time-series-7",
+    "href": "LectureNotes/Slides/SimulateAutocov/index.html#all-simulated-time-series-7",
+    "title": "Lecture 4",
+    "section": "All Simulated Time Series",
+    "text": "All Simulated Time Series"
+  },
+  {
+    "objectID": "LectureNotes/Slides/SimulateAutocov/index.html#marginal-and-joint-distributions-t8-and-s-8",
+    "href": "LectureNotes/Slides/SimulateAutocov/index.html#marginal-and-joint-distributions-t8-and-s-8",
+    "title": "Lecture 4",
+    "section": "Marginal and Joint Distributions t=8 and s = 8",
+    "text": "Marginal and Joint Distributions t=8 and s = 8"
+  },
+  {
+    "objectID": "LectureNotes/Slides/SimulateAutocov/index.html#all-simulated-time-series-8",
+    "href": "LectureNotes/Slides/SimulateAutocov/index.html#all-simulated-time-series-8",
+    "title": "Lecture 4",
+    "section": "All Simulated Time Series",
+    "text": "All Simulated Time Series"
+  },
+  {
+    "objectID": "LectureNotes/Slides/SimulateAutocov/index.html#marginal-and-joint-distributions-t8-and-s-9",
+    "href": "LectureNotes/Slides/SimulateAutocov/index.html#marginal-and-joint-distributions-t8-and-s-9",
+    "title": "Lecture 4",
+    "section": "Marginal and Joint Distributions t=8 and s = 9",
+    "text": "Marginal and Joint Distributions t=8 and s = 9"
+  },
+  {
+    "objectID": "LectureNotes/Slides/SimulateAutocov/index.html#all-simulated-time-series-9",
+    "href": "LectureNotes/Slides/SimulateAutocov/index.html#all-simulated-time-series-9",
+    "title": "Lecture 4",
+    "section": "All Simulated Time Series",
+    "text": "All Simulated Time Series"
+  },
+  {
+    "objectID": "LectureNotes/Slides/SimulateAutocov/index.html#marginal-and-joint-distributions-t8-and-s-10",
+    "href": "LectureNotes/Slides/SimulateAutocov/index.html#marginal-and-joint-distributions-t8-and-s-10",
+    "title": "Lecture 4",
+    "section": "Marginal and Joint Distributions t=8 and s = 10",
+    "text": "Marginal and Joint Distributions t=8 and s = 10"
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture3/index.html#recap",
+    "href": "LectureNotes/Slides/Lecture3/index.html#recap",
+    "title": "Lecture 3",
+    "section": "Recap",
+    "text": "Recap\n\n\\[\n\\newcommand\\E{{\\mathbb{E}}}\n\\]\n\n\nVisualizing time series\nResearch questions involving time series\nMean and covariance functions\nMoving average examples\nAlmost got to stationarity"
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture3/index.html#today",
+    "href": "LectureNotes/Slides/Lecture3/index.html#today",
+    "title": "Lecture 3",
+    "section": "Today",
+    "text": "Today\n\nDecomposing a time series\nStationarity\nAutocorrelation function\nTime series regression"
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture3/index.html#first-participation-grade",
+    "href": "LectureNotes/Slides/Lecture3/index.html#first-participation-grade",
+    "title": "Lecture 3",
+    "section": "First “participation” grade",
+    "text": "First “participation” grade\n\nconfirm you are good to opt in or out of the textbook, you have to do it by Oct 2 so do it on Oct 1 (tomorrow)."
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture3/index.html#lecture-template",
+    "href": "LectureNotes/Slides/Lecture3/index.html#lecture-template",
+    "title": "Lecture 3",
+    "section": "Lecture Template",
+    "text": "Lecture Template\n\nDownload “Lecture3Template.qmd” from Canvas\nhas some basic document structure set up to make it easier to follow along in lecture :)"
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture3/index.html#another-time-series-model",
+    "href": "LectureNotes/Slides/Lecture3/index.html#another-time-series-model",
+    "title": "Lecture 3",
+    "section": "Another time series model",
+    "text": "Another time series model\nSimilar to the signal plus noise model,\n\\[\nX_t = T_t + S_t + W_t\n\\]\n\n\\(T_t\\) is the trend component\n\\(S_t\\) is the seasonal component\n\\(W_t\\) is the error component\n\nThe r function stats::decompose will split a time series \\(X_t\\) into these three components."
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture3/index.html#activity-1",
+    "href": "LectureNotes/Slides/Lecture3/index.html#activity-1",
+    "title": "Lecture 3",
+    "section": "Activity 1",
+    "text": "Activity 1\n\n\n\nlibrary(astsa)\n\n## use the decompose function on the jj series\njj_decomp &lt;- ## your code here\n  \n## plot the decomposition\n## your code here\n\n\nUse the decompose function on the jj series.\nMatch the terms in the equation on the previous slide to each of the components in the chart\nDescribe the trend.\nDoes the bottom plot (“error”) look like white noise?\nLook at the documentation for the decompose function. Can you determine how the “trend” component was computed?"
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture3/index.html#activity-1-solution",
+    "href": "LectureNotes/Slides/Lecture3/index.html#activity-1-solution",
+    "title": "Lecture 3",
+    "section": "Activity 1 (solution)",
+    "text": "Activity 1 (solution)\n\n\nCode\nlibrary(astsa)\n\n## use the decompose function on the jj series\njj_decomp &lt;- decompose(jj)\n\n## plot the decomposition\nplot(jj_decomp)"
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture3/index.html#activity-2",
+    "href": "LectureNotes/Slides/Lecture3/index.html#activity-2",
+    "title": "Lecture 3",
+    "section": "Activity 2",
+    "text": "Activity 2\n\n\nRecall the (sinusoidal) signal plus noise model: \\[\nw_t \\sim \\text{iid } N(0, \\sigma^2_w)\\\\\nx_t = 2\\cos\\left (\\frac{2\\pi t}{50} - .6\\right) + w_t\n\\]\n                    \n                    \n                \n\n\nSimulate 500 observations from the signal plus noise model\nApply the decompose function. Does the error portion look like white noise?\n\nHint: The below code gives an error. Compare the “frequency” of the jj series. Can you figure out how to use the ts function to specify the correct frequency?\n\nset.seed(2024)\ncs = 2*cos(2*pi*(1:500)/50 + .6*pi)\nw  = rnorm(500,0,1)\nx_t = cs + w\n\nplot(decompose(x_t))"
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture3/index.html#activity-2-solution",
+    "href": "LectureNotes/Slides/Lecture3/index.html#activity-2-solution",
+    "title": "Lecture 3",
+    "section": "Activity 2 (solution)",
+    "text": "Activity 2 (solution)\n\n\nCode\nset.seed(2024)\ncs = 2*cos(2*pi*(1:500)/50 + .6*pi)\nw  = rnorm(500,0,1)\nx_t = ts(cs + w, frequency = 50)\n\nplot(decompose(x_t))"
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture3/index.html#comparing-math-perspective-to-data-perspective",
+    "href": "LectureNotes/Slides/Lecture3/index.html#comparing-math-perspective-to-data-perspective",
+    "title": "Lecture 3",
+    "section": "Comparing “math perspective” to “data perspective”",
+    "text": "Comparing “math perspective” to “data perspective”\n\n\n\\[\nw_t \\sim N(0, \\sigma^2_w), t = 1, \\dots, n\\\\\nx_t = 2\\cos\\left (\\frac{2\\pi t}{50} - .6\\right) + w_t\n\\]\n\n\n\n\n\n\n\n\n\n\n\ncs = 2*cos(2*pi*(1:500)/50 + .6*pi)\nw  = rnorm(500,0,1)\nx_t = ts(cs + w, frequency = 50)\n\nplot(decompose(x_t))\n\n\n\n\n\n\n\n\nDoes this function give us an estimate of the form of the mean function?"
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture3/index.html#review-autocovariance-function",
+    "href": "LectureNotes/Slides/Lecture3/index.html#review-autocovariance-function",
+    "title": "Lecture 3",
+    "section": "Review: autocovariance function",
+    "text": "Review: autocovariance function"
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture3/index.html#error-covariance-at-different-time-points",
+    "href": "LectureNotes/Slides/Lecture3/index.html#error-covariance-at-different-time-points",
+    "title": "Lecture 3",
+    "section": "Error covariance at different time points",
+    "text": "Error covariance at different time points"
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture3/index.html#error-covariance-at-different-time-points-time-dependence",
+    "href": "LectureNotes/Slides/Lecture3/index.html#error-covariance-at-different-time-points-time-dependence",
+    "title": "Lecture 3",
+    "section": "Error Covariance at Different Time Points (time dependence)",
+    "text": "Error Covariance at Different Time Points (time dependence)"
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture3/index.html#stationarity",
+    "href": "LectureNotes/Slides/Lecture3/index.html#stationarity",
+    "title": "Lecture 3",
+    "section": "Stationarity",
+    "text": "Stationarity\nA time series is stationary if\n\nthe mean function (\\(\\mu_t\\)) is constant and does not depend on time \\(t\\)\nthe autocovariance function (\\(\\gamma(s,t)\\)) depends on \\(s\\) and \\(t\\) only though their difference\n\nAnd nonstationary otherwise."
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture3/index.html#steps-to-determine-whether-a-time-series-x_t-is-stationary",
+    "href": "LectureNotes/Slides/Lecture3/index.html#steps-to-determine-whether-a-time-series-x_t-is-stationary",
+    "title": "Lecture 3",
+    "section": "Steps to determine whether a time series \\(x_t\\) is stationary:",
+    "text": "Steps to determine whether a time series \\(x_t\\) is stationary:\n\nCompute the mean function.\nCompute the autocovariance function.\nIf both do not depend on \\(t\\), then \\(x_t\\) is stationary. If \\(\\gamma\\) depends on \\(s\\) and \\(t\\) just through the value \\(s-t\\), then \\(x_t\\) is stationary. Otherwise, \\(x_t\\) is nonstationary."
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture3/index.html#activity-3-example-2.14-stationarity-of-a-random-walk",
+    "href": "LectureNotes/Slides/Lecture3/index.html#activity-3-example-2.14-stationarity-of-a-random-walk",
+    "title": "Lecture 3",
+    "section": "Activity 3: Example 2.14 Stationarity of a Random Walk",
+    "text": "Activity 3: Example 2.14 Stationarity of a Random Walk\n\\[\nx_t = x_{t-1} + w_t\n\\]\nLast, time, we saw that the mean function is \\(\\E(x_t) = 0\\), and the autocovariance function is \\(\\gamma_x(s, t) = \\min\\{s,t\\}\\sigma^2_w\\)\n\n\n\nIs \\(x_t\\) stationary?\nWhat if there was drift?"
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture3/index.html#activity-3-solution-example-2.14-stationarity-of-a-random-walk",
+    "href": "LectureNotes/Slides/Lecture3/index.html#activity-3-solution-example-2.14-stationarity-of-a-random-walk",
+    "title": "Lecture 3",
+    "section": "Activity 3 Solution (Example 2.14 Stationarity of a Random Walk)",
+    "text": "Activity 3 Solution (Example 2.14 Stationarity of a Random Walk)\n\nIs \\(x_t\\) stationary?\n\nNo, the autcovariance function depends on \\(t\\) (there’s a \\(t\\) in the equation): \\[\n\\gamma_x(s, t) = \\min\\{s,t\\}\\sigma^2_w\n\\]\nMore concretely: consider if we want to know the correlation between the random walk at times \\(s = 2, t = 5\\), \\[\n\\gamma(2,5) = \\min\\{2,5\\}\\sigma^2_w = 2\\sigma^2_w\n\\] But \\(\\gamma(3,5) = 3\\sigma^2_w\\). So the autocovariance is different depending on which points in time you are considering.\n\nWhat if there was drift?\n\nAgain, no. The mean function of the random walk with drift is \\(\\mu_t = \\delta t\\), which depends on \\(t\\)."
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture3/index.html#gammast-for-a-random-walk",
+    "href": "LectureNotes/Slides/Lecture3/index.html#gammast-for-a-random-walk",
+    "title": "Lecture 3",
+    "section": "\\(\\gamma(s,t)\\) for a random walk",
+    "text": "\\(\\gamma(s,t)\\) for a random walk"
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture3/index.html#is-white-noise-stationary",
+    "href": "LectureNotes/Slides/Lecture3/index.html#is-white-noise-stationary",
+    "title": "Lecture 3",
+    "section": "Is white noise stationary?",
+    "text": "Is white noise stationary?\n\nMean function of white noise is \\(\\E(w_t) = 0\\)\nAutocovariance function is \\[\n\\gamma_w(s, t) = cov(w_s, w_t) =  \\begin{cases} \\sigma^2_w & \\text{ if } s = t\\\\ 0 & \\text{ if } s \\ne t \\end{cases}\n\\] Since neither depends on \\(t\\), white noise is stationary."
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture3/index.html#gammast-for-white-noise",
+    "href": "LectureNotes/Slides/Lecture3/index.html#gammast-for-white-noise",
+    "title": "Lecture 3",
+    "section": "\\(\\gamma(s,t)\\) for white noise",
+    "text": "\\(\\gamma(s,t)\\) for white noise"
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture3/index.html#break",
+    "href": "LectureNotes/Slides/Lecture3/index.html#break",
+    "title": "Lecture 3",
+    "section": "Break",
+    "text": "Break"
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture3/index.html#activity-4",
+    "href": "LectureNotes/Slides/Lecture3/index.html#activity-4",
+    "title": "Lecture 3",
+    "section": "Activity 4",
+    "text": "Activity 4\nWhich of the following time series are stationary?\n\n\n\n\n\nFrom Forecasting Principles and Practice Chapter 9"
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture3/index.html#activity-4-solution",
+    "href": "LectureNotes/Slides/Lecture3/index.html#activity-4-solution",
+    "title": "Lecture 3",
+    "section": "Activity 4 (solution)",
+    "text": "Activity 4 (solution)\n\n(a), (c), (e), (f) (i) are clearly non-stationary in the mean.\n(d), (h) have seasonal patterns\n(i) has increasing variance\n(b) and (g) are stationary"
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture3/index.html#why-is-stationarity-important",
+    "href": "LectureNotes/Slides/Lecture3/index.html#why-is-stationarity-important",
+    "title": "Lecture 3",
+    "section": "Why is stationarity important?",
+    "text": "Why is stationarity important?\n\nIn order to measure correlation between contiguous time points\nTo avoid spurious correlations in a regression setting\nSimplifies how we can write the autocovariance and autocorrelation functions"
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture3/index.html#autocorrelation-function",
+    "href": "LectureNotes/Slides/Lecture3/index.html#autocorrelation-function",
+    "title": "Lecture 3",
+    "section": "Autocorrelation function",
+    "text": "Autocorrelation function\nThe autocorrelation function (acf) of a time series is: \\[\n\\rho(s, t) = \\frac{\\gamma(s,t)}{\\sqrt{\\gamma(s,s)\\gamma(t,t)}}\n\\] i.e. the autocovariance divided by the standard deviation of the process at each time point."
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture3/index.html#autocovariance-and-autocorrelation-for-stationary-time-series",
+    "href": "LectureNotes/Slides/Lecture3/index.html#autocovariance-and-autocorrelation-for-stationary-time-series",
+    "title": "Lecture 3",
+    "section": "Autocovariance and Autocorrelation for Stationary Time series",
+    "text": "Autocovariance and Autocorrelation for Stationary Time series\nSince for stationary time series the autocovariance depends on \\(s\\) and \\(t\\) only through their difference, we can write the covariance as: \\[\n\\gamma(s,t) = \\gamma(h) = cov(x_{t+h}, x_t) = \\E[(x_{t+h} - \\mu)(x_t-\\mu)]\n\\] and the correlation as: \\[\n\\rho(s,t) = \\rho(h) = \\frac{\\gamma(h)}{\\gamma(0)}\n\\] \\(h = s-t\\) is called the lag."
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture3/index.html#autocorrelation-function-of-a-three-point-moving-average",
+    "href": "LectureNotes/Slides/Lecture3/index.html#autocorrelation-function-of-a-three-point-moving-average",
+    "title": "Lecture 3",
+    "section": "Autocorrelation function of a three-point moving average",
+    "text": "Autocorrelation function of a three-point moving average\n\\(\\gamma_v(s, t) = cov(v_s, v_t) =  \\begin{cases}\\frac{3}{9}\\sigma^2_w & \\text{ if } s = t\\\\ \\frac{2}{9}\\sigma^2_w & \\text{ if } \\vert s-t \\vert = 1 \\\\\\frac{1}{9}\\sigma^2_w & \\text{ if } \\vert s-t \\vert =2 \\\\0 & \\text{ if } \\vert s - t\\vert &gt; 2\\end{cases}\\)\n\n\nSince \\(v\\) is stationary, we can write\n\\(\\gamma_v(h) = \\begin{cases}\\frac{3}{9}\\sigma^2_w & \\text{ if } h = 0\\\\ \\frac{2}{9}\\sigma^2_w & \\text{ if } h = \\pm1 \\\\\\frac{1}{9}\\sigma^2_w & \\text{ if }h = \\pm 2 \\\\0 & \\text{ if } h&gt; 2\\end{cases}\\)\n\nAnd the autocorrelation is:\n\\(\\rho(h) = \\begin{cases}1 & \\text{ if } h = 0\\\\ \\frac{2}{3} & \\text{ if } h = \\pm1 \\\\\\frac{1}{3} & \\text{ if }h = \\pm 2 \\\\0 & \\text{ if } h&gt; 2\\end{cases}\\)"
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture3/index.html#autocorrelation-function-of-a-three-point-moving-average-1",
+    "href": "LectureNotes/Slides/Lecture3/index.html#autocorrelation-function-of-a-three-point-moving-average-1",
+    "title": "Lecture 3",
+    "section": "Autocorrelation function of a three-point moving average",
+    "text": "Autocorrelation function of a three-point moving average\nIn R, we can plot \\(\\rho(h)\\)\n\nACF = c(0,0,0,1,2,3,2,1,0,0,0)/3\nLAG = -5:5\ntsplot(LAG, ACF, type=\"h\", lwd=3, xlab=\"LAG\")   \nabline(h=0)\npoints(LAG[-(4:8)], ACF[-(4:8)], pch=20)\naxis(1, at=seq(-5, 5, by=2))"
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture3/index.html#activity-5",
+    "href": "LectureNotes/Slides/Lecture3/index.html#activity-5",
+    "title": "Lecture 3",
+    "section": "Activity 5",
+    "text": "Activity 5\n\nPredict what the acf will look like for the ar(1) process?\nSimulate an ar(1) process and compute the acf. Were you correct?\nWhat is the lag 0 autocorrelation? Explain why its value makes sense.\n\n\n# simulate from an ar(1)\n\n# use acf() function to plot acf\n\n# save output of acf and inspect"
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture3/index.html#activity-5-solution",
+    "href": "LectureNotes/Slides/Lecture3/index.html#activity-5-solution",
+    "title": "Lecture 3",
+    "section": "Activity 5 (solution)",
+    "text": "Activity 5 (solution)\n\n# simulate from an ar(1)\nw &lt;- rnorm(500)\nar_1 &lt;- stats::filter(w, filter = 0.8, method = \"recursive\")\n# use acf() function\nacf(ar_1)\n\n## what is the lag 1 correlation?\nacf_output &lt;- acf(ar_1, plot = F)\nacf_output$acf[2] ## lag 1 autocorrelation\n\n[1] 0.7846967"
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture3/index.html#activity-6-problem-2.3",
+    "href": "LectureNotes/Slides/Lecture3/index.html#activity-6-problem-2.3",
+    "title": "Lecture 3",
+    "section": "Activity 6 (Problem 2.3)",
+    "text": "Activity 6 (Problem 2.3)\nWhen smoothing time series data, it is sometimes advantageous to give decreasing amounts of weights to values farther away from the center. Consider the simple two-sided moving average smoother of the form: \\[\nv_t = \\frac{1}{4}(w_{t-1} + 2w_t + w_{t+1})\n\\] Where \\(w_t\\) are white noise. The autocovariance as a function of \\(h\\) is: \\[\\gamma_v(s, t) = cov(v_s, v_t) =  \\begin{cases}\\frac{6}{16}\\sigma^2_w & \\text{ if } h = 0\\\\ \\frac{4}{16}\\sigma^2_w & \\text{ if } h = \\pm 1 \\\\\\frac{1}{16}\\sigma^2_w & \\text{ if } h = \\pm 2 \\\\0 & \\text{ if } h&gt; 2\\end{cases}\\] 1. Compare to the autocovariance equation for the unweighted 3 point moving average from Lecture 2. Comment on the differences.\n\nWrite down the autocorrelation function."
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture3/index.html#activity-6-solution",
+    "href": "LectureNotes/Slides/Lecture3/index.html#activity-6-solution",
+    "title": "Lecture 3",
+    "section": "Activity 6 Solution",
+    "text": "Activity 6 Solution\n\n6/16 &gt; 3/9, the “present” is weighted higher in the weighted average which impacts the covariance.\nDivide each term by the variance (\\(\\gamma(0)\\)): \\[\\rho_v(s, t) = cor(v_s, v_t) =  \\begin{cases}1 & \\text{ if } h = 0\\\\ \\frac{4}{6} & \\text{ if } h = \\pm 1 \\\\\\frac{1}{6} & \\text{ if } h = \\pm 2 \\\\0 & \\text{ if } h&gt; 2\\end{cases}\\]"
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture3/index.html#activity-7",
+    "href": "LectureNotes/Slides/Lecture3/index.html#activity-7",
+    "title": "Lecture 3",
+    "section": "Activity 7",
+    "text": "Activity 7\nRecall the decomposition of the Johnson and Johnson quarterly earnings.\n\nplot(decompose(jj)) ## plot decomposition\n\n\n\nIs the series stationary?\nDoes the acf of the random component look like white noise?"
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture3/index.html#activity-7-solution",
+    "href": "LectureNotes/Slides/Lecture3/index.html#activity-7-solution",
+    "title": "Lecture 3",
+    "section": "Activity 7 Solution",
+    "text": "Activity 7 Solution\n\njj_decomp &lt;- decompose(jj)\n\npar(mfrow=2:1)\nacf(jj_decomp$random, na.action = na.pass) ## acf of random component\nacf(rnorm(length(jj))) ## acf of white noise of same length"
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture3/index.html#coming-up",
+    "href": "LectureNotes/Slides/Lecture3/index.html#coming-up",
+    "title": "Lecture 3",
+    "section": "Coming up:",
+    "text": "Coming up:\n\nAssignment 1 due at midnight\nAssignment 2 posted later\nPart of this will be involve “reading” the textbook! (collecting data on how you feel about the math)\nNext Lecture:\n\nRegression with time\nCross-correlation\nInducing stationarity"
+  },
+  {
+    "objectID": "LectureNotes/Lecture3.html",
+    "href": "LectureNotes/Lecture3.html",
+    "title": "Lecture 3",
+    "section": "",
+    "text": "Slides with Activity Solutions\n\n\n\n\n\nView slides in full screen",
+    "crumbs": [
+      "Week 2",
+      "Lecture 3"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture3.html#recap",
+    "href": "LectureNotes/Lecture3.html#recap",
+    "title": "Lecture 3",
+    "section": "Recap",
+    "text": "Recap\n\n\\[\n\\newcommand\\E{{\\mathbb{E}}}\n\\]\n\n\nVisualizing time series\nResearch questions involving time series\nMean and covariance functions\nMoving average examples\nAlmost got to stationarity",
+    "crumbs": [
+      "Week 2",
+      "Lecture 3"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture3.html#today",
+    "href": "LectureNotes/Lecture3.html#today",
+    "title": "Lecture 3",
+    "section": "Today",
+    "text": "Today\n\nDecomposing a time series\nStationarity\nAutocorrelation function\nTime series regression",
+    "crumbs": [
+      "Week 2",
+      "Lecture 3"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture3.html#first-participation-grade",
+    "href": "LectureNotes/Lecture3.html#first-participation-grade",
+    "title": "Lecture 3",
+    "section": "First “participation” grade",
+    "text": "First “participation” grade\n\nconfirm you are good to opt in or out of the textbook, you have to do it by Oct 2 so do it on Oct 1 (tomorrow).",
+    "crumbs": [
+      "Week 2",
+      "Lecture 3"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture3.html#lecture-template",
+    "href": "LectureNotes/Lecture3.html#lecture-template",
+    "title": "Lecture 3",
+    "section": "Lecture Template",
+    "text": "Lecture Template\n\nDownload “Lecture3Template.qmd” from Canvas\nhas some basic document structure set up to make it easier to follow along in lecture :)",
+    "crumbs": [
+      "Week 2",
+      "Lecture 3"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture3.html#another-time-series-model",
+    "href": "LectureNotes/Lecture3.html#another-time-series-model",
+    "title": "Lecture 3",
+    "section": "Another time series model",
+    "text": "Another time series model\nSimilar to the signal plus noise model,\n\\[\nX_t = T_t + S_t + W_t\n\\]\n\n\\(T_t\\) is the trend component\n\\(S_t\\) is the seasonal component\n\\(W_t\\) is the error component\n\nThe r function stats::decompose will split a time series \\(X_t\\) into these three components.",
+    "crumbs": [
+      "Week 2",
+      "Lecture 3"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture3.html#activity-1",
+    "href": "LectureNotes/Lecture3.html#activity-1",
+    "title": "Lecture 3",
+    "section": "Activity 1",
+    "text": "Activity 1\n\n\nCode\nlibrary(astsa)\n\n## use the decompose function on the jj series\njj_decomp &lt;- ## your code here\n  \n## plot the decomposition\n## your code here\n\n\n\nUse the decompose function on the jj series.\nMatch the terms in the equation on the previous slide to each of the components in the chart\nDescribe the trend.\nDoes the bottom plot (“error”) look like white noise?\nLook at the documentation for the decompose function. Can you determine how the “trend” component was computed?",
+    "crumbs": [
+      "Week 2",
+      "Lecture 3"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture3.html#activity-1-solution",
+    "href": "LectureNotes/Lecture3.html#activity-1-solution",
+    "title": "Lecture 3",
+    "section": "Activity 1 (solution)",
+    "text": "Activity 1 (solution)\nUse Lecture3Template.qmd",
+    "crumbs": [
+      "Week 2",
+      "Lecture 3"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture3.html#activity-2",
+    "href": "LectureNotes/Lecture3.html#activity-2",
+    "title": "Lecture 3",
+    "section": "Activity 2",
+    "text": "Activity 2\nRecall the (sinusoidal) signal plus noise model: \\[\nw_t \\sim \\text{iid } N(0, \\sigma^2_w)\\\\\nx_t = 2\\cos\\left (\\frac{2\\pi t}{50} - .6\\right) + w_t\n\\]\n\nSimulate 500 observations from the signal plus noise model\nApply the decompose function. Does the error portion look like white noise?\n\nHint: The below code gives an error. Compare the “frequency” of the jj series. Can you figure out how to use the ts function to specify the correct frequency?\n\n\nCode\ncs = 2*cos(2*pi*(1:500)/50 + .6*pi)\nw  = rnorm(500,0,1)\nx_t = cs + w\n\nplot(decompose(x_t))",
+    "crumbs": [
+      "Week 2",
+      "Lecture 3"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture3.html#activity-2-solution",
+    "href": "LectureNotes/Lecture3.html#activity-2-solution",
+    "title": "Lecture 3",
+    "section": "Activity 2 (solution)",
+    "text": "Activity 2 (solution)\nUse Lecture3Template.qmd",
+    "crumbs": [
+      "Week 2",
+      "Lecture 3"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture3.html#comparing-math-perspective-to-data-perspective",
+    "href": "LectureNotes/Lecture3.html#comparing-math-perspective-to-data-perspective",
+    "title": "Lecture 3",
+    "section": "Comparing “math perspective” to “data perspective”",
+    "text": "Comparing “math perspective” to “data perspective”\n\n\n\\[\nw_t \\sim N(0, \\sigma^2_w), t = 1, \\dots, n\\\\\nx_t = 2\\cos\\left (\\frac{2\\pi t}{50} - .6\\right) + w_t\n\\]\n\n\nCode\ncs = 2*cos(2*pi*(1:500)/50 + .6*pi)\nw  = rnorm(500,0,1)\ntsplot(cs + w)\nlines(cs, col = \"blueviolet\", type = \"l\", lwd = 4)\n\n\n\n\n\n\n\n\n\n\n\n\nCode\ncs = 2*cos(2*pi*(1:500)/50 + .6*pi)\nw  = rnorm(500,0,1)\nx_t = ts(cs + w, frequency = 50)\n\nplot(decompose(x_t))\n\n\n\n\n\n\n\n\n\nDoes this function give us an estimate of the form of the mean function?",
+    "crumbs": [
+      "Week 2",
+      "Lecture 3"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture3.html#review-autocovariance-function",
+    "href": "LectureNotes/Lecture3.html#review-autocovariance-function",
+    "title": "Lecture 3",
+    "section": "Review: autocovariance function",
+    "text": "Review: autocovariance function\n\n\nCode\nlibrary(ggplot2)\n\nt &lt;- seq(1, 16, 1)\nx_t &lt;- 0.5*t \n#x &lt;- x - mean(x)\n#y &lt;- y - mean(y)\n\ndf &lt;- data.frame(t, x_t)\n\n# For every row in `df`, compute a rotated normal density centered at `y` and shifted by `x`\ncurves &lt;- lapply(seq_len(NROW(df)), function(i) {\n  mu &lt;- df$x_t[i]\n  range &lt;- mu + c(-1.5, 1.5)\n  seq &lt;- seq(range[1], range[2], length.out = 100)\n  data.frame(\n    t = -1 * dnorm(seq, mean = mu, sd = 0.5) + df$t[i],\n    x_t = seq,\n    grp = i\n  )\n})\n# Combine above densities in one data.frame\ncurves &lt;- do.call(rbind, curves)\n\nnew.x = seq(from = 1, to = 16, by = .1)\nnew.y = .5*new.x\ntrend_line &lt;- data.frame(x = new.x,\n                       y = new.y)\nggplot(df, aes(t, x_t)) +\n  geom_point(col = \"blueviolet\", pch = 17) +\n  #geom_line() +\n  # The path draws the curve\n  geom_path(data = curves, aes(group = grp)) +\n  geom_line(data = trend_line, aes(x=x,y=y), col = \"blueviolet\") +\n  lims(y = c(-2,10)) +\n  scale_x_continuous(breaks = seq(1, 16, by = 1)) +\n  theme_minimal() + \n  theme( # remove the vertical grid lines\n           panel.grid = element_blank() ,\n           # explicitly set the horizontal lines (or they will disappear too)\n           panel.grid.major.x = element_line( size=.1, color=\"black\" )) +   \n  geom_rect(aes(xmin = 3.1, xmax = 4.1, ymin = 0, ymax = 4), fill = NA, col = \"blue\")+   \n  geom_rect(aes(xmin = 7.1, xmax = 8.1, ymin = 2, ymax = 6), fill = NA, col = \"magenta\")\n\n\nWarning: The `size` argument of `element_line()` is deprecated as of ggplot2 3.4.0.\nℹ Please use the `linewidth` argument instead.\n\n\n\n\n\n\n\n\n\nCode\n  # The polygon does the shading. We can use `oob_squish()` to set a range.\n  #geom_polygon(data = curves, aes(y = scales::oob_squish(y, c(0, Inf)),group = grp))",
+    "crumbs": [
+      "Week 2",
+      "Lecture 3"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture3.html#error-covariance-at-different-time-points",
+    "href": "LectureNotes/Lecture3.html#error-covariance-at-different-time-points",
+    "title": "Lecture 3",
+    "section": "Error covariance at different time points",
+    "text": "Error covariance at different time points\n\n\nCode\n# install.packages(\"ggplot2\")\n# install.packages(\"ggExtra\")\nlibrary(ggplot2)\nlibrary(ggExtra)\nset.seed(50)\nx1 &lt;- rnorm(100,x_t[4], .5)\nx2 &lt;- rnorm(100,x_t[8], .5)\n\nx &lt;- data.frame(x1, x2)\n# Save the scatter plot in a variable\np &lt;- ggplot(x, aes(x = x1, y = x2)) +\n  geom_point() + xlim(0,6) + ylim(0,6)+ \n  geom_text(aes(x = 4, y = 2, label = \"gamma(2,8) = \\n cov(x_2, x_8) = 0\"), size = 6) + coord_fixed() \n\n# Arguments for each marginal histogram\nggMarginal(p, type = \"density\", adjust = 2,\n           xparams = list(col = \"blue\", fill = \"blue\"),\n           yparams = list(col = \"magenta\", fill = \"magenta\"))\n\n\nWarning in geom_text(aes(x = 4, y = 2, label = \"gamma(2,8) = \\n cov(x_2, x_8) = 0\"), : All aesthetics have length 1, but the data has 100 rows.\nℹ Please consider using `annotate()` or provide this layer with data containing\n  a single row.\nAll aesthetics have length 1, but the data has 100 rows.\nℹ Please consider using `annotate()` or provide this layer with data containing\n  a single row.",
+    "crumbs": [
+      "Week 2",
+      "Lecture 3"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture3.html#error-covariance-at-different-time-points-time-dependence",
+    "href": "LectureNotes/Lecture3.html#error-covariance-at-different-time-points-time-dependence",
+    "title": "Lecture 3",
+    "section": "Error Covariance at Different Time Points (time dependence)",
+    "text": "Error Covariance at Different Time Points (time dependence)\n\n\nCode\n#install.packages(\"MASS\")\nlibrary(MASS)\nset.seed(100)\nmu &lt;- c(x_t[4], x_t[8])\nvarcov &lt;- matrix(c(.5, .3, .3, .5), \n                 ncol = 2)\nx&lt;- mvrnorm(100, mu = mu, Sigma =varcov)\nx &lt;- data.frame(x1 = x[,1], x2 = x[,2])\n# Save the scatter plot in a variable\np &lt;- ggplot(x, aes(x = x1, y = x2)) +\n  geom_point() + xlim(0,6) + ylim(0,6) + \n  geom_text(aes(x = 4, y = 2, label = \"gamma(2,8) = \\n cov(x_2, x_8) = 0.2\"), size = 6) + coord_fixed() \n\n# Arguments for each marginal histogram\nggMarginal(p, type = \"density\", adjust = 2,\n           xparams = list(col = \"blue\", fill = \"blue\"),\n           yparams = list(col = \"magenta\", fill = \"magenta\"))\n\n\nWarning in geom_text(aes(x = 4, y = 2, label = \"gamma(2,8) = \\n cov(x_2, x_8) = 0.2\"), : All aesthetics have length 1, but the data has 100 rows.\nℹ Please consider using `annotate()` or provide this layer with data containing\n  a single row.\nAll aesthetics have length 1, but the data has 100 rows.\nℹ Please consider using `annotate()` or provide this layer with data containing\n  a single row.",
+    "crumbs": [
+      "Week 2",
+      "Lecture 3"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture3.html#stationarity",
+    "href": "LectureNotes/Lecture3.html#stationarity",
+    "title": "Lecture 3",
+    "section": "Stationarity",
+    "text": "Stationarity\nA time series is stationary if\n\nthe mean function (\\(\\mu_t\\)) is constant and does not depend on time \\(t\\)\nthe autocovariance function (\\(\\gamma(s,t)\\)) depends on \\(s\\) and \\(t\\) only though their difference\n\nAnd nonstationary otherwise.",
+    "crumbs": [
+      "Week 2",
+      "Lecture 3"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture3.html#steps-to-determine-whether-a-time-series-x_t-is-stationary",
+    "href": "LectureNotes/Lecture3.html#steps-to-determine-whether-a-time-series-x_t-is-stationary",
+    "title": "Lecture 3",
+    "section": "Steps to determine whether a time series \\(x_t\\) is stationary:",
+    "text": "Steps to determine whether a time series \\(x_t\\) is stationary:\n\nCompute the mean function.\nCompute the autocovariance function.\nIf both do not depend on \\(t\\), then \\(x_t\\) is stationary. Otherwise, \\(x_t\\) is nonstationary.",
+    "crumbs": [
+      "Week 2",
+      "Lecture 3"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture3.html#activity-3-example-2.14-stationarity-of-a-random-walk",
+    "href": "LectureNotes/Lecture3.html#activity-3-example-2.14-stationarity-of-a-random-walk",
+    "title": "Lecture 3",
+    "section": "Activity 3: Example 2.14 Stationarity of a Random Walk",
+    "text": "Activity 3: Example 2.14 Stationarity of a Random Walk\n\\[\nx_t = x_{t-1} + w_t\n\\]\nLast, time, we saw that the mean function is \\(\\E(x_t) = 0\\), and the autocovariance function is \\(\\gamma_x(s, t) = \\min\\{s,t\\}\\sigma^2_w\\)\n\nIs \\(x_t\\) stationary?\nWhat if there was drift?",
+    "crumbs": [
+      "Week 2",
+      "Lecture 3"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture3.html#activity-3-solution",
+    "href": "LectureNotes/Lecture3.html#activity-3-solution",
+    "title": "Lecture 3",
+    "section": "Activity 3 (solution)",
+    "text": "Activity 3 (solution)\nUse Lecture3Template.qmd",
+    "crumbs": [
+      "Week 2",
+      "Lecture 3"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture3.html#gammast-for-a-random-walk",
+    "href": "LectureNotes/Lecture3.html#gammast-for-a-random-walk",
+    "title": "Lecture 3",
+    "section": "\\(\\gamma(s,t)\\) for a random walk",
+    "text": "\\(\\gamma(s,t)\\) for a random walk\n\n\nCode\nsigma_w &lt;- 5 #define variance of the white noise\ncoords &lt;- expand.grid(1:20, 1:20)\nnames(coords) &lt;- c(\"s\", \"t\") ## the coordinates represent different possible time points\ncoords$gamma &lt;- pmin(coords$s, coords$t)*sigma_w\n\n\nlibrary(plotly)\n\n\n\nAttaching package: 'plotly'\n\n\nThe following object is masked from 'package:MASS':\n\n    select\n\n\nThe following object is masked from 'package:ggplot2':\n\n    last_plot\n\n\nThe following object is masked from 'package:stats':\n\n    filter\n\n\nThe following object is masked from 'package:graphics':\n\n    layout\n\n\nCode\nplot_ly(coords,\n  x= ~s, y=~t, z=~gamma, \n  type = 'scatter3d', mode = \"markers\", size = .1)",
+    "crumbs": [
+      "Week 2",
+      "Lecture 3"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture3.html#is-white-noise-stationary",
+    "href": "LectureNotes/Lecture3.html#is-white-noise-stationary",
+    "title": "Lecture 3",
+    "section": "Is white noise stationary?",
+    "text": "Is white noise stationary?\n\nMean function of white noise is \\(\\E(w_t) = 0\\)\nAutocovariance function is \\[\n\\gamma_w(s, t) = cov(w_s, w_t) =  \\begin{cases} \\sigma^2_w & \\text{ if } s = t\\\\ 0 & \\text{ if } s \\ne t \\end{cases}\n\\] Since neither depends on \\(t\\), white noise is stationary.",
+    "crumbs": [
+      "Week 2",
+      "Lecture 3"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture3.html#gammast-for-white-noise",
+    "href": "LectureNotes/Lecture3.html#gammast-for-white-noise",
+    "title": "Lecture 3",
+    "section": "\\(\\gamma(s,t)\\) for white noise",
+    "text": "\\(\\gamma(s,t)\\) for white noise\n\n\nCode\n# plot the autocov's we computed last time, show on model of time series\n\n\n\n\nCode\n## white noise\nsigma_w &lt;- 5 #define variance of the white noise\ncoords &lt;- expand.grid(1:20, 1:20)\nnames(coords) &lt;- c(\"s\", \"t\") ## the coordinates represent different possible time points\ncoords$gamma &lt;- 0\ncoords$gamma[coords[,1] == coords[,2]] &lt;- sigma_w ## covariance is sigma_w if s = t, 0 otherwise\n\n\nlibrary(plotly)\nplot_ly(coords,\n  x= ~s, y=~t, z=~gamma, \n  type = 'scatter3d', mode = \"markers\", size = .1)",
+    "crumbs": [
+      "Week 2",
+      "Lecture 3"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture3.html#break",
+    "href": "LectureNotes/Lecture3.html#break",
+    "title": "Lecture 3",
+    "section": "Break",
+    "text": "Break",
+    "crumbs": [
+      "Week 2",
+      "Lecture 3"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture3.html#activity-4",
+    "href": "LectureNotes/Lecture3.html#activity-4",
+    "title": "Lecture 3",
+    "section": "Activity 4",
+    "text": "Activity 4\nWhich of the following time series are stationary?\n\n\n\nFrom Forecasting Principles and Practice Chapter 9",
+    "crumbs": [
+      "Week 2",
+      "Lecture 3"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture3.html#activity-4-solution",
+    "href": "LectureNotes/Lecture3.html#activity-4-solution",
+    "title": "Lecture 3",
+    "section": "Activity 4 (solution)",
+    "text": "Activity 4 (solution)\nUse Lecture3Template.qmd",
+    "crumbs": [
+      "Week 2",
+      "Lecture 3"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture3.html#why-is-stationarity-important",
+    "href": "LectureNotes/Lecture3.html#why-is-stationarity-important",
+    "title": "Lecture 3",
+    "section": "Why is stationarity important?",
+    "text": "Why is stationarity important?\n\nIn order to measure correlation between contiguous time points\nTo avoid spurious correlations in a regression setting\nSimplifies how we can write the autocovariance and autocorrelation functions",
+    "crumbs": [
+      "Week 2",
+      "Lecture 3"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture3.html#autocorrelation-function",
+    "href": "LectureNotes/Lecture3.html#autocorrelation-function",
+    "title": "Lecture 3",
+    "section": "Autocorrelation function",
+    "text": "Autocorrelation function\nThe autocorrelation function (acf) of a time series is: \\[\n\\rho(s, t) = \\frac{\\gamma(s,t)}{\\sqrt{\\gamma(s,s)\\gamma(t,t)}}\n\\] i.e. the autocovariance divided by the standard deviation of the process at each time point.",
+    "crumbs": [
+      "Week 2",
+      "Lecture 3"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture3.html#autocovariance-and-autocorrelation-for-stationary-time-series",
+    "href": "LectureNotes/Lecture3.html#autocovariance-and-autocorrelation-for-stationary-time-series",
+    "title": "Lecture 3",
+    "section": "Autocovariance and Autocorrelation for Stationary Time series",
+    "text": "Autocovariance and Autocorrelation for Stationary Time series\nSince for stationary time series the autocovariance depends on \\(s\\) and \\(t\\) only through their difference, we can write the covariance as: \\[\n\\gamma(s,t) = \\gamma(h) = cov(x_{t+h}, x_t) = \\E[(x_{t+h} - \\mu)(x_t-\\mu)]\n\\] and the correlation as: \\[\n\\rho(s,t) = \\rho(h) = \\frac{\\gamma(h)}{\\gamma(0)}\n\\] \\(h = s-t\\) is called the lag.",
+    "crumbs": [
+      "Week 2",
+      "Lecture 3"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture3.html#autocorrelation-function-of-a-three-point-moving-average",
+    "href": "LectureNotes/Lecture3.html#autocorrelation-function-of-a-three-point-moving-average",
+    "title": "Lecture 3",
+    "section": "Autocorrelation function of a three-point moving average",
+    "text": "Autocorrelation function of a three-point moving average\n\\(\\gamma_v(s, t) = cov(v_s, v_t) =  \\begin{cases}\\frac{3}{9}\\sigma^2_w & \\text{ if } s = t\\\\ \\frac{2}{9}\\sigma^2_w & \\text{ if } \\vert s-t \\vert = 1 \\\\\\frac{1}{9}\\sigma^2_w & \\text{ if } \\vert s-t \\vert =2 \\\\0 & \\text{ if } \\vert s - t\\vert &gt; 2\\end{cases}\\)\nSince \\(v\\) is stationary, we can write\n\\(\\gamma_v(h) = \\begin{cases}\\frac{3}{9}\\sigma^2_w & \\text{ if } h = 0\\\\ \\frac{2}{9}\\sigma^2_w & \\text{ if } h = \\pm1 \\\\\\frac{1}{9}\\sigma^2_w & \\text{ if }h = \\pm 2 \\\\0 & \\text{ if } h&gt; 2\\end{cases}\\)\nAnd the autocorrelation is:\n\\(\\rho(h) = \\begin{cases}1 & \\text{ if } h = 0\\\\ \\frac{2}{3} & \\text{ if } h = \\pm1 \\\\\\frac{1}{3}_w & \\text{ if }h = \\pm 2 \\\\0 & \\text{ if } h&gt; 2\\end{cases}\\)",
+    "crumbs": [
+      "Week 2",
+      "Lecture 3"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture3.html#autocorrelation-function-of-a-three-point-moving-average-1",
+    "href": "LectureNotes/Lecture3.html#autocorrelation-function-of-a-three-point-moving-average-1",
+    "title": "Lecture 3",
+    "section": "Autocorrelation function of a three-point moving average",
+    "text": "Autocorrelation function of a three-point moving average\nIn R, we can plot \\(\\rho(h)\\)\n\n\nCode\nACF = c(0,0,0,1,2,3,2,1,0,0,0)/3\nLAG = -5:5\ntsplot(LAG, ACF, type=\"h\", lwd=3, xlab=\"LAG\")   \nabline(h=0)\npoints(LAG[-(4:8)], ACF[-(4:8)], pch=20)\naxis(1, at=seq(-5, 5, by=2))",
+    "crumbs": [
+      "Week 2",
+      "Lecture 3"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture3.html#activity-5",
+    "href": "LectureNotes/Lecture3.html#activity-5",
+    "title": "Lecture 3",
+    "section": "Activity 5",
+    "text": "Activity 5\n\nPredict what the acf will look like for the ar(1) process?\nSimulate an ar(1) process and compute the acf. Were you correct?\nWhat is the lag 0 autocorrelation? Explain why its value makes sense.\n\n\n\nCode\n# simulate from an ar(1)\n\n# use acf() function to plot acf\n\n# save output of acf and inspect",
+    "crumbs": [
+      "Week 2",
+      "Lecture 3"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture3.html#activity-5-solution",
+    "href": "LectureNotes/Lecture3.html#activity-5-solution",
+    "title": "Lecture 3",
+    "section": "Activity 5 (solution)",
+    "text": "Activity 5 (solution)\nUse Lecture3Template.qmd",
+    "crumbs": [
+      "Week 2",
+      "Lecture 3"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture3.html#activity-6-problem-2.3",
+    "href": "LectureNotes/Lecture3.html#activity-6-problem-2.3",
+    "title": "Lecture 3",
+    "section": "Activity 6 (Problem 2.3)",
+    "text": "Activity 6 (Problem 2.3)\nWhen smoothing time series data, it is sometimes advantageous to give decreasing amounts of weights to values farther away from the center. Consider the simple two-sided moving average smoother of the form: \\[\nv_t = \\frac{1}{4}(w_{t-1} + w_t + w_{t+1})\n\\] Where \\(w_t\\) are white noise. The autocovariance as a function of \\(h\\) is: \\[\\gamma_v(s, t) = cov(v_s, v_t) =  \\begin{cases}\\frac{6}{16}\\sigma^2_w & \\text{ if } h = 0\\\\ \\frac{4}{16}\\sigma^2_w & \\text{ if } h = \\pm 1 \\\\\\frac{1}{16}\\sigma^2_w & \\text{ if } h = \\pm 2 \\\\0 & \\text{ if } h&gt; 2\\end{cases}\\] 1. Compare to the autocovariance equation for the unweighted 3 point moving average from Lecture 2. Comment on the differences.\n\nWrite down the autocorrelation function.",
+    "crumbs": [
+      "Week 2",
+      "Lecture 3"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture3.html#activity-6-solution",
+    "href": "LectureNotes/Lecture3.html#activity-6-solution",
+    "title": "Lecture 3",
+    "section": "Activity 6 (solution)",
+    "text": "Activity 6 (solution)\nUse Lecture3Template.qmd ## Activity 7 Recall the decomposition of the Johnson and Johnson quarterly earnings.\n\n\nCode\nplot(decompose(jj)) ## plot decomposition\n\n\n\n\n\n\n\n\n\n\nIs the series stationary?\nDoes the acf of the random component look like white noise?",
+    "crumbs": [
+      "Week 2",
+      "Lecture 3"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture3.html#activity-7-solution",
+    "href": "LectureNotes/Lecture3.html#activity-7-solution",
+    "title": "Lecture 3",
+    "section": "Activity 7 (solution)",
+    "text": "Activity 7 (solution)\nUse Lecture3Template.qmd",
+    "crumbs": [
+      "Week 2",
+      "Lecture 3"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture3.html#coming-up",
+    "href": "LectureNotes/Lecture3.html#coming-up",
+    "title": "Lecture 3",
+    "section": "Coming up:",
+    "text": "Coming up:\n\nAssignment 1 due at midnight\nAssignment 2 posted later\nPart of this will be involve “reading” the textbook! (collecting data on how you feel about the math)\nNext Lecture:\n\nRegression with time\nCross-correlation\nInducing stationarity",
+    "crumbs": [
+      "Week 2",
+      "Lecture 3"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture1.html#agenda",
+    "href": "LectureNotes/Lecture1.html#agenda",
+    "title": "Lecture 1",
+    "section": "Agenda",
+    "text": "Agenda\n10:10 Introductions\n10:30 Course Rhythm/Roadmap\n10:45 Syllabus\n11:00 R Setup\n11:15 Activity\n11:45 Introduction to Time Series Models\nExtra time: Get started on Exercises",
+    "crumbs": [
+      "Week 1",
+      "Lecture 1"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture1.html#introductions",
+    "href": "LectureNotes/Lecture1.html#introductions",
+    "title": "Lecture 1",
+    "section": "Introductions",
+    "text": "Introductions\nArrange yourselves into groups of 3-4 and share the following:\n\nName\nMajor\nWhether you spend more time thinking about the past or the future\nWhether you are more certain when you think about the past or the future\n\nPlease be prepared to share summary data with the class!",
+    "crumbs": [
+      "Week 1",
+      "Lecture 1"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture1.html#about-me-professional",
+    "href": "LectureNotes/Lecture1.html#about-me-professional",
+    "title": "Lecture 1",
+    "section": "About Me (Professional)",
+    "text": "About Me (Professional)\n\nCal Poly SLO B.S. in Statistics and Pure Math\nPhD (and MA) in Statistics from Rice University\n\nExpertise: Spatial/Spatiotemporal Statistics (specifically spatial weight matrices)\nAlso did graduate certificate in teaching and learning\n\n1.5 years authoring online interactive course material for zyBooks/Wiley (EdTech portion Higher Education industry)\n1.5 years managing a team of Statistics authors at zyBooks/Wiley\n1.5 years as Research Scientist (wastewater epidemiology) at Rice University",
+    "crumbs": [
+      "Week 1",
+      "Lecture 1"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture1.html#teaching-philosophy",
+    "href": "LectureNotes/Lecture1.html#teaching-philosophy",
+    "title": "Lecture 1",
+    "section": "Teaching Philosophy",
+    "text": "Teaching Philosophy\n\nMinimize yapping\nPromote collaboration\nProvide varied opportunities for feedback",
+    "crumbs": [
+      "Week 1",
+      "Lecture 1"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture1.html#course-rhythm",
+    "href": "LectureNotes/Lecture1.html#course-rhythm",
+    "title": "Lecture 1",
+    "section": "Course Rhythm",
+    "text": "Course Rhythm\n\nAssignments due Monday nights at Midnight (11:59:59 PM)\nNew assignments posted Mondays at 5pm\nQuizzes due Thursday nights at midnight\nOne Midterm on Wednesday October 23, in class\nOne cumulative final exam\n\nSection 1 (10am): Wednesday, December 11 from 10am-1pm\nSection 2 (2pm): Friday, December 13 from 1pm-4pm",
+    "crumbs": [
+      "Week 1",
+      "Lecture 1"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture1.html#syllabus",
+    "href": "LectureNotes/Lecture1.html#syllabus",
+    "title": "Lecture 1",
+    "section": "Syllabus",
+    "text": "Syllabus\nSyllabus on Canvas (section 1)\nSyllabus on Canvas (section 2)",
+    "crumbs": [
+      "Week 1",
+      "Lecture 1"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture1.html#installing-r",
+    "href": "LectureNotes/Lecture1.html#installing-r",
+    "title": "Lecture 1",
+    "section": "Installing R",
+    "text": "Installing R\n\nGo to https://cran.r-project.org/\nSelect your operating system\nFollow the download instructions",
+    "crumbs": [
+      "Week 1",
+      "Lecture 1"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture1.html#installing-rstudio",
+    "href": "LectureNotes/Lecture1.html#installing-rstudio",
+    "title": "Lecture 1",
+    "section": "Installing RStudio",
+    "text": "Installing RStudio\n\nGo to https://posit.co/download/rstudio-desktop/\nStep 2 should have a clickable link with your operating system (auto-detected)\nFollow the download instructions",
+    "crumbs": [
+      "Week 1",
+      "Lecture 1"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture1.html#getting-started",
+    "href": "LectureNotes/Lecture1.html#getting-started",
+    "title": "Lecture 1",
+    "section": "Getting Started",
+    "text": "Getting Started\n\nIn R Studio, Click File –&gt; New –&gt; Quarto Document\nTitle it Lecture 1 Notes\nDelete the template material\nAdd setup chunk\n\n\nlibrary(astsa)",
+    "crumbs": [
+      "Week 1",
+      "Lecture 1"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture1.html#group-time",
+    "href": "LectureNotes/Lecture1.html#group-time",
+    "title": "Lecture 1",
+    "section": "Group time!",
+    "text": "Group time!\nSplit into groups of 4, I will come around and assign an example to you\n\nIn your quarto document, create a heading with a title of your example and “Equations” and “Visualizatons”\nRead over the description of the example (access the book through Canvas)\ninstall and load the astsa package.\nCopy the R code from https://github.com/nickpoison/tsda/blob/main/Rcode.md#chapter-1\nRun the R code and verify whether you can reproduce the figure from the text\nWrite down a research question that could be answered using the time series data for your example",
+    "crumbs": [
+      "Week 1",
+      "Lecture 1"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture1.html#example-1.1-quarterly-earnings",
+    "href": "LectureNotes/Lecture1.html#example-1.1-quarterly-earnings",
+    "title": "Lecture 1",
+    "section": "Example 1.1 (Quarterly Earnings)",
+    "text": "Example 1.1 (Quarterly Earnings)\n\n\nCode\npar(mfrow=2:1)\ntsplot(jj, ylab=\"QEPS\", type=\"o\", col=4, main=\"Johnson & Johnson Quarterly Earnings\")\ntsplot(log(jj), ylab=\"log(QEPS)\", type=\"o\", col=4)",
+    "crumbs": [
+      "Week 1",
+      "Lecture 1"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture1.html#example-1.2-climate-change",
+    "href": "LectureNotes/Lecture1.html#example-1.2-climate-change",
+    "title": "Lecture 1",
+    "section": "Example 1.2 (Climate Change)",
+    "text": "Example 1.2 (Climate Change)\n\n\nCode\ntsplot(cbind(gtemp_land,gtemp_ocean), spaghetti=TRUE, col = astsa.col(c(2,4), .5), \n        lwd=2, type=\"o\", pch=20, ylab=\"Temperature Deviations\", main=\"Global Warming\")\nlegend(\"topleft\", col=c(2,4), lty=1, lwd=2, pch=20,  bg=\"white\",\n        legend=c(\"Land Surface\", \"Sea Surface\"))",
+    "crumbs": [
+      "Week 1",
+      "Lecture 1"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture1.html#example-1.3-dow-jones-industrial-average",
+    "href": "LectureNotes/Lecture1.html#example-1.3-dow-jones-industrial-average",
+    "title": "Lecture 1",
+    "section": "Example 1.3 (Dow Jones Industrial Average)",
+    "text": "Example 1.3 (Dow Jones Industrial Average)\n\n\nCode\nlibrary(xts)     # install.packages(\"xts\") if you don't have it already \ndjia_return = diff(log(djia$Close))[-1]\npar(mfrow=2:1)\nplot(djia$Close, col=4)\nplot(djia_return, col=4)\n\n\n\n\n\n\n\n\n\nCode\ntsplot(diff(log(gdp)), type=\"o\", col=4)       # using diff log\npoints(diff(gdp)/lag(gdp,-1), pch=\"+\", col=2) # actual return",
+    "crumbs": [
+      "Week 1",
+      "Lecture 1"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture1.html#example-1.4-el-niño",
+    "href": "LectureNotes/Lecture1.html#example-1.4-el-niño",
+    "title": "Lecture 1",
+    "section": "Example 1.4 El Niño",
+    "text": "Example 1.4 El Niño\n\n\nCode\npar(mfrow = c(2,1))\ntsplot(soi, ylab=\"\", xlab=\"\", main=\"Southern Oscillation Index\", col=4)\ntext(1970, .91, \"COOL\", col=5)\ntext(1970,-.91, \"WARM\", col=6)\ntsplot(rec, ylab=\"\", main=\"Recruitment\", col=4)",
+    "crumbs": [
+      "Week 1",
+      "Lecture 1"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture1.html#example-1.5-predator-prey-interactions",
+    "href": "LectureNotes/Lecture1.html#example-1.5-predator-prey-interactions",
+    "title": "Lecture 1",
+    "section": "Example 1.5 (Predator-Prey Interactions)",
+    "text": "Example 1.5 (Predator-Prey Interactions)\nLink to more info!\n\n\nCode\ntsplot(cbind(Hare,Lynx), col = astsa.col(c(2,4), .6), lwd=2, type=\"o\", pch=c(0,2),\n        spaghetti=TRUE, ylab=expression(Number~~~(\"\"%*% 1000)))\nlegend(\"topright\", col=c(2,4), lty=1, lwd=2, pch=c(0,2), legend=c(\"Hare\", \"Lynx\"), bty=\"n\")",
+    "crumbs": [
+      "Week 1",
+      "Lecture 1"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture1.html#cute-animal-pictures",
+    "href": "LectureNotes/Lecture1.html#cute-animal-pictures",
+    "title": "Lecture 1",
+    "section": "Cute animal pictures",
+    "text": "Cute animal pictures",
+    "crumbs": [
+      "Week 1",
+      "Lecture 1"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture1.html#example-1.6-fmri-imaging",
+    "href": "LectureNotes/Lecture1.html#example-1.6-fmri-imaging",
+    "title": "Lecture 1",
+    "section": "Example 1.6 fMRI Imaging",
+    "text": "Example 1.6 fMRI Imaging\n\n\nCode\npar(mfrow=c(3,1))\nx = ts(fmri1[,4:9], start=0, freq=32)        # data\nnames = c(\"Cortex\",\"Thalamus\",\"Cerebellum\")\nu = ts(rep(c(rep(.6,16), rep(-.6,16)), 4), start=0, freq=32) # stimulus signal\n\nfor (i in 1:3){ \n j = 2*i-1\n tsplot(x[,j:(j+1)], ylab=\"BOLD\", xlab=\"\", main=names[i], col=5:6, ylim=c(-.6,.6), \n        lwd=2, xaxt=\"n\", spaghetti=TRUE)\n axis(seq(0,256,64), side=1, at=0:4)\n #lines(u, type=\"s\", col=gray(.3)) \n}\nmtext(\"seconds\", side=1, line=1.75, cex=.9)\n\n\n\n\n\n\n\n\n\n\n\nCode\npar(mfrow=c(3,1))\nx = ts(fmri1[,4:9], start=0, freq=32)        # data\nnames = c(\"Cortex\",\"Thalamus\",\"Cerebellum\")\nu = ts(rep(c(rep(.6,16), rep(-.6,16)), 4), start=0, freq=32) # stimulus signal\n\nfor (i in 1:3){ \n j = 2*i-1\n tsplot(x[,j:(j+1)], ylab=\"BOLD\", xlab=\"\", main=names[i], col=5:6, ylim=c(-.6,.6), \n        lwd=2, xaxt=\"n\", spaghetti=TRUE)\n axis(seq(0,256,64), side=1, at=0:4)\n lines(u, type=\"s\", col=gray(.3)) \n}\nmtext(\"seconds\", side=1, line=1.75, cex=.9)",
+    "crumbs": [
+      "Week 1",
+      "Lecture 1"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture1.html#white-noise",
+    "href": "LectureNotes/Lecture1.html#white-noise",
+    "title": "Lecture 1",
+    "section": "White Noise",
+    "text": "White Noise\n\nin general, a collection of random variables \\(w_t\\)\n\nuncorrelated\nmean 0, variance \\(\\sigma_w^2\\)\ndenoted \\(w_t \\sim wn(0, \\sigma_w^2)\\)\n\nfor us, usually independent and identically distributed (i.i.d.) normal\n\n\\(w_t \\sim \\text{iid } N(0, \\sigma_w^2)\\)",
+    "crumbs": [
+      "Week 1",
+      "Lecture 1"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture1.html#plotting-white-noise",
+    "href": "LectureNotes/Lecture1.html#plotting-white-noise",
+    "title": "Lecture 1",
+    "section": "Plotting White Noise",
+    "text": "Plotting White Noise\nWhich example does this bear the most resemblance to?\n\n\nCode\nw &lt;- rnorm(500, 0, 1)\nplot(w, type = \"l\", col = \"blue\", xlab = \"t (order of sampling)\")",
+    "crumbs": [
+      "Week 1",
+      "Lecture 1"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture1.html#what-white-noise-isnt",
+    "href": "LectureNotes/Lecture1.html#what-white-noise-isnt",
+    "title": "Lecture 1",
+    "section": "What White Noise isn’t",
+    "text": "What White Noise isn’t\n\nserially correlated – no temporal structure\nsmooth – “nice” trend/temporal structure\n\nHow can we build this “nice” structure into the model?",
+    "crumbs": [
+      "Week 1",
+      "Lecture 1"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture1.html#moving-averages-smoothing-and-filtering",
+    "href": "LectureNotes/Lecture1.html#moving-averages-smoothing-and-filtering",
+    "title": "Lecture 1",
+    "section": "Moving Averages, Smoothing, and Filtering",
+    "text": "Moving Averages, Smoothing, and Filtering\nReplace \\(w_t\\) with an average of its current value and two previous values:\n\\[\nv_t = \\frac{1}{3}(w_{t-2} + w_{t-1} + w_{t})\n\\]\n\nWhy do we divide by 3?\nIf \\(w_t \\sim \\text{iid } N(0, \\sigma_w^2)\\), what is the distribution of \\(v_t\\)?\nWhy only the previous two values? Why not one in the past and one in the future?",
+    "crumbs": [
+      "Week 1",
+      "Lecture 1"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture1.html#plotting-a-moving-average",
+    "href": "LectureNotes/Lecture1.html#plotting-a-moving-average",
+    "title": "Lecture 1",
+    "section": "Plotting a Moving Average",
+    "text": "Plotting a Moving Average\n\n\nCode\nv = stats::filter(w, sides = 2, filter = rep(1/3, 3))\nv_alt = stats::filter(w, sides = 1, filter = rep(1/3,3))\npar(mfrow=2:1)\ntsplot(v, ylim = c(-3, 3), col = 4, main=\"moving average\")\ntsplot(v_alt, ylim = c(-3, 3), col = 4, main=\"moving average\")\n\n\n\nCompare this moving average to the SOI and Recruitment series. How do they differ?",
+    "crumbs": [
+      "Week 1",
+      "Lecture 1"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture1.html#autoregressions",
+    "href": "LectureNotes/Lecture1.html#autoregressions",
+    "title": "Lecture 1",
+    "section": "Autoregressions",
+    "text": "Autoregressions\nStarting with white noise \\(w_t\\), consider the equation:\n\\[\nx_t = 1.5x_{t-1} - 0.75x_{t-2} + w_t\n\\]\n\na “second-order equation” (why?)\nA regression of the current value \\(x_t\\) of a time series as a function of the past two values of the series\n\n“auto” means self\nrecall (multiple) regression of \\(Y\\) on \\(X = (X_1, X_2)\\) is \\(Y = \\beta_0 + \\beta_1X_1 + \\beta_2X_2 + \\varepsilon\\) and compare to autoregression formula above\nSee (or hear) details in textbook page 11",
+    "crumbs": [
+      "Week 1",
+      "Lecture 1"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture1.html#plotting-autoregressions",
+    "href": "LectureNotes/Lecture1.html#plotting-autoregressions",
+    "title": "Lecture 1",
+    "section": "Plotting Autoregressions",
+    "text": "Plotting Autoregressions\n\n\nCode\nset.seed(90210)\nw = rnorm(250 + 50) # 50 extra to avoid startup problems\nx = filter(w, filter=c(1.5,-.75), method=\"recursive\")[-(1:50)]\ntsplot(x, main=\"autoregression\", col=4)",
+    "crumbs": [
+      "Week 1",
+      "Lecture 1"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture1.html#random-walk-with-drift",
+    "href": "LectureNotes/Lecture1.html#random-walk-with-drift",
+    "title": "Lecture 1",
+    "section": "Random Walk with Drift",
+    "text": "Random Walk with Drift\nAgain starting with white noise \\(w_t \\sim wn(0, \\sigma^2_2)\\), consider the time series\n\\[\nx_t = \\delta + x_{t-1} + w_t\n\\]\nThis is called the “random walk with drift” model.\n\n\\(\\delta\\) is the drift term (\\(\\delta = 0\\) corresponds to “random walk”- no drift)\ninitial condition \\(x_0 = 0\\)\n\nCan be rewritten\n\\[\nx_t = \\delta t + \\sum_{j=1}^t w_j\n\\]",
+    "crumbs": [
+      "Week 1",
+      "Lecture 1"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture1.html#plotting-a-random-walk-with-drift",
+    "href": "LectureNotes/Lecture1.html#plotting-a-random-walk-with-drift",
+    "title": "Lecture 1",
+    "section": "Plotting a Random Walk with Drift",
+    "text": "Plotting a Random Walk with Drift\n\n\nCode\nset.seed(314159265) # so you can reproduce the results\nw  = rnorm(200)  ## Gaussian white noise\nx  = cumsum(w)\nwd = w +.3 \nxd = cumsum(wd)\ntsplot(xd, ylim=c(-2,80), main=\"random walk\", ylab=\"\", col=4)\n clip(0, 200, 0, 80)\n abline(a=0, b=.3, lty=2, col=4) # drift\nlines(x, col=6)\n clip(0, 200, 0, 80)\n abline(h=0, col=6, lty=2)",
+    "crumbs": [
+      "Week 1",
+      "Lecture 1"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture1.html#signal-plus-noise",
+    "href": "LectureNotes/Lecture1.html#signal-plus-noise",
+    "title": "Lecture 1",
+    "section": "Signal Plus Noise",
+    "text": "Signal Plus Noise\nConsider the model:\n\\[\nx_t = 2\\cos(2\\pi\\frac{t + 15}{50}) + w_t\n\\]\n\n\\(2\\cos(2\\pi\\frac{t + 15}{50})\\) is the signal\n\\(w_t\\) is the noise",
+    "crumbs": [
+      "Week 1",
+      "Lecture 1"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture1.html#plotting-signal-plus-noise-two-scenarios",
+    "href": "LectureNotes/Lecture1.html#plotting-signal-plus-noise-two-scenarios",
+    "title": "Lecture 1",
+    "section": "Plotting Signal Plus Noise (two scenarios)",
+    "text": "Plotting Signal Plus Noise (two scenarios)\n\n\nCode\n# cs = 2*cos(2*pi*(1:500)/50 + .6*pi)    # as in the text\ncs = 2*cos(2*pi*(1:500+15)/50)           # same thing \nw  = rnorm(500,0,1)\npar(mfrow=c(3,1))   \ntsplot(cs, ylab=\"\", main = expression(x[t]==2*cos(2*pi*t/50+.6*pi)))\ntsplot(cs + w, ylab=\"\", main = expression(x[t]==2*cos(2*pi*t/50+.6*pi)+N(0,1)))\ntsplot(cs + 5*w, ylab=\"\", main = expression(x[t]==2*cos(2*pi*t/50+.6*pi)+N(0,25)))",
+    "crumbs": [
+      "Week 1",
+      "Lecture 1"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture1.html#next-time",
+    "href": "LectureNotes/Lecture1.html#next-time",
+    "title": "Lecture 1",
+    "section": "Next Time",
+    "text": "Next Time\n\nExercises at the end of chapter 1\nStart Chapter 2\n\nReview definition of covariance, correlation, expected value, and variance (good use of AI– prompt then Wikipedia?)",
+    "crumbs": [
+      "Week 1",
+      "Lecture 1"
+    ]
+  },
+  {
+    "objectID": "Assignments/Assignment2_updated.html",
+    "href": "Assignments/Assignment2_updated.html",
+    "title": "Assignment 2 Due 10/7 at Midnight",
+    "section": "",
+    "text": "NOTE: I forgot to include a relevant detail for Part 2, number 7. The change is bolded. Sorry!!! Part 2 number 8 should be easier to answer now.",
+    "crumbs": [
+      "Week 2",
+      "Assignment 2"
+    ]
+  },
+  {
+    "objectID": "Assignments/Assignment2_updated.html#part-1-math",
+    "href": "Assignments/Assignment2_updated.html#part-1-math",
+    "title": "Assignment 2 Due 10/7 at Midnight",
+    "section": "Part 1: Math",
+    "text": "Part 1: Math\nIn class, we have worked with “Signal plus noise Model” (equation 1.5)\n\\[\n\\begin{aligned}\n\\text{Model: }& x_t = 2\\cos(2\\pi\\frac{t+15}{50}) + w_t\\\\\n\\text{Mean function: }& \\mathbb{E}(x_t) = 2\\cos(2\\pi\\frac{t+15}{50})\n\\end{aligned}\n\\]\n\n[5 points] The mean function is derived in Example 2.4. Describe what happens in each step of the computation [3 points], and provide a “math stress” rating (1 = effortless, 100 = nightmare) and 3 emojis[2 points]. This is personal and there is no right answer.\n[5 points] Is the signal plus noise model stationary in the mean?\n[5 points] Write down \\(\\gamma_x(s,t)\\), the autocovariance function of \\(x_t\\) [3 points]. You may accomplish this in any way, including asking me personally in office hours or asking a classmate. Just make sure you cite the source![2 points]\n[6 points] Consider the model:\n\\[\ny_t = x_t - 2\\cos(2\\pi\\frac{t+15}{50})\n\\]\nCompute the mean function of \\(y_t\\) [3 points]. Is \\(y_t\\) stationary in the mean?[1 point] How do you know?[2 points]",
+    "crumbs": [
+      "Week 2",
+      "Assignment 2"
+    ]
+  },
+  {
+    "objectID": "Assignments/Assignment2_updated.html#part-2-code",
+    "href": "Assignments/Assignment2_updated.html#part-2-code",
+    "title": "Assignment 2 Due 10/7 at Midnight",
+    "section": "Part 2: Code",
+    "text": "Part 2: Code\nNote: I have set the code chunks here to have eval: false in the code chunk. Change that to true so that I can run your code easily.\n\n[5 points] All your code runs without errors (unless that’s the point), and if there is a message, explain what it means. (Bonus: to be nice to me, submit a rendered pdf)\n[5 points] Simulate from an AR(1) process with coefficient 0.7 and 10 data points.\n\n\nlibrary(astsa)\n\n# your code here\n\n\n[6 points] Look at the documentation for the stats::lag function (run ?lag in the console). State what package the function is in and what the function does[4 points]. Using k = 1 compute a lag(1) version of x_t that you simulated above[2 points].\n\n\nx_t_lag1 &lt;- # your code here\n\n\n[3 points] Run the following code and compare x_t and x_t_lag1.\n\n\ncbind(x_t, x_t_lag1)\n\n\nMake a time series plot of x_t and x_t_1. Do you notice the same features as when in the previous question?\n\n\n# your code here\n\n\nRun the below code. Why are the plots different? Are either particularly useful?\n\n\nplot(x_t, x_t_lag1)\nplot(as.vector(x_t), as.vector(x_t_lag1))\n\n\nInstead of using stats::lag, use dplyr::lag to create a new version of x_t_lag. Repeat the code from steps 2-5. Describe how the output has changed.\n\n\nx_t_lag1 &lt;- dplyr::lag(# your code here)\n\n\nRe-simulate an AR(1) process as in number 1, but this time with 100 observations. Also recompute x_t_lag1. Fit an intercept-free regression model to predict x_t from x_t_lag. Provide the value of the slope estimate and interpret the value in the context of this simulation.\n\n\nlinear_model &lt;- # your code here\n\n\n[11 points] Plot the acf of x_t[2 points] and the acf of the residuals from the regression model[4 points]. Which looks more like white noise?[2 points] What does this tell you about the temporal structure in x_t and its residuals?[3 points]\n\n\n# your code here",
+    "crumbs": [
+      "Week 2",
+      "Assignment 2"
+    ]
+  },
+  {
+    "objectID": "Assignments/Assignment2_updated.html#part-3-reading",
+    "href": "Assignments/Assignment2_updated.html#part-3-reading",
+    "title": "Assignment 2 Due 10/7 at Midnight",
+    "section": "Part 3: Reading",
+    "text": "Part 3: Reading\n[9 points] Read sections 2.8 and 2.9 from Forecasting Principles and Practice. Make 3 connections [3 points each] to content from the course textbook (equations or similar examples.).",
+    "crumbs": [
+      "Week 2",
+      "Assignment 2"
+    ]
+  },
+  {
+    "objectID": "Assignments/Assignment1.html",
+    "href": "Assignments/Assignment1.html",
+    "title": "Stat 416 Assignment 1 Due Monday, September 30 at 11:59:59PM",
+    "section": "",
+    "text": "A paper I worked on as a research scientist considered the time series of the concentration (measured as \\(\\log_{10}\\) copies per Liter) of the SARS-CoV-2 virus from 5 different locations in the City of Houston, visualized in parts (c)-(g) of the figure below.\nThe goal of this study was to see whether the information gleaned from sampling the lift stations, which represent smaller populations, was different than the information gleaned from sampling only the larger wastewater treatment plant. In other words, one research question was to determine whether the WWTP (dark blue) time series has different dynamics (behavior) than those that represent the lift stations.\nThe methods in this paper are touched on in chapter 8 of our textbook. For this assignment, we will use the wastewater data as an example and practice our plotting and time series data science skills.\n\n\n\n(a) The WWTP catchment areas for the City of Houston, with the WWTP of focus shaded. The box shows the extent of (b), the map showing the 4 lift stations considered in the analysis. (c–g) Plot the time series of Log10 Copies/L for the WWTP and the 4 lift station facilities, referred to as Lift Station A–D, with periods of missing values indicated by grey rectangles.\n\n\n\nWhich of the time series has the most missing data? Which appears to have the most variability? Does the overall behavior of the series seem to be similar?\nLoad the (synthetic) wastewater data from https://raw.githubusercontent.com/hou-wastewater-epi-org/online_trend_estimation/refs/heads/main/Data/synthetic_ww_time_series.csv using the read.csv function\nInspect the data. Verify that each of the series from the map above are included in the .csv (hint: what are the unique values of the name field?)\nConvert the date field to a Date format using the function as.Date.\nInstall and load the tidyverse package.\nWe will work with just the WWTP series for now. Use dplyr::filter to extract the values for just the WWTP series.\n\nww &lt;- read.csv(#your code here)\n\nww$dates &lt;- as.Date(# your code here)\n\n#install.packages(\"tidyverse\")\nlibrary(tidyverse)\nww_WWTP &lt;- ww %&gt;% dplyr::filter(#your code here)\n\nWhat is the time interval between the observations? How do you know?\nUse the tsplot function from the astsa package to plot the WWTP series.\nMake sure to use the dates field for the x-axis and specify good axis and plot labels using the xlab/ylab, and main arguments. (see the documentation ?tsplot for more)\nApply a moving average filter with 3 time points using the stats::filter function and save the result in a vector called ww_ma_3. You can choose the order of the moving average. (Similar to the final part of problem 1.1, see here in Lecture Notes).\n\nww_ma_3 &lt;- stats::filter(#your code here)\n\nPlot the moving average you computed on top of the tsplot in a different color using the lines function (see linked Problem 1.1 above). In the call to the lines function, also use type = l and lwd = 2.\n\ntsplot(# your code here)\nlines(# your code here)\n\nApply the moving average filter again, but this time use 5 time points, call it ww_ma_5. Plot just the WWTP series data and the ww_ma_5 you just computed, and use a different color for this MA process than you used in question 10.\nInspect the plot you generated in questions 10 and 11. Which MA process looks “smoother”?\nDescribe the different way that the missing data in the WWTP series impacts the moving average estimates for the case of 3 time points vs. 5 time points.",
+    "crumbs": [
+      "Week 1",
+      "Assignment 1"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture4.html",
+    "href": "LectureNotes/Lecture4.html",
+    "title": "Lecture 4",
+    "section": "",
+    "text": "Slides with Activity Solutions\n\n\n\n\n\nView slides in full screen",
+    "crumbs": [
+      "Week 2",
+      "Lecture 4"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture4.html#recap",
+    "href": "LectureNotes/Lecture4.html#recap",
+    "title": "Lecture 4",
+    "section": "Recap",
+    "text": "Recap\n\n\\[\n\\newcommand\\E{{\\mathbb{E}}}\n\\]\n\n\nDecomposing time series\nStationarity (theoretically and with data)\nSome activities",
+    "crumbs": [
+      "Week 2",
+      "Lecture 4"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture4.html#today",
+    "href": "LectureNotes/Lecture4.html#today",
+    "title": "Lecture 4",
+    "section": "Today",
+    "text": "Today\n\nFinish up activities from Lecture 3\nTrend stationarity\nVisualizing autocovariance (third attempt)\nDetrending\n“Office hours”",
+    "crumbs": [
+      "Week 2",
+      "Lecture 4"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture4.html#reminders",
+    "href": "LectureNotes/Lecture4.html#reminders",
+    "title": "Lecture 4",
+    "section": "Reminders",
+    "text": "Reminders\n\nSyllabus participation policy\nAssignments: Going forward, must submit rendered pdf of code portion. (if you want to be nice to me, do this for Assignment 2, but starts with Assignment 3)\nLate quizzes: Going forward: Email me ahead of time, otherwise it’s a 0\nExam details: No use of computer, code will be covered but basic, notes sheet is allowed, practice test will be provided",
+    "crumbs": [
+      "Week 2",
+      "Lecture 4"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture4.html#activity-1-export-price-of-salmon-example-3.1",
+    "href": "LectureNotes/Lecture4.html#activity-1-export-price-of-salmon-example-3.1",
+    "title": "Lecture 4",
+    "section": "Activity 1: Export Price of Salmon (Example 3.1)",
+    "text": "Activity 1: Export Price of Salmon (Example 3.1)\n\n\nCode\nlibrary(astsa)\n\nsummary(fit &lt;- lm(salmon~time(salmon), na.action=NULL))\n## \n## Call:\n## lm(formula = salmon ~ time(salmon), na.action = NULL)\n## \n## Residuals:\n##      Min       1Q   Median       3Q      Max \n## -1.69187 -0.62453 -0.07024  0.51561  2.34959 \n## \n## Coefficients:\n##                Estimate Std. Error t value Pr(&gt;|t|)    \n## (Intercept)  -503.08947   34.44164  -14.61   &lt;2e-16 ***\n## time(salmon)    0.25290    0.01713   14.76   &lt;2e-16 ***\n## ---\n## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n## \n## Residual standard error: 0.8814 on 164 degrees of freedom\n## Multiple R-squared:  0.5706, Adjusted R-squared:  0.568 \n## F-statistic: 217.9 on 1 and 164 DF,  p-value: &lt; 2.2e-16\ntsplot(salmon, col=4, ylab=\"USD per KG\", main=\"Salmon Export Price\")\nabline(fit)",
+    "crumbs": [
+      "Week 2",
+      "Lecture 4"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture4.html#activity-1-export-price-of-salmon-example-3.1-1",
+    "href": "LectureNotes/Lecture4.html#activity-1-export-price-of-salmon-example-3.1-1",
+    "title": "Lecture 4",
+    "section": "Activity 1: Export Price of Salmon (Example 3.1)",
+    "text": "Activity 1: Export Price of Salmon (Example 3.1)\n\nDoes this time series appear stationary?\nThe (mathematical) equation in the book for the trend line above is:\n\\[\nx_t = \\beta_0 + \\beta_1z_t + w_t, z_t = 2003\\frac{8}{12}, 2001\\frac{8}{12}, \\dots, 2017\\frac{5}{12}\n\\]\n\nThere is a typo in this equation. Correct the typo. (hint: examine to the first few entries of time(salmon)\nWhy are there fractions of the year? Explain what the fractional values mean and describe how they appear in the data set within R.\n\nInterpret the estimate of the slope.",
+    "crumbs": [
+      "Week 2",
+      "Lecture 4"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture4.html#activity-2-trend-stationarity-example-2.19",
+    "href": "LectureNotes/Lecture4.html#activity-2-trend-stationarity-example-2.19",
+    "title": "Lecture 4",
+    "section": "Activity 2: Trend Stationarity (Example 2.19)",
+    "text": "Activity 2: Trend Stationarity (Example 2.19)\nConsider the time series model \\[x_t = \\beta t + y_t\\] Assume \\(y_t\\) is stationary with mean function \\(\\mu_y\\) and and autocovariance function \\(\\gamma_y(h)\\)\n\nCompare this equation to the regression equation in the last example.\nWhat are the mean function and autocovariance function of \\(x_t\\)?",
+    "crumbs": [
+      "Week 2",
+      "Lecture 4"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture4.html#trend-stationarity-model",
+    "href": "LectureNotes/Lecture4.html#trend-stationarity-model",
+    "title": "Lecture 4",
+    "section": "Trend stationarity model",
+    "text": "Trend stationarity model\nA time series which is nonstationary in the mean but is stationary in the autocovariance is sometimes called Trend stationarity.\n\nI’m actually not sure if it just refers to linear trends?? I’ll ask people at my conference",
+    "crumbs": [
+      "Week 2",
+      "Lecture 4"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture4.html#visualizing-the-autocovariance-for-trend-stationarity",
+    "href": "LectureNotes/Lecture4.html#visualizing-the-autocovariance-for-trend-stationarity",
+    "title": "Lecture 4",
+    "section": "Visualizing the autocovariance for trend stationarity",
+    "text": "Visualizing the autocovariance for trend stationarity\n\n\nCode\nlibrary(ggplot2)\nset.seed(807)\nt &lt;- seq(1, 10, 1)\nx_t &lt;- 0.5*t \n#x &lt;- x - mean(x)\n#y &lt;- y - mean(y)\n\ndf &lt;- data.frame(t, x_t)\n\n# For every row in `df`, compute a rotated normal density centered at `y` and shifted by `x`\ncurves &lt;- lapply(seq_len(NROW(df)), function(i) {\n  mu &lt;- df$x_t[i]\n  range &lt;- mu + c(-1.5, 1.5)\n  seq &lt;- seq(range[1], range[2], length.out = 100)\n  data.frame(\n    t = -1 * dnorm(seq, mean = mu, sd = 0.5) + df$t[i],\n    x_t = seq,\n    grp = i\n  )\n})\n# Combine above densities in one data.frame\ncurves &lt;- do.call(rbind, curves)\n\nnew.x = seq(from = 1, to = 10, by = .1)\nnew.y = .5*new.x\ntrend_line &lt;- data.frame(x = new.x,\n                       y = new.y)\nggplot(df, aes(t, x_t)) +\n  geom_point(col = \"blueviolet\", pch = 17) +\n  #geom_line() +\n  # The path draws the curve\n  geom_path(data = curves, aes(group = grp)) +\n  geom_line(data = trend_line, aes(x=x,y=y), col = \"blueviolet\") +\n  lims(y = c(-2,10)) +\n  scale_x_continuous(breaks = seq(1, 10, by = 1)) +\n  theme_minimal() + \n  theme( # remove the vertical grid lines\n           panel.grid = element_blank() ,\n           # explicitly set the horizontal lines (or they will disappear too)\n           panel.grid.major.x = element_line( size=.1, color=\"black\" )) +   \n  geom_rect(aes(xmin = 1.1, xmax = 2.1, ymin = -1, ymax = 3), fill = NA, col = \"blue\")+   \n  geom_rect(aes(xmin = 7.1, xmax = 8.1, ymin = 2, ymax = 6), fill = NA, col = \"magenta\")\n\n\nWarning: The `size` argument of `element_line()` is deprecated as of ggplot2 3.4.0.\nℹ Please use the `linewidth` argument instead.\n\n\n\n\n\n\n\n\n\nCode\n  # The polygon does the shading. We can use `oob_squish()` to set a range.\n  #geom_polygon(data = curves, aes(y = scales::oob_squish(y, c(0, Inf)),group = grp))",
+    "crumbs": [
+      "Week 2",
+      "Lecture 4"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture4.html#simulate-many-time-series-from-the-trend-stationarity-model",
+    "href": "LectureNotes/Lecture4.html#simulate-many-time-series-from-the-trend-stationarity-model",
+    "title": "Lecture 4",
+    "section": "Simulate many time series from the trend stationarity model",
+    "text": "Simulate many time series from the trend stationarity model\n\n\nCode\nset.seed(807)\nTime &lt;- 10\nn_sim &lt;- 100\nall_series = matrix(rep(NA, times = n_sim*Time), nrow = Time)\nfor(i in 1:n_sim){\n  cs = 0.25*1:Time        # same thing \n  w  = rnorm(Time + 50,0,1)\n  #w_dep = stats::filter(w, filter = rep(1/3,3))[2:(Time + 1)]\n  #all_series[,i] &lt;- cs + w_dep\n  all_series[,i] &lt;- cs + w[2:(Time+1)]\n  #names(all_series)[i] &lt;- paste(\"sim_\", i)\n  \n}\nfit &lt;- lm(all_series[,1]~time(all_series[,1]), na.action=NULL)\ntsplot(all_series[,1], main = \"One simulated Time series\", type = \"b\", col = c(\"black\", \"blue\", rep(\"black\", times = 5), \"magenta\", \"black\", \"black\"), pch = 16, cex = 3)\nabline(fit)",
+    "crumbs": [
+      "Week 2",
+      "Lecture 4"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture4.html#simulate-many-time-series-from-the-trend-stationarity-model-1",
+    "href": "LectureNotes/Lecture4.html#simulate-many-time-series-from-the-trend-stationarity-model-1",
+    "title": "Lecture 4",
+    "section": "Simulate many time series from the trend stationarity model",
+    "text": "Simulate many time series from the trend stationarity model\n\n\nCode\npar(mfrow = c(2,2))\nfor(i in 1:4){\n  fit &lt;- lm(all_series[,i]~time(all_series[,i]), na.action=NULL)\n  tsplot(all_series[,i], type = \"b\", col = c(\"black\", \"blue\", rep(\"black\", times = 5), \"magenta\", \"black\", \"black\"), pch = 16, cex = 3, ylim = c(-3,6))\n  abline(fit)\n\n}",
+    "crumbs": [
+      "Week 2",
+      "Lecture 4"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture4.html#simulate-many-time-series-from-the-trend-stationarity-model-2",
+    "href": "LectureNotes/Lecture4.html#simulate-many-time-series-from-the-trend-stationarity-model-2",
+    "title": "Lecture 4",
+    "section": "Simulate many time series from the trend stationarity model",
+    "text": "Simulate many time series from the trend stationarity model\n\n\nCode\ntsplot(all_series, spaghetti = TRUE, main = \"100 Simuated Trend Stationary Time Series\", type = \"b\")\nrect(xleft = 1.5, xright = 2.5, ybottom = -2, ytop = 4, border = \"blue\", lwd = 2)\nrect(xleft = 7.5, xright = 8.5, ybottom = -.5, ytop = 5, border = \"magenta\", lwd = 2)",
+    "crumbs": [
+      "Week 2",
+      "Lecture 4"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture4.html#marginal-and-joint-distributions-t8-and-s2",
+    "href": "LectureNotes/Lecture4.html#marginal-and-joint-distributions-t8-and-s2",
+    "title": "Lecture 4",
+    "section": "Marginal and Joint Distributions t=8 and s=2",
+    "text": "Marginal and Joint Distributions t=8 and s=2\n\n\nCode\ni = 2\nx_comp &lt;- all_series[i,]\nx_8 &lt;- all_series[8,]\n\npar(mfrow = c(2,2))\nhist(x_comp, col = \"blue\", main = paste(\"Histogram of simulations at t=\", i), xlab = paste(\"x_\",i))\nhist(x_8, col = \"magenta\", main = paste(\"Histogram of simulations at t=8\"), xlab = \"x_8\")\nplot(x_comp, x_8, col = \"purple\", pch = 16, main = \"Joint Distribution\")\nabline(lm(x_8~x_comp))",
+    "crumbs": [
+      "Week 2",
+      "Lecture 4"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture4.html#marginal-and-joint-distributions",
+    "href": "LectureNotes/Lecture4.html#marginal-and-joint-distributions",
+    "title": "Lecture 4",
+    "section": "Marginal and Joint Distributions",
+    "text": "Marginal and Joint Distributions\n\n\nCode\nlibrary(ggplot2)\nlibrary(ggExtra)\nx &lt;- data.frame(x_comp, x_8)\n# Save the scatter plot in a variable\np &lt;- ggplot(x, aes(x = x_comp, y = x_8)) +\n  geom_point(col = \"purple\") + xlim(-3,6) + ylim(-3,6)+ \n  geom_text(aes(x = 2, y = -1, label = paste(\"rho(\",i,\",8) = \\n cor(x_\",i,\", x_8) = \", round(cor(x_comp, x_8),3)), size = 6)) + coord_fixed() \n\n# Arguments for each marginal histogram\nggMarginal(p, type = \"density\", adjust = 2,\n           xparams = list(col = \"blue\", fill = \"blue\"),\n           yparams = list(col = \"magenta\", fill = \"magenta\"))\n\n\nWarning in geom_text(aes(x = 2, y = -1, label = paste(\"rho(\", i, \",8) = \\n cor(x_\", : All aesthetics have length 1, but the data has 100 rows.\nℹ Please consider using `annotate()` or provide this layer with data containing\n  a single row.\nAll aesthetics have length 1, but the data has 100 rows.\nℹ Please consider using `annotate()` or provide this layer with data containing\n  a single row.",
+    "crumbs": [
+      "Week 2",
+      "Lecture 4"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture4.html#do-this-for-all-possible-combos-of-s-and-t",
+    "href": "LectureNotes/Lecture4.html#do-this-for-all-possible-combos-of-s-and-t",
+    "title": "Lecture 4",
+    "section": "Do this for all possible combos of \\(s\\) and \\(t\\)",
+    "text": "Do this for all possible combos of \\(s\\) and \\(t\\)\nView slides in full screen",
+    "crumbs": [
+      "Week 2",
+      "Lecture 4"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture4.html#visualizing-the-correlations",
+    "href": "LectureNotes/Lecture4.html#visualizing-the-correlations",
+    "title": "Lecture 4",
+    "section": "Visualizing the correlations",
+    "text": "Visualizing the correlations\n\n\nCode\ncors &lt;- apply(all_series, 1, function(x){cor(x, all_series[8,])})\nhist(cors, breaks = seq(-1, 1, by = .1), main = \"Correlation between simulations for x_8 and x_i\")",
+    "crumbs": [
+      "Week 2",
+      "Lecture 4"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture4.html#are-these-all-the-correlations",
+    "href": "LectureNotes/Lecture4.html#are-these-all-the-correlations",
+    "title": "Lecture 4",
+    "section": "Are these all the correlations?",
+    "text": "Are these all the correlations?\nNo, just pairwise with \\(x_8\\). We could do all possible pairs:\n\n\nCode\nlibrary(GGally)\n\n\nRegistered S3 method overwritten by 'GGally':\n  method from   \n  +.gg   ggplot2\n\n\nCode\nggpairs(data.frame(t(all_series)))",
+    "crumbs": [
+      "Week 2",
+      "Lecture 4"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture4.html#distribution-of-all-the-correlations",
+    "href": "LectureNotes/Lecture4.html#distribution-of-all-the-correlations",
+    "title": "Lecture 4",
+    "section": "Distribution of all the correlations:",
+    "text": "Distribution of all the correlations:\n\n\nCode\ncoords &lt;- t(combn(10,2))\ncors &lt;- NULL\nfor(i in 1:nrow(coords)){\n  cors &lt;- c(cors, cor(all_series[coords[i,1],], all_series[coords[i,2],]))\n}\ncors &lt;- c(cors, rep(1, times = 10))\nhist(cors, breaks = seq(-1, 1, by = .1), main = \"Correlation between simulations for x_s and x_t\")",
+    "crumbs": [
+      "Week 2",
+      "Lecture 4"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture4.html#d-version-of-histogram-includes-s-t-plane",
+    "href": "LectureNotes/Lecture4.html#d-version-of-histogram-includes-s-t-plane",
+    "title": "Lecture 4",
+    "section": "3D version of histogram (includes \\(s-t\\) plane)",
+    "text": "3D version of histogram (includes \\(s-t\\) plane)\n\n\nCode\ncoords &lt;- expand.grid(1:Time, 1:Time)\nnames(coords) &lt;- c(\"s\", \"t\") \ncoords$cor &lt;- NA\ncoords$pval &lt;- NA\ncor_mat_theoretical &lt;- cor_mat &lt;- matrix(rep(NA, times = Time*Time), nrow = Time)\nfor(i in 1:nrow(coords)){\n  out &lt;- cor.test((all_series[coords[i,1],]), (all_series[coords[i,2],]))\n  if(coords[i,1]==coords[i,2]){\n    coords$cor[i] &lt;- 1\n    coords$pval[i] &lt;- 0\n    cor_mat[coords[i,1], coords[i,2]] &lt;- 1\n    cor_mat_theoretical[coords[i,1], coords[i,2]] &lt;- 1\n  }else{\n    coords$cor[i] &lt;- out$estimate\n    coords$pval[i] &lt;- out$p.value\n    cor_mat[coords[i,1], coords[i,2]] &lt;- out$estimate\n    cor_mat_theoretical[coords[i,1], coords[i,2]] &lt;- 0\n    \n  }\n}\n\nlibrary(plotly)\n\n\n\nAttaching package: 'plotly'\n\n\nThe following object is masked from 'package:ggplot2':\n\n    last_plot\n\n\nThe following object is masked from 'package:stats':\n\n    filter\n\n\nThe following object is masked from 'package:graphics':\n\n    layout\n\n\nCode\nplot_ly(coords,\n        x= ~s, y=~t, z=~cor, \n        type = 'scatter3d', mode = \"markers\", size = .1)",
+    "crumbs": [
+      "Week 2",
+      "Lecture 4"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture4.html#simulated-auto-correlation-function-hatgamma_xh-with-a-blanket",
+    "href": "LectureNotes/Lecture4.html#simulated-auto-correlation-function-hatgamma_xh-with-a-blanket",
+    "title": "Lecture 4",
+    "section": "Simulated auto correlation function \\(\\hat{\\gamma}_x(h)\\) (with a blanket)",
+    "text": "Simulated auto correlation function \\(\\hat{\\gamma}_x(h)\\) (with a blanket)\n\n\nCode\n## \"drape a blanket over it to see the pattern better\"\nfig &lt;- plot_ly(z = ~cor_mat)\nfig %&gt;% add_surface()",
+    "crumbs": [
+      "Week 2",
+      "Lecture 4"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture4.html#theoretical-hatgamma_xh-using-the-derived-formula-with-a-blanket",
+    "href": "LectureNotes/Lecture4.html#theoretical-hatgamma_xh-using-the-derived-formula-with-a-blanket",
+    "title": "Lecture 4",
+    "section": "Theoretical \\(\\hat{\\gamma}_x(h)\\) (using the derived formula (with a blanket)",
+    "text": "Theoretical \\(\\hat{\\gamma}_x(h)\\) (using the derived formula (with a blanket)\n\n\nCode\n# Theoretical function\nfig &lt;- plot_ly(z = ~cor_mat_theoretical)\nfig %&gt;% add_surface()",
+    "crumbs": [
+      "Week 2",
+      "Lecture 4"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture4.html#detrending-1",
+    "href": "LectureNotes/Lecture4.html#detrending-1",
+    "title": "Lecture 4",
+    "section": "Detrending",
+    "text": "Detrending\nIf a process is trend stationary (nonstationary in the mean, but stationary in the variance), can we just subtract off the trend and get back a stationary time series?\nYes, and that’s called detrending",
+    "crumbs": [
+      "Week 2",
+      "Lecture 4"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture4.html#activity-3-detrending-a-commodity-example-3.7",
+    "href": "LectureNotes/Lecture4.html#activity-3-detrending-a-commodity-example-3.7",
+    "title": "Lecture 4",
+    "section": "Activity 3: Detrending a commodity (Example 3.7)",
+    "text": "Activity 3: Detrending a commodity (Example 3.7)\n\nGiven the code to generate the plot with the trend line, how would you view the equation of the trend line?\nVisualize the de-trended series\nCompute the acf of the salmon series and the detrended series. What do you notice?",
+    "crumbs": [
+      "Week 2",
+      "Lecture 4"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture4.html#next-time",
+    "href": "LectureNotes/Lecture4.html#next-time",
+    "title": "Lecture 4",
+    "section": "Next time",
+    "text": "Next time\n\nCross-correlation and regression with multiple time series (\\(x_t\\) on x-axis instead of \\(t\\) on x-axis like with the salmon)\nActivities and examples\nSmoothing",
+    "crumbs": [
+      "Week 2",
+      "Lecture 4"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture4/index.html#recap",
+    "href": "LectureNotes/Slides/Lecture4/index.html#recap",
+    "title": "Lecture 4",
+    "section": "Recap",
+    "text": "Recap\n\n\\[\n\\newcommand\\E{{\\mathbb{E}}}\n\\]\n\n\nDecomposing time series\nStationarity (theoretically and with data)\nSome activities"
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture4/index.html#today",
+    "href": "LectureNotes/Slides/Lecture4/index.html#today",
+    "title": "Lecture 4",
+    "section": "Today",
+    "text": "Today\n\nFinish up activities from Lecture 3\nTrend stationarity\nVisualizing autocovariance (third attempt)\n“Office hours”"
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture4/index.html#reminders",
+    "href": "LectureNotes/Slides/Lecture4/index.html#reminders",
+    "title": "Lecture 4",
+    "section": "Reminders",
+    "text": "Reminders\n\nSyllabus participation policy\nAssignments: Going forward, must submit rendered pdf of code portion. (if you want to be nice to me, do this for Assignment 2, but starts with Assignment 3)\nLate quizzes: Going forward: Email me ahead of time, otherwise it’s a 0\nExam details: No use of computer, code will be covered but basic, notes sheet is allowed, practice test will be provided"
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture4/index.html#activity-1-export-price-of-salmon-example-3.1",
+    "href": "LectureNotes/Slides/Lecture4/index.html#activity-1-export-price-of-salmon-example-3.1",
+    "title": "Lecture 4",
+    "section": "Activity 1: Export Price of Salmon (Example 3.1)",
+    "text": "Activity 1: Export Price of Salmon (Example 3.1)\n\n\nCode\nlibrary(astsa)\n\nsummary(fit &lt;- lm(salmon~time(salmon), na.action=NULL))\n## \n## Call:\n## lm(formula = salmon ~ time(salmon), na.action = NULL)\n## \n## Residuals:\n##      Min       1Q   Median       3Q      Max \n## -1.69187 -0.62453 -0.07024  0.51561  2.34959 \n## \n## Coefficients:\n##                Estimate Std. Error t value Pr(&gt;|t|)    \n## (Intercept)  -503.08947   34.44164  -14.61   &lt;2e-16 ***\n## time(salmon)    0.25290    0.01713   14.76   &lt;2e-16 ***\n## ---\n## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n## \n## Residual standard error: 0.8814 on 164 degrees of freedom\n## Multiple R-squared:  0.5706, Adjusted R-squared:  0.568 \n## F-statistic: 217.9 on 1 and 164 DF,  p-value: &lt; 2.2e-16\ntsplot(salmon, col=4, ylab=\"USD per KG\", main=\"Salmon Export Price\")\nabline(fit)"
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture4/index.html#activity-1-export-price-of-salmon-example-3.1-1",
+    "href": "LectureNotes/Slides/Lecture4/index.html#activity-1-export-price-of-salmon-example-3.1-1",
+    "title": "Lecture 4",
+    "section": "Activity 1: Export Price of Salmon (Example 3.1)",
+    "text": "Activity 1: Export Price of Salmon (Example 3.1)\n\n\n\nDoes this time series appear stationary?\nThe (mathematical) equation in the book for the trend line above is:\n\\[\nx_t = \\beta_0 + \\beta_1z_t + w_t, z_t = 2003\\frac{8}{12}, 2001\\frac{8}{12}, \\dots, 2017\\frac{5}{12}\n\\]\n\nThere is a typo in this equation. Correct the typo. (hint: examine to the first few entries of time(salmon)\nWhy are there fractions of the year? Explain what the fractional values mean and describe how they appear in the data set within R.\n\nInterpret the estimate of the slope."
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture4/index.html#activity-1-export-price-of-salmon-example-3.1-2",
+    "href": "LectureNotes/Slides/Lecture4/index.html#activity-1-export-price-of-salmon-example-3.1-2",
+    "title": "Lecture 4",
+    "section": "Activity 1: Export Price of Salmon (Example 3.1)",
+    "text": "Activity 1: Export Price of Salmon (Example 3.1)\n\nDoes this time series appear stationary?\n\nNo, the mean function is clearly increasing.\n\nThe (mathematical) equation in the book for the trend line above is:\n\\[\nx_t = \\beta_0 + \\beta_1z_t + w_t, z_t = 2003\\frac{8}{12}, 2001\\frac{8}{12}, \\dots, 2017\\frac{5}{12}\n\\]\n\nThere is a typo in this equation. Correct the typo. (hint: examine to the first few entries of time(salmon)\n\n\n[1] 2003.667 2003.750 2003.833 2003.917 2004.000 2004.083\n\n\n[1] 2003.667 2003.750 2003.833 2003.917 2004.000 2004.083\n\n\nThe typo is the second year, it should be \\(2003\\frac{9}{12}\\)\nWhy are there fractions of the year? Explain what the fractional values mean and describe how they appear in the data set within R.\nNote that we are dividing by 12, so the fractions represent the months. Based on the values of time(salmon), January corresponds to \\(\\frac{0}{12}\\), so for example September is represented as \\(\\frac{8}{12}\\).\n\nInterpret the estimate of the slope.\n\nEach year, the expected export price of Norwegian salmon increases by 0.2592 USD per kg\nEach month, the export price of Norwegian salmon increases by 0.2592/12 USD per kg on average"
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture4/index.html#activity-2-trend-stationarity-example-2.19",
+    "href": "LectureNotes/Slides/Lecture4/index.html#activity-2-trend-stationarity-example-2.19",
+    "title": "Lecture 4",
+    "section": "Activity 2: Trend Stationarity (Example 2.19)",
+    "text": "Activity 2: Trend Stationarity (Example 2.19)\nConsider the time series model \\[x_t = \\beta t + y_t\\] Assume \\(y_t\\) is stationary with mean function \\(\\mu_y\\) and and autocovariance function \\(\\gamma_y(h)\\)\n\nCompare this equation to the regression equation in the last example.\nWhat are the mean function and autocovariance function of \\(x_t\\)?"
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture4/index.html#activity-2-solutions-trend-stationarity-example-2.19",
+    "href": "LectureNotes/Slides/Lecture4/index.html#activity-2-solutions-trend-stationarity-example-2.19",
+    "title": "Lecture 4",
+    "section": "Activity 2 Solutions: Trend Stationarity (Example 2.19)",
+    "text": "Activity 2 Solutions: Trend Stationarity (Example 2.19)\nConsider the time series model \\[x_t = \\beta t + y_t\\] Assume \\(y_t\\) is stationary with mean function \\(\\mu_y\\) and and autocovariance function \\(\\gamma_y(h)\\)\n\nCompare this equation to the regression equation in the last example.\n\nThe equations are similar, with \\(x_t\\) being the same, \\(\\beta_1 = \\beta\\), \\(\\beta_0 = 0\\), and \\(w_t = y_t\\), and \\(z_t = t\\). - What are the mean function and autocovariance function of \\(x_t\\)?\nFor the Mean\n\\[\n\\E(x_t)  = \\E(\\beta t + y_t) = \\E(\\beta t) + \\E(y_t) = \\beta t + \\mu_y\n\\] For the Autocovariance \\[\n\\begin{align}\n\\gamma_x(h) = cov(x_{t+h}, x_t) &= \\E[(x_{t+h} - \\mu_{x,t+h})(x_t - \\mu_{x,t})] \\\\\n&= \\E[\\left( [\\beta (t+h) + y_{t+h}] - [\\beta (t+h) + \\mu_y] \\right)\\left( [\\beta (t) + y_{t}] - [\\beta (t) + \\mu_y] \\right)] \\\\\n&=  \\E[(y_{t+h} - \\mu_y)(y_t - \\mu_y)] \\\\\n&= \\gamma_y(h)\n\\end{align}\n\\]"
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture4/index.html#trend-stationarity-model",
+    "href": "LectureNotes/Slides/Lecture4/index.html#trend-stationarity-model",
+    "title": "Lecture 4",
+    "section": "Trend stationarity model",
+    "text": "Trend stationarity model\nA time series which is nonstationary in the mean but is stationary in the autocovariance is sometimes called Trend stationarity.\n\nI’m actually not sure if it just refers to linear trends?? I’ll ask people at my conference"
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture4/index.html#visualizing-the-autocovariance-for-trend-stationarity",
+    "href": "LectureNotes/Slides/Lecture4/index.html#visualizing-the-autocovariance-for-trend-stationarity",
+    "title": "Lecture 4",
+    "section": "Visualizing the autocovariance for trend stationarity",
+    "text": "Visualizing the autocovariance for trend stationarity"
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture4/index.html#simulate-many-time-series-from-the-trend-stationarity-model",
+    "href": "LectureNotes/Slides/Lecture4/index.html#simulate-many-time-series-from-the-trend-stationarity-model",
+    "title": "Lecture 4",
+    "section": "Simulate many time series from the trend stationarity model",
+    "text": "Simulate many time series from the trend stationarity model"
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture4/index.html#simulate-many-time-series-from-the-trend-stationarity-model-1",
+    "href": "LectureNotes/Slides/Lecture4/index.html#simulate-many-time-series-from-the-trend-stationarity-model-1",
+    "title": "Lecture 4",
+    "section": "Simulate many time series from the trend stationarity model",
+    "text": "Simulate many time series from the trend stationarity model"
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture4/index.html#simulate-many-time-series-from-the-trend-stationarity-model-2",
+    "href": "LectureNotes/Slides/Lecture4/index.html#simulate-many-time-series-from-the-trend-stationarity-model-2",
+    "title": "Lecture 4",
+    "section": "Simulate many time series from the trend stationarity model",
+    "text": "Simulate many time series from the trend stationarity model\n\n\nCode\ntsplot(all_series, spaghetti = TRUE, main = \"100 Simuated Trend Stationary Time Series\", type = \"b\")\nrect(xleft = 1.5, xright = 2.5, ybottom = -2, ytop = 4, border = \"blue\", lwd = 2)\nrect(xleft = 7.5, xright = 8.5, ybottom = -.5, ytop = 5, border = \"magenta\", lwd = 2)"
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture4/index.html#marginal-and-joint-distributions-t8-and-s2",
+    "href": "LectureNotes/Slides/Lecture4/index.html#marginal-and-joint-distributions-t8-and-s2",
+    "title": "Lecture 4",
+    "section": "Marginal and Joint Distributions t=8 and s=2",
+    "text": "Marginal and Joint Distributions t=8 and s=2"
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture4/index.html#marginal-and-joint-distributions",
+    "href": "LectureNotes/Slides/Lecture4/index.html#marginal-and-joint-distributions",
+    "title": "Lecture 4",
+    "section": "Marginal and Joint Distributions",
+    "text": "Marginal and Joint Distributions"
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture4/index.html#all-simulated-time-series",
+    "href": "LectureNotes/Slides/Lecture4/index.html#all-simulated-time-series",
+    "title": "Lecture 4",
+    "section": "All Simulated Time Series",
+    "text": "All Simulated Time Series"
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture4/index.html#marginal-and-joint-distributions-t8-and-s-1",
+    "href": "LectureNotes/Slides/Lecture4/index.html#marginal-and-joint-distributions-t8-and-s-1",
+    "title": "Lecture 4",
+    "section": "Marginal and Joint Distributions t=8 and s = 1",
+    "text": "Marginal and Joint Distributions t=8 and s = 1"
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture4/index.html#all-simulated-time-series-1",
+    "href": "LectureNotes/Slides/Lecture4/index.html#all-simulated-time-series-1",
+    "title": "Lecture 4",
+    "section": "All Simulated Time Series",
+    "text": "All Simulated Time Series"
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture4/index.html#marginal-and-joint-distributions-t8-and-s-2",
+    "href": "LectureNotes/Slides/Lecture4/index.html#marginal-and-joint-distributions-t8-and-s-2",
+    "title": "Lecture 4",
+    "section": "Marginal and Joint Distributions t=8 and s = 2",
+    "text": "Marginal and Joint Distributions t=8 and s = 2"
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture4/index.html#all-simulated-time-series-2",
+    "href": "LectureNotes/Slides/Lecture4/index.html#all-simulated-time-series-2",
+    "title": "Lecture 4",
+    "section": "All Simulated Time Series",
+    "text": "All Simulated Time Series"
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture4/index.html#marginal-and-joint-distributions-t8-and-s-3",
+    "href": "LectureNotes/Slides/Lecture4/index.html#marginal-and-joint-distributions-t8-and-s-3",
+    "title": "Lecture 4",
+    "section": "Marginal and Joint Distributions t=8 and s = 3",
+    "text": "Marginal and Joint Distributions t=8 and s = 3"
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture4/index.html#all-simulated-time-series-3",
+    "href": "LectureNotes/Slides/Lecture4/index.html#all-simulated-time-series-3",
+    "title": "Lecture 4",
+    "section": "All Simulated Time Series",
+    "text": "All Simulated Time Series"
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture4/index.html#marginal-and-joint-distributions-t8-and-s-4",
+    "href": "LectureNotes/Slides/Lecture4/index.html#marginal-and-joint-distributions-t8-and-s-4",
+    "title": "Lecture 4",
+    "section": "Marginal and Joint Distributions t=8 and s = 4",
+    "text": "Marginal and Joint Distributions t=8 and s = 4"
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture4/index.html#all-simulated-time-series-4",
+    "href": "LectureNotes/Slides/Lecture4/index.html#all-simulated-time-series-4",
+    "title": "Lecture 4",
+    "section": "All Simulated Time Series",
+    "text": "All Simulated Time Series"
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture4/index.html#marginal-and-joint-distributions-t8-and-s-5",
+    "href": "LectureNotes/Slides/Lecture4/index.html#marginal-and-joint-distributions-t8-and-s-5",
+    "title": "Lecture 4",
+    "section": "Marginal and Joint Distributions t=8 and s = 5",
+    "text": "Marginal and Joint Distributions t=8 and s = 5"
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture4/index.html#all-simulated-time-series-5",
+    "href": "LectureNotes/Slides/Lecture4/index.html#all-simulated-time-series-5",
+    "title": "Lecture 4",
+    "section": "All Simulated Time Series",
+    "text": "All Simulated Time Series"
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture4/index.html#marginal-and-joint-distributions-t8-and-s-6",
+    "href": "LectureNotes/Slides/Lecture4/index.html#marginal-and-joint-distributions-t8-and-s-6",
+    "title": "Lecture 4",
+    "section": "Marginal and Joint Distributions t=8 and s = 6",
+    "text": "Marginal and Joint Distributions t=8 and s = 6"
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture4/index.html#all-simulated-time-series-6",
+    "href": "LectureNotes/Slides/Lecture4/index.html#all-simulated-time-series-6",
+    "title": "Lecture 4",
+    "section": "All Simulated Time Series",
+    "text": "All Simulated Time Series"
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture4/index.html#marginal-and-joint-distributions-t8-and-s-7",
+    "href": "LectureNotes/Slides/Lecture4/index.html#marginal-and-joint-distributions-t8-and-s-7",
+    "title": "Lecture 4",
+    "section": "Marginal and Joint Distributions t=8 and s = 7",
+    "text": "Marginal and Joint Distributions t=8 and s = 7"
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture4/index.html#all-simulated-time-series-7",
+    "href": "LectureNotes/Slides/Lecture4/index.html#all-simulated-time-series-7",
+    "title": "Lecture 4",
+    "section": "All Simulated Time Series",
+    "text": "All Simulated Time Series"
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture4/index.html#marginal-and-joint-distributions-t8-and-s-8",
+    "href": "LectureNotes/Slides/Lecture4/index.html#marginal-and-joint-distributions-t8-and-s-8",
+    "title": "Lecture 4",
+    "section": "Marginal and Joint Distributions t=8 and s = 8",
+    "text": "Marginal and Joint Distributions t=8 and s = 8"
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture4/index.html#all-simulated-time-series-8",
+    "href": "LectureNotes/Slides/Lecture4/index.html#all-simulated-time-series-8",
+    "title": "Lecture 4",
+    "section": "All Simulated Time Series",
+    "text": "All Simulated Time Series"
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture4/index.html#marginal-and-joint-distributions-t8-and-s-9",
+    "href": "LectureNotes/Slides/Lecture4/index.html#marginal-and-joint-distributions-t8-and-s-9",
+    "title": "Lecture 4",
+    "section": "Marginal and Joint Distributions t=8 and s = 9",
+    "text": "Marginal and Joint Distributions t=8 and s = 9"
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture4/index.html#all-simulated-time-series-9",
+    "href": "LectureNotes/Slides/Lecture4/index.html#all-simulated-time-series-9",
+    "title": "Lecture 4",
+    "section": "All Simulated Time Series",
+    "text": "All Simulated Time Series"
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture4/index.html#marginal-and-joint-distributions-t8-and-s-10",
+    "href": "LectureNotes/Slides/Lecture4/index.html#marginal-and-joint-distributions-t8-and-s-10",
+    "title": "Lecture 4",
+    "section": "Marginal and Joint Distributions t=8 and s = 10",
+    "text": "Marginal and Joint Distributions t=8 and s = 10"
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture4/index.html#visualizing-the-correlations",
+    "href": "LectureNotes/Slides/Lecture4/index.html#visualizing-the-correlations",
+    "title": "Lecture 4",
+    "section": "Visualizing the correlations",
+    "text": "Visualizing the correlations"
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture4/index.html#are-these-all-the-correlations",
+    "href": "LectureNotes/Slides/Lecture4/index.html#are-these-all-the-correlations",
+    "title": "Lecture 4",
+    "section": "Are these all the correlations?",
+    "text": "Are these all the correlations?\nNo, just pairwise with \\(x_8\\). We could do all possible pairs:"
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture4/index.html#distribution-of-all-the-correlations",
+    "href": "LectureNotes/Slides/Lecture4/index.html#distribution-of-all-the-correlations",
+    "title": "Lecture 4",
+    "section": "Distribution of all the correlations:",
+    "text": "Distribution of all the correlations:"
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture4/index.html#d-version-of-histogram-includes-s-t-plane",
+    "href": "LectureNotes/Slides/Lecture4/index.html#d-version-of-histogram-includes-s-t-plane",
+    "title": "Lecture 4",
+    "section": "3D version of histogram (includes \\(s-t\\) plane)",
+    "text": "3D version of histogram (includes \\(s-t\\) plane)"
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture4/index.html#simulated-auto-correlation-function-hatgamma_xh-with-a-blanket",
+    "href": "LectureNotes/Slides/Lecture4/index.html#simulated-auto-correlation-function-hatgamma_xh-with-a-blanket",
+    "title": "Lecture 4",
+    "section": "Simulated auto correlation function \\(\\hat{\\gamma}_x(h)\\) (with a blanket)",
+    "text": "Simulated auto correlation function \\(\\hat{\\gamma}_x(h)\\) (with a blanket)"
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture4/index.html#theoretical-hatgamma_xh-using-the-derived-formula-with-a-blanket",
+    "href": "LectureNotes/Slides/Lecture4/index.html#theoretical-hatgamma_xh-using-the-derived-formula-with-a-blanket",
+    "title": "Lecture 4",
+    "section": "Theoretical \\(\\hat{\\gamma}_x(h)\\) (using the derived formula (with a blanket)",
+    "text": "Theoretical \\(\\hat{\\gamma}_x(h)\\) (using the derived formula (with a blanket)"
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture4/index.html#detrending-1",
+    "href": "LectureNotes/Slides/Lecture4/index.html#detrending-1",
+    "title": "Lecture 4",
+    "section": "Detrending",
+    "text": "Detrending\nIf a process is trend stationary (nonstationary in the mean, but stationary in the variance), can we just subtract off the trend and get back a stationary time series?\nYes, and that’s called detrending"
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture4/index.html#activity-3-detrending-a-commodity-example-3.7",
+    "href": "LectureNotes/Slides/Lecture4/index.html#activity-3-detrending-a-commodity-example-3.7",
+    "title": "Lecture 4",
+    "section": "Activity 3: Detrending a commodity (Example 3.7)",
+    "text": "Activity 3: Detrending a commodity (Example 3.7)\n\nGiven the code to generate the plot with the trend line, how would you view the equation of the trend line?\nVisualize the de-trended series\nCompute the acf of the salmon series and the detrended series. What do you notice?"
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture4/index.html#activity-3-solution-detrending-a-commodity-example-3.7",
+    "href": "LectureNotes/Slides/Lecture4/index.html#activity-3-solution-detrending-a-commodity-example-3.7",
+    "title": "Lecture 4",
+    "section": "Activity 3 Solution: Detrending a commodity (Example 3.7)",
+    "text": "Activity 3 Solution: Detrending a commodity (Example 3.7)\n\nGiven the code to generate the plot with the trend line, how would you view the equation of the trend line?\nVisualize the de-trended series\n\n\n\n\nCall:\nlm(formula = salmon ~ time(salmon), na.action = NULL)\n\nResiduals:\n     Min       1Q   Median       3Q      Max \n-1.69187 -0.62453 -0.07024  0.51561  2.34959 \n\nCoefficients:\n               Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)  -503.08947   34.44164  -14.61   &lt;2e-16 ***\ntime(salmon)    0.25290    0.01713   14.76   &lt;2e-16 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 0.8814 on 164 degrees of freedom\nMultiple R-squared:  0.5706,    Adjusted R-squared:  0.568 \nF-statistic: 217.9 on 1 and 164 DF,  p-value: &lt; 2.2e-16"
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture4/index.html#detrending-a-commodity-example-3.7",
+    "href": "LectureNotes/Slides/Lecture4/index.html#detrending-a-commodity-example-3.7",
+    "title": "Lecture 4",
+    "section": "Detrending a commodity (Example 3.7)",
+    "text": "Detrending a commodity (Example 3.7)\n\nCompute the acf of the salmon series and the de-trended series"
+  },
+  {
+    "objectID": "LectureNotes/Slides/Lecture4/index.html#next-time",
+    "href": "LectureNotes/Slides/Lecture4/index.html#next-time",
+    "title": "Lecture 4",
+    "section": "Next time",
+    "text": "Next time\n\nCross-correlation and regression with multiple time series (\\(x_t\\) on x-axis instead of \\(t\\) on x-axis like with the salmon) (Activities at the end of Ch 2)\nActivities and examples From Chapter 3\nSmoothing (Section 3.3)"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site\n\n1 + 1\n\n[1] 2"
+  }
+]

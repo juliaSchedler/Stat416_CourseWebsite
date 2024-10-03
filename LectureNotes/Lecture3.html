@@ -1,0 +1,1397 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.555">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Julia Schedler">
+
+<title>Fall 24 Stat 416 Lecture Notes - Lecture 3</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/quarto-timer-1.0.0/timer.js"></script>
+<link href="../site_libs/quarto-contrib/quarto-timer-1.0.0/timer.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link href="../site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+<script src="../site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="../site_libs/plotly-binding-4.10.4/plotly.js"></script>
+<script src="../site_libs/typedarray-0.1/typedarray.min.js"></script>
+<script src="../site_libs/jquery-3.5.1/jquery.min.js"></script>
+<link href="../site_libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
+<script src="../site_libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+<link href="../site_libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="../site_libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../LectureNotes/Lecture3.html">Week 2</a></li><li class="breadcrumb-item"><a href="../LectureNotes/Lecture3.html">Lecture 3</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Fall 24 Stat 416 Lecture Notes</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Home</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Week 1</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../LectureNotes/Lecture1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../LectureNotes/Lecture2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Assignments/Assignment1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Assignment 1</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Week 2</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../LectureNotes/Lecture3.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Lecture 3</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../LectureNotes/Lecture4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 4</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Assignments/Assignment2_updated.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Assignment 2</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Week 3</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../LectureNotes/Lecture5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture5.html</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../LectureNotes/Lecture6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture6.html</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Week 4</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../LectureNotes/Lecture7.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture7.html</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../LectureNotes/Lecture8.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture8.html</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Exams/PracticeMidterm.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">PracticeMidterm.html</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#recap" id="toc-recap" class="nav-link active" data-scroll-target="#recap">Recap</a></li>
+  <li><a href="#today" id="toc-today" class="nav-link" data-scroll-target="#today">Today</a></li>
+  <li><a href="#first-participation-grade" id="toc-first-participation-grade" class="nav-link" data-scroll-target="#first-participation-grade">First “participation” grade</a></li>
+  <li><a href="#lecture-template" id="toc-lecture-template" class="nav-link" data-scroll-target="#lecture-template">Lecture Template</a></li>
+  <li><a href="#another-time-series-model" id="toc-another-time-series-model" class="nav-link" data-scroll-target="#another-time-series-model">Another time series model</a></li>
+  <li><a href="#activity-1" id="toc-activity-1" class="nav-link" data-scroll-target="#activity-1">Activity 1</a></li>
+  <li><a href="#activity-1-solution" id="toc-activity-1-solution" class="nav-link" data-scroll-target="#activity-1-solution">Activity 1 (solution)</a></li>
+  <li><a href="#activity-2" id="toc-activity-2" class="nav-link" data-scroll-target="#activity-2">Activity 2</a></li>
+  <li><a href="#activity-2-solution" id="toc-activity-2-solution" class="nav-link" data-scroll-target="#activity-2-solution">Activity 2 (solution)</a></li>
+  <li><a href="#comparing-math-perspective-to-data-perspective" id="toc-comparing-math-perspective-to-data-perspective" class="nav-link" data-scroll-target="#comparing-math-perspective-to-data-perspective"><span class="r-fit-text">Comparing “math perspective” to “data perspective”</span></a></li>
+  <li><a href="#motivating-stationarity" id="toc-motivating-stationarity" class="nav-link" data-scroll-target="#motivating-stationarity">Motivating Stationarity</a>
+  <ul class="collapse">
+  <li><a href="#review-autocovariance-function" id="toc-review-autocovariance-function" class="nav-link" data-scroll-target="#review-autocovariance-function">Review: autocovariance function</a></li>
+  <li><a href="#error-covariance-at-different-time-points" id="toc-error-covariance-at-different-time-points" class="nav-link" data-scroll-target="#error-covariance-at-different-time-points"><span class="r-fit-text">Error covariance at different time points</span></a></li>
+  <li><a href="#error-covariance-at-different-time-points-time-dependence" id="toc-error-covariance-at-different-time-points-time-dependence" class="nav-link" data-scroll-target="#error-covariance-at-different-time-points-time-dependence"><span class="r-fit-text">Error Covariance at Different Time Points (time dependence)</span></a></li>
+  <li><a href="#stationarity" id="toc-stationarity" class="nav-link" data-scroll-target="#stationarity">Stationarity</a></li>
+  <li><a href="#steps-to-determine-whether-a-time-series-x_t-is-stationary" id="toc-steps-to-determine-whether-a-time-series-x_t-is-stationary" class="nav-link" data-scroll-target="#steps-to-determine-whether-a-time-series-x_t-is-stationary"><span class="r-fit-text">Steps to determine whether a time series <span class="math inline">\(x_t\)</span> is stationary:</span></a></li>
+  <li><a href="#activity-3-example-2.14-stationarity-of-a-random-walk" id="toc-activity-3-example-2.14-stationarity-of-a-random-walk" class="nav-link" data-scroll-target="#activity-3-example-2.14-stationarity-of-a-random-walk"><span class="r-fit-text">Activity 3: Example 2.14 Stationarity of a Random Walk</span></a></li>
+  <li><a href="#activity-3-solution" id="toc-activity-3-solution" class="nav-link" data-scroll-target="#activity-3-solution">Activity 3 (solution)</a></li>
+  <li><a href="#gammast-for-a-random-walk" id="toc-gammast-for-a-random-walk" class="nav-link" data-scroll-target="#gammast-for-a-random-walk"><span class="math inline">\(\gamma(s,t)\)</span> for a random walk</a></li>
+  <li><a href="#is-white-noise-stationary" id="toc-is-white-noise-stationary" class="nav-link" data-scroll-target="#is-white-noise-stationary">Is white noise stationary?</a></li>
+  <li><a href="#gammast-for-white-noise" id="toc-gammast-for-white-noise" class="nav-link" data-scroll-target="#gammast-for-white-noise"><span class="math inline">\(\gamma(s,t)\)</span> for white noise</a></li>
+  <li><a href="#break" id="toc-break" class="nav-link" data-scroll-target="#break">Break</a></li>
+  <li><a href="#activity-4" id="toc-activity-4" class="nav-link" data-scroll-target="#activity-4">Activity 4</a></li>
+  <li><a href="#activity-4-solution" id="toc-activity-4-solution" class="nav-link" data-scroll-target="#activity-4-solution">Activity 4 (solution)</a></li>
+  <li><a href="#why-is-stationarity-important" id="toc-why-is-stationarity-important" class="nav-link" data-scroll-target="#why-is-stationarity-important">Why is stationarity important?</a></li>
+  <li><a href="#autocorrelation-function" id="toc-autocorrelation-function" class="nav-link" data-scroll-target="#autocorrelation-function">Autocorrelation function</a></li>
+  <li><a href="#autocovariance-and-autocorrelation-for-stationary-time-series" id="toc-autocovariance-and-autocorrelation-for-stationary-time-series" class="nav-link" data-scroll-target="#autocovariance-and-autocorrelation-for-stationary-time-series"><span class="r-fit-text">Autocovariance and Autocorrelation for Stationary Time series</span></a></li>
+  <li><a href="#autocorrelation-function-of-a-three-point-moving-average" id="toc-autocorrelation-function-of-a-three-point-moving-average" class="nav-link" data-scroll-target="#autocorrelation-function-of-a-three-point-moving-average"><span class="r-fit-text">Autocorrelation function of a three-point moving average</span></a></li>
+  <li><a href="#autocorrelation-function-of-a-three-point-moving-average-1" id="toc-autocorrelation-function-of-a-three-point-moving-average-1" class="nav-link" data-scroll-target="#autocorrelation-function-of-a-three-point-moving-average-1"><span class="r-fit-text">Autocorrelation function of a three-point moving average</span></a></li>
+  <li><a href="#activity-5" id="toc-activity-5" class="nav-link" data-scroll-target="#activity-5">Activity 5</a></li>
+  <li><a href="#activity-5-solution" id="toc-activity-5-solution" class="nav-link" data-scroll-target="#activity-5-solution">Activity 5 (solution)</a></li>
+  </ul></li>
+  <li><a href="#questions-on-the-quiz" id="toc-questions-on-the-quiz" class="nav-link" data-scroll-target="#questions-on-the-quiz">Questions on the quiz?</a>
+  <ul class="collapse">
+  <li><a href="#activity-6-problem-2.3" id="toc-activity-6-problem-2.3" class="nav-link" data-scroll-target="#activity-6-problem-2.3">Activity 6 (Problem 2.3)</a></li>
+  <li><a href="#activity-6-solution" id="toc-activity-6-solution" class="nav-link" data-scroll-target="#activity-6-solution">Activity 6 (solution)</a></li>
+  <li><a href="#activity-7-solution" id="toc-activity-7-solution" class="nav-link" data-scroll-target="#activity-7-solution">Activity 7 (solution)</a></li>
+  <li><a href="#coming-up" id="toc-coming-up" class="nav-link" data-scroll-target="#coming-up">Coming up:</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../LectureNotes/Lecture3.html">Week 2</a></li><li class="breadcrumb-item"><a href="../LectureNotes/Lecture3.html">Lecture 3</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Lecture 3</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Julia Schedler </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Slides with Activity Solutions
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><a href="Slides/Lecture3/" target="_blank">View slides in full screen</a></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Link to Notes Template
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><a href="ActivityTemplates/Lecture3Template.qmd">Lecture3Template.qmd</a></p>
+</div>
+</div>
+</div>
+<section id="recap" class="level2">
+<h2 class="anchored" data-anchor-id="recap">Recap</h2>
+<div class="hidden">
+<p><span class="math display">\[
+\newcommand\E{{\mathbb{E}}}
+\]</span></p>
+</div>
+<ul>
+<li>Visualizing time series</li>
+<li>Research questions involving time series</li>
+<li>Mean and covariance functions</li>
+<li>Moving average examples</li>
+<li>Almost got to stationarity</li>
+</ul>
+</section>
+<section id="today" class="level2">
+<h2 class="anchored" data-anchor-id="today">Today</h2>
+<ul>
+<li><p>Decomposing a time series</p></li>
+<li><p>Stationarity</p></li>
+<li><p>Autocorrelation function</p></li>
+<li><p>Time series regression</p></li>
+</ul>
+</section>
+<section id="first-participation-grade" class="level2">
+<h2 class="anchored" data-anchor-id="first-participation-grade">First “participation” grade</h2>
+<ul>
+<li>confirm you are good to opt in or out of the textbook, you have to do it by Oct 2 so do it on Oct 1 (tomorrow).</li>
+</ul>
+</section>
+<section id="lecture-template" class="level2">
+<h2 class="anchored" data-anchor-id="lecture-template">Lecture Template</h2>
+<ul>
+<li>Download “Lecture3Template.qmd” from Canvas</li>
+<li>has some basic document structure set up to make it easier to follow along in lecture :)</li>
+</ul>
+</section>
+<section id="another-time-series-model" class="level2">
+<h2 class="anchored" data-anchor-id="another-time-series-model">Another time series model</h2>
+<p>Similar to the signal plus noise model,</p>
+<p><span class="math display">\[
+X_t = T_t + S_t + W_t
+\]</span></p>
+<ul>
+<li><span class="math inline">\(T_t\)</span> is the trend component</li>
+<li><span class="math inline">\(S_t\)</span> is the seasonal component</li>
+<li><span class="math inline">\(W_t\)</span> is the error component</li>
+</ul>
+<p>The <code>r</code> function <code>stats::decompose</code> will split a time series <span class="math inline">\(X_t\)</span> into these three components.</p>
+</section>
+<section id="activity-1" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="activity-1">Activity 1</h2>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(astsa)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="do">## use the decompose function on the jj series</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>jj_decomp <span class="ot">&lt;-</span> <span class="do">## your code here</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="do">## plot the decomposition</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="do">## your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<ol type="1">
+<li><p>Use the <code>decompose</code> function on the <code>jj</code> series.</p></li>
+<li><p>Match the terms in the equation on the previous slide to each of the components in the chart</p></li>
+<li><p>Describe the trend.</p></li>
+<li><p>Does the bottom plot (“error”) look like white noise?</p></li>
+<li><p>Look at the documentation for the <code>decompose</code> function. Can you determine how the “trend” component was computed?</p></li>
+</ol>
+</section>
+<section id="activity-1-solution" class="level2">
+<h2 class="anchored" data-anchor-id="activity-1-solution">Activity 1 (solution)</h2>
+<p>Use <code>Lecture3Template.qmd</code></p>
+</section>
+<section id="activity-2" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="activity-2">Activity 2</h2>
+<p>Recall the (sinusoidal) signal plus noise model: <span class="math display">\[
+w_t \sim \text{iid } N(0, \sigma^2_w)\\
+x_t = 2\cos\left (\frac{2\pi t}{50} - .6\right) + w_t
+\]</span></p>
+<ol type="1">
+<li>Simulate 500 observations from the signal plus noise model</li>
+<li>Apply the <code>decompose</code> function. Does the error portion look like white noise?</li>
+</ol>
+<p>Hint: The below code gives an error. Compare the “frequency” of the <code>jj</code> series. Can you figure out how to use the <code>ts</code> function to specify the correct frequency?</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>cs <span class="ot">=</span> <span class="dv">2</span><span class="sc">*</span><span class="fu">cos</span>(<span class="dv">2</span><span class="sc">*</span>pi<span class="sc">*</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">500</span>)<span class="sc">/</span><span class="dv">50</span> <span class="sc">+</span> .<span class="dv">6</span><span class="sc">*</span>pi)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>w  <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">500</span>,<span class="dv">0</span>,<span class="dv">1</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>x_t <span class="ot">=</span> cs <span class="sc">+</span> w</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">decompose</span>(x_t))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="activity-2-solution" class="level2">
+<h2 class="anchored" data-anchor-id="activity-2-solution">Activity 2 (solution)</h2>
+<p>Use <code>Lecture3Template.qmd</code></p>
+</section>
+<section id="comparing-math-perspective-to-data-perspective" class="level2">
+<h2 class="anchored" data-anchor-id="comparing-math-perspective-to-data-perspective"><span class="r-fit-text">Comparing “math perspective” to “data perspective”</span></h2>
+<div class="columns">
+<div class="column">
+<p><span class="math display">\[
+w_t \sim N(0, \sigma^2_w), t = 1, \dots, n\\
+x_t = 2\cos\left (\frac{2\pi t}{50} - .6\right) + w_t
+\]</span></p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>cs <span class="ot">=</span> <span class="dv">2</span><span class="sc">*</span><span class="fu">cos</span>(<span class="dv">2</span><span class="sc">*</span>pi<span class="sc">*</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">500</span>)<span class="sc">/</span><span class="dv">50</span> <span class="sc">+</span> .<span class="dv">6</span><span class="sc">*</span>pi)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>w  <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">500</span>,<span class="dv">0</span>,<span class="dv">1</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tsplot</span>(cs <span class="sc">+</span> w)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(cs, <span class="at">col =</span> <span class="st">"blueviolet"</span>, <span class="at">type =</span> <span class="st">"l"</span>, <span class="at">lwd =</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Lecture3_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column">
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>cs <span class="ot">=</span> <span class="dv">2</span><span class="sc">*</span><span class="fu">cos</span>(<span class="dv">2</span><span class="sc">*</span>pi<span class="sc">*</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">500</span>)<span class="sc">/</span><span class="dv">50</span> <span class="sc">+</span> .<span class="dv">6</span><span class="sc">*</span>pi)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>w  <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">500</span>,<span class="dv">0</span>,<span class="dv">1</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>x_t <span class="ot">=</span> <span class="fu">ts</span>(cs <span class="sc">+</span> w, <span class="at">frequency =</span> <span class="dv">50</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">decompose</span>(x_t))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Lecture3_files/figure-html/decompose-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Does this function give us an estimate of the <em>form</em> of the mean function?</p>
+</div>
+</div>
+</section>
+<section id="motivating-stationarity" class="level1">
+<h1>Motivating Stationarity</h1>
+<section id="review-autocovariance-function" class="level2">
+<h2 class="anchored" data-anchor-id="review-autocovariance-function">Review: autocovariance function</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>t <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">16</span>, <span class="dv">1</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>x_t <span class="ot">&lt;-</span> <span class="fl">0.5</span><span class="sc">*</span>t </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co">#x &lt;- x - mean(x)</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co">#y &lt;- y - mean(y)</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(t, x_t)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co"># For every row in `df`, compute a rotated normal density centered at `y` and shifted by `x`</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>curves <span class="ot">&lt;-</span> <span class="fu">lapply</span>(<span class="fu">seq_len</span>(<span class="fu">NROW</span>(df)), <span class="cf">function</span>(i) {</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  mu <span class="ot">&lt;-</span> df<span class="sc">$</span>x_t[i]</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  range <span class="ot">&lt;-</span> mu <span class="sc">+</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">1.5</span>, <span class="fl">1.5</span>)</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  seq <span class="ot">&lt;-</span> <span class="fu">seq</span>(range[<span class="dv">1</span>], range[<span class="dv">2</span>], <span class="at">length.out =</span> <span class="dv">100</span>)</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">t =</span> <span class="sc">-</span><span class="dv">1</span> <span class="sc">*</span> <span class="fu">dnorm</span>(seq, <span class="at">mean =</span> mu, <span class="at">sd =</span> <span class="fl">0.5</span>) <span class="sc">+</span> df<span class="sc">$</span>t[i],</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">x_t =</span> seq,</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">grp =</span> i</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine above densities in one data.frame</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>curves <span class="ot">&lt;-</span> <span class="fu">do.call</span>(rbind, curves)</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>new.x <span class="ot">=</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">1</span>, <span class="at">to =</span> <span class="dv">16</span>, <span class="at">by =</span> .<span class="dv">1</span>)</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>new.y <span class="ot">=</span> .<span class="dv">5</span><span class="sc">*</span>new.x</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>trend_line <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> new.x,</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>                       <span class="at">y =</span> new.y)</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(t, x_t)) <span class="sc">+</span></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">col =</span> <span class="st">"blueviolet"</span>, <span class="at">pch =</span> <span class="dv">17</span>) <span class="sc">+</span></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>  <span class="co">#geom_line() +</span></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>  <span class="co"># The path draws the curve</span></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_path</span>(<span class="at">data =</span> curves, <span class="fu">aes</span>(<span class="at">group =</span> grp)) <span class="sc">+</span></span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> trend_line, <span class="fu">aes</span>(<span class="at">x=</span>x,<span class="at">y=</span>y), <span class="at">col =</span> <span class="st">"blueviolet"</span>) <span class="sc">+</span></span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lims</span>(<span class="at">y =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">2</span>,<span class="dv">10</span>)) <span class="sc">+</span></span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">16</span>, <span class="at">by =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>( <span class="co"># remove the vertical grid lines</span></span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>           <span class="at">panel.grid =</span> <span class="fu">element_blank</span>() ,</span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>           <span class="co"># explicitly set the horizontal lines (or they will disappear too)</span></span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>           <span class="at">panel.grid.major.x =</span> <span class="fu">element_line</span>( <span class="at">size=</span>.<span class="dv">1</span>, <span class="at">color=</span><span class="st">"black"</span> )) <span class="sc">+</span>   </span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_rect</span>(<span class="fu">aes</span>(<span class="at">xmin =</span> <span class="fl">3.1</span>, <span class="at">xmax =</span> <span class="fl">4.1</span>, <span class="at">ymin =</span> <span class="dv">0</span>, <span class="at">ymax =</span> <span class="dv">4</span>), <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">col =</span> <span class="st">"blue"</span>)<span class="sc">+</span>   </span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_rect</span>(<span class="fu">aes</span>(<span class="at">xmin =</span> <span class="fl">7.1</span>, <span class="at">xmax =</span> <span class="fl">8.1</span>, <span class="at">ymin =</span> <span class="dv">2</span>, <span class="at">ymax =</span> <span class="dv">6</span>), <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">col =</span> <span class="st">"magenta"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: The `size` argument of `element_line()` is deprecated as of ggplot2 3.4.0.
+ℹ Please use the `linewidth` argument instead.</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Lecture3_files/figure-html/show-error-dists-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>  <span class="co"># The polygon does the shading. We can use `oob_squish()` to set a range.</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">#geom_polygon(data = curves, aes(y = scales::oob_squish(y, c(0, Inf)),group = grp))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="error-covariance-at-different-time-points" class="level2">
+<h2 class="anchored" data-anchor-id="error-covariance-at-different-time-points"><span class="r-fit-text">Error covariance at different time points</span></h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("ggplot2")</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("ggExtra")</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggExtra)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">50</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>,x_t[<span class="dv">4</span>], .<span class="dv">5</span>)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>,x_t[<span class="dv">8</span>], .<span class="dv">5</span>)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(x1, x2)</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Save the scatter plot in a variable</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(x, <span class="fu">aes</span>(<span class="at">x =</span> x1, <span class="at">y =</span> x2)) <span class="sc">+</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">xlim</span>(<span class="dv">0</span>,<span class="dv">6</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="dv">0</span>,<span class="dv">6</span>)<span class="sc">+</span> </span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">4</span>, <span class="at">y =</span> <span class="dv">2</span>, <span class="at">label =</span> <span class="st">"gamma(2,8) = </span><span class="sc">\n</span><span class="st"> cov(x_2, x_8) = 0"</span>), <span class="at">size =</span> <span class="dv">6</span>) <span class="sc">+</span> <span class="fu">coord_fixed</span>() </span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Arguments for each marginal histogram</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="fu">ggMarginal</span>(p, <span class="at">type =</span> <span class="st">"density"</span>, <span class="at">adjust =</span> <span class="dv">2</span>,</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>           <span class="at">xparams =</span> <span class="fu">list</span>(<span class="at">col =</span> <span class="st">"blue"</span>, <span class="at">fill =</span> <span class="st">"blue"</span>),</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>           <span class="at">yparams =</span> <span class="fu">list</span>(<span class="at">col =</span> <span class="st">"magenta"</span>, <span class="at">fill =</span> <span class="st">"magenta"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in geom_text(aes(x = 4, y = 2, label = "gamma(2,8) = \n cov(x_2, x_8) = 0"), : All aesthetics have length 1, but the data has 100 rows.
+ℹ Please consider using `annotate()` or provide this layer with data containing
+  a single row.
+All aesthetics have length 1, but the data has 100 rows.
+ℹ Please consider using `annotate()` or provide this layer with data containing
+  a single row.</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Lecture3_files/figure-html/errors-regression-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="error-covariance-at-different-time-points-time-dependence" class="level2">
+<h2 class="anchored" data-anchor-id="error-covariance-at-different-time-points-time-dependence"><span class="r-fit-text">Error Covariance at Different Time Points (time dependence)</span></h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("MASS")</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">100</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="fu">c</span>(x_t[<span class="dv">4</span>], x_t[<span class="dv">8</span>])</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>varcov <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(.<span class="dv">5</span>, .<span class="dv">3</span>, .<span class="dv">3</span>, .<span class="dv">5</span>), </span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>                 <span class="at">ncol =</span> <span class="dv">2</span>)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span> <span class="fu">mvrnorm</span>(<span class="dv">100</span>, <span class="at">mu =</span> mu, <span class="at">Sigma =</span>varcov)</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x1 =</span> x[,<span class="dv">1</span>], <span class="at">x2 =</span> x[,<span class="dv">2</span>])</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Save the scatter plot in a variable</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(x, <span class="fu">aes</span>(<span class="at">x =</span> x1, <span class="at">y =</span> x2)) <span class="sc">+</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">xlim</span>(<span class="dv">0</span>,<span class="dv">6</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="dv">0</span>,<span class="dv">6</span>) <span class="sc">+</span> </span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">4</span>, <span class="at">y =</span> <span class="dv">2</span>, <span class="at">label =</span> <span class="st">"gamma(2,8) = </span><span class="sc">\n</span><span class="st"> cov(x_2, x_8) = 0.2"</span>), <span class="at">size =</span> <span class="dv">6</span>) <span class="sc">+</span> <span class="fu">coord_fixed</span>() </span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Arguments for each marginal histogram</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="fu">ggMarginal</span>(p, <span class="at">type =</span> <span class="st">"density"</span>, <span class="at">adjust =</span> <span class="dv">2</span>,</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>           <span class="at">xparams =</span> <span class="fu">list</span>(<span class="at">col =</span> <span class="st">"blue"</span>, <span class="at">fill =</span> <span class="st">"blue"</span>),</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>           <span class="at">yparams =</span> <span class="fu">list</span>(<span class="at">col =</span> <span class="st">"magenta"</span>, <span class="at">fill =</span> <span class="st">"magenta"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in geom_text(aes(x = 4, y = 2, label = "gamma(2,8) = \n cov(x_2, x_8) = 0.2"), : All aesthetics have length 1, but the data has 100 rows.
+ℹ Please consider using `annotate()` or provide this layer with data containing
+  a single row.
+All aesthetics have length 1, but the data has 100 rows.
+ℹ Please consider using `annotate()` or provide this layer with data containing
+  a single row.</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Lecture3_files/figure-html/time_series_autocov-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="stationarity" class="level2">
+<h2 class="anchored" data-anchor-id="stationarity">Stationarity</h2>
+<p>A time series is <strong>stationary</strong> if</p>
+<ul>
+<li>the mean function (<span class="math inline">\(\mu_t\)</span>) is constant and does not depend on time <span class="math inline">\(t\)</span></li>
+<li>the autocovariance function (<span class="math inline">\(\gamma(s,t)\)</span>) depends on <span class="math inline">\(s\)</span> and <span class="math inline">\(t\)</span> only though their difference</li>
+</ul>
+<p>And <strong>nonstationary</strong> otherwise.</p>
+</section>
+<section id="steps-to-determine-whether-a-time-series-x_t-is-stationary" class="level2">
+<h2 class="anchored" data-anchor-id="steps-to-determine-whether-a-time-series-x_t-is-stationary"><span class="r-fit-text">Steps to determine whether a time series <span class="math inline">\(x_t\)</span> is stationary:</span></h2>
+<ol type="1">
+<li>Compute the mean function.</li>
+<li>Compute the autocovariance function.</li>
+<li>If both do not depend on <span class="math inline">\(t\)</span>, then <span class="math inline">\(x_t\)</span> is stationary. Otherwise, <span class="math inline">\(x_t\)</span> is nonstationary.</li>
+</ol>
+</section>
+<section id="activity-3-example-2.14-stationarity-of-a-random-walk" class="level2">
+<h2 class="anchored" data-anchor-id="activity-3-example-2.14-stationarity-of-a-random-walk"><span class="r-fit-text">Activity 3: Example 2.14 Stationarity of a Random Walk</span></h2>
+<p><span class="math display">\[
+x_t = x_{t-1} + w_t
+\]</span></p>
+<p>Last, time, we saw that the mean function is <span class="math inline">\(\E(x_t) = 0\)</span>, and the autocovariance function is <span class="math inline">\(\gamma_x(s, t) = \min\{s,t\}\sigma^2_w\)</span></p>
+<ol type="1">
+<li><strong>Is</strong> <span class="math inline">\(x_t\)</span> stationary?</li>
+<li><strong>What if there was drift?</strong></li>
+</ol>
+</section>
+<section id="activity-3-solution" class="level2">
+<h2 class="anchored" data-anchor-id="activity-3-solution">Activity 3 (solution)</h2>
+<p>Use <code>Lecture3Template.qmd</code></p>
+</section>
+<section id="gammast-for-a-random-walk" class="level2">
+<h2 class="anchored" data-anchor-id="gammast-for-a-random-walk"><span class="math inline">\(\gamma(s,t)\)</span> for a random walk</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>sigma_w <span class="ot">&lt;-</span> <span class="dv">5</span> <span class="co">#define variance of the white noise</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>coords <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(coords) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"s"</span>, <span class="st">"t"</span>) <span class="do">## the coordinates represent different possible time points</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>coords<span class="sc">$</span>gamma <span class="ot">&lt;-</span> <span class="fu">pmin</span>(coords<span class="sc">$</span>s, coords<span class="sc">$</span>t)<span class="sc">*</span>sigma_w</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plotly)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'plotly'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:MASS':
+
+    select</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:ggplot2':
+
+    last_plot</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:stats':
+
+    filter</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:graphics':
+
+    layout</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_ly</span>(coords,</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x=</span> <span class="sc">~</span>s, <span class="at">y=</span><span class="sc">~</span>t, <span class="at">z=</span><span class="sc">~</span>gamma, </span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">'scatter3d'</span>, <span class="at">mode =</span> <span class="st">"markers"</span>, <span class="at">size =</span> .<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="plotly html-widget html-fill-item" id="htmlwidget-e01854019546370b8051" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-e01854019546370b8051">{"x":{"visdat":{"5ca824db5a17":["function () ","plotlyVisDat"]},"cur_data":"5ca824db5a17","attrs":{"5ca824db5a17":{"x":{},"y":{},"z":{},"mode":"markers","size":0.10000000000000001,"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter3d"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"scene":{"xaxis":{"title":"s"},"yaxis":{"title":"t"},"zaxis":{"title":"gamma"}},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20],"y":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20],"z":[5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,5,10,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,5,10,15,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,5,10,15,20,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,5,10,15,20,25,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,5,10,15,20,25,30,35,35,35,35,35,35,35,35,35,35,35,35,35,35,5,10,15,20,25,30,35,40,40,40,40,40,40,40,40,40,40,40,40,40,5,10,15,20,25,30,35,40,45,45,45,45,45,45,45,45,45,45,45,45,5,10,15,20,25,30,35,40,45,50,50,50,50,50,50,50,50,50,50,50,5,10,15,20,25,30,35,40,45,50,55,55,55,55,55,55,55,55,55,55,5,10,15,20,25,30,35,40,45,50,55,60,60,60,60,60,60,60,60,60,5,10,15,20,25,30,35,40,45,50,55,60,65,65,65,65,65,65,65,65,5,10,15,20,25,30,35,40,45,50,55,60,65,70,70,70,70,70,70,70,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,75,75,75,75,75,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,80,80,80,80,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,85,85,85,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,90,90,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,95,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100],"mode":"markers","type":"scatter3d","marker":{"color":"rgba(31,119,180,1)","size":[55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55],"sizemode":"area","line":{"color":"rgba(31,119,180,1)"}},"textfont":{"size":55},"error_y":{"color":"rgba(31,119,180,1)","width":55},"error_x":{"color":"rgba(31,119,180,1)","width":55},"line":{"color":"rgba(31,119,180,1)","width":55},"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section>
+<section id="is-white-noise-stationary" class="level2">
+<h2 class="anchored" data-anchor-id="is-white-noise-stationary">Is white noise stationary?</h2>
+<ul>
+<li>Mean function of white noise is <span class="math inline">\(\E(w_t) = 0\)</span></li>
+<li>Autocovariance function is <span class="math display">\[
+\gamma_w(s, t) = cov(w_s, w_t) =  \begin{cases} \sigma^2_w &amp; \text{ if } s = t\\ 0 &amp; \text{ if } s \ne t \end{cases}
+\]</span> Since neither depends on <span class="math inline">\(t\)</span>, white noise is stationary.</li>
+</ul>
+</section>
+<section id="gammast-for-white-noise" class="level2">
+<h2 class="anchored" data-anchor-id="gammast-for-white-noise"><span class="math inline">\(\gamma(s,t)\)</span> for white noise</h2>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the autocov's we computed last time, show on model of time series</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="do">## white noise</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>sigma_w <span class="ot">&lt;-</span> <span class="dv">5</span> <span class="co">#define variance of the white noise</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>coords <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>)</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(coords) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"s"</span>, <span class="st">"t"</span>) <span class="do">## the coordinates represent different possible time points</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>coords<span class="sc">$</span>gamma <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>coords<span class="sc">$</span>gamma[coords[,<span class="dv">1</span>] <span class="sc">==</span> coords[,<span class="dv">2</span>]] <span class="ot">&lt;-</span> sigma_w <span class="do">## covariance is sigma_w if s = t, 0 otherwise</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plotly)</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_ly</span>(coords,</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">x=</span> <span class="sc">~</span>s, <span class="at">y=</span><span class="sc">~</span>t, <span class="at">z=</span><span class="sc">~</span>gamma, </span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">'scatter3d'</span>, <span class="at">mode =</span> <span class="st">"markers"</span>, <span class="at">size =</span> .<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="plotly html-widget html-fill-item" id="htmlwidget-4cb184a7d7be522053e8" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-4cb184a7d7be522053e8">{"x":{"visdat":{"5ca840c13870":["function () ","plotlyVisDat"]},"cur_data":"5ca840c13870","attrs":{"5ca840c13870":{"x":{},"y":{},"z":{},"mode":"markers","size":0.10000000000000001,"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter3d"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"scene":{"xaxis":{"title":"s"},"yaxis":{"title":"t"},"zaxis":{"title":"gamma"}},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20],"y":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20],"z":[5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5],"mode":"markers","type":"scatter3d","marker":{"color":"rgba(31,119,180,1)","size":[55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55],"sizemode":"area","line":{"color":"rgba(31,119,180,1)"}},"textfont":{"size":55},"error_y":{"color":"rgba(31,119,180,1)","width":55},"error_x":{"color":"rgba(31,119,180,1)","width":55},"line":{"color":"rgba(31,119,180,1)","width":55},"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section>
+<section id="break" class="level2">
+<h2 class="anchored" data-anchor-id="break">Break</h2>
+                    <div id="Break"></div>
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function () {
+                            initializeTimer("Break", 360, "interaction");
+                        });
+                    </script>
+                
+</section>
+<section id="activity-4" class="level2">
+<h2 class="anchored" data-anchor-id="activity-4">Activity 4</h2>
+<p>Which of the following time series are stationary?</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://otexts.com/fpp3/fpp_files/figure-html/stationary-1.png" class="img-fluid figure-img"></p>
+<figcaption>From Forecasting Principles and Practice Chapter 9</figcaption>
+</figure>
+</div>
+</section>
+<section id="activity-4-solution" class="level2">
+<h2 class="anchored" data-anchor-id="activity-4-solution">Activity 4 (solution)</h2>
+<p>Use <code>Lecture3Template.qmd</code></p>
+</section>
+<section id="why-is-stationarity-important" class="level2">
+<h2 class="anchored" data-anchor-id="why-is-stationarity-important">Why is stationarity important?</h2>
+<ul>
+<li>In order to measure correlation between contiguous time points</li>
+<li>To avoid spurious correlations in a regression setting</li>
+<li>Simplifies how we can write the autocovariance and autocorrelation functions</li>
+</ul>
+</section>
+<section id="autocorrelation-function" class="level2">
+<h2 class="anchored" data-anchor-id="autocorrelation-function">Autocorrelation function</h2>
+<p>The autocorrelation function (acf) of a time series is: <span class="math display">\[
+\rho(s, t) = \frac{\gamma(s,t)}{\sqrt{\gamma(s,s)\gamma(t,t)}}
+\]</span> i.e.&nbsp;the autocovariance divided by the standard deviation of the process at each time point.</p>
+</section>
+<section id="autocovariance-and-autocorrelation-for-stationary-time-series" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="autocovariance-and-autocorrelation-for-stationary-time-series"><span class="r-fit-text">Autocovariance and Autocorrelation for Stationary Time series</span></h2>
+<p>Since for stationary time series the autocovariance depends on <span class="math inline">\(s\)</span> and <span class="math inline">\(t\)</span> only through their difference, we can write the covariance as: <span class="math display">\[
+\gamma(s,t) = \gamma(h) = cov(x_{t+h}, x_t) = \E[(x_{t+h} - \mu)(x_t-\mu)]
+\]</span> and the correlation as: <span class="math display">\[
+\rho(s,t) = \rho(h) = \frac{\gamma(h)}{\gamma(0)}
+\]</span> <span class="math inline">\(h = s-t\)</span> is called the <strong>lag</strong>.</p>
+</section>
+<section id="autocorrelation-function-of-a-three-point-moving-average" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="autocorrelation-function-of-a-three-point-moving-average"><span class="r-fit-text">Autocorrelation function of a three-point moving average</span></h2>
+<p><span class="math inline">\(\gamma_v(s, t) = cov(v_s, v_t) =  \begin{cases}\frac{3}{9}\sigma^2_w &amp; \text{ if } s = t\\ \frac{2}{9}\sigma^2_w &amp; \text{ if } \vert s-t \vert = 1 \\\frac{1}{9}\sigma^2_w &amp; \text{ if } \vert s-t \vert =2 \\0 &amp; \text{ if } \vert s - t\vert &gt; 2\end{cases}\)</span></p>
+<p>Since <span class="math inline">\(v\)</span> is stationary, we can write</p>
+<p><span class="math inline">\(\gamma_v(h) = \begin{cases}\frac{3}{9}\sigma^2_w &amp; \text{ if } h = 0\\ \frac{2}{9}\sigma^2_w &amp; \text{ if } h = \pm1 \\\frac{1}{9}\sigma^2_w &amp; \text{ if }h = \pm 2 \\0 &amp; \text{ if } h&gt; 2\end{cases}\)</span></p>
+<p>And the autocorrelation is:</p>
+<p><span class="math inline">\(\rho(h) = \begin{cases}1 &amp; \text{ if } h = 0\\ \frac{2}{3} &amp; \text{ if } h = \pm1 \\\frac{1}{3}_w &amp; \text{ if }h = \pm 2 \\0 &amp; \text{ if } h&gt; 2\end{cases}\)</span></p>
+</section>
+<section id="autocorrelation-function-of-a-three-point-moving-average-1" class="level2">
+<h2 class="anchored" data-anchor-id="autocorrelation-function-of-a-three-point-moving-average-1"><span class="r-fit-text">Autocorrelation function of a three-point moving average</span></h2>
+<p>In R, we can plot <span class="math inline">\(\rho(h)\)</span></p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>ACF <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>)<span class="sc">/</span><span class="dv">3</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>LAG <span class="ot">=</span> <span class="sc">-</span><span class="dv">5</span><span class="sc">:</span><span class="dv">5</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tsplot</span>(LAG, ACF, <span class="at">type=</span><span class="st">"h"</span>, <span class="at">lwd=</span><span class="dv">3</span>, <span class="at">xlab=</span><span class="st">"LAG"</span>)   </span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="dv">0</span>)</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(LAG[<span class="sc">-</span>(<span class="dv">4</span><span class="sc">:</span><span class="dv">8</span>)], ACF[<span class="sc">-</span>(<span class="dv">4</span><span class="sc">:</span><span class="dv">8</span>)], <span class="at">pch=</span><span class="dv">20</span>)</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at=</span><span class="fu">seq</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="dv">5</span>, <span class="at">by=</span><span class="dv">2</span>))  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Lecture3_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="activity-5" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="activity-5">Activity 5</h2>
+<ol type="1">
+<li>Predict what the acf will look like for the ar(1) process?</li>
+<li>Simulate an ar(1) process and compute the acf. Were you correct?</li>
+<li>What is the lag 0 autocorrelation? Explain why its value makes sense.</li>
+</ol>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># simulate from an ar(1)</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co"># use acf() function to plot acf</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="co"># save output of acf and inspect</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="activity-5-solution" class="level2">
+<h2 class="anchored" data-anchor-id="activity-5-solution">Activity 5 (solution)</h2>
+<p>Use <code>Lecture3Template.qmd</code></p>
+</section>
+</section>
+<section id="questions-on-the-quiz" class="level1">
+<h1>Questions on the quiz?</h1>
+<section id="activity-6-problem-2.3" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="activity-6-problem-2.3">Activity 6 (Problem 2.3)</h2>
+<p>When smoothing time series data, it is sometimes advantageous to give decreasing amounts of weights to values farther away from the center. Consider the simple two-sided moving average smoother of the form: <span class="math display">\[
+v_t = \frac{1}{4}(w_{t-1} + w_t + w_{t+1})
+\]</span> Where <span class="math inline">\(w_t\)</span> are white noise. The autocovariance as a function of <span class="math inline">\(h\)</span> is: <span class="math display">\[\gamma_v(s, t) = cov(v_s, v_t) =  \begin{cases}\frac{6}{16}\sigma^2_w &amp; \text{ if } h = 0\\ \frac{4}{16}\sigma^2_w &amp; \text{ if } h = \pm 1 \\\frac{1}{16}\sigma^2_w &amp; \text{ if } h = \pm 2 \\0 &amp; \text{ if } h&gt; 2\end{cases}\]</span> 1. Compare to the <a href="https://juliaschedler.github.io/Stat416Fall24/LectureNotes/Lecture2.html#example-2.8-autocovariance-of-a-moving-average-1">autocovariance equation for the unweighted 3 point moving average from Lecture 2</a>. Comment on the differences.</p>
+<ol start="2" type="1">
+<li>Write down the autocorrelation function.</li>
+</ol>
+</section>
+<section id="activity-6-solution" class="level2">
+<h2 class="anchored" data-anchor-id="activity-6-solution">Activity 6 (solution)</h2>
+<p>Use <code>Lecture3Template.qmd</code> ## Activity 7 Recall the decomposition of the Johnson and Johnson quarterly earnings.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">decompose</span>(jj)) <span class="do">## plot decomposition</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Lecture3_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol type="1">
+<li>Is the series stationary?</li>
+<li>Does the acf of the random component look like white noise?</li>
+</ol>
+</section>
+<section id="activity-7-solution" class="level2">
+<h2 class="anchored" data-anchor-id="activity-7-solution">Activity 7 (solution)</h2>
+<p>Use <code>Lecture3Template.qmd</code></p>
+</section>
+<section id="coming-up" class="level2">
+<h2 class="anchored" data-anchor-id="coming-up">Coming up:</h2>
+<ul>
+<li>Assignment 1 due at midnight</li>
+<li>Assignment 2 posted later</li>
+<li>Part of this will be involve “reading” the textbook! (collecting data on how you feel about the math)</li>
+<li>Next Lecture:
+<ul>
+<li>Regression with time</li>
+<li>Cross-correlation</li>
+<li>Inducing stationarity</li>
+</ul></li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/juliaSchedler\.github\.io\/Stat416_CourseWebsite\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
