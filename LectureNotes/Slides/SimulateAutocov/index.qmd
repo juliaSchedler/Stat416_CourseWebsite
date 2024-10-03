@@ -1,0 +1,303 @@
+---
+title: "Lecture 4"
+author: Julia Schedler
+format: revealjs
+slide-number: true
+scrollable: true
+filters: 
+  - timer
+---
+
+# Simulations
+
+```{r}
+set.seed(807)
+library(astsa)
+Time <- 10
+n_sim <- 100
+all_series = matrix(rep(NA, times = n_sim*Time), nrow = Time)
+for(i in 1:n_sim){
+  cs = 0.25*1:Time        # same thing 
+  w  = rnorm(Time + 50,0,1)
+  #w_dep = stats::filter(w, filter = rep(1/3,3))[2:(Time + 1)]
+  #all_series[,i] <- cs + w_dep
+  all_series[,i] <- cs + w[2:(Time+1)]
+  #names(all_series)[i] <- paste("sim_", i)
+  
+}
+fit <- lm(all_series[,1]~time(all_series[,1]), na.action=NULL)
+tsplot(all_series[,1], main = "One simulated Time series", type = "b", col = c("black", "blue", rep("black", times = 5), "magenta", "black", "black"), pch = 16, cex = 3)
+abline(fit)
+```
+
+## All Simulated Time Series
+
+```{r}
+#| code-fold: true
+tsplot(all_series, spaghetti = TRUE, main = "100 Simuated Trend Stationary Time Series", type = "b")
+rect(xleft = 0.5, xright = 1.5, ybottom = -2, ytop = 4, border = "blue", lwd = 2)
+rect(xleft = 7.5, xright = 8.5, ybottom = -.5, ytop = 5, border = "magenta", lwd = 2)
+
+```
+
+## [Marginal and Joint Distributions t=8 and s = 1]{.r-fit-text} {.smaller}
+
+```{r}
+#| code-fold: true
+i = 1
+x_comp <- all_series[i,]
+x_8_all <- all_series[8,]
+
+par(mfrow = c(2,2))
+hist(x_comp, col = "blue", main = paste("Histogram of simulations at t=", i), xlab = paste("x_",i))
+hist(x_8_all, col = "magenta", main = paste("Histogram of simulations at t=8"), xlab = "x_8")
+plot(x_comp, x_8_all, col = "purple", pch = 16, main = "Joint Distribution")
+abline(lm(x_8_all~x_comp))
+plot(1:10, rep(1, times = 10), pch = "", axes = F, xlab = "", ylab = "")
+text(x = 5, y = 1, cex = 2, label = paste("rho(", "i",", 8) = \n cor(x_",i,",x_8) = \n ", round(cor(x_comp,x_8_all),3) ))
+
+```
+
+## All Simulated Time Series
+
+```{r}
+#| code-fold: true
+tsplot(all_series, spaghetti = TRUE, main = "100 Simuated Trend Stationary Time Series", type = "b")
+rect(xleft = 1.5, xright = 2.5, ybottom = -2, ytop = 4, border = "blue", lwd = 2)
+rect(xleft = 7.5, xright = 8.5, ybottom = -.5, ytop = 5, border = "magenta", lwd = 2)
+
+```
+
+## [Marginal and Joint Distributions t=8 and s = 2]{.r-fit-text} {.smaller}
+
+```{r}
+#| code-fold: true
+i = 2
+x_comp <- all_series[i,]
+x_8_all <- all_series[8,]
+
+par(mfrow = c(2,2))
+hist(x_comp, col = "blue", main = paste("Histogram of simulations at t=", i), xlab = paste("x_",i))
+hist(x_8_all, col = "magenta", main = paste("Histogram of simulations at t=8"), xlab = "x_8")
+plot(x_comp, x_8_all, col = "purple", pch = 16, main = "Joint Distribution")
+abline(lm(x_8_all~x_comp))
+plot(1:10, rep(1, times = 10), pch = "", axes = F, xlab = "", ylab = "")
+text(x = 5, y = 1, cex = 2, label = paste("rho(", "i",", 8) = \n cor(x_",i,",x_8) = \n ", round(cor(x_comp,x_8_all),3) ))
+```
+
+## All Simulated Time Series
+
+```{r}
+#| code-fold: true
+tsplot(all_series, spaghetti = TRUE, main = "100 Simuated Trend Stationary Time Series", type = "b")
+rect(xleft = 2.5, xright = 3.5, ybottom = -2, ytop = 4, border = "blue", lwd = 2)
+rect(xleft = 7.5, xright = 8.5, ybottom = -.5, ytop = 5, border = "magenta", lwd = 2)
+
+```
+
+## [Marginal and Joint Distributions t=8 and s = 3]{.r-fit-text} {.smaller}
+
+```{r}
+#| code-fold: true
+i = 3
+x_comp <- all_series[i,]
+x_8_all <- all_series[8,]
+
+par(mfrow = c(2,2))
+hist(x_comp, col = "blue", main = paste("Histogram of simulations at t=", i), xlab = paste("x_",i))
+hist(x_8_all, col = "magenta", main = paste("Histogram of simulations at t=8"), xlab = "x_8")
+plot(x_comp, x_8_all, col = "purple", pch = 16, main = "Joint Distribution")
+abline(lm(x_8_all~x_comp))
+plot(1:10, rep(1, times = 10), pch = "", axes = F, xlab = "", ylab = "")
+text(x = 5, y = 1, cex = 2, label = paste("rho(", "i",", 8) = \n cor(x_",i,",x_8) = \n ", round(cor(x_comp,x_8_all),3) ))
+```
+
+## All Simulated Time Series
+
+```{r}
+#| code-fold: true
+tsplot(all_series, spaghetti = TRUE, main = "100 Simuated Trend Stationary Time Series", type = "b")
+rect(xleft = 3.5, xright = 4.5, ybottom = -2, ytop = 4, border = "blue", lwd = 2)
+rect(xleft = 7.5, xright = 8.5, ybottom = -.5, ytop = 5, border = "magenta", lwd = 2)
+
+```
+
+## [Marginal and Joint Distributions t=8 and s = 4]{.r-fit-text} {.smaller}
+
+```{r}
+#| code-fold: true
+i = 4
+x_comp <- all_series[i,]
+x_8_all <- all_series[8,]
+
+par(mfrow = c(2,2))
+hist(x_comp, col = "blue", main = paste("Histogram of simulations at t=", i), xlab = paste("x_",i))
+hist(x_8_all, col = "magenta", main = paste("Histogram of simulations at t=8"), xlab = "x_8")
+plot(x_comp, x_8_all, col = "purple", pch = 16, main = "Joint Distribution")
+abline(lm(x_8_all~x_comp))
+plot(1:10, rep(1, times = 10), pch = "", axes = F, xlab = "", ylab = "")
+text(x = 5, y = 1, cex = 2, label = paste("rho(", "i",", 8) = \n cor(x_",i,",x_8) = \n ", round(cor(x_comp,x_8_all),3) ))
+```
+
+## All Simulated Time Series
+
+```{r}
+#| code-fold: true
+tsplot(all_series, spaghetti = TRUE, main = "100 Simuated Trend Stationary Time Series", type = "b")
+rect(xleft = 4.5, xright = 5.5, ybottom = -2, ytop = 4, border = "blue", lwd = 2)
+rect(xleft = 7.5, xright = 8.5, ybottom = -.5, ytop = 5, border = "magenta", lwd = 2)
+
+```
+
+## [Marginal and Joint Distributions t=8 and s = 5]{.r-fit-text} {.smaller}
+
+```{r}
+#| code-fold: true
+i = 5
+x_comp <- all_series[i,]
+x_8_all <- all_series[8,]
+
+par(mfrow = c(2,2))
+hist(x_comp, col = "blue", main = paste("Histogram of simulations at t=", i), xlab = paste("x_",i))
+hist(x_8_all, col = "magenta", main = paste("Histogram of simulations at t=8"), xlab = "x_8")
+plot(x_comp, x_8_all, col = "purple", pch = 16, main = "Joint Distribution")
+abline(lm(x_8_all~x_comp))
+plot(1:10, rep(1, times = 10), pch = "", axes = F, xlab = "", ylab = "")
+text(x = 5, y = 1, cex = 2, label = paste("rho(", "i",", 8) = \n cor(x_",i,",x_8) = \n ", round(cor(x_comp,x_8_all),3) ))
+```
+
+## All Simulated Time Series
+
+```{r}
+#| code-fold: true
+tsplot(all_series, spaghetti = TRUE, main = "100 Simuated Trend Stationary Time Series", type = "b")
+rect(xleft = 5.5, xright = 6.5, ybottom = -2, ytop = 4, border = "blue", lwd = 2)
+rect(xleft = 7.5, xright = 8.5, ybottom = -.5, ytop = 5, border = "magenta", lwd = 2)
+
+```
+
+## [Marginal and Joint Distributions t=8 and s = 6]{.r-fit-text} {.smaller}
+
+```{r}
+#| code-fold: true
+i = 6
+x_comp <- all_series[i,]
+x_8_all <- all_series[8,]
+
+par(mfrow = c(2,2))
+hist(x_comp, col = "blue", main = paste("Histogram of simulations at t=", i), xlab = paste("x_",i))
+hist(x_8_all, col = "magenta", main = paste("Histogram of simulations at t=8"), xlab = "x_8")
+plot(x_comp, x_8_all, col = "purple", pch = 16, main = "Joint Distribution")
+abline(lm(x_8_all~x_comp))
+plot(1:10, rep(1, times = 10), pch = "", axes = F, xlab = "", ylab = "")
+text(x = 5, y = 1, cex = 2, label = paste("rho(", "i",", 8) = \n cor(x_",i,",x_8) = \n ", round(cor(x_comp,x_8_all),3) ))
+```
+
+## All Simulated Time Series
+
+```{r}
+#| code-fold: true
+tsplot(all_series, spaghetti = TRUE, main = "100 Simuated Trend Stationary Time Series", type = "b")
+rect(xleft = 6.5, xright = 7.5, ybottom = -2, ytop = 4, border = "blue", lwd = 2)
+rect(xleft = 7.5, xright = 8.5, ybottom = -.5, ytop = 5, border = "magenta", lwd = 2)
+
+```
+
+## [Marginal and Joint Distributions t=8 and s = 7]{.r-fit-text} {.smaller}
+
+```{r}
+#| code-fold: true
+i = 7
+x_comp <- all_series[i,]
+x_8_all <- all_series[8,]
+
+par(mfrow = c(2,2))
+hist(x_comp, col = "blue", main = paste("Histogram of simulations at t=", i), xlab = paste("x_",i))
+hist(x_8_all, col = "magenta", main = paste("Histogram of simulations at t=8"), xlab = "x_8")
+plot(x_comp, x_8_all, col = "purple", pch = 16, main = "Joint Distribution")
+abline(lm(x_8_all~x_comp))
+plot(1:10, rep(1, times = 10), pch = "", axes = F, xlab = "", ylab = "")
+text(x = 5, y = 1, cex = 2, label = paste("rho(", "i",", 8) = \n cor(x_",i,",x_8) = \n ", round(cor(x_comp,x_8_all),3) ))
+```
+
+## All Simulated Time Series
+
+```{r}
+#| code-fold: true
+tsplot(all_series, spaghetti = TRUE, main = "100 Simuated Trend Stationary Time Series", type = "b")
+rect(xleft = 7.3, xright = 8.3, ybottom = -.7, ytop = 5.2, border = "blue", lwd = 2)
+rect(xleft = 7.5, xright = 8.5, ybottom = -.5, ytop = 5, border = "magenta", lwd = 2)
+
+```
+
+## [Marginal and Joint Distributions t=8 and s = 8]{.r-fit-text} {.smaller}
+
+```{r}
+#| code-fold: true
+i = 8
+x_comp <- all_series[i,]
+x_8_all <- all_series[8,]
+
+par(mfrow = c(2,2))
+hist(x_comp, col = "blue", main = paste("Histogram of simulations at t=", i), xlab = paste("x_",i))
+hist(x_8_all, col = "magenta", main = paste("Histogram of simulations at t=8"), xlab = "x_8")
+plot(x_comp, x_8_all, col = "purple", pch = 16, main = "Joint Distribution")
+abline(lm(x_8_all~x_comp))
+plot(1:10, rep(1, times = 10), pch = "", axes = F, xlab = "", ylab = "")
+text(x = 5, y = 1, cex = 2, label = paste("rho(", "i",", 8) = \n cor(x_",i,",x_8) = \n ", round(cor(x_comp,x_8_all),3) ))
+```
+
+## All Simulated Time Series
+
+```{r}
+#| code-fold: true
+tsplot(all_series, spaghetti = TRUE, main = "100 Simuated Trend Stationary Time Series", type = "b")
+rect(xleft = 8.5, xright = 9.5, ybottom = -1.5, ytop = 5, border = "blue", lwd = 2)
+rect(xleft = 7.5, xright = 8.5, ybottom = -.5, ytop = 5, border = "magenta", lwd = 2)
+
+```
+
+## [Marginal and Joint Distributions t=8 and s = 9]{.r-fit-text} {.smaller}
+
+```{r}
+#| code-fold: true
+i = 9
+x_comp <- all_series[i,]
+x_8_all <- all_series[8,]
+
+par(mfrow = c(2,2))
+hist(x_comp, col = "blue", main = paste("Histogram of simulations at t=", i), xlab = paste("x_",i))
+hist(x_8_all, col = "magenta", main = paste("Histogram of simulations at t=8"), xlab = "x_8")
+plot(x_comp, x_8_all, col = "purple", pch = 16, main = "Joint Distribution")
+abline(lm(x_8_all~x_comp))
+plot(1:10, rep(1, times = 10), pch = "", axes = F, xlab = "", ylab = "")
+text(x = 5, y = 1, cex = 2, label = paste("rho(", "i",", 8) = \n cor(x_",i,",x_8) = \n ", round(cor(x_comp,x_8_all),3) ))
+```
+
+## All Simulated Time Series
+
+```{r}
+#| code-fold: true
+tsplot(all_series, spaghetti = TRUE, main = "100 Simuated Trend Stationary Time Series", type = "b")
+rect(xleft = 9.5, xright = 10.5, ybottom = 0, ytop = 5.5, border = "blue", lwd = 2)
+rect(xleft = 7.5, xright = 8.5, ybottom = -.5, ytop = 5, border = "magenta", lwd = 2)
+
+```
+
+## [Marginal and Joint Distributions t=8 and s = 10]{.r-fit-text} {.smaller}
+
+```{r}
+#| code-fold: true
+i = 10
+x_comp <- all_series[i,]
+x_8_all <- all_series[8,]
+
+par(mfrow = c(2,2))
+hist(x_comp, col = "blue", main = paste("Histogram of simulations at t=", i), xlab = paste("x_",i))
+hist(x_8_all, col = "magenta", main = paste("Histogram of simulations at t=8"), xlab = "x_8")
+plot(x_comp, x_8_all, col = "purple", pch = 16, main = "Joint Distribution")
+abline(lm(x_8_all~x_comp))
+plot(1:10, rep(1, times = 10), pch = "", axes = F, xlab = "", ylab = "")
+text(x = 5, y = 1, cex = 2, label = paste("gamma(", "i",", 8) = \n cor(x_",i,",x_8) = \n ", round(cor(x_comp,x_8_all),3) ))
+```
+

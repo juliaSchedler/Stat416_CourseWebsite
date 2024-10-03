@@ -1,0 +1,45 @@
+project:
+  type: website
+  render:
+    - "!/LectureNotes/ActivityTemplates"
+    - "*.qmd"
+    
+website:
+  title: "Fall 24 Stat 416 Lecture Notes"
+  sidebar:
+  # this is a comment!
+    style: docked
+    contents:
+      - href: index.qmd
+        text: Home
+      - section: "Week 1"
+        contents:
+        - href: LectureNotes/Lecture1.qmd
+        - href: LectureNotes/Lecture2.qmd
+        - href: Assignments/Assignment1.qmd
+          text: "Assignment 1"
+      - section: "Week 2"
+        contents:
+        - href: LectureNotes/Lecture3.qmd
+        - href: LectureNotes/Lecture4.qmd
+        - href: Assignments/Assignment2_updated.qmd
+          text: "Assignment 2"
+      - section: "Week 3"
+        contents:
+        - href: LectureNotes/Lecture5.qmd
+        - href: LectureNotes/Lecture6.qmd
+        - href: Assignmetns/Assignment3.qmd
+        
+      - section: "Week 4"
+        contents: 
+        - href: LectureNotes/Lecture7.qmd
+        - href: LectureNotes/Lecture8.qmd
+        - href: Exams/PracticeMidterm.qmd
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+
+editor: visual
+

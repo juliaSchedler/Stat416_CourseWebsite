@@ -1,0 +1,5 @@
+# Welcome to Time Series! {.unnumbered}
+
+The lecture slides and code here are heavily drawn from the book I have selected for this course with some additional examples and visualizations that I think would be helpful for learning these important concepts!
+
+Also, big thanks to our Lab Assistant, Bena Smith, for serving as editor for these notes (assuming I get them to her in time. Don't blame Bena for missed typos).

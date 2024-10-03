@@ -1,0 +1,52 @@
+{
+  "Assignments/Assignment1.qmd": {
+    "Assignment1.tex": "c2b4f711",
+    "Assignment1.html": "2e939888"
+  },
+  "Assignments/Assignment2_updated.qmd": {
+    "Assignment2_updated.tex": "6611aba0",
+    "Assignment2_updated.html": "bed5a5ac"
+  },
+  "Exams/PracticeMidterm.qmd": {
+    "PracticeMidterm.html": "e183e8ed"
+  },
+  "LectureNotes/Lecture1.qmd": {
+    "Lecture1.html": "4a0f1818"
+  },
+  "LectureNotes/Lecture2.qmd": {
+    "Lecture2.html": "080f886f"
+  },
+  "LectureNotes/Lecture3.qmd": {
+    "Lecture3.html": "98d71721"
+  },
+  "LectureNotes/Lecture4.qmd": {
+    "Lecture4.html": "f6ea94f9"
+  },
+  "LectureNotes/Lecture5.qmd": {
+    "Lecture5.html": "db4739e1"
+  },
+  "LectureNotes/Lecture6.qmd": {
+    "Lecture6.html": "dfa2a874"
+  },
+  "LectureNotes/Lecture7.qmd": {
+    "Lecture7.html": "b3ebf39b"
+  },
+  "LectureNotes/Lecture8.qmd": {
+    "Lecture8.html": "6f16b1e5"
+  },
+  "LectureNotes/Slides/Lecture3/index.qmd": {
+    "index.html": "51bae6b5"
+  },
+  "LectureNotes/Slides/Lecture4/index.qmd": {
+    "index.html": "6045d5f5"
+  },
+  "LectureNotes/Slides/SimulateAutocov/index.qmd": {
+    "index.html": "59bba0e8"
+  },
+  "about.qmd": {
+    "about.html": "f4154f20"
+  },
+  "index.qmd": {
+    "index.html": "c10f425d"
+  }
+}

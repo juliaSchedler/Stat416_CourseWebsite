@@ -1,0 +1,152 @@
+---
+title: "Lecture 3 Activities Template"
+author: "You!!"
+---
+
+## Activity 1
+
+1.  Use `decompose` on the `jj` object (the Johnson and Johnson quarterly earnings).
+
+2.  Match the terms in the equation
+
+    \$\$
+
+    X_t = T_t + S_t + W_t
+
+    \$\$
+
+    to each of the components in the chart
+
+3.  Describe the trend.
+
+4.  Does the bottom plot ("error") look like white noise?
+
+5.  Look at the documentation for the `decompose` function. Can you determine how the "trend" component was computed?
+
+### Solution
+
+1.  
+
+```{r}
+#| label: decompose-jj
+
+library(astsa)
+
+## use the decompose function on the jj series
+jj_decomp <- ## your code here
+  
+## plot the decomposition
+## your code here
+```
+
+## Activity 2
+
+Recall the (sinusoidal) signal plus noise model: $$
+w_t \sim \text{iid } N(0, \sigma^2_w)\\
+x_t = 2\cos\left (\frac{2\pi t}{50} - .6\right) + w_t
+$$
+
+1\. Simulate 500 observations from the signal plus noise model
+
+2\. Apply the `decompose` function. Does the error portion look like white noise?
+
+Hint: The below code gives an error. Compare the "frequency" of the `jj` series. Can you figure out how to use the `ts` function to specify the correct frequency?
+
+### Solution
+
+1.  
+
+```{r}
+#| echo: true
+#| eval: false
+
+## convert something to ts, then decompose...
+cs = 2*cos(2*pi*(1:500)/50 + .6*pi)
+w  = rnorm(500,0,1)
+x_t = cs + w
+
+plot(decompose(x_t))
+
+```
+
+## Activity 3
+
+$$
+x_t = x_{t-1} + w_t
+$$
+
+Last, time, we saw that the mean function is $\E(x_t) = 0$, and the autocovariance function is $\gamma_x(s, t) = \min\{s,t\}\sigma^2_w$
+
+1\. Is $x_t$ stationary?
+
+2\. What if there was drift?
+
+### Solution
+
+1\.
+
+## Activity 4
+
+Which series are stationary? How can you tell?
+
+![](https://otexts.com/fpp3/fpp_files/figure-html/stationary-1.png)
+
+### Solution
+
+|       | Stationary? | Notes |
+|-------|-------------|-------|
+| \(a\) |             |       |
+| \(b\) |             |       |
+| \(c\) |             |       |
+| \(d\) |             |       |
+| \(e\) |             |       |
+| \(f\) |             |       |
+| \(g\) |             |       |
+| \(h\) |             |       |
+| \(i\) |             |       |
+
+## Activity 5
+
+1.  Predict what the acf will look like for the ar(1) process?
+2.  Simulate an ar(1) process and compute the acf. Were you correct?
+3.  What is the lag 0 autocorrelation? Explain why its value makes sense.
+
+```{r}
+#| echo: true
+# simulate from an ar(1)
+
+# use acf() function to plot acf
+
+# save output of acf and inspect
+
+```
+
+## Activity 6 (Problem 2.3) {.smaller}
+
+When smoothing time series data, it is sometimes advantageous to give decreasing amounts of weights to values farther away from the center. Consider the simple two-sided moving average smoother of the form: $$
+v_t = \frac{1}{4}(w_{t-1} + w_t + w_{t+1})
+$$ Where $w_t$ are white noise. The autocovariance as a function of $h$ is: $$\gamma_v(s, t) = cov(v_s, v_t) =  \begin{cases}\frac{6}{16}\sigma^2_w & \text{ if } h = 0\\ \frac{4}{16}\sigma^2_w & \text{ if } h = \pm 1 \\\frac{1}{16}\sigma^2_w & \text{ if } h = \pm 2 \\0 & \text{ if } h> 2\end{cases}$$ 1. Compare to the [autocovariance equation for the unweighted 3 point moving average from Lecture 2](https://juliaschedler.github.io/Stat416Fall24/LectureNotes/Lecture2.html#example-2.8-autocovariance-of-a-moving-average-1). Comment on the differences.
+
+2.  Write down the autocorrelation function.
+
+### Solution
+
+## Activity 7
+
+Recall the decomposition of the Johnson and Johnson quarterly earnings.
+
+```{r}
+#| echo: true
+
+plot(decompose(jj)) ## plot decomposition
+```
+
+1.  Is the series stationary?
+2.  Does the acf of the random component look like white noise?
+
+```{r}
+#| echo: true
+
+## extract the random component from the decomposition and plot the acf. Plot an acf for white noise. Do they look similar?
+
+```

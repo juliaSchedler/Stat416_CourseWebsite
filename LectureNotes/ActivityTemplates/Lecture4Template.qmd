@@ -1,0 +1,56 @@
+---
+title: "Lecture 4 Notes"
+author: You!!
+---
+## Activity 1: Export Price of Salmon (Example 3.1)
+
+```{r}
+#| label: activity-1-template
+library(astsa)
+
+summary(fit <- lm(salmon~time(salmon), na.action=NULL))
+tsplot(salmon, col=4, ylab="USD per KG", main="Salmon Export Price")
+abline(fit)
+```
+
+1.  Does this time series appear stationary?
+
+2.  The (mathematical) equation in the book for the trend line above is:
+
+    $$
+    x_t = \beta_0 + \beta_1z_t + w_t, z_t = 2003\frac{8}{12}, 2001\frac{8}{12}, \dots, 2017\frac{5}{12}
+    $$
+
+    -   There is a typo in this equation. Correct the typo. (hint: examine to the first few entries of `time(salmon)`
+
+    -   Why are there fractions of the year? Explain what the fractional values mean and describe how they appear in the data set within R.
+
+3.  Interpret the estimate of the slope.
+
+
+## Activity 2: Trend Stationarity (Example 2.19)
+Consider the time series model
+$$x_t = \beta t + y_t$$
+Assume $y_t$ is stationary with mean function $\mu_y$ and and autocovariance function $\gamma_y(h)$
+
+- Compare this equation to the regression equation in the last example.
+- What are the mean function and autocovariance function of $x_t$?
+
+
+## Simulations
+Take notes on your observations here!
+
+## Activity 3
+- Given the code to generate the plot with the trend line, how would you view the equation of the trend line?
+- Visualize the de-trended series
+- Compute the acf of the salmon series and the detrended series. What do you notice?
+```{r}
+# as in the text
+fit = lm(salmon~time(salmon), na.action=NULL) # the regression
+par(mfrow=c(2,1)) # plot transformed data
+tsplot(salmon, main="salmon price")
+abline(fit)
+
+## your code here
+
+```

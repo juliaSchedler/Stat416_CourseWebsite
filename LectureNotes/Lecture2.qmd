@@ -1,0 +1,8 @@
+---
+title: "Lecture 2"
+author: "Julia Schedler"
+format: revealjs
+editor: visual
+---
+
+## 
