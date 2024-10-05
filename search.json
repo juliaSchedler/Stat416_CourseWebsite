@@ -1154,6 +1154,468 @@
     ]
   },
   {
+    "objectID": "LectureNotes/Lecture2.html#recap-from-last-time",
+    "href": "LectureNotes/Lecture2.html#recap-from-last-time",
+    "title": "Lecture 2",
+    "section": "Recap from last time",
+    "text": "Recap from last time\n\nSeveral examples of time series data sets\nExperience plotting the time series\nExposure to some common time series models",
+    "crumbs": [
+      "Week 1",
+      "Lecture 2"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture2.html#today",
+    "href": "LectureNotes/Lecture2.html#today",
+    "title": "Lecture 2",
+    "section": "Today",
+    "text": "Today\n\nNotation review\nMean and covariance function of a time series\nR code activity\nStationarity (if time)",
+    "crumbs": [
+      "Week 1",
+      "Lecture 2"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture2.html#coming-upnotices",
+    "href": "LectureNotes/Lecture2.html#coming-upnotices",
+    "title": "Lecture 2",
+    "section": "Coming up/notices",
+    "text": "Coming up/notices\n\nI combined the Canvas sections (applies to section 2)\nQuiz 1 posted today, due tomorrow at midnight (20 minutes to do it)\nAssignment 1 will also be posted today, due Monday at midnight (boundary between Monday and Tuesday)\nNext week’s office hours: M 4-5, T 12-2",
+    "crumbs": [
+      "Week 1",
+      "Lecture 2"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture2.html#notation-and-data--white-noise",
+    "href": "LectureNotes/Lecture2.html#notation-and-data--white-noise",
+    "title": "Lecture 2",
+    "section": "Notation and Data- White noise",
+    "text": "Notation and Data- White noise\n“Let \\(w_t\\) be a white noise series”\n\n\n\nt\nRandom Variable\nExample data\n\n\n\n\n1\n\\(w_1 \\sim N(0, \\sigma_w^2)\\)\n0.4537309\n\n\n2\n\\(w_2 \\sim N(0, \\sigma_w^2)\\)\n0.5015399\n\n\n\n\\(\\vdots\\)\n\\(\\vdots\\)\n\n\nt\n\\(w_t \\sim N(0, \\sigma^2_w)\\)\n-1.0726009\n\n\n\\(\\vdots\\)\n\\(\\vdots\\)\n\\(\\vdots\\)\n\n\nn\n\\(w_n \\sim N(0, \\sigma_w^2)\\)\n-0.4561074\n\n\n\nIf we interpret the collection of \\(w_t\\) as a random vector, then \\(w_t \\sim MVN(\\vec{0}, I)\\) (why \\(I\\)?)\nNote: sometimes \\(w_t\\) could mean a (univariate) value of a white noise series for a particular time \\(t\\) (kind of like how you refer to an arbitrary \\(x_i\\) when you have a sample \\(x_1, \\dots, x_n\\)).",
+    "crumbs": [
+      "Week 1",
+      "Lecture 2"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture2.html#aside-the-multivariate-normal-distribution",
+    "href": "LectureNotes/Lecture2.html#aside-the-multivariate-normal-distribution",
+    "title": "Lecture 2",
+    "section": "(Aside) The Multivariate normal distribution",
+    "text": "(Aside) The Multivariate normal distribution\nLet’s look on Wikipedia. What are the parameters?\n\nmean vector\nvariance (covariance) matrix\n\nIf the covariance matrix is the identity matrix, the the covariances are 0",
+    "crumbs": [
+      "Week 1",
+      "Lecture 2"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture2.html#aside-bivariate-normal-distribution-for-uncorrelated-case",
+    "href": "LectureNotes/Lecture2.html#aside-bivariate-normal-distribution-for-uncorrelated-case",
+    "title": "Lecture 2",
+    "section": "(Aside) Bivariate normal distribution for uncorrelated case",
+    "text": "(Aside) Bivariate normal distribution for uncorrelated case\n\n\nCode\n# install.packages(\"ggplot2\")\n# install.packages(\"ggExtra\")\nlibrary(ggplot2)\nlibrary(ggExtra)\n\nx1 &lt;- rnorm(100, 10, 5)\nx2 &lt;- rnorm(100, .1, .5)\n\nx &lt;- data.frame(x1, x2)\n# Save the scatter plot in a variable\np &lt;- ggplot(x, aes(x = x1, y = x2)) +\n  geom_point()\n\n# Arguments for each marginal histogram\nggMarginal(p, type = \"histogram\", \n           xparams = list(fill = 4),\n           yparams = list(fill = 3))",
+    "crumbs": [
+      "Week 1",
+      "Lecture 2"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture2.html#aside-bivariate-normal-distribution-for-correlated-case",
+    "href": "LectureNotes/Lecture2.html#aside-bivariate-normal-distribution-for-correlated-case",
+    "title": "Lecture 2",
+    "section": "(Aside) Bivariate normal distribution for correlated case",
+    "text": "(Aside) Bivariate normal distribution for correlated case\n\n\nCode\n#install.packages(\"MASS\")\nlibrary(MASS)\n\nmu &lt;- c(10, .1)\nvarcov &lt;- matrix(c(5, 1, 1, .5), \n                 ncol = 2)\nx&lt;- mvrnorm(100, mu = mu, Sigma =varcov)\nx &lt;- data.frame(x1 = x[,1], x2 = x[,2])\n# Save the scatter plot in a variable\np &lt;- ggplot(x, aes(x = x1, y = x2)) +\n  geom_point()\n\n# Arguments for each marginal histogram\nggMarginal(p, type = \"histogram\", \n           xparams = list(fill = 4),\n           yparams = list(fill = 3))",
+    "crumbs": [
+      "Week 1",
+      "Lecture 2"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture2.html#building-time-series-models-from-white-noise",
+    "href": "LectureNotes/Lecture2.html#building-time-series-models-from-white-noise",
+    "title": "Lecture 2",
+    "section": "Building time series models from White Noise",
+    "text": "Building time series models from White Noise\n\n\n\n\n\n\n\n\nModel\nInputs\nOutput\n\n\n\n\nWhite noise\nprobability distribution, independence assumption, \\(\\sigma_w^2\\)\n\n\n\nMoving average with \\(p\\) points\n\\(w_1, w_2, \\dots, w_n\\)\n\n\n\nAutoregression of order \\(p\\)\n\\(w_1, w_2, \\dots, w_n\\) and \\(\\phi = (\\phi_1, \\dots, \\phi_p)\\)\n\n\n\nRandom walk with drift\n\\(w_1, w_2, \\dots, w_n\\) and \\(\\delta\\)\n\n\n\nSignal plus noise\n\\(w_1, w_2, \\dots, w_n\\) and a function \\(f(t)\\)\n\n\n\n\nIdentify which of the inputs are random variables, pre-specified constants, pre-specified functions, or parameters to be estimated.",
+    "crumbs": [
+      "Week 1",
+      "Lecture 2"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture2.html#building-time-series-models-from-white-noise-1",
+    "href": "LectureNotes/Lecture2.html#building-time-series-models-from-white-noise-1",
+    "title": "Lecture 2",
+    "section": "Building time series models from White Noise",
+    "text": "Building time series models from White Noise\n\n\n\n\n\n\n\n\nModel\nInputs\nOutput\n\n\n\n\nWhite noise\nprobability distribution, independence assumption, \\(\\sigma_w^2\\)\n\\(w_1, w_2, \\dots, w_n\\); for each \\(t = 1, \\dots, n\\) we have \\(w_t \\sim N(0, \\sigma^2_w)\\)\n\n\nMoving average with \\(p\\) points\n\\(w_1, w_2, \\dots, w_n\\)\n\\(v_t = \\frac{1}{p}\\sum_{i = 1}^{p} w_{t-(p-i)}\\)\n\n\nAutoregression of order \\(p\\)\n\\(w_1, w_2, \\dots, w_n\\) and \\(\\phi = (\\phi_1, \\dots, \\phi_p)\\)\n\\(x_t = \\sum_{i = 1}^p \\phi_ix_{t-i} + w_t\\)\n\n\nRandom walk with drift\n\\(w_1, w_2, \\dots, w_n\\) and \\(\\delta\\)\n\\(x_t = \\delta + x_{t-1} + w_t\\)\n\n\nSignal plus noise\n\\(w_1, w_2, \\dots, w_n\\) and a function \\(f(t)\\)\n\\(x_t = f(t) + w_t\\)\n\n\n\nIdentify which of the inputs are random variables, pre-specified constants, pre-specified functions, or parameters to be estimated.",
+    "crumbs": [
+      "Week 1",
+      "Lecture 2"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture2.html#notation-and-data",
+    "href": "LectureNotes/Lecture2.html#notation-and-data",
+    "title": "Lecture 2",
+    "section": "Notation and Data",
+    "text": "Notation and Data\nConsider the general version of the autoregressive model of order 1:\n\\[\nx_t = \\phi_1x_{t-1} + \\phi_2x_{t-2} + w_t\n\\]\nIf you had data representing this process, what would it look like in R?",
+    "crumbs": [
+      "Week 1",
+      "Lecture 2"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture2.html#notation-and-data-1",
+    "href": "LectureNotes/Lecture2.html#notation-and-data-1",
+    "title": "Lecture 2",
+    "section": "Notation and Data",
+    "text": "Notation and Data\nSuppose \\(\\phi_1 = 1.5\\) and \\(\\phi_2 = -0.75\\).\n\n\nCode\nset.seed(90210)\nw = rnorm(250 + 50) # 50 extra to avoid startup problems\nx = filter(w, filter=c(1.5,-.75), method=\"recursive\")[-(1:50)]\nx\n\n\n  [1] -0.635871231 -3.159366457 -3.336983558 -0.670017029  1.928041062\n  [6]  6.262719337  8.811276769  6.994297589  6.964249838  4.172630149\n [11]  0.109387891 -2.838470465 -3.650839732 -5.293859716 -4.924149166\n [16] -3.496962661 -0.001206165  3.982335012  5.166059171  5.391303364\n [21]  4.598152813  2.726933281 -0.656314289 -2.634587218 -3.070392399\n [26] -2.447369835 -2.377035961 -3.272222376 -2.212579163 -1.609152064\n [31]  0.088151906  1.834292884  1.566977751  1.162326919  1.731270484\n [36]  0.452095019  0.751851590  2.197474589  2.037090911  2.053962776\n [41]  1.057859241  0.173798276 -1.559467228 -1.275347235 -1.934447794\n [46] -0.637721288  1.108281203  1.703590245  2.757116948  3.535041828\n [51]  2.785518718 -0.255025902 -3.601017151 -5.665073618 -5.320832378\n [56] -3.801870752 -1.843797185  0.540063136  1.577259338  2.719389114\n [61]  2.386440948  0.360417214  0.130240105  1.213682241  0.970840444\n [66]  1.672645132  1.169230978 -0.197824215 -0.552895930  0.483295378\n [71]  2.002207259  2.483139041  4.761206339  7.166338800  7.329547964\n [76]  5.238955522  1.955859515 -1.445155254 -3.624225029 -3.976740747\n [81] -2.522488940 -0.560280191  1.716462129  2.956985039  3.167747954\n [86]  2.655920142  2.503263867  0.243980727 -1.733850533  0.218414375\n [91]  1.212655465  1.188737220 -0.024525903  0.824315000 -0.929797989\n [96] -3.643408960 -4.872924684 -5.365789994 -4.379073769 -0.816292614\n[101]  2.069716217  3.317790830  4.024356559  4.445225438  4.807260941\n[106]  3.077726417  0.597309443 -1.889650709 -3.193428803 -4.189085934\n[111] -5.056410971 -5.113692514 -1.701862879  0.197898712  1.872046685\n[116]  2.519653174  1.995693810  1.375972346  2.342728546  1.412737664\n[121] -1.604693814 -4.224595521 -6.808370201 -8.238970434 -7.267053979\n[126] -5.073807901 -0.614874790  1.926334410  3.620792660  4.301297376\n[131]  2.938794190  2.482699730  2.062144627  0.145550378 -2.263580334\n[136] -3.515516041 -5.626740964 -5.675586843 -5.285219511 -3.877662550\n[141] -2.843191932 -2.159754220 -1.134175851  0.621526810  2.144676177\n[146]  1.301986893  1.090681772  0.483465932 -1.699760373 -0.907358670\n[151] -1.964189610 -2.083464483 -2.401372850 -1.102177741  0.090984198\n[156]  1.539763874  1.675986590  1.340872200 -0.451023892 -1.070116007\n[161] -1.485934032  0.223487236  2.011408533  1.630095949  3.323091734\n[166]  4.997983168  5.156394449  4.241727271  0.336603262 -1.668930450\n[171] -3.056412007 -2.346607210  0.799083342  0.765047225  0.480923824\n[176]  0.301524245  1.422952841  2.820001236  3.981388964  2.988835261\n[181] -0.058956147 -2.066827932 -4.518505369 -5.447774381 -5.746818410\n[186] -5.473607376 -3.515892394  0.432262861  4.283988479  6.685899229\n[191]  6.379550991  5.781828167  5.127569880  2.228597185  1.512254758\n[196]  1.407053783 -0.275040161 -2.623401872 -4.707758722 -6.845203817\n[201] -8.189848947 -8.441072069 -5.100352049 -1.929194703 -0.289395357\n[206]  2.511067946  4.007902754  2.638931037  0.953911823 -0.914044608\n[211] -3.131803887 -4.574239309 -4.239263041 -1.278975512 -1.720543477\n[216] -1.393708189 -0.978071153 -0.052109821 -0.479546542 -1.072444773\n[221] -1.940146902 -2.221618511 -1.892476988 -0.145214604  1.941929437\n[226]  2.662695670  1.548128421  1.266366609 -1.415637008 -2.255649300\n[231] -2.492380384 -1.758574495 -0.272146596  1.472164787  1.788881267\n[236]  0.946614002 -0.426152284  0.059796487 -2.263388225 -4.255693202\n[241] -5.023127496 -5.240398677 -5.705131625 -3.494170488 -0.385992861\n[246]  1.270003055  3.142585019  5.720389808  5.393790259  1.711581565",
+    "crumbs": [
+      "Week 1",
+      "Lecture 2"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture2.html#r-example---moving-average",
+    "href": "LectureNotes/Lecture2.html#r-example---moving-average",
+    "title": "Lecture 2",
+    "section": "R example - Moving Average",
+    "text": "R example - Moving Average\n\n\n\n\nCode\nset.seed(70)\n\n# generate white noise\nw_t &lt;- rnorm(10, 0, 1)\n\n## manually lag terms\nw_t1 &lt;- c(NA, w_t[1:9])\nw_t2 &lt;- c(NA, NA, w_t[1:8])\n\n## manually compute MA(3)\nv_t &lt;- (w_t + w_t1 + w_t2)/3\n\n## compare the vectors\nma_3 &lt;- cbind(v_t, w_t, w_t1, w_t2)\nround(ma_3, 3)\n\n\n         v_t    w_t   w_t1   w_t2\n [1,]     NA -1.542     NA     NA\n [2,]     NA  0.347 -1.542     NA\n [3,] -0.032  1.099  0.347 -1.542\n [4,]  0.316 -0.499  1.099  0.347\n [5,] -0.112 -0.938 -0.499  1.099\n [6,] -0.523 -0.132 -0.938 -0.499\n [7,] -0.265  0.276 -0.132 -0.938\n [8,] -0.087 -0.405  0.276 -0.132\n [9,] -0.609 -1.696 -0.405  0.276\n[10,] -0.569  0.394 -1.696 -0.405",
+    "crumbs": [
+      "Week 1",
+      "Lecture 2"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture2.html#r-example---moving-average-1",
+    "href": "LectureNotes/Lecture2.html#r-example---moving-average-1",
+    "title": "Lecture 2",
+    "section": "R example - Moving Average",
+    "text": "R example - Moving Average\n\n\n\n\nCode\n# generate white noise\nn = 50\nw_t &lt;- rnorm(n, 0, 1)\n\n## manually lag terms\nw_t1 &lt;- c(NA, w_t[1:(n-1)])\nw_t2 &lt;- c(NA, NA, w_t[1:(n-2)])\n\n## manually compute MA(3)\nv_t &lt;- (w_t + w_t1 + w_t2)/3\n\n## compare the vectors\nma_3 &lt;- cbind(v_t, w_t, w_t1, w_t2)\nround(ma_3, 3)\n\n\n         v_t    w_t   w_t1   w_t2\n [1,]     NA -0.834     NA     NA\n [2,]     NA  0.799 -0.834     NA\n [3,]  0.043  0.163  0.799 -0.834\n [4,]  0.752  1.292  0.163  0.799\n [5,]  0.491  0.018  1.292  0.163\n [6,]  0.435 -0.006  0.018  1.292\n [7,]  0.163  0.476 -0.006  0.018\n [8,]  0.652  1.486  0.476 -0.006\n [9,]  0.592 -0.186  1.486  0.476\n[10,]  0.778  1.034 -0.186  1.486\n[11,] -0.016 -0.896  1.034 -0.186\n[12,]  0.006 -0.121 -0.896  1.034\n[13,] -0.475 -0.408 -0.121 -0.896\n[14,] -0.170  0.019 -0.408 -0.121\n[15,] -0.164 -0.102  0.019 -0.408\n[16,] -0.727 -2.098 -0.102  0.019\n[17,] -0.798 -0.195 -2.098 -0.102\n[18,] -0.996 -0.697 -0.195 -2.098\n[19,] -0.145  0.457 -0.697 -0.195\n[20,]  0.225  0.914  0.457 -0.697\n[21,]  0.895  1.314  0.914  0.457\n[22,]  0.410 -0.998  1.314  0.914\n[23,] -0.048 -0.459 -0.998  1.314\n[24,] -0.546 -0.181 -0.459 -0.998\n[25,] -0.252 -0.116 -0.181 -0.459\n[26,] -0.105 -0.017 -0.116 -0.181\n[27,] -0.227 -0.547 -0.017 -0.116\n[28,] -0.052  0.408 -0.547 -0.017\n[29,] -0.231 -0.555  0.408 -0.547\n[30,] -0.168 -0.356 -0.555  0.408\n[31,] -0.328 -0.074 -0.356 -0.555\n[32,] -0.608 -1.393 -0.074 -0.356\n[33,] -0.604 -0.345 -1.393 -0.074\n[34,] -1.214 -1.904 -0.345 -1.393\n[35,] -0.917 -0.503 -1.904 -0.345\n[36,] -0.564  0.715 -0.503 -1.904\n[37,]  0.173  0.306  0.715 -0.503\n[38,]  0.572  0.694  0.306  0.715\n[39,]  0.361  0.083  0.694  0.306\n[40,]  0.281  0.065  0.083  0.694\n[41,]  0.308  0.776  0.065  0.083\n[42,]  0.413  0.397  0.776  0.065\n[43,]  0.162 -0.686  0.397  0.776\n[44,] -0.371 -0.824 -0.686  0.397\n[45,] -0.745 -0.725 -0.824 -0.686\n[46,]  0.026  1.627 -0.725 -0.824\n[47,]  0.733  1.298  1.627 -0.725\n[48,]  0.424 -1.653  1.298  1.627\n[49,] -0.927 -2.427 -1.653  1.298\n[50,] -1.123  0.710 -2.427 -1.653",
+    "crumbs": [
+      "Week 1",
+      "Lecture 2"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture2.html#motivation",
+    "href": "LectureNotes/Lecture2.html#motivation",
+    "title": "Lecture 2",
+    "section": "Motivation",
+    "text": "Motivation\nHow do we summarize characteristics of a distribution?",
+    "crumbs": [
+      "Week 1",
+      "Lecture 2"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture2.html#motivation-1",
+    "href": "LectureNotes/Lecture2.html#motivation-1",
+    "title": "Lecture 2",
+    "section": "Motivation",
+    "text": "Motivation\nHow do we summarize characteristics of a distribution?\n\nmean\nvariance(standard deviation)",
+    "crumbs": [
+      "Week 1",
+      "Lecture 2"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture2.html#how-do-we-summarize-the-characteristics-of-a-distribution-that-changes-over-time",
+    "href": "LectureNotes/Lecture2.html#how-do-we-summarize-the-characteristics-of-a-distribution-that-changes-over-time",
+    "title": "Lecture 2",
+    "section": "How do we summarize the characteristics of a distribution that changes over time?",
+    "text": "How do we summarize the characteristics of a distribution that changes over time?\n\nmean function (of time)\n(auto)(co)variance function (of time)",
+    "crumbs": [
+      "Week 1",
+      "Lecture 2"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture2.html#mean-function-1",
+    "href": "LectureNotes/Lecture2.html#mean-function-1",
+    "title": "Lecture 2",
+    "section": "Mean Function",
+    "text": "Mean Function\nThe mean function of a time series \\(x_t\\) is defined as:\n\\[\n\\mu_{xt} = \\E(x_t) = \\int_{-\\infty}^\\infty x_tf(x_t)dx_t,\n\\]\nwhere \\(\\E\\) is the expected value operator, shown here for the case of a continuous \\(x_t\\).\n\nSo, for example, if \\(x_t\\) is normally distributed then \\(f\\) here would be the normal probability density function (p.d.f.).",
+    "crumbs": [
+      "Week 1",
+      "Lecture 2"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture2.html#visual-examples",
+    "href": "LectureNotes/Lecture2.html#visual-examples",
+    "title": "Lecture 2",
+    "section": "Visual examples",
+    "text": "Visual examples",
+    "crumbs": [
+      "Week 1",
+      "Lecture 2"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture2.html#visual-examples-1",
+    "href": "LectureNotes/Lecture2.html#visual-examples-1",
+    "title": "Lecture 2",
+    "section": "Visual examples",
+    "text": "Visual examples",
+    "crumbs": [
+      "Week 1",
+      "Lecture 2"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture2.html#notating-the-mean-function",
+    "href": "LectureNotes/Lecture2.html#notating-the-mean-function",
+    "title": "Lecture 2",
+    "section": "Notating the mean function",
+    "text": "Notating the mean function\n“When no confusion exists about which time series we are referring to, we will drop a subscript and write \\(\\mu_{xt}\\) as \\(\\mu_t\\).”\nConfusion might exist if we have two time series e.g. if\n\n\\(x_t\\) is the SOI for a given month and\n\\(y_t\\) is the estimated new fish for a given month\n\nwe would have two mean functions, \\(\\mu_{yt}\\) and \\(\\mu_{xt}\\).",
+    "crumbs": [
+      "Week 1",
+      "Lecture 2"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture2.html#example-2.2-mean-function-of-a-moving-average-series",
+    "href": "LectureNotes/Lecture2.html#example-2.2-mean-function-of-a-moving-average-series",
+    "title": "Lecture 2",
+    "section": "Example 2.2 Mean Function of a Moving Average Series",
+    "text": "Example 2.2 Mean Function of a Moving Average Series\nLet \\(w_t\\) denote a white noise series.\n\nWhat is \\(\\mu_{wt} = \\E(w_t)\\) ?\n\nLet \\(v_t = \\frac{1}{3}(w_{t-1} + w_{t} + w_{t+1})\\) .\n\nWhat is \\(\\mu_{vt} = \\E(v_t)\\)?\n\n(why not just write \\(\\mu_t\\) on this slide?)",
+    "crumbs": [
+      "Week 1",
+      "Lecture 2"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture2.html#example-2.3-mean-function-of-a-random-walk-with-drift",
+    "href": "LectureNotes/Lecture2.html#example-2.3-mean-function-of-a-random-walk-with-drift",
+    "title": "Lecture 2",
+    "section": "Example 2.3 Mean Function of a Random Walk with drift",
+    "text": "Example 2.3 Mean Function of a Random Walk with drift\nLook, it’s our friend the random walk with drift (maybe):\n\\[\nx_t = \\delta t + \\sum_{j = 1}^t w_j\n\\]\nWhat is the mean function of \\(x_t\\)?",
+    "crumbs": [
+      "Week 1",
+      "Lecture 2"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture2.html#break",
+    "href": "LectureNotes/Lecture2.html#break",
+    "title": "Lecture 2",
+    "section": "Break",
+    "text": "Break\n\nI saw several turkeys this morning\nI saw someone almost die on a skateboard",
+    "crumbs": [
+      "Week 1",
+      "Lecture 2"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture2.html#does-the-mean-function-tell-us-anything-about-the-independence-of-the-time-series",
+    "href": "LectureNotes/Lecture2.html#does-the-mean-function-tell-us-anything-about-the-independence-of-the-time-series",
+    "title": "Lecture 2",
+    "section": "Does the mean function tell us anything about the (in)dependence of the time series?",
+    "text": "Does the mean function tell us anything about the (in)dependence of the time series?\nNo (expected value is such a friendly operator!)",
+    "crumbs": [
+      "Week 1",
+      "Lecture 2"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture2.html#review-variance-and-covariance",
+    "href": "LectureNotes/Lecture2.html#review-variance-and-covariance",
+    "title": "Lecture 2",
+    "section": "Review: Variance and Covariance",
+    "text": "Review: Variance and Covariance\nIf \\(X\\) is a random variable and then \\(\\E(X) = \\mu\\),\n\\[\nVar(X) = \\E((X-\\mu)^2)\n\\] If we have two random variables \\(X_\\alpha\\) and \\(X_\\beta\\), the covariance between these is \\[\nCov(X_\\alpha, X_\\beta) = \\E[(X_\\alpha - \\mu_\\alpha)(X_\\beta - \\mu_\\beta)]\n\\] - remember correlation (scaled covariance)??",
+    "crumbs": [
+      "Week 1",
+      "Lecture 2"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture2.html#autocovariance-function",
+    "href": "LectureNotes/Lecture2.html#autocovariance-function",
+    "title": "Lecture 2",
+    "section": "Autocovariance function",
+    "text": "Autocovariance function\nThe autocovariance function is defined as the second moment product \\[\n\\gamma_x(s, t) = cov(x_s, x_t) = \\E[(x_s - \\mu_s)(x_t - \\mu_t)]\n\\] for all \\(s\\) and \\(t\\).\n\nWhen no confusion exists, we will drop the \\(x\\) as with the mean function i.e. \\(\\gamma(s, t)\\) instead of \\(\\gamma_x(s, t)\\)\nHow can we write \\(var(x_t)\\) in terms of \\(\\gamma\\)? \\[\n\\gamma_x(t,t) = \\E[(x_t - \\mu_t)^2] = var(x_t)\n\\]",
+    "crumbs": [
+      "Week 1",
+      "Lecture 2"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture2.html#example-2.6-autocovariance-of-white-noise",
+    "href": "LectureNotes/Lecture2.html#example-2.6-autocovariance-of-white-noise",
+    "title": "Lecture 2",
+    "section": "Example 2.6 Autocovariance of White Noise",
+    "text": "Example 2.6 Autocovariance of White Noise\n\\(w_t\\) ⬅️ white noise series\n\\(\\gamma_w(s, t) = cov(w_s, w_t) = \\text{ }?\\)",
+    "crumbs": [
+      "Week 1",
+      "Lecture 2"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture2.html#example-2.6-autocovariance-of-white-noise-1",
+    "href": "LectureNotes/Lecture2.html#example-2.6-autocovariance-of-white-noise-1",
+    "title": "Lecture 2",
+    "section": "Example 2.6 Autocovariance of White Noise",
+    "text": "Example 2.6 Autocovariance of White Noise\n\\(w_t\\) ⬅️ white noise series\n\\(\\gamma_w(s, t) = cov(w_s, w_t) =  \\begin{cases} \\sigma^2_w & \\text{ if } s = t\\\\ 0 & \\text{ if } s \\ne t \\end{cases}\\)",
+    "crumbs": [
+      "Week 1",
+      "Lecture 2"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture2.html#example-2.8-autocovariance-of-a-moving-average",
+    "href": "LectureNotes/Lecture2.html#example-2.8-autocovariance-of-a-moving-average",
+    "title": "Lecture 2",
+    "section": "Example 2.8 Autocovariance of a Moving Average",
+    "text": "Example 2.8 Autocovariance of a Moving Average\nConsider three point moving average \\(v_t = \\frac{1}{3}(w_{t-1} + w_t + w_{t+1})\\)\n\\(\\gamma_v(s, t) = cov(v_s, v_t) =  \\begin{cases}a & \\text{ if } s = t\\\\ b & \\text{ if } \\vert s-t \\vert = 1 \\\\c& \\text{ if } \\vert s-t \\vert =2 \\\\ d & \\text{ if } \\vert s - t\\vert &gt; 2\\end{cases}\\)\n\nWhich one of \\(a, b, c, d\\) is 0\nAre \\(a, b, c\\) the same? If not, which is largest?",
+    "crumbs": [
+      "Week 1",
+      "Lecture 2"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture2.html#example-2.8-autocovariance-of-a-moving-average-1",
+    "href": "LectureNotes/Lecture2.html#example-2.8-autocovariance-of-a-moving-average-1",
+    "title": "Lecture 2",
+    "section": "Example 2.8 Autocovariance of a Moving Average",
+    "text": "Example 2.8 Autocovariance of a Moving Average\nConsider three point moving average \\(v_t = \\frac{1}{3}(w_{t-1} + w_t + w_{t+1})\\)\n\\(\\gamma_v(s, t) = cov(v_s, v_t) =  \\begin{cases}\\frac{3}{9}\\sigma^2_w & \\text{ if } s = t\\\\ \\frac{2}{9}\\sigma^2_w & \\text{ if } \\vert s-t \\vert = 1 \\\\\\frac{1}{9}\\sigma^2_w & \\text{ if } \\vert s-t \\vert =2 \\\\0 & \\text{ if } \\vert s - t\\vert &gt; 2\\end{cases}\\)\nDoes this equation make intuitive sense?",
+    "crumbs": [
+      "Week 1",
+      "Lecture 2"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture2.html#example-2.9-autocovariance-of-a-random-walk",
+    "href": "LectureNotes/Lecture2.html#example-2.9-autocovariance-of-a-random-walk",
+    "title": "Lecture 2",
+    "section": "Example 2.9 Autocovariance of a Random Walk",
+    "text": "Example 2.9 Autocovariance of a Random Walk\n\\(x_t = \\sum_{j = 1}^t w_j\\)\n\\[\n\\gamma_x(s, t) = cov(x_s, x_t) = cov\\left ( \\sum_{j=1}^s w_j, \\sum_{k = 1}^t w_k\\right ) = \\min\\{s,t\\}\\sigma^2_w\n\\] If you waaaaant, property 2.7 and figuring out what \\(\\E(w_jw_k)\\) is for \\(j \\ne k\\)",
+    "crumbs": [
+      "Week 1",
+      "Lecture 2"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture2.html#r-example---moving-average-2",
+    "href": "LectureNotes/Lecture2.html#r-example---moving-average-2",
+    "title": "Lecture 2",
+    "section": "R example - Moving Average",
+    "text": "R example - Moving Average\n\n\nCode\n# generate white noise\nn = 50\nw_t &lt;- rnorm(n, 0, 1)\n\n## manually lag terms\nw_t1 &lt;- c(NA, w_t[1:(n-1)])\nw_t2 &lt;- c(NA, NA, w_t[1:(n-2)])\n\n## manually compute MA(3)\nv_t &lt;- ?\n\n## compare the vectors\nma_3 &lt;- cbind(v_t, w_t, w_t1, w_t2, w_t3)\nround(ma_3, 3)\n\n## also compute MA(3) using stats::filter\nv_t_alt &lt;- ?\n  \n## plot both",
+    "crumbs": [
+      "Week 1",
+      "Lecture 2"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture2.html#r-example---moving-average-3",
+    "href": "LectureNotes/Lecture2.html#r-example---moving-average-3",
+    "title": "Lecture 2",
+    "section": "R example - Moving Average",
+    "text": "R example - Moving Average\n\n\n\n\nCode\n# generate white noise\nn = 50\nw_t &lt;- rnorm(n, 0, 1)\n\n## manually lag terms\nw_t1 &lt;- c(NA, w_t[1:(n-1)])\nw_t2 &lt;- c(NA, NA, w_t[1:(n-2)])\nw_t3 &lt;- c(NA, NA, NA, w_t[1:(n-3)])\n## manually compute MA(3)\nv_t &lt;- (w_t + w_t1 + w_t2 + w_t3)/4\n\n## compare the vectors\nma_3 &lt;- cbind(v_t, w_t, w_t1, w_t2, w_t3)\nround(ma_3, 3)\n\n\n         v_t    w_t   w_t1   w_t2   w_t3\n [1,]     NA  1.063     NA     NA     NA\n [2,]     NA  0.150  1.063     NA     NA\n [3,]     NA -1.161  0.150  1.063     NA\n [4,] -0.227 -0.958 -1.161  0.150  1.063\n [5,] -0.619 -0.507 -0.958 -1.161  0.150\n [6,] -0.807 -0.600 -0.507 -0.958 -1.161\n [7,] -0.913 -1.587 -0.600 -0.507 -0.958\n [8,] -0.710 -0.144 -1.587 -0.600 -0.507\n [9,] -0.790 -0.827 -0.144 -1.587 -0.600\n[10,] -0.460  0.717 -0.827 -0.144 -1.587\n[11,]  0.041  0.419  0.717 -0.827 -0.144\n[12,]  0.198  0.483  0.419  0.717 -0.827\n[13,]  0.463  0.235  0.483  0.419  0.717\n[14,]  0.128 -0.624  0.235  0.483  0.419\n[15,] -0.186 -0.837 -0.624  0.235  0.483\n[16,]  0.053  1.438 -0.837 -0.624  0.235\n[17,]  0.271  1.107  1.438 -0.837 -0.624\n[18,]  0.512  0.342  1.107  1.438 -0.837\n[19,]  0.468 -1.014  0.342  1.107  1.438\n[20,]  0.577  1.871 -1.014  0.342  1.107\n[21,]  0.100 -0.802  1.871 -1.014  0.342\n[22,] -0.041 -0.221 -0.802  1.871 -1.014\n[23,]  0.402  0.758 -0.221 -0.802  1.871\n[24,]  0.390  1.823  0.758 -0.221 -0.802\n[25,]  0.661  0.282  1.823  0.758 -0.221\n[26,]  0.755  0.157  0.282  1.823  0.758\n[27,]  0.805  0.956  0.157  0.282  1.823\n[28,]  0.850  2.003  0.956  0.157  0.282\n[29,]  0.892  0.453  2.003  0.956  0.157\n[30,]  0.928  0.300  0.453  2.003  0.956\n[31,]  0.822  0.531  0.300  0.453  2.003\n[32,]  0.790  1.877  0.531  0.300  0.453\n[33,]  0.551 -0.503  1.877  0.531  0.300\n[34,]  0.239 -0.950 -0.503  1.877  0.531\n[35,]  0.383  1.110 -0.950 -0.503  1.877\n[36,] -0.425 -1.357  1.110 -0.950 -0.503\n[37,] -0.033  1.063 -1.357  1.110 -0.950\n[38,] -0.151 -1.422  1.063 -1.357  1.110\n[39,] -0.310  0.475 -1.422  1.063 -1.357\n[40,] -0.133 -0.647  0.475 -1.422  1.063\n[41,] -0.338  0.242 -0.647  0.475 -1.422\n[42,] -0.002 -0.077  0.242 -0.647  0.475\n[43,] -0.160 -0.159 -0.077  0.242 -0.647\n[44,] -0.031 -0.129 -0.159 -0.077  0.242\n[45,] -0.437 -1.383 -0.129 -0.159 -0.077\n[46,]  0.237  2.620 -1.383 -0.129 -0.159\n[47,] -0.023 -1.201  2.620 -1.383 -0.129\n[48,]  0.182  0.690 -1.201  2.620 -1.383\n[49,]  0.455 -0.290  0.690 -1.201  2.620\n[50,]  0.288  1.954 -0.290  0.690 -1.201\n\n\nCode\n## also compute using stats::filter\nv_t_alt &lt;- stats::filter(w_t, sides = 2, filter = rep(0.25, times = 4))",
+    "crumbs": [
+      "Week 1",
+      "Lecture 2"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture2.html#moving-averages-problem-1.1",
+    "href": "LectureNotes/Lecture2.html#moving-averages-problem-1.1",
+    "title": "Lecture 2",
+    "section": "Moving Averages (Problem 1.1)",
+    "text": "Moving Averages (Problem 1.1)\n\nusing a method similar to the code in Example 1.9, generate 100 observations from the autoregression \\[\nx_t = -0.9x_{t-2} + w_t\\text{, }\\\\ w_t\\sim N(0, 1)\n\\]\nWrite down an expression for \\(\\phi\\) for this autoregression. How is \\(\\phi\\) different from the autoregression in Example 1.9?",
+    "crumbs": [
+      "Week 1",
+      "Lecture 2"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture2.html#moving-averages-problem-1.1-part-a",
+    "href": "LectureNotes/Lecture2.html#moving-averages-problem-1.1-part-a",
+    "title": "Lecture 2",
+    "section": "Moving Averages (Problem 1.1 Part a)",
+    "text": "Moving Averages (Problem 1.1 Part a)\n\nApply the moving average filter to the autoregression data you generated \\[\nv_t = (x_t + x_{t-1} + x_{t-2} + x_{t-4})\n\\]\nPlot \\(x_t\\) as points and lines and \\(v_t\\) as a line.",
+    "crumbs": [
+      "Week 1",
+      "Lecture 2"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture2.html#moving-averages-problem-1.1-1",
+    "href": "LectureNotes/Lecture2.html#moving-averages-problem-1.1-1",
+    "title": "Lecture 2",
+    "section": "Moving Averages (Problem 1.1)",
+    "text": "Moving Averages (Problem 1.1)\n\n\nCode\nlibrary(astsa)\nw = rnorm(150,0,1) # 50 extra to avoid startup problems\nxa = filter(w, filter=c(0,-.9), method=\"recursive\")[-(1:50)] # AR\nva = filter(xa, rep(1,4)/4, sides=1) # moving average\ntsplot(xa, main=\"autoregression\", type = \"b\", pch = 16)\nlines(va, col=\"blueviolet\", lwd = 2)",
+    "crumbs": [
+      "Week 1",
+      "Lecture 2"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture2.html#moving-averages-problem-1.1-part-b",
+    "href": "LectureNotes/Lecture2.html#moving-averages-problem-1.1-part-b",
+    "title": "Lecture 2",
+    "section": "Moving Averages (Problem 1.1 part b)",
+    "text": "Moving Averages (Problem 1.1 part b)\n\nRepeat the application of the MA filter but instead of starting with an autoregression, generate data \\(x_t\\) according to the signal plus noise model \\[\nx_t = 2\\cos(2\\pi t/4) + w_t\\\\ w_t \\sim N(0,1)\n\\]",
+    "crumbs": [
+      "Week 1",
+      "Lecture 2"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture2.html#moving-averages-problem-1.1-part-b-1",
+    "href": "LectureNotes/Lecture2.html#moving-averages-problem-1.1-part-b-1",
+    "title": "Lecture 2",
+    "section": "Moving Averages (Problem 1.1 part b)",
+    "text": "Moving Averages (Problem 1.1 part b)\n\n\nCode\nxb = 2*cos(2*pi*(1:100)/4) + rnorm(100,0,1) # sinusoid + noise\nvb = filter(xb, rep(1,4)/4, sides=1) # moving average\ntsplot(xb, main=\"sinusoid + noise\", type = \"b\", pch = 16)\nlines(vb, col=\"blueviolet\", lwd = 2)",
+    "crumbs": [
+      "Week 1",
+      "Lecture 2"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture2.html#moving-averages-problem-1.1-part-c",
+    "href": "LectureNotes/Lecture2.html#moving-averages-problem-1.1-part-c",
+    "title": "Lecture 2",
+    "section": "Moving Averages (Problem 1.1 part c)",
+    "text": "Moving Averages (Problem 1.1 part c)\n\nRepeat the application of the MA filter but instead of starting with an autoregression, use the Johnson and Johnson data from Lecture 1.",
+    "crumbs": [
+      "Week 1",
+      "Lecture 2"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture2.html#moving-averages-problem-1.1-part-c-1",
+    "href": "LectureNotes/Lecture2.html#moving-averages-problem-1.1-part-c-1",
+    "title": "Lecture 2",
+    "section": "Moving Averages (Problem 1.1 part c)",
+    "text": "Moving Averages (Problem 1.1 part c)\n\n\nCode\nxc = log(jj)\nvc = stats::filter(xc, filter = rep(1,4)/4, sides=1, method = \"convolution\") # moving average\ntsplot(xc, main=\"johnson and johnson (log scale)\", type = \"b\", pch = 16)\nlines(vc, col=\"blueviolet\", lwd = 2)",
+    "crumbs": [
+      "Week 1",
+      "Lecture 2"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture2.html#stationarity",
+    "href": "LectureNotes/Lecture2.html#stationarity",
+    "title": "Lecture 2",
+    "section": "Stationarity",
+    "text": "Stationarity\nA time series is stationary if\n\nthe mean function (\\(\\mu_t\\)) is constant and does not depend on time \\(t\\)\nthe autocovariance function (\\(\\gamma(s,t)\\)) depends on \\(s\\) and \\(t\\) only though their difference",
+    "crumbs": [
+      "Week 1",
+      "Lecture 2"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture2.html#example-2.14-stationarity-of-a-random-walk",
+    "href": "LectureNotes/Lecture2.html#example-2.14-stationarity-of-a-random-walk",
+    "title": "Lecture 2",
+    "section": "Example 2.14 Stationarity of a Random Walk",
+    "text": "Example 2.14 Stationarity of a Random Walk\nLook, it’s our friend the random walk:\n\\[\nx_t = \\delta t + \\sum_{j = 1}^t w_j\n\\] Their mean function is \\(\\E(x_t) = 0\\), and their covariance function is \\(\\gamma_x(s, t) = \\min\\{s,t\\}\\sigma^2_w\\)\nIs a random walk stationary?",
+    "crumbs": [
+      "Week 1",
+      "Lecture 2"
+    ]
+  },
+  {
     "objectID": "LectureNotes/Lecture4.html",
     "href": "LectureNotes/Lecture4.html",
     "title": "Lecture 4",

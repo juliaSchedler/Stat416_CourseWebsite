@@ -29,6 +29,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -244,6 +309,7 @@
     }
     .reveal .slide:not(.center) {
       height: 100%;
+      overflow-y: auto;
     }
     .reveal .slide.scrollable {
       overflow-y: auto;
@@ -337,15 +403,837 @@ Julia Schedler
 </div>
 
 </section>
-<section id="section" class="slide level2">
-<h2></h2>
+<section class="slide level2">
+
+<div class="hidden">
+<p><span class="math display">\[
+\newcommand\E{{\mathbb{E}}}
+\]</span></p>
+</div>
+</section>
+<section id="recap-from-last-time" class="slide level2">
+<h2>Recap from last time</h2>
+<ul>
+<li><p>Several examples of time series data sets</p></li>
+<li><p>Experience plotting the time series</p></li>
+<li><p>Exposure to some common time series models</p></li>
+</ul>
+</section>
+<section id="today" class="slide level2">
+<h2>Today</h2>
+<ul>
+<li>Notation review</li>
+<li>Mean and covariance function of a time series</li>
+<li>R code activity</li>
+<li>Stationarity (if time)</li>
+</ul>
+</section>
+<section id="coming-upnotices" class="slide level2">
+<h2>Coming up/notices</h2>
+<ul>
+<li>I combined the Canvas sections (applies to section 2)</li>
+<li>Quiz 1 posted today, due tomorrow at midnight (20 minutes to do it)</li>
+<li>Assignment 1 will also be posted today, due Monday at midnight (boundary between Monday and Tuesday)</li>
+<li>Next week’s office hours: M 4-5, T 12-2</li>
+</ul>
+</section>
+<section>
+<section id="review-of-notation" class="title-slide slide level1 center">
+<h1>Review of notation</h1>
+
+</section>
+<section id="notation-and-data--white-noise" class="slide level2 smaller">
+<h2>Notation and Data- White noise</h2>
+<p>“Let <span class="math inline">\(w_t\)</span> be a white noise series”</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>t</th>
+<th>Random Variable</th>
+<th>Example data</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td><span class="math inline">\(w_1 \sim N(0, \sigma_w^2)\)</span></td>
+<td>0.4537309</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td><span class="math inline">\(w_2 \sim N(0, \sigma_w^2)\)</span></td>
+<td>0.5015399</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><span class="math inline">\(\vdots\)</span></td>
+<td><span class="math inline">\(\vdots\)</span></td>
+</tr>
+<tr class="even">
+<td>t</td>
+<td><span class="math inline">\(w_t \sim N(0, \sigma^2_w)\)</span></td>
+<td>-1.0726009</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\vdots\)</span></td>
+<td><span class="math inline">\(\vdots\)</span></td>
+<td><span class="math inline">\(\vdots\)</span></td>
+</tr>
+<tr class="even">
+<td>n</td>
+<td><span class="math inline">\(w_n \sim N(0, \sigma_w^2)\)</span></td>
+<td>-0.4561074</td>
+</tr>
+</tbody>
+</table>
+<p>If we interpret the collection of <span class="math inline">\(w_t\)</span> as a random vector, then <span class="math inline">\(w_t \sim MVN(\vec{0}, I)\)</span> (why <span class="math inline">\(I\)</span>?)</p>
+<p>Note: sometimes <span class="math inline">\(w_t\)</span> could mean a (univariate) value of a white noise series for a particular time <span class="math inline">\(t\)</span> (kind of like how you refer to an arbitrary <span class="math inline">\(x_i\)</span> when you have a sample <span class="math inline">\(x_1, \dots, x_n\)</span>).</p>
+</section>
+<section id="aside-the-multivariate-normal-distribution" class="slide level2">
+<h2><span class="r-fit-text">(Aside) The Multivariate normal distribution</span></h2>
+<p>Let’s look on <a href="https://en.wikipedia.org/wiki/Multivariate_normal_distribution">Wikipedia</a>. What are the parameters?</p>
+<ul>
+<li><p>mean <strong>vector</strong></p></li>
+<li><p>variance (covariance) <strong>matrix</strong></p>
+<ul>
+<li>If the covariance matrix is the identity matrix, the the covariances are 0</li>
+</ul></li>
+</ul>
+</section>
+<section id="aside-bivariate-normal-distribution-for-uncorrelated-case" class="slide level2">
+<h2><span class="r-fit-text">(Aside) Bivariate normal distribution for uncorrelated case</span></h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="co"># install.packages("ggplot2")</span></span>
+<span id="cb1-2"><a></a><span class="co"># install.packages("ggExtra")</span></span>
+<span id="cb1-3"><a></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-4"><a></a><span class="fu">library</span>(ggExtra)</span>
+<span id="cb1-5"><a></a></span>
+<span id="cb1-6"><a></a>x1 <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="dv">10</span>, <span class="dv">5</span>)</span>
+<span id="cb1-7"><a></a>x2 <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, .<span class="dv">1</span>, .<span class="dv">5</span>)</span>
+<span id="cb1-8"><a></a></span>
+<span id="cb1-9"><a></a>x <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(x1, x2)</span>
+<span id="cb1-10"><a></a><span class="co"># Save the scatter plot in a variable</span></span>
+<span id="cb1-11"><a></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(x, <span class="fu">aes</span>(<span class="at">x =</span> x1, <span class="at">y =</span> x2)) <span class="sc">+</span></span>
+<span id="cb1-12"><a></a>  <span class="fu">geom_point</span>()</span>
+<span id="cb1-13"><a></a></span>
+<span id="cb1-14"><a></a><span class="co"># Arguments for each marginal histogram</span></span>
+<span id="cb1-15"><a></a><span class="fu">ggMarginal</span>(p, <span class="at">type =</span> <span class="st">"histogram"</span>, </span>
+<span id="cb1-16"><a></a>           <span class="at">xparams =</span> <span class="fu">list</span>(<span class="at">fill =</span> <span class="dv">4</span>),</span>
+<span id="cb1-17"><a></a>           <span class="at">yparams =</span> <span class="fu">list</span>(<span class="at">fill =</span> <span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+</div>
+<img data-src="Lecture2_files/figure-revealjs/unnamed-chunk-1-1.png" width="960" class="r-stretch"></section>
+<section id="aside-bivariate-normal-distribution-for-correlated-case" class="slide level2">
+<h2><span class="r-fit-text">(Aside) Bivariate normal distribution for correlated case</span></h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="co">#install.packages("MASS")</span></span>
+<span id="cb2-2"><a></a><span class="fu">library</span>(MASS)</span>
+<span id="cb2-3"><a></a></span>
+<span id="cb2-4"><a></a>mu <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, .<span class="dv">1</span>)</span>
+<span id="cb2-5"><a></a>varcov <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">1</span>, .<span class="dv">5</span>), </span>
+<span id="cb2-6"><a></a>                 <span class="at">ncol =</span> <span class="dv">2</span>)</span>
+<span id="cb2-7"><a></a>x<span class="ot">&lt;-</span> <span class="fu">mvrnorm</span>(<span class="dv">100</span>, <span class="at">mu =</span> mu, <span class="at">Sigma =</span>varcov)</span>
+<span id="cb2-8"><a></a>x <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x1 =</span> x[,<span class="dv">1</span>], <span class="at">x2 =</span> x[,<span class="dv">2</span>])</span>
+<span id="cb2-9"><a></a><span class="co"># Save the scatter plot in a variable</span></span>
+<span id="cb2-10"><a></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(x, <span class="fu">aes</span>(<span class="at">x =</span> x1, <span class="at">y =</span> x2)) <span class="sc">+</span></span>
+<span id="cb2-11"><a></a>  <span class="fu">geom_point</span>()</span>
+<span id="cb2-12"><a></a></span>
+<span id="cb2-13"><a></a><span class="co"># Arguments for each marginal histogram</span></span>
+<span id="cb2-14"><a></a><span class="fu">ggMarginal</span>(p, <span class="at">type =</span> <span class="st">"histogram"</span>, </span>
+<span id="cb2-15"><a></a>           <span class="at">xparams =</span> <span class="fu">list</span>(<span class="at">fill =</span> <span class="dv">4</span>),</span>
+<span id="cb2-16"><a></a>           <span class="at">yparams =</span> <span class="fu">list</span>(<span class="at">fill =</span> <span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+</div>
+<img data-src="Lecture2_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"></section>
+<section id="building-time-series-models-from-white-noise" class="slide level2 smaller">
+<h2><span class="r-fit-text">Building time series models from White Noise</span></h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Model</th>
+<th>Inputs</th>
+<th>Output</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>White noise</td>
+<td>probability distribution, independence assumption, <span class="math inline">\(\sigma_w^2\)</span></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Moving average with <span class="math inline">\(p\)</span> points</td>
+<td><span class="math inline">\(w_1, w_2, \dots, w_n\)</span></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Autoregression of order <span class="math inline">\(p\)</span></td>
+<td><span class="math inline">\(w_1, w_2, \dots, w_n\)</span> and <span class="math inline">\(\phi = (\phi_1, \dots, \phi_p)\)</span></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Random walk with drift</td>
+<td><span class="math inline">\(w_1, w_2, \dots, w_n\)</span> and <span class="math inline">\(\delta\)</span></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Signal plus noise</td>
+<td><span class="math inline">\(w_1, w_2, \dots, w_n\)</span> and a function <span class="math inline">\(f(t)\)</span></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Identify which of the inputs are random variables, pre-specified constants, pre-specified functions, or parameters to be estimated.</p>
+</section>
+<section id="building-time-series-models-from-white-noise-1" class="slide level2 smaller">
+<h2><span class="r-fit-text">Building time series models from White Noise</span></h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Model</th>
+<th>Inputs</th>
+<th>Output</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>White noise</td>
+<td>probability distribution, independence assumption, <span class="math inline">\(\sigma_w^2\)</span></td>
+<td><span class="math inline">\(w_1, w_2, \dots, w_n\)</span>; for each <span class="math inline">\(t = 1, \dots, n\)</span> we have <span class="math inline">\(w_t \sim N(0, \sigma^2_w)\)</span></td>
+</tr>
+<tr class="even">
+<td>Moving average with <span class="math inline">\(p\)</span> points</td>
+<td><span class="math inline">\(w_1, w_2, \dots, w_n\)</span></td>
+<td><span class="math inline">\(v_t = \frac{1}{p}\sum_{i = 1}^{p} w_{t-(p-i)}\)</span></td>
+</tr>
+<tr class="odd">
+<td>Autoregression of order <span class="math inline">\(p\)</span></td>
+<td><span class="math inline">\(w_1, w_2, \dots, w_n\)</span> and <span class="math inline">\(\phi = (\phi_1, \dots, \phi_p)\)</span></td>
+<td><span class="math inline">\(x_t = \sum_{i = 1}^p \phi_ix_{t-i} + w_t\)</span></td>
+</tr>
+<tr class="even">
+<td>Random walk with drift</td>
+<td><span class="math inline">\(w_1, w_2, \dots, w_n\)</span> and <span class="math inline">\(\delta\)</span></td>
+<td><span class="math inline">\(x_t = \delta + x_{t-1} + w_t\)</span></td>
+</tr>
+<tr class="odd">
+<td>Signal plus noise</td>
+<td><span class="math inline">\(w_1, w_2, \dots, w_n\)</span> and a function <span class="math inline">\(f(t)\)</span></td>
+<td><span class="math inline">\(x_t = f(t) + w_t\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Identify which of the inputs are random variables, pre-specified constants, pre-specified functions, or parameters to be estimated.</p>
+</section>
+<section id="notation-and-data" class="slide level2">
+<h2>Notation and Data</h2>
+<p>Consider the general version of the autoregressive model of order 1:</p>
+<p><span class="math display">\[
+x_t = \phi_1x_{t-1} + \phi_2x_{t-2} + w_t
+\]</span></p>
+<p>If you had data representing this process, what would it look like in R?</p>
+</section>
+<section id="notation-and-data-1" class="slide level2">
+<h2>Notation and Data</h2>
+<p>Suppose <span class="math inline">\(\phi_1 = 1.5\)</span> and <span class="math inline">\(\phi_2 = -0.75\)</span>.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">set.seed</span>(<span class="dv">90210</span>)</span>
+<span id="cb3-2"><a></a>w <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">250</span> <span class="sc">+</span> <span class="dv">50</span>) <span class="co"># 50 extra to avoid startup problems</span></span>
+<span id="cb3-3"><a></a>x <span class="ot">=</span> <span class="fu">filter</span>(w, <span class="at">filter=</span><span class="fu">c</span>(<span class="fl">1.5</span>,<span class="sc">-</span>.<span class="dv">75</span>), <span class="at">method=</span><span class="st">"recursive"</span>)[<span class="sc">-</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>)]</span>
+<span id="cb3-4"><a></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>  [1] -0.635871231 -3.159366457 -3.336983558 -0.670017029  1.928041062
+  [6]  6.262719337  8.811276769  6.994297589  6.964249838  4.172630149
+ [11]  0.109387891 -2.838470465 -3.650839732 -5.293859716 -4.924149166
+ [16] -3.496962661 -0.001206165  3.982335012  5.166059171  5.391303364
+ [21]  4.598152813  2.726933281 -0.656314289 -2.634587218 -3.070392399
+ [26] -2.447369835 -2.377035961 -3.272222376 -2.212579163 -1.609152064
+ [31]  0.088151906  1.834292884  1.566977751  1.162326919  1.731270484
+ [36]  0.452095019  0.751851590  2.197474589  2.037090911  2.053962776
+ [41]  1.057859241  0.173798276 -1.559467228 -1.275347235 -1.934447794
+ [46] -0.637721288  1.108281203  1.703590245  2.757116948  3.535041828
+ [51]  2.785518718 -0.255025902 -3.601017151 -5.665073618 -5.320832378
+ [56] -3.801870752 -1.843797185  0.540063136  1.577259338  2.719389114
+ [61]  2.386440948  0.360417214  0.130240105  1.213682241  0.970840444
+ [66]  1.672645132  1.169230978 -0.197824215 -0.552895930  0.483295378
+ [71]  2.002207259  2.483139041  4.761206339  7.166338800  7.329547964
+ [76]  5.238955522  1.955859515 -1.445155254 -3.624225029 -3.976740747
+ [81] -2.522488940 -0.560280191  1.716462129  2.956985039  3.167747954
+ [86]  2.655920142  2.503263867  0.243980727 -1.733850533  0.218414375
+ [91]  1.212655465  1.188737220 -0.024525903  0.824315000 -0.929797989
+ [96] -3.643408960 -4.872924684 -5.365789994 -4.379073769 -0.816292614
+[101]  2.069716217  3.317790830  4.024356559  4.445225438  4.807260941
+[106]  3.077726417  0.597309443 -1.889650709 -3.193428803 -4.189085934
+[111] -5.056410971 -5.113692514 -1.701862879  0.197898712  1.872046685
+[116]  2.519653174  1.995693810  1.375972346  2.342728546  1.412737664
+[121] -1.604693814 -4.224595521 -6.808370201 -8.238970434 -7.267053979
+[126] -5.073807901 -0.614874790  1.926334410  3.620792660  4.301297376
+[131]  2.938794190  2.482699730  2.062144627  0.145550378 -2.263580334
+[136] -3.515516041 -5.626740964 -5.675586843 -5.285219511 -3.877662550
+[141] -2.843191932 -2.159754220 -1.134175851  0.621526810  2.144676177
+[146]  1.301986893  1.090681772  0.483465932 -1.699760373 -0.907358670
+[151] -1.964189610 -2.083464483 -2.401372850 -1.102177741  0.090984198
+[156]  1.539763874  1.675986590  1.340872200 -0.451023892 -1.070116007
+[161] -1.485934032  0.223487236  2.011408533  1.630095949  3.323091734
+[166]  4.997983168  5.156394449  4.241727271  0.336603262 -1.668930450
+[171] -3.056412007 -2.346607210  0.799083342  0.765047225  0.480923824
+[176]  0.301524245  1.422952841  2.820001236  3.981388964  2.988835261
+[181] -0.058956147 -2.066827932 -4.518505369 -5.447774381 -5.746818410
+[186] -5.473607376 -3.515892394  0.432262861  4.283988479  6.685899229
+[191]  6.379550991  5.781828167  5.127569880  2.228597185  1.512254758
+[196]  1.407053783 -0.275040161 -2.623401872 -4.707758722 -6.845203817
+[201] -8.189848947 -8.441072069 -5.100352049 -1.929194703 -0.289395357
+[206]  2.511067946  4.007902754  2.638931037  0.953911823 -0.914044608
+[211] -3.131803887 -4.574239309 -4.239263041 -1.278975512 -1.720543477
+[216] -1.393708189 -0.978071153 -0.052109821 -0.479546542 -1.072444773
+[221] -1.940146902 -2.221618511 -1.892476988 -0.145214604  1.941929437
+[226]  2.662695670  1.548128421  1.266366609 -1.415637008 -2.255649300
+[231] -2.492380384 -1.758574495 -0.272146596  1.472164787  1.788881267
+[236]  0.946614002 -0.426152284  0.059796487 -2.263388225 -4.255693202
+[241] -5.023127496 -5.240398677 -5.705131625 -3.494170488 -0.385992861
+[246]  1.270003055  3.142585019  5.720389808  5.393790259  1.711581565</code></pre>
+</div>
+</div>
+</section>
+<section id="r-example---moving-average" class="slide level2 smaller">
+<h2>R example - Moving Average</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">set.seed</span>(<span class="dv">70</span>)</span>
+<span id="cb5-2"><a></a></span>
+<span id="cb5-3"><a></a><span class="co"># generate white noise</span></span>
+<span id="cb5-4"><a></a>w_t <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb5-5"><a></a></span>
+<span id="cb5-6"><a></a><span class="do">## manually lag terms</span></span>
+<span id="cb5-7"><a></a>w_t1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">NA</span>, w_t[<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>])</span>
+<span id="cb5-8"><a></a>w_t2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="cn">NA</span>, w_t[<span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>])</span>
+<span id="cb5-9"><a></a></span>
+<span id="cb5-10"><a></a><span class="do">## manually compute MA(3)</span></span>
+<span id="cb5-11"><a></a>v_t <span class="ot">&lt;-</span> (w_t <span class="sc">+</span> w_t1 <span class="sc">+</span> w_t2)<span class="sc">/</span><span class="dv">3</span></span>
+<span id="cb5-12"><a></a></span>
+<span id="cb5-13"><a></a><span class="do">## compare the vectors</span></span>
+<span id="cb5-14"><a></a>ma_3 <span class="ot">&lt;-</span> <span class="fu">cbind</span>(v_t, w_t, w_t1, w_t2)</span>
+<span id="cb5-15"><a></a><span class="fu">round</span>(ma_3, <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>         v_t    w_t   w_t1   w_t2
+ [1,]     NA -1.542     NA     NA
+ [2,]     NA  0.347 -1.542     NA
+ [3,] -0.032  1.099  0.347 -1.542
+ [4,]  0.316 -0.499  1.099  0.347
+ [5,] -0.112 -0.938 -0.499  1.099
+ [6,] -0.523 -0.132 -0.938 -0.499
+ [7,] -0.265  0.276 -0.132 -0.938
+ [8,] -0.087 -0.405  0.276 -0.132
+ [9,] -0.609 -1.696 -0.405  0.276
+[10,] -0.569  0.394 -1.696 -0.405</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:60%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="Lecture2_files/figure-revealjs/unnamed-chunk-5-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="r-example---moving-average-1" class="slide level2 smaller">
+<h2>R example - Moving Average</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="co"># generate white noise</span></span>
+<span id="cb7-2"><a></a>n <span class="ot">=</span> <span class="dv">50</span></span>
+<span id="cb7-3"><a></a>w_t <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, <span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb7-4"><a></a></span>
+<span id="cb7-5"><a></a><span class="do">## manually lag terms</span></span>
+<span id="cb7-6"><a></a>w_t1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">NA</span>, w_t[<span class="dv">1</span><span class="sc">:</span>(n<span class="dv">-1</span>)])</span>
+<span id="cb7-7"><a></a>w_t2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="cn">NA</span>, w_t[<span class="dv">1</span><span class="sc">:</span>(n<span class="dv">-2</span>)])</span>
+<span id="cb7-8"><a></a></span>
+<span id="cb7-9"><a></a><span class="do">## manually compute MA(3)</span></span>
+<span id="cb7-10"><a></a>v_t <span class="ot">&lt;-</span> (w_t <span class="sc">+</span> w_t1 <span class="sc">+</span> w_t2)<span class="sc">/</span><span class="dv">3</span></span>
+<span id="cb7-11"><a></a></span>
+<span id="cb7-12"><a></a><span class="do">## compare the vectors</span></span>
+<span id="cb7-13"><a></a>ma_3 <span class="ot">&lt;-</span> <span class="fu">cbind</span>(v_t, w_t, w_t1, w_t2)</span>
+<span id="cb7-14"><a></a><span class="fu">round</span>(ma_3, <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>         v_t    w_t   w_t1   w_t2
+ [1,]     NA -0.834     NA     NA
+ [2,]     NA  0.799 -0.834     NA
+ [3,]  0.043  0.163  0.799 -0.834
+ [4,]  0.752  1.292  0.163  0.799
+ [5,]  0.491  0.018  1.292  0.163
+ [6,]  0.435 -0.006  0.018  1.292
+ [7,]  0.163  0.476 -0.006  0.018
+ [8,]  0.652  1.486  0.476 -0.006
+ [9,]  0.592 -0.186  1.486  0.476
+[10,]  0.778  1.034 -0.186  1.486
+[11,] -0.016 -0.896  1.034 -0.186
+[12,]  0.006 -0.121 -0.896  1.034
+[13,] -0.475 -0.408 -0.121 -0.896
+[14,] -0.170  0.019 -0.408 -0.121
+[15,] -0.164 -0.102  0.019 -0.408
+[16,] -0.727 -2.098 -0.102  0.019
+[17,] -0.798 -0.195 -2.098 -0.102
+[18,] -0.996 -0.697 -0.195 -2.098
+[19,] -0.145  0.457 -0.697 -0.195
+[20,]  0.225  0.914  0.457 -0.697
+[21,]  0.895  1.314  0.914  0.457
+[22,]  0.410 -0.998  1.314  0.914
+[23,] -0.048 -0.459 -0.998  1.314
+[24,] -0.546 -0.181 -0.459 -0.998
+[25,] -0.252 -0.116 -0.181 -0.459
+[26,] -0.105 -0.017 -0.116 -0.181
+[27,] -0.227 -0.547 -0.017 -0.116
+[28,] -0.052  0.408 -0.547 -0.017
+[29,] -0.231 -0.555  0.408 -0.547
+[30,] -0.168 -0.356 -0.555  0.408
+[31,] -0.328 -0.074 -0.356 -0.555
+[32,] -0.608 -1.393 -0.074 -0.356
+[33,] -0.604 -0.345 -1.393 -0.074
+[34,] -1.214 -1.904 -0.345 -1.393
+[35,] -0.917 -0.503 -1.904 -0.345
+[36,] -0.564  0.715 -0.503 -1.904
+[37,]  0.173  0.306  0.715 -0.503
+[38,]  0.572  0.694  0.306  0.715
+[39,]  0.361  0.083  0.694  0.306
+[40,]  0.281  0.065  0.083  0.694
+[41,]  0.308  0.776  0.065  0.083
+[42,]  0.413  0.397  0.776  0.065
+[43,]  0.162 -0.686  0.397  0.776
+[44,] -0.371 -0.824 -0.686  0.397
+[45,] -0.745 -0.725 -0.824 -0.686
+[46,]  0.026  1.627 -0.725 -0.824
+[47,]  0.733  1.298  1.627 -0.725
+[48,]  0.424 -1.653  1.298  1.627
+[49,] -0.927 -2.427 -1.653  1.298
+[50,] -1.123  0.710 -2.427 -1.653</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:60%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="Lecture2_files/figure-revealjs/unnamed-chunk-7-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="chapter-2-correlation-and-stationary-time-series" class="title-slide slide level1 center">
+<h1>Chapter 2: Correlation and Stationary Time Series</h1>
+
+</section>
+<section id="motivation" class="slide level2">
+<h2>Motivation</h2>
+<p>How do we summarize characteristics of a distribution?</p>
+
+<img data-src="Lecture2_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch"></section>
+<section id="motivation-1" class="slide level2">
+<h2>Motivation</h2>
+<p>How do we summarize characteristics of a distribution?</p>
+<ul>
+<li><p>mean</p></li>
+<li><p>variance(standard deviation)</p></li>
+</ul>
+
+<img data-src="Lecture2_files/figure-revealjs/unnamed-chunk-9-1.png" width="960" class="r-stretch"></section>
+<section id="how-do-we-summarize-the-characteristics-of-a-distribution-that-changes-over-time" class="slide level2">
+<h2>How do we summarize the characteristics of a distribution that changes over time?</h2>
+<ul>
+<li><p>mean function (of time)</p></li>
+<li><p>(auto)(co)variance function (of time)</p></li>
+</ul>
+</section></section>
+<section>
+<section id="mean-function" class="title-slide slide level1 center">
+<h1>Mean function</h1>
+
+</section>
+<section id="mean-function-1" class="slide level2">
+<h2>Mean Function</h2>
+<p>The mean function of a time series <span class="math inline">\(x_t\)</span> is defined as:</p>
+<p><span class="math display">\[
+\mu_{xt} = \E(x_t) = \int_{-\infty}^\infty x_tf(x_t)dx_t,
+\]</span></p>
+<p>where <span class="math inline">\(\E\)</span> is the expected value operator, shown here for the case of a continuous <span class="math inline">\(x_t\)</span>.<br>
+</p>
+<p>So, for example, if <span class="math inline">\(x_t\)</span> is normally distributed then <span class="math inline">\(f\)</span> here would be the normal probability density function (p.d.f.).</p>
+</section>
+<section id="visual-examples" class="slide level2">
+<h2>Visual examples</h2>
+
+<img data-src="Lecture2_files/figure-revealjs/unnamed-chunk-10-1.png" width="960" class="r-stretch"></section>
+<section id="visual-examples-1" class="slide level2">
+<h2>Visual examples</h2>
+
+<img data-src="Lecture2_files/figure-revealjs/unnamed-chunk-11-1.png" width="960" class="r-stretch"></section>
+<section id="notating-the-mean-function" class="slide level2">
+<h2>Notating the mean function</h2>
+<p><em>“When no confusion exists about which time series we are referring to, we will drop a subscript and write</em> <span class="math inline">\(\mu_{xt}\)</span> <em>as</em> <span class="math inline">\(\mu_t\)</span><em>.”</em></p>
+<p>Confusion might exist if we have two time series e.g.&nbsp;if</p>
+<ul>
+<li><p><span class="math inline">\(x_t\)</span> is the SOI for a given month and</p></li>
+<li><p><span class="math inline">\(y_t\)</span> is the estimated new fish for a given month</p></li>
+</ul>
+<p>we would have two mean functions, <span class="math inline">\(\mu_{yt}\)</span> and <span class="math inline">\(\mu_{xt}\)</span>.</p>
+</section>
+<section id="example-2.2-mean-function-of-a-moving-average-series" class="slide level2">
+<h2>Example 2.2 Mean Function of a Moving Average Series</h2>
+<p>Let <span class="math inline">\(w_t\)</span> denote a white noise series.</p>
+<ul>
+<li>What is <span class="math inline">\(\mu_{wt} = \E(w_t)\)</span> ?</li>
+</ul>
+<p>Let <span class="math inline">\(v_t = \frac{1}{3}(w_{t-1} + w_{t} + w_{t+1})\)</span> .</p>
+<ul>
+<li>What is <span class="math inline">\(\mu_{vt} = \E(v_t)\)</span>?</li>
+</ul>
+<p>(why not just write <span class="math inline">\(\mu_t\)</span> on this slide?)</p>
+</section>
+<section id="example-2.3-mean-function-of-a-random-walk-with-drift" class="slide level2">
+<h2>Example 2.3 Mean Function of a Random Walk with drift</h2>
+<p>Look, it’s our friend the random walk with drift (maybe):</p>
+<p><span class="math display">\[
+x_t = \delta t + \sum_{j = 1}^t w_j
+\]</span></p>
+<p>What is the mean function of <span class="math inline">\(x_t\)</span>?</p>
+</section>
+<section id="break" class="slide level2">
+<h2>Break</h2>
+<ul>
+<li>I saw several turkeys this morning</li>
+<li>I saw someone almost die on a skateboard</li>
+</ul>
+</section></section>
+<section>
+<section id="autocovariance" class="title-slide slide level1 center">
+<h1>Autocovariance</h1>
+
+</section>
+<section id="does-the-mean-function-tell-us-anything-about-the-independence-of-the-time-series" class="slide level2">
+<h2>Does the mean function tell us anything about the (in)dependence of the time series?</h2>
+<p>No (expected value is such a friendly operator!)</p>
+</section>
+<section id="review-variance-and-covariance" class="slide level2">
+<h2>Review: Variance and Covariance</h2>
+<p>If <span class="math inline">\(X\)</span> is a random variable and then <span class="math inline">\(\E(X) = \mu\)</span>,</p>
+<p><span class="math display">\[
+Var(X) = \E((X-\mu)^2)
+\]</span> If we have two random variables <span class="math inline">\(X_\alpha\)</span> and <span class="math inline">\(X_\beta\)</span>, the covariance between these is <span class="math display">\[
+Cov(X_\alpha, X_\beta) = \E[(X_\alpha - \mu_\alpha)(X_\beta - \mu_\beta)]
+\]</span> - remember correlation (scaled covariance)??</p>
+</section>
+<section id="autocovariance-function" class="slide level2">
+<h2>Autocovariance function</h2>
+<p>The autocovariance function is defined as the second moment product <span class="math display">\[
+\gamma_x(s, t) = cov(x_s, x_t) = \E[(x_s - \mu_s)(x_t - \mu_t)]
+\]</span> for all <span class="math inline">\(s\)</span> and <span class="math inline">\(t\)</span>.</p>
+<ul>
+<li>When no confusion exists, we will drop the <span class="math inline">\(x\)</span> as with the mean function i.e.&nbsp;<span class="math inline">\(\gamma(s, t)\)</span> instead of <span class="math inline">\(\gamma_x(s, t)\)</span></li>
+<li>How can we write <span class="math inline">\(var(x_t)\)</span> in terms of <span class="math inline">\(\gamma\)</span>? <span class="math display">\[
+\gamma_x(t,t) = \E[(x_t - \mu_t)^2] = var(x_t)
+\]</span></li>
+</ul>
+</section>
+<section id="example-2.6-autocovariance-of-white-noise" class="slide level2">
+<h2>Example 2.6 Autocovariance of White Noise</h2>
+<p><span class="math inline">\(w_t\)</span> ⬅️ white noise series</p>
+<p><span class="math inline">\(\gamma_w(s, t) = cov(w_s, w_t) = \text{ }?\)</span></p>
+</section>
+<section id="example-2.6-autocovariance-of-white-noise-1" class="slide level2">
+<h2>Example 2.6 Autocovariance of White Noise</h2>
+<p><span class="math inline">\(w_t\)</span> ⬅️ white noise series</p>
+<p><span class="math inline">\(\gamma_w(s, t) = cov(w_s, w_t) =  \begin{cases} \sigma^2_w &amp; \text{ if } s = t\\ 0 &amp; \text{ if } s \ne t \end{cases}\)</span></p>
+</section>
+<section id="example-2.8-autocovariance-of-a-moving-average" class="slide level2">
+<h2>Example 2.8 Autocovariance of a Moving Average</h2>
+<p>Consider three point moving average <span class="math inline">\(v_t = \frac{1}{3}(w_{t-1} + w_t + w_{t+1})\)</span></p>
+<p><span class="math inline">\(\gamma_v(s, t) = cov(v_s, v_t) =  \begin{cases}a &amp; \text{ if } s = t\\ b &amp; \text{ if } \vert s-t \vert = 1 \\c&amp; \text{ if } \vert s-t \vert =2 \\ d &amp; \text{ if } \vert s - t\vert &gt; 2\end{cases}\)</span></p>
+<ul>
+<li>Which one of <span class="math inline">\(a, b, c, d\)</span> is 0</li>
+<li>Are <span class="math inline">\(a, b, c\)</span> the same? If not, which is largest?</li>
+</ul>
+</section>
+<section id="example-2.8-autocovariance-of-a-moving-average-1" class="slide level2">
+<h2>Example 2.8 Autocovariance of a Moving Average</h2>
+<p>Consider three point moving average <span class="math inline">\(v_t = \frac{1}{3}(w_{t-1} + w_t + w_{t+1})\)</span></p>
+<p><span class="math inline">\(\gamma_v(s, t) = cov(v_s, v_t) =  \begin{cases}\frac{3}{9}\sigma^2_w &amp; \text{ if } s = t\\ \frac{2}{9}\sigma^2_w &amp; \text{ if } \vert s-t \vert = 1 \\\frac{1}{9}\sigma^2_w &amp; \text{ if } \vert s-t \vert =2 \\0 &amp; \text{ if } \vert s - t\vert &gt; 2\end{cases}\)</span></p>
+<p>Does this equation make intuitive sense?</p>
+</section>
+<section id="example-2.9-autocovariance-of-a-random-walk" class="slide level2">
+<h2>Example 2.9 Autocovariance of a Random Walk</h2>
+<p><span class="math inline">\(x_t = \sum_{j = 1}^t w_j\)</span></p>
+<p><span class="math display">\[
+\gamma_x(s, t) = cov(x_s, x_t) = cov\left ( \sum_{j=1}^s w_j, \sum_{k = 1}^t w_k\right ) = \min\{s,t\}\sigma^2_w
+\]</span> If you waaaaant, property 2.7 and figuring out what <span class="math inline">\(\E(w_jw_k)\)</span> is for <span class="math inline">\(j \ne k\)</span></p>
+</section></section>
+<section>
+<section id="in-class-r-problems" class="title-slide slide level1 center">
+<h1>In-class R problems</h1>
+
+</section>
+<section id="r-example---moving-average-2" class="slide level2 smaller">
+<h2>R example - Moving Average</h2>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="co"># generate white noise</span></span>
+<span id="cb9-2"><a></a>n <span class="ot">=</span> <span class="dv">50</span></span>
+<span id="cb9-3"><a></a>w_t <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, <span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb9-4"><a></a></span>
+<span id="cb9-5"><a></a><span class="do">## manually lag terms</span></span>
+<span id="cb9-6"><a></a>w_t1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">NA</span>, w_t[<span class="dv">1</span><span class="sc">:</span>(n<span class="dv">-1</span>)])</span>
+<span id="cb9-7"><a></a>w_t2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="cn">NA</span>, w_t[<span class="dv">1</span><span class="sc">:</span>(n<span class="dv">-2</span>)])</span>
+<span id="cb9-8"><a></a></span>
+<span id="cb9-9"><a></a><span class="do">## manually compute MA(3)</span></span>
+<span id="cb9-10"><a></a>v_t <span class="ot">&lt;-</span> ?</span>
+<span id="cb9-11"><a></a></span>
+<span id="cb9-12"><a></a><span class="do">## compare the vectors</span></span>
+<span id="cb9-13"><a></a>ma_3 <span class="ot">&lt;-</span> <span class="fu">cbind</span>(v_t, w_t, w_t1, w_t2, w_t3)</span>
+<span id="cb9-14"><a></a><span class="fu">round</span>(ma_3, <span class="dv">3</span>)</span>
+<span id="cb9-15"><a></a></span>
+<span id="cb9-16"><a></a><span class="do">## also compute MA(3) using stats::filter</span></span>
+<span id="cb9-17"><a></a>v_t_alt <span class="ot">&lt;-</span> ?</span>
+<span id="cb9-18"><a></a>  </span>
+<span id="cb9-19"><a></a><span class="do">## plot both</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="r-example---moving-average-3" class="slide level2 smaller">
+<h2>R example - Moving Average</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="co"># generate white noise</span></span>
+<span id="cb10-2"><a></a>n <span class="ot">=</span> <span class="dv">50</span></span>
+<span id="cb10-3"><a></a>w_t <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, <span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb10-4"><a></a></span>
+<span id="cb10-5"><a></a><span class="do">## manually lag terms</span></span>
+<span id="cb10-6"><a></a>w_t1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">NA</span>, w_t[<span class="dv">1</span><span class="sc">:</span>(n<span class="dv">-1</span>)])</span>
+<span id="cb10-7"><a></a>w_t2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="cn">NA</span>, w_t[<span class="dv">1</span><span class="sc">:</span>(n<span class="dv">-2</span>)])</span>
+<span id="cb10-8"><a></a>w_t3 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, w_t[<span class="dv">1</span><span class="sc">:</span>(n<span class="dv">-3</span>)])</span>
+<span id="cb10-9"><a></a><span class="do">## manually compute MA(3)</span></span>
+<span id="cb10-10"><a></a>v_t <span class="ot">&lt;-</span> (w_t <span class="sc">+</span> w_t1 <span class="sc">+</span> w_t2 <span class="sc">+</span> w_t3)<span class="sc">/</span><span class="dv">4</span></span>
+<span id="cb10-11"><a></a></span>
+<span id="cb10-12"><a></a><span class="do">## compare the vectors</span></span>
+<span id="cb10-13"><a></a>ma_3 <span class="ot">&lt;-</span> <span class="fu">cbind</span>(v_t, w_t, w_t1, w_t2, w_t3)</span>
+<span id="cb10-14"><a></a><span class="fu">round</span>(ma_3, <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>         v_t    w_t   w_t1   w_t2   w_t3
+ [1,]     NA  1.063     NA     NA     NA
+ [2,]     NA  0.150  1.063     NA     NA
+ [3,]     NA -1.161  0.150  1.063     NA
+ [4,] -0.227 -0.958 -1.161  0.150  1.063
+ [5,] -0.619 -0.507 -0.958 -1.161  0.150
+ [6,] -0.807 -0.600 -0.507 -0.958 -1.161
+ [7,] -0.913 -1.587 -0.600 -0.507 -0.958
+ [8,] -0.710 -0.144 -1.587 -0.600 -0.507
+ [9,] -0.790 -0.827 -0.144 -1.587 -0.600
+[10,] -0.460  0.717 -0.827 -0.144 -1.587
+[11,]  0.041  0.419  0.717 -0.827 -0.144
+[12,]  0.198  0.483  0.419  0.717 -0.827
+[13,]  0.463  0.235  0.483  0.419  0.717
+[14,]  0.128 -0.624  0.235  0.483  0.419
+[15,] -0.186 -0.837 -0.624  0.235  0.483
+[16,]  0.053  1.438 -0.837 -0.624  0.235
+[17,]  0.271  1.107  1.438 -0.837 -0.624
+[18,]  0.512  0.342  1.107  1.438 -0.837
+[19,]  0.468 -1.014  0.342  1.107  1.438
+[20,]  0.577  1.871 -1.014  0.342  1.107
+[21,]  0.100 -0.802  1.871 -1.014  0.342
+[22,] -0.041 -0.221 -0.802  1.871 -1.014
+[23,]  0.402  0.758 -0.221 -0.802  1.871
+[24,]  0.390  1.823  0.758 -0.221 -0.802
+[25,]  0.661  0.282  1.823  0.758 -0.221
+[26,]  0.755  0.157  0.282  1.823  0.758
+[27,]  0.805  0.956  0.157  0.282  1.823
+[28,]  0.850  2.003  0.956  0.157  0.282
+[29,]  0.892  0.453  2.003  0.956  0.157
+[30,]  0.928  0.300  0.453  2.003  0.956
+[31,]  0.822  0.531  0.300  0.453  2.003
+[32,]  0.790  1.877  0.531  0.300  0.453
+[33,]  0.551 -0.503  1.877  0.531  0.300
+[34,]  0.239 -0.950 -0.503  1.877  0.531
+[35,]  0.383  1.110 -0.950 -0.503  1.877
+[36,] -0.425 -1.357  1.110 -0.950 -0.503
+[37,] -0.033  1.063 -1.357  1.110 -0.950
+[38,] -0.151 -1.422  1.063 -1.357  1.110
+[39,] -0.310  0.475 -1.422  1.063 -1.357
+[40,] -0.133 -0.647  0.475 -1.422  1.063
+[41,] -0.338  0.242 -0.647  0.475 -1.422
+[42,] -0.002 -0.077  0.242 -0.647  0.475
+[43,] -0.160 -0.159 -0.077  0.242 -0.647
+[44,] -0.031 -0.129 -0.159 -0.077  0.242
+[45,] -0.437 -1.383 -0.129 -0.159 -0.077
+[46,]  0.237  2.620 -1.383 -0.129 -0.159
+[47,] -0.023 -1.201  2.620 -1.383 -0.129
+[48,]  0.182  0.690 -1.201  2.620 -1.383
+[49,]  0.455 -0.290  0.690 -1.201  2.620
+[50,]  0.288  1.954 -0.290  0.690 -1.201</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="do">## also compute using stats::filter</span></span>
+<span id="cb12-2"><a></a>v_t_alt <span class="ot">&lt;-</span> stats<span class="sc">::</span><span class="fu">filter</span>(w_t, <span class="at">sides =</span> <span class="dv">2</span>, <span class="at">filter =</span> <span class="fu">rep</span>(<span class="fl">0.25</span>, <span class="at">times =</span> <span class="dv">4</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</div><div class="column" style="width:60%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="Lecture2_files/figure-revealjs/unnamed-chunk-14-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="Lecture2_files/figure-revealjs/unnamed-chunk-14-2.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="problem-1.1" class="title-slide slide level1 center">
+<h1>Problem 1.1</h1>
+
+</section>
+<section id="moving-averages-problem-1.1" class="slide level2">
+<h2>Moving Averages (Problem 1.1)</h2>
+<ul>
+<li>using a method similar to the code in Example 1.9, generate 100 observations from the autoregression <span class="math display">\[
+x_t = -0.9x_{t-2} + w_t\text{, }\\ w_t\sim N(0, 1)
+\]</span></li>
+<li>Write down an expression for <span class="math inline">\(\phi\)</span> for this autoregression. How is <span class="math inline">\(\phi\)</span> different from the autoregression in Example 1.9?</li>
+</ul>
+</section>
+<section id="moving-averages-problem-1.1-part-a" class="slide level2">
+<h2>Moving Averages (Problem 1.1 Part a)</h2>
+<ul>
+<li><p>Apply the moving average filter to the autoregression data you generated <span class="math display">\[
+v_t = (x_t + x_{t-1} + x_{t-2} + x_{t-4})
+\]</span></p></li>
+<li><p>Plot <span class="math inline">\(x_t\)</span> as points and lines and <span class="math inline">\(v_t\)</span> as a line.</p></li>
+</ul>
+</section>
+<section id="moving-averages-problem-1.1-1" class="slide level2">
+<h2>Moving Averages (Problem 1.1)</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">library</span>(astsa)</span>
+<span id="cb13-2"><a></a>w <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">150</span>,<span class="dv">0</span>,<span class="dv">1</span>) <span class="co"># 50 extra to avoid startup problems</span></span>
+<span id="cb13-3"><a></a>xa <span class="ot">=</span> <span class="fu">filter</span>(w, <span class="at">filter=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="sc">-</span>.<span class="dv">9</span>), <span class="at">method=</span><span class="st">"recursive"</span>)[<span class="sc">-</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>)] <span class="co"># AR</span></span>
+<span id="cb13-4"><a></a>va <span class="ot">=</span> <span class="fu">filter</span>(xa, <span class="fu">rep</span>(<span class="dv">1</span>,<span class="dv">4</span>)<span class="sc">/</span><span class="dv">4</span>, <span class="at">sides=</span><span class="dv">1</span>) <span class="co"># moving average</span></span>
+<span id="cb13-5"><a></a><span class="fu">tsplot</span>(xa, <span class="at">main=</span><span class="st">"autoregression"</span>, <span class="at">type =</span> <span class="st">"b"</span>, <span class="at">pch =</span> <span class="dv">16</span>)</span>
+<span id="cb13-6"><a></a><span class="fu">lines</span>(va, <span class="at">col=</span><span class="st">"blueviolet"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+</div>
+<img data-src="Lecture2_files/figure-revealjs/unnamed-chunk-15-1.png" width="960" class="r-stretch"></section>
+<section id="moving-averages-problem-1.1-part-b" class="slide level2">
+<h2>Moving Averages (Problem 1.1 part b)</h2>
+<ul>
+<li>Repeat the application of the MA filter but instead of starting with an autoregression, generate data <span class="math inline">\(x_t\)</span> according to the signal plus noise model <span class="math display">\[
+x_t = 2\cos(2\pi t/4) + w_t\\ w_t \sim N(0,1)
+\]</span></li>
+</ul>
+</section>
+<section id="moving-averages-problem-1.1-part-b-1" class="slide level2">
+<h2>Moving Averages (Problem 1.1 part b)</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>xb <span class="ot">=</span> <span class="dv">2</span><span class="sc">*</span><span class="fu">cos</span>(<span class="dv">2</span><span class="sc">*</span>pi<span class="sc">*</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>)<span class="sc">/</span><span class="dv">4</span>) <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">100</span>,<span class="dv">0</span>,<span class="dv">1</span>) <span class="co"># sinusoid + noise</span></span>
+<span id="cb14-2"><a></a>vb <span class="ot">=</span> <span class="fu">filter</span>(xb, <span class="fu">rep</span>(<span class="dv">1</span>,<span class="dv">4</span>)<span class="sc">/</span><span class="dv">4</span>, <span class="at">sides=</span><span class="dv">1</span>) <span class="co"># moving average</span></span>
+<span id="cb14-3"><a></a><span class="fu">tsplot</span>(xb, <span class="at">main=</span><span class="st">"sinusoid + noise"</span>, <span class="at">type =</span> <span class="st">"b"</span>, <span class="at">pch =</span> <span class="dv">16</span>)</span>
+<span id="cb14-4"><a></a><span class="fu">lines</span>(vb, <span class="at">col=</span><span class="st">"blueviolet"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+</div>
+<img data-src="Lecture2_files/figure-revealjs/unnamed-chunk-16-1.png" width="960" class="r-stretch"></section>
+<section id="moving-averages-problem-1.1-part-c" class="slide level2">
+<h2>Moving Averages (Problem 1.1 part c)</h2>
+<ul>
+<li>Repeat the application of the MA filter but instead of starting with an autoregression, use the Johnson and Johnson data from Lecture 1.</li>
+</ul>
+</section>
+<section id="moving-averages-problem-1.1-part-c-1" class="slide level2">
+<h2>Moving Averages (Problem 1.1 part c)</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>xc <span class="ot">=</span> <span class="fu">log</span>(jj)</span>
+<span id="cb15-2"><a></a>vc <span class="ot">=</span> stats<span class="sc">::</span><span class="fu">filter</span>(xc, <span class="at">filter =</span> <span class="fu">rep</span>(<span class="dv">1</span>,<span class="dv">4</span>)<span class="sc">/</span><span class="dv">4</span>, <span class="at">sides=</span><span class="dv">1</span>, <span class="at">method =</span> <span class="st">"convolution"</span>) <span class="co"># moving average</span></span>
+<span id="cb15-3"><a></a><span class="fu">tsplot</span>(xc, <span class="at">main=</span><span class="st">"johnson and johnson (log scale)"</span>, <span class="at">type =</span> <span class="st">"b"</span>, <span class="at">pch =</span> <span class="dv">16</span>)</span>
+<span id="cb15-4"><a></a><span class="fu">lines</span>(vc, <span class="at">col=</span><span class="st">"blueviolet"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+</div>
+<img data-src="Lecture2_files/figure-revealjs/unnamed-chunk-17-1.png" width="960" class="r-stretch"></section>
+<section id="stationarity" class="slide level2">
+<h2>Stationarity</h2>
+<p>A time series is stationary if</p>
+<ul>
+<li>the mean function (<span class="math inline">\(\mu_t\)</span>) is constant and does not depend on time <span class="math inline">\(t\)</span></li>
+<li>the autocovariance function (<span class="math inline">\(\gamma(s,t)\)</span>) depends on <span class="math inline">\(s\)</span> and <span class="math inline">\(t\)</span> only though their difference</li>
+</ul>
+</section>
+<section id="example-2.14-stationarity-of-a-random-walk" class="slide level2">
+<h2>Example 2.14 Stationarity of a Random Walk</h2>
+<p>Look, it’s our friend the random walk:</p>
+<p><span class="math display">\[
+x_t = \delta t + \sum_{j = 1}^t w_j
+\]</span> Their mean function is <span class="math inline">\(\E(x_t) = 0\)</span>, and their covariance function is <span class="math inline">\(\gamma_x(s, t) = \min\{s,t\}\sigma^2_w\)</span></p>
+<p>Is a random walk stationary?</p>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
 </div>
 </div>
-</section>
+</section></section>
     </div>
   </div>
 
@@ -397,7 +1285,7 @@ Julia Schedler
         progress: true,
 
         // Display the page number of the current slide
-        slideNumber: false,
+        slideNumber: 'c/t',
 
         // 'all', 'print', or 'speaker'
         showSlideNumber: 'all',
@@ -556,6 +1444,44 @@ Julia Schedler
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {
