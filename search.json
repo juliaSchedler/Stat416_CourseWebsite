@@ -395,6 +395,50 @@
     "text": "Coming up:\n\nAssignment 1 due at midnight\nAssignment 2 posted later\nPart of this will be involve “reading” the textbook! (collecting data on how you feel about the math)\nNext Lecture:\n\nRegression with time\nCross-correlation\nInducing stationarity"
   },
   {
+    "objectID": "LectureNotes/Lecture7.html",
+    "href": "LectureNotes/Lecture7.html",
+    "title": "Lecture 7",
+    "section": "",
+    "text": "Work in progress!",
+    "crumbs": [
+      "Week 4",
+      "Lecture 7"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture5.html",
+    "href": "LectureNotes/Lecture5.html",
+    "title": "Lecture 5 - Draft",
+    "section": "",
+    "text": "Work in progress!\n\n\n\n\n\n\nLecture5Template.qmd",
+    "crumbs": [
+      "Week 3",
+      "Lecture 5 - Draft"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture5.html#link-to-notes-template",
+    "href": "LectureNotes/Lecture5.html#link-to-notes-template",
+    "title": "Lecture 5 - Draft",
+    "section": "",
+    "text": "Lecture5Template.qmd",
+    "crumbs": [
+      "Week 3",
+      "Lecture 5 - Draft"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture5.html#last-time",
+    "href": "LectureNotes/Lecture5.html#last-time",
+    "title": "Lecture 5 - Draft",
+    "section": "## Last time",
+    "text": "## Last time",
+    "crumbs": [
+      "Week 3",
+      "Lecture 5 - Draft"
+    ]
+  },
+  {
     "objectID": "LectureNotes/Lecture3.html",
     "href": "LectureNotes/Lecture3.html",
     "title": "Lecture 3",
@@ -730,6 +774,17 @@
     "title": "Lecture 3",
     "section": "Activity 5 (solution)",
     "text": "Activity 5 (solution)\nUse Lecture3Template.qmd",
+    "crumbs": [
+      "Week 2",
+      "Lecture 3"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture3.html#questions-on-the-quiz",
+    "href": "LectureNotes/Lecture3.html#questions-on-the-quiz",
+    "title": "Lecture 3",
+    "section": "Questions on the quiz?",
+    "text": "Questions on the quiz?",
     "crumbs": [
       "Week 2",
       "Lecture 3"
@@ -1191,7 +1246,7 @@
     "href": "LectureNotes/Lecture2.html#notation-and-data--white-noise",
     "title": "Lecture 2",
     "section": "Notation and Data- White noise",
-    "text": "Notation and Data- White noise\n“Let \\(w_t\\) be a white noise series”\n\n\n\nt\nRandom Variable\nExample data\n\n\n\n\n1\n\\(w_1 \\sim N(0, \\sigma_w^2)\\)\n0.4537309\n\n\n2\n\\(w_2 \\sim N(0, \\sigma_w^2)\\)\n0.5015399\n\n\n\n\\(\\vdots\\)\n\\(\\vdots\\)\n\n\nt\n\\(w_t \\sim N(0, \\sigma^2_w)\\)\n-1.0726009\n\n\n\\(\\vdots\\)\n\\(\\vdots\\)\n\\(\\vdots\\)\n\n\nn\n\\(w_n \\sim N(0, \\sigma_w^2)\\)\n-0.4561074\n\n\n\nIf we interpret the collection of \\(w_t\\) as a random vector, then \\(w_t \\sim MVN(\\vec{0}, I)\\) (why \\(I\\)?)\nNote: sometimes \\(w_t\\) could mean a (univariate) value of a white noise series for a particular time \\(t\\) (kind of like how you refer to an arbitrary \\(x_i\\) when you have a sample \\(x_1, \\dots, x_n\\)).",
+    "text": "Notation and Data- White noise\n“Let \\(w_t\\) be a white noise series”\n\n\n\nt\nRandom Variable\nExample data\n\n\n\n\n1\n\\(w_1 \\sim N(0, \\sigma_w^2)\\)\n-0.9841784\n\n\n2\n\\(w_2 \\sim N(0, \\sigma_w^2)\\)\n2.034709\n\n\n\n\\(\\vdots\\)\n\\(\\vdots\\)\n\n\nt\n\\(w_t \\sim N(0, \\sigma^2_w)\\)\n1.1154907\n\n\n\\(\\vdots\\)\n\\(\\vdots\\)\n\\(\\vdots\\)\n\n\nn\n\\(w_n \\sim N(0, \\sigma_w^2)\\)\n0.1977007\n\n\n\nIf we interpret the collection of \\(w_t\\) as a random vector, then \\(w_t \\sim MVN(\\vec{0}, I)\\) (why \\(I\\)?)\nNote: sometimes \\(w_t\\) could mean a (univariate) value of a white noise series for a particular time \\(t\\) (kind of like how you refer to an arbitrary \\(x_i\\) when you have a sample \\(x_1, \\dots, x_n\\)).",
     "crumbs": [
       "Week 1",
       "Lecture 2"
@@ -1877,6 +1932,28 @@
     "crumbs": [
       "Week 2",
       "Lecture 4"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture6.html",
+    "href": "LectureNotes/Lecture6.html",
+    "title": "Lecture 6",
+    "section": "",
+    "text": "Work in progress!",
+    "crumbs": [
+      "Week 3",
+      "Lecture 6"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture8.html",
+    "href": "LectureNotes/Lecture8.html",
+    "title": "Lecture 8",
+    "section": "",
+    "text": "Work in progress!",
+    "crumbs": [
+      "Week 4",
+      "Lecture 8"
     ]
   },
   {
