@@ -18,6 +18,7 @@ filters:
 
 ::: {.callout-note collapse="true" appearance="simple" icon="false"}
 ## Link to Notes Template
+
 [Lecture3Template.qmd](ActivityTemplates/Lecture3Template.qmd)
 :::
 
@@ -425,7 +426,7 @@ axis(1, at=seq(-5, 5, by=2))
 
 Use `Lecture3Template.qmd`
 
-# Questions on the quiz?
+## Questions on the quiz?
 
 ## Activity 6 (Problem 2.3) {.smaller}
 

@@ -1,1 +1,23 @@
+---
+title: "Lecture 5 - Draft"
+author: Julia Schedler
+format: 
+  html: 
+    code-fold: show
+slide-number: true
+scrollable: true
+filters: 
+  - timer
+---
 
+::: {.callout-note collapse="true" appearance="simple" icon="false"}
+
+# Work in progress!
+
+## Link to Notes Template
+
+[Lecture5Template.qmd](ActivityTemplates/Lecture5Template.qmd)
+:::
+
+## Last time
+- 

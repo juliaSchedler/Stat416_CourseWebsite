@@ -1,1 +1,13 @@
+---
+title: "Lecture 8"
+author: Julia Schedler
+format: 
+  html: 
+    code-fold: show
+slide-number: true
+scrollable: true
+filters: 
+  - timer
+---
 
+Work in progress!
