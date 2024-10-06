@@ -6,13 +6,12 @@ slide-number: true
 scrollable: true
 ---
 
+## Recap from last time
 ::: hidden
 $$
 \newcommand\E{{\mathbb{E}}}
 $$
 :::
-
-## Recap from last time
 
 -   Several examples of time series data sets
 

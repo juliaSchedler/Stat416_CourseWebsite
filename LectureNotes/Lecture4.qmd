@@ -18,6 +18,7 @@ filters:
 
 ::: {.callout-note collapse="true" appearance="simple" icon="false"}
 ## Link to Notes Template
+
 [Lecture4Template.qmd](ActivityTemplates/Lecture4Template.qmd)
 :::
 

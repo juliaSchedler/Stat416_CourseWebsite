@@ -1,5 +1,6 @@
+
 ---
-title: "Lecture 4"
+title: "Moving average autocovariance"
 author: Julia Schedler
 format: revealjs
 slide-number: true
@@ -17,13 +18,11 @@ Time <- 10
 n_sim <- 100
 all_series = matrix(rep(NA, times = n_sim*Time), nrow = Time)
 for(i in 1:n_sim){
-  cs = 0.25*1:Time        # same thing 
-  w  = rnorm(Time + 50,0,1)
-  #w_dep = stats::filter(w, filter = rep(1/3,3))[2:(Time + 1)]
-  #all_series[,i] <- cs + w_dep
-  all_series[,i] <- cs + w[2:(Time+1)]
-  #names(all_series)[i] <- paste("sim_", i)
-  
+  w  = rnorm(Time)  ## Gaussian white noise
+  x  = cumsum(w)
+  wd = w +.3 
+  xd = cumsum(wd)
+  all_series[,i] <- xd
 }
 fit <- lm(all_series[,1]~time(all_series[,1]), na.action=NULL)
 tsplot(all_series[,1], main = "One simulated Time series", type = "b", col = c("black", "blue", rep("black", times = 5), "magenta", "black", "black"), pch = 16, cex = 3)
@@ -299,4 +298,88 @@ plot(x_comp, x_8_all, col = "purple", pch = 16, main = "Joint Distribution")
 abline(lm(x_8_all~x_comp))
 plot(1:10, rep(1, times = 10), pch = "", axes = F, xlab = "", ylab = "")
 text(x = 5, y = 1, cex = 2, label = paste("gamma(", "i",", 8) = \n cor(x_",i,",x_8) = \n ", round(cor(x_comp,x_8_all),3) ))
+```
+
+## Visualizing the correlations
+
+```{r}
+#| code-fold: true
+cors <- apply(all_series, 1, function(x){cor(x, all_series[8,])})
+hist(cors, breaks = seq(-1, 1, by = .1), main = "Correlation between simulations for x_8 and x_i")
+```
+
+## Are these all the correlations?
+
+No, just pairwise with $x_8$. We could do all possible pairs:
+
+```{r}
+#| code-fold: true
+library(GGally)
+ggpairs(data.frame(t(all_series)))
+```
+
+## Distribution of all the correlations:
+
+```{r}
+#| code-fold: true
+coords <- t(combn(10,2))
+cors <- NULL
+for(i in 1:nrow(coords)){
+  cors <- c(cors, cor(all_series[coords[i,1],], all_series[coords[i,2],]))
+}
+cors <- c(cors, rep(1, times = 10))
+hist(cors, breaks = seq(-1, 1, by = .1), main = "Correlation between simulations for x_s and x_t")
+```
+
+# 3D plots
+
+## 3D version of histogram (includes $s-t$ plane)
+
+```{r}
+#| code-fold: true
+coords <- expand.grid(1:Time, 1:Time)
+names(coords) <- c("s", "t") 
+coords$cor <- NA
+coords$pval <- NA
+cor_mat_theoretical <- cor_mat <- matrix(rep(NA, times = Time*Time), nrow = Time)
+for(i in 1:nrow(coords)){
+  out <- cor.test((all_series[coords[i,1],]), (all_series[coords[i,2],]))
+  if(coords[i,1]==coords[i,2]){
+    coords$cor[i] <- 1
+    coords$pval[i] <- 0
+    cor_mat[coords[i,1], coords[i,2]] <- 1
+    cor_mat_theoretical[coords[i,1], coords[i,2]] <- 1
+  }else{
+    coords$cor[i] <- out$estimate
+    coords$pval[i] <- out$p.value
+    cor_mat[coords[i,1], coords[i,2]] <- out$estimate
+    cor_mat_theoretical[coords[i,1], 
+                        coords[i,2]] <- min(coords[i,1], coords[i,2])/(coords[i,1]*coords[i,2]*1) ##sigma^2_2 = 1
+    
+  }
+}
+
+library(plotly)
+plot_ly(coords,
+        x= ~s, y=~t, z=~cor, 
+        type = 'scatter3d', mode = "markers", size = .1)
+```
+
+## [Simulated auto correlation function $\hat{\gamma}_x(h)$ (with a blanket)]{.r-fit-text}
+
+```{r}
+#| code-fold: true
+## "drape a blanket over it to see the pattern better"
+fig <- plot_ly(z = ~cor_mat)
+fig %>% add_surface()
+```
+
+## [Theoretical $\hat{\gamma}_x(h)$ (using the derived formula (with a blanket)]{.r-fit-text}
+
+```{r}
+#| code-fold: true
+# Theoretical function
+fig <- plot_ly(z = ~cor_mat_theoretical)
+fig %>% add_surface()
+
 ```

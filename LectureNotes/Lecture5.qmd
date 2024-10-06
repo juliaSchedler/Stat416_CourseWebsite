@@ -2,22 +2,136 @@
 title: "Lecture 5 - Draft"
 author: Julia Schedler
 format: 
-  html: 
+  revealjs: 
     code-fold: show
 slide-number: true
+execute: 
+  eval: false
 scrollable: true
 filters: 
   - timer
 ---
 
+# These notes are a Work in progress!
+
+
 ::: {.callout-note collapse="true" appearance="simple" icon="false"}
-
-# Work in progress!
-
 ## Link to Notes Template
 
 [Lecture5Template.qmd](ActivityTemplates/Lecture5Template.qmd)
 :::
 
 ## Last time
-- 
+- Trend Stationarity model
+- Salmon price example
+- Simulating a time series to understand the autocovariance function
+
+## Today
+- Time series at ENVR Conference
+- Detrending
+- Cross-correlation and regression with multiple time series ($x_t$ on x-axis instead of $t$ on x-axis like with the salmon)
+- Activities and examples
+- Smoothing
+
+# Time series at the ENVR Conference
+- Is a trend necessarily linear?
+- Stationarity
+- Covariance functions
+- Uncertainty estimates
+- Nice visuals!
+
+# Detrending
+
+## Detrending
+
+If a process is trend stationary (nonstationary in the mean, but stationary in the variance), can we just subtract off the trend and get back a stationary time series?
+
+Yes, and that's called **detrending**
+
+## [Activity 1: Detrending a commodity (Example 3.7)]{.r-fit-text} {.smaller}
+
+-   Given the code to generate the plot with the trend line, how would you view the equation of the trend line?
+-   Visualize the de-trended series
+-   Compute the acf of the salmon series and the detrended series. What do you notice?
+
+## Activity 1 Solutions
+
+
+## Visualizing the autocorrelation function
+Recall our setup of visualizing the trend stationary model
+
+## Todo gif of the samples for stationary
+- upper left: selected series
+- upper right: correlation
+- bottom: marginals
+- do the "dot on the plot" approach 
+
+## re-do visualizations for other covariance functions we have seen that are non-stationary
+
+## what if you have two time series?
+
+## spurious correlations
+
+## Wastewater example
+(case counts and covid)
+
+## Activity 3 (lynx and hare?)
+
+## Cross Correlation function 
+
+## Activity 4: ccf of lynx and hare
+- plot
+- interpret
+
+## Activity 5 (another one)
+
+## Time series based on physical models
+two time series of two diseases
+
+
+
+## [Activity 2: Pollution, Temperature, Mortality in LA County]{.r-fit-text}
+
+```{r}
+#| label: activity-2
+
+library(astsa)
+
+par(mfrow=c(3,1))
+tsplot(cmort, main="Cardiovascular Mortality", col=6, type="o", pch=19, ylab="")
+tsplot(tempr, main="Temperature", col=4, type="o", pch=19, ylab="")
+tsplot(part, main="Particulates", col=2, type="o", pch=19, ylab="")
+
+
+```
+1. Describe the trend behavior of each of the time series.lap.xts
+2. Describe the similarities between each pair of time series.
+3. Pose a research question that could be answered using these data.
+
+## Activity 2 Solutions
+1. Describe the trend behavior of each of the time series.
+All three of the series display clear seasonality. 
+2. Describe the similarities between each pair of time series.
+3. Pose a research question that could be answered using these data.
+## [Activity 2: Pollution, Temperature, Mortality in LA County, continued]{.r-fit-text}]
+```{r}
+par(mfrow=c(3,1))
+tsplot(cmort,  ## original
+       main="Cardiovascular Mortality", col=6, type="o", pch=19, ylab="") 
+tsplot(stats::filter(lap.xts[,3], sides = 1, 
+                     filter = rep(1/6, 6), method = "convolution"), 
+       main="Cardiovascular Mortality", col=6, type="o", pch=19, ylab="") ## 6 day moving average
+OUT = apply.weekly(lap.xts, FUN=colMeans)$Cmort
+tsplot(ts(OUT$Cmort[15:523]), 
+       main="Cardiovascular Mortality", col=6, type="o", pch=19, ylab="") ## 6 day moving average
+
+
+
+tsplot(stats::filter(lap.xts[,3], filter = rep(1/6, 6), method = "convolution")) 
+
+
+tsplot(cmort, main="Cardiovascular Mortality", col=6, type="o", pch=19, ylab="")
+tsplot(tempr, main="Temperature", col=4, type="o", pch=19, ylab="")
+tsplot(part, main="Particulates", col=2, type="o", pch=19, ylab="")
+
+```
