@@ -2,19 +2,21 @@
 title: "Lecture 5 - Draft"
 author: Julia Schedler
 format: 
-  revealjs: 
+  html: 
     code-fold: show
 slide-number: true
 execute: 
   eval: false
 scrollable: true
-filters: 
-  - timer
 ---
 
-# These notes are a Work in progress!
 
-
+## Link to template
+::: hidden
+$$
+\newcommand\E{{\mathbb{E}}}
+$$
+:::
 ::: {.callout-note collapse="true" appearance="simple" icon="false"}
 ## Link to Notes Template
 
@@ -29,109 +31,243 @@ filters:
 ## Today
 - Time series at ENVR Conference
 - Detrending
-- Cross-correlation and regression with multiple time series ($x_t$ on x-axis instead of $t$ on x-axis like with the salmon)
-- Activities and examples
-- Smoothing
+- Activities 
+- Differencing
+
+## A look ahead{.smaller}
+- Weeks 1-2: terminology of time series models, working with various R functions relating to time series (Chapters 1-2)
+- **Week 3: Trends, trends, trends (smoothing) (Chapters 2-3 in Shumway and Stoffer, Ch 8 in FPP) **
+- Week 4: Time series regression (trends that depend on predictor variables), Forecasting (Chapter 5 and 7 in FPP)
+- Week 5: Time series data science process, and midterm (Chapter 5 in FPP, various parts in Shumway and Stoffer)
+- Week 6: Partial correlation and ARMA models (Chapter 4 in Shumway and Stoffer)
+- Week 7: ARIMA models (what they are, when to use them, and how to know if yours is trash) (Chapter 4 in Shumway and Stoffer, Chapter 9 in FPP)
+- Week 8: Cross-correlation and Multiple time series (Ch 2, Ch 3 in Shumway and Stoffer)
+- Week 9: Wiggle room/class choice 
+- Week 10: Wiggle room/class choice
+
 
 # Time series at the ENVR Conference
-- Is a trend necessarily linear?
-- Stationarity
-- Covariance functions
-- Uncertainty estimates
-- Nice visuals!
+
+
+## Is a "trend" necessarily linear?
+::: {.incremental}
+- Oh no, I have to talk to the intimidating experts
+- The very first talk: "A trend doesn't have to be linear"- Robert Lund
+- The penultimate talk: "seasonal trend"
+:::
+Conclusion:
+
+::: {.incremental}
+- Nope! Seems like "trend" = "mean function"
+:::
+
+
+
+## [Lots of examples of vocab we've learned...]{.r-fit-text}
+
+## Notes on Robert Lund's Talk
+![](images/IMG_0625.jpg)
+
+## Notes on Robert Lund's Talk
+![](images/IMG_0626.jpg)
+
+## Notes from Matthias Katzfuss's talk
+![](images/IMG_0621.jpg)
+
+## Notes from Dan Cooley's talk
+![Math anxiety rating: 70, 🫥👹🧎‍♀️‍➡️](images/IMG_0622.jpg)
+
+## Notes from Dan Cooley's talk
+![](images/IMG_0618.jpg)
 
 # Detrending
 
-## Detrending
+## Detrending{.smaller}
 
 If a process is trend stationary (nonstationary in the mean, but stationary in the variance), can we just subtract off the trend and get back a stationary time series?
 
-Yes, and that's called **detrending**
+Sometimes (assuming we are able to estimate it), and that's called **detrending**.
+
+
+## Goal: 
+
+Assuming trend stationarity ($x_t = \mu_t + y_t$, where $y_t$ is stationary), find an estimate $\widehat{\mu}_t$ and compute 
+
+$$
+\begin{align}
+\widehat{y_t} &= x_t - \widehat{\mu_t}\\
+\text{Estimated Stationary process} &= \text{Data - trend estimate}
+\end{align}
+$$
+Note: Does $y_t$ remind you of anything from regression?
+
+## Example: Subtracting off the trend{.smaller}
+
+::: {.columns}
+::: {.column width="30%"}
+- Dark yellow line: the trend estimate
+- black: The observed data 
+- shaded region: 95% confidence bands on trend estimates.
+
+Can we make the time series stationary by subtracting off the trend?
+:::
+
+::: {.column width="70%"}
+![](images/TREND.png)
+:::
+
+:::
+
+
+
+
+
+## Example: Subtracting off the trend
+
+Does this time series appear stationary? In the mean, yes.
+
+![](images/DIFF.png)
+
+## Example: Subtracting off the trend
+
+Have we captured the temporal structure in the time series? Yes (note: we will learn about ACF hypothesis tests/p-values during the "time series data analysis process")
+
+![](images/acf.png)
+
+## Aside: managing a time series project code base
+
+- I manage the [ GitHub for Houston Wastewater Epidemiology](https://github.com/hou-wastewater-epi-org/online_trend_estimation/)
+- Check out the "issues"
+- Section 1: Demo adding new issue ("basic" time series methods)
+- Section 2: Demo adding new issue (link to definition of online estimation)
+
 
 ## [Activity 1: Detrending a commodity (Example 3.7)]{.r-fit-text} {.smaller}
 
 -   Given the code to generate the plot with the trend line, how would you view the equation of the trend line?
--   Visualize the de-trended series
+-   Visualize the de-trended series. Does it appear stationary?
 -   Compute the acf of the salmon series and the detrended series. What do you notice?
 
-## Activity 1 Solutions
+::: {#Activity1 .timer seconds="300" starton="interaction"}
+:::
+
+## Activity 1 Solutions {.smaller}
+ Use `Lecture5Template.qmd`
+ 
+## [Activity 2: "assuming we are able to estimate it"]{.r-fit-text}
+
+- Look at pages 37-41 of the textbook
+- what is "it" in this context? (what are we estimating?)
+- If this is review, where did you first see these ideas?
+- Put a dot on the math anxiety rating distribution on the back board
 
 
-## Visualizing the autocorrelation function
-Recall our setup of visualizing the trend stationary model
+## [Activity 2 [Solutions]{style="color:green;"}: "assuming we are able to estimate it"]{.r-fit-text}{.smaller}
 
-## Todo gif of the samples for stationary
-- upper left: selected series
-- upper right: correlation
-- bottom: marginals
-- do the "dot on the plot" approach 
-
-## re-do visualizations for other covariance functions we have seen that are non-stationary
-
-## what if you have two time series?
-
-## spurious correlations
-
-## Wastewater example
-(case counts and covid)
-
-## Activity 3 (lynx and hare?)
-
-## Cross Correlation function 
-
-## Activity 4: ccf of lynx and hare
-- plot
-- interpret
-
-## Activity 5 (another one)
-
-## Time series based on physical models
-two time series of two diseases
+Use `Lecture5Template.qmd`
 
 
+# Differencing
 
-## [Activity 2: Pollution, Temperature, Mortality in LA County]{.r-fit-text}
+## Motivation/model{.smaller}
+Consider the trend stationary model ($y_t$ is stationary).
+$$
+x_t = \mu_t + y_t
+$$
+We saw how to estimate a *fixed* trend using a linear regression for the mean ($\mu_t = \beta_0 + \beta_1t$)
+
+We then subtract off the estimate of the trend (detrend), $\widehat{\mu_t}$ so that we are working with a stationary time series:
+
+$$
+\widehat{y_t} = x_t - \widehat{\mu_t}
+$$
+
+What if the trend was not fixed? (dependent on $t$ beyond just "$t$ as a constant")
+
+## A stochastic trend model
+Change the model for the mean to incorporate a stochastic component (random walk with drift):
+
+$$
+\mu_t = \delta + \mu_{t-1} + w_t
+$$
+Where $w_t$ is white noise independent of $y_t$.
+
+Is $\mu_t$ stationary? No (it's a random walk, nonstationary in both mean and covariance)
+
+## How to "get back" to a stationary time series?
+Since the stochastic component depends on just one past time point, consider the series $x_t - x_{t-1}$.
+
+This series is called the **differenced** series and the process is called **differencing**.
+
+## [Computing the difference series in terms of the (stochastic) trend model]{.r-fit-text}
+
+$$
+\begin{align}
+x_{t} - x_{t-1} &= (\mu_t + y_t) - (\mu_{t-1} - y_{t-1})\\
+&= (\delta + \mu_{t-1} + w_t + y_t) - (\mu_{t-1} - y_{t-1})\\
+& = \delta + w_t + y_t - y_{t-1}
+\end{align}
+$$
+Need to compute mean function $\E(x_t - x_{t-1}$ and autocovariance function $cov(x_t - x_{t-1}, x_s- x_{s-1})$ and check if they do not depend on $t$ (mean) and just depend on the lag $h = s-t$.
+
+...But the answer is we do get a stationary series!
+
+## [Activity 3: Simulating a random walk and then differencing it]{.r-fit-text}
+
+1. Simulate a random walk with no drift and plot it. 
 
 ```{r}
-#| label: activity-2
+#| eval: false
 
-library(astsa)
-
-par(mfrow=c(3,1))
-tsplot(cmort, main="Cardiovascular Mortality", col=6, type="o", pch=19, ylab="")
-tsplot(tempr, main="Temperature", col=4, type="o", pch=19, ylab="")
-tsplot(part, main="Particulates", col=2, type="o", pch=19, ylab="")
-
-
+## Simulate random walk w/ drift
+## your code here 
 ```
-1. Describe the trend behavior of each of the time series.lap.xts
-2. Describe the similarities between each pair of time series.
-3. Pose a research question that could be answered using these data.
-
-## Activity 2 Solutions
-1. Describe the trend behavior of each of the time series.
-All three of the series display clear seasonality. 
-2. Describe the similarities between each pair of time series.
-3. Pose a research question that could be answered using these data.
-## [Activity 2: Pollution, Temperature, Mortality in LA County, continued]{.r-fit-text}]
+2. Use the `diff` function to difference the simulated series. Plot the result.
 ```{r}
-par(mfrow=c(3,1))
-tsplot(cmort,  ## original
-       main="Cardiovascular Mortality", col=6, type="o", pch=19, ylab="") 
-tsplot(stats::filter(lap.xts[,3], sides = 1, 
-                     filter = rep(1/6, 6), method = "convolution"), 
-       main="Cardiovascular Mortality", col=6, type="o", pch=19, ylab="") ## 6 day moving average
-OUT = apply.weekly(lap.xts, FUN=colMeans)$Cmort
-tsplot(ts(OUT$Cmort[15:523]), 
-       main="Cardiovascular Mortality", col=6, type="o", pch=19, ylab="") ## 6 day moving average
+#| eval: false
+# your code here
+```
+3. Does this series appear stationary? How do you know? 
+4. Visualize the ACF of the differenced series. Does it look like white noise?
+```{r}
+#| eval: false
+# your code here
+```
 
+## [Activity 4: Differencing Salmon Prices]{.r-fit-text}
+1. Compute and plot the differenced salmon series. 
 
+```{r}
+#| eval: false
+# your code here
+```
 
-tsplot(stats::filter(lap.xts[,3], filter = rep(1/6, 6), method = "convolution")) 
+2. Does the series appear stationary?
+3. Visualize the acf of the differenced series. Does it look like white noise?
+```{r}
+#| eval: true
+```
 
+## [Activity 5: Comparing Differencing and Detrending]{.r-fit-text}
+Compare the Acfs of the differenced and detrended salmon series. What do you notice?
+```{r}
+#| eval: false
 
-tsplot(cmort, main="Cardiovascular Mortality", col=6, type="o", pch=19, ylab="")
-tsplot(tempr, main="Temperature", col=4, type="o", pch=19, ylab="")
-tsplot(part, main="Particulates", col=2, type="o", pch=19, ylab="")
+# your code here
+```
 
+## Next time: Smoothing
+We've seen three explicity ways of modeling a trend (moving average (hw 1), and regression with time and random walk). 
+
+How else could we model a trend? 
+
+## Visual example:
+
+```{r}
+#| code-fold: show
+
+tsplot(soi, col=4)
+lines(ksmooth(time(soi), soi, "normal", bandwidth=1), lwd=2, col=6)
+par(fig = c(.65, 1, .75, 1), new = TRUE) # the insert
+curve(dnorm, -3, 3,  xaxt='n', yaxt='n', ann=FALSE)
 ```

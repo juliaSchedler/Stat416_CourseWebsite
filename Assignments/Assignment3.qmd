@@ -1,0 +1,16 @@
+Math
+
+1.  backwards shift operator
+
+Code
+
+1.  problem 3.7
+2.  Problem 3.8
+3.  Problem 3.1 (and 3.9)
+4.  compare trend function in astsa
+
+Reading
+
+again compare to forecasting principles and practice
+
+look at documentation of a smoothing function to get more insight into estimation

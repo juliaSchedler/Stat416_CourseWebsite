@@ -1,0 +1,9 @@
+Recall our setup of visualizing the trend stationary model
+
+## Todo gif of the samples for stationary
+- upper left: selected series
+- upper right: correlation
+- bottom: marginals
+- do the "dot on the plot" approach 
+
+## re-do visualizations for other covariance functions we have seen that are non-stationary
