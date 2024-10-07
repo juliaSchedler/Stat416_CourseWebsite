@@ -1,1 +1,88 @@
+---
+title: "Lecture 5 - Draft"
+author: Julia Schedler
+format: 
+  html: 
+    code-fold: show
+slide-number: true
+execute: 
+  eval: false
+scrollable: true
+---
 
+## [Activity 1: Detrending a commodity (Example 3.7)]{.r-fit-text} {.smaller}
+
+-   Given the code to generate the plot with the trend line, how would you view the equation of the trend line?
+
+```{r}
+#| eval: true
+
+```
+-   Visualize the de-trended series. Does it appear stationary?
+
+```{r}
+#| eval: false
+
+## your code here
+```
+-   Compute the acf of the salmon series and the detrended series. What do you notice?
+```{r}
+#| eval: false 
+
+## your code here
+
+
+```
+
+
+## [Activity 2: "assuming we are able to estimate it"]{.r-fit-text}
+
+-   Look at pages 37-41 of the textbook
+-   what is "it" in this context? (what are we estimating?)
+-   If this is review, where did you first see these ideas?
+-   Put a dot on the math anxiety rating distribution on the back board
+
+
+## [Activity 3: Simulating a random walk and then differencing it]{.r-fit-text}
+1. Simulate a random walk with no drift and plot it. 
+
+```{r}
+#| eval: false
+
+## Simulate random walk w/ drift
+## your code here 
+```
+2. Use the `diff` function to difference the simulated series. Plot the result.
+```{r}
+#| eval: false
+# your code here
+```
+3. Does this series appear stationary? How do you know? 
+4. Visualize the ACF of the differenced series. Does it look like white noise?
+```{r}
+#| eval: false
+# your code here
+```
+
+
+## [Activity 4: Differencing Salmon Prices]{.r-fit-text}
+1. Compute and plot the differenced salmon series. 
+
+```{r}
+#| eval: false
+# your code here
+```
+
+2. Does the series appear stationary?
+3. Visualize the acf of the differenced series. Does it look like white noise?
+```{r}
+#| eval: true
+```
+
+## [Activity 5: Comparing Differencing and Detrending]{.r-fit-text}
+Compare the Acfs of the differenced and detrended salmon series. What do you notice?
+```{r}
+#| eval: false
+
+# your code here
+```

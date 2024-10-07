@@ -13,7 +13,7 @@
   <meta name="generator" content="quarto-1.4.555">
 
   <meta name="author" content="Julia Schedler">
-  <title>Fall 24 Stat 416 Lecture Notes - Moving average autocovariance</title>
+  <title>Fall 24 Stat 416 Lecture Notes - Lecture 5 - Draft</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -323,22 +323,13 @@
       margin-right: 0; 
     }
   </style>
-  <link href="../../../site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
-  <script src="../../../site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
-  <script src="../../../site_libs/plotly-binding-4.10.4/plotly.js"></script>
-  <script src="../../../site_libs/typedarray-0.1/typedarray.min.js"></script>
-  <script src="../../../site_libs/jquery-3.5.1/jquery.min.js"></script>
-  <link href="../../../site_libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
-  <script src="../../../site_libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
-  <link href="../../../site_libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
-  <script src="../../../site_libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
 </head>
 <body class="quarto-light">
   <div class="reveal">
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Moving average autocovariance</h1>
+  <h1 class="title">Lecture 5 - Draft</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -349,135 +340,370 @@ Julia Schedler
 </div>
 
 </section>
+<section id="link-to-template" class="slide level2">
+<h2>Link to template</h2>
+<div class="hidden">
+<p><span class="math display">\[
+\newcommand\E{{\mathbb{E}}}
+\]</span></p>
+</div>
+<div class="callout callout-note no-icon callout-titled callout-style-simple">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Link to Notes Template</strong></p>
+</div>
+<div class="callout-content">
+<p><a href="ActivityTemplates/Lecture5Template.qmd">Lecture5Template.qmd</a></p>
+</div>
+</div>
+</div>
+</section>
+<section id="last-time" class="slide level2">
+<h2>Last time</h2>
+<ul>
+<li>Trend Stationarity model</li>
+<li>Salmon price example</li>
+<li>Simulating a time series to understand the autocovariance function</li>
+</ul>
+</section>
+<section id="today" class="slide level2">
+<h2>Today</h2>
+<ul>
+<li>Time series at ENVR Conference</li>
+<li>Detrending</li>
+<li>Activities</li>
+<li>Differencing</li>
+</ul>
+</section>
+<section id="a-look-ahead" class="slide level2 smaller">
+<h2>A look ahead</h2>
+<ul>
+<li>Weeks 1-2: terminology of time series models, working with various R functions relating to time series (Chapters 1-2)</li>
+<li><strong>Week 3: Trends, trends, trends (smoothing) (Chapters 2-3 in Shumway and Stoffer, Ch 8 in FPP)</strong></li>
+<li>Week 4: Time series regression (trends that depend on predictor variables), Forecasting (Chapter 5 and 7 in FPP)</li>
+<li>Week 5: Time series data science process, and midterm (Chapter 5 in FPP, various parts in Shumway and Stoffer)</li>
+<li>Week 6: Partial correlation and ARMA models (Chapter 4 in Shumway and Stoffer)</li>
+<li>Week 7: ARIMA models (what they are, when to use them, and how to know if yours is trash) (Chapter 4 in Shumway and Stoffer, Chapter 9 in FPP)</li>
+<li>Week 8: Cross-correlation and Multiple time series (Ch 2, Ch 3 in Shumway and Stoffer)</li>
+<li>Week 9: Wiggle room/class choice</li>
+<li>Week 10: Wiggle room/class choice</li>
+</ul>
+</section>
 <section>
-<section id="simulations" class="title-slide slide level1 center">
-<h1>Simulations</h1>
+<section id="time-series-at-the-envr-conference" class="title-slide slide level1 center">
+<h1>Time series at the ENVR Conference</h1>
 
-<img data-src="index_files/figure-revealjs/unnamed-chunk-1-1.png" width="960" class="r-stretch"></section>
-<section id="all-simulated-time-series" class="slide level2">
-<h2>All Simulated Time Series</h2>
+</section>
+<section id="is-a-trend-necessarily-linear" class="slide level2">
+<h2>Is a “trend” necessarily linear?</h2>
+<div>
+<ul>
+<li class="fragment">Oh no, I have to talk to the intimidating experts</li>
+<li class="fragment">The very first talk: “A trend doesn’t have to be linear”- Robert Lund</li>
+<li class="fragment">The penultimate talk: “seasonal trend”</li>
+</ul>
+</div>
+<p>Conclusion:</p>
+<div>
+<ul>
+<li class="fragment">Nope! Seems like “trend” = “mean function”</li>
+</ul>
+</div>
+</section>
+<section id="lots-of-examples-of-vocab-weve-learned" class="slide level2">
+<h2><span class="r-fit-text">Lots of examples of vocab we’ve learned…</span></h2>
+</section>
+<section id="notes-on-robert-lunds-talk" class="slide level2">
+<h2>Notes on Robert Lund’s Talk</h2>
 
-<img data-src="index_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"></section>
-<section id="marginal-and-joint-distributions-t8-and-s-1" class="slide level2 smaller">
-<h2><span class="r-fit-text">Marginal and Joint Distributions t=8 and s = 1</span></h2>
+<img data-src="images/IMG_0625.jpg" class="r-stretch"></section>
+<section id="notes-on-robert-lunds-talk-1" class="slide level2">
+<h2>Notes on Robert Lund’s Talk</h2>
 
-<img data-src="index_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"></section>
-<section id="all-simulated-time-series-1" class="slide level2">
-<h2>All Simulated Time Series</h2>
+<img data-src="images/IMG_0626.jpg" class="r-stretch"></section>
+<section id="notes-from-matthias-katzfusss-talk" class="slide level2">
+<h2>Notes from Matthias Katzfuss’s talk</h2>
 
-<img data-src="index_files/figure-revealjs/unnamed-chunk-4-1.png" width="960" class="r-stretch"></section>
-<section id="marginal-and-joint-distributions-t8-and-s-2" class="slide level2 smaller">
-<h2><span class="r-fit-text">Marginal and Joint Distributions t=8 and s = 2</span></h2>
+<img data-src="images/IMG_0621.jpg" class="r-stretch"></section>
+<section id="notes-from-dan-cooleys-talk" class="slide level2">
+<h2>Notes from Dan Cooley’s talk</h2>
 
-<img data-src="index_files/figure-revealjs/unnamed-chunk-5-1.png" width="960" class="r-stretch"></section>
-<section id="all-simulated-time-series-2" class="slide level2">
-<h2>All Simulated Time Series</h2>
+<img data-src="images/IMG_0622.jpg" class="r-stretch quarto-figure-center"><p class="caption">Math anxiety rating: 70, 🫥👹🧎‍♀️‍➡️</p></section>
+<section id="notes-from-dan-cooleys-talk-1" class="slide level2">
+<h2>Notes from Dan Cooley’s talk</h2>
 
-<img data-src="index_files/figure-revealjs/unnamed-chunk-6-1.png" width="960" class="r-stretch"></section>
-<section id="marginal-and-joint-distributions-t8-and-s-3" class="slide level2 smaller">
-<h2><span class="r-fit-text">Marginal and Joint Distributions t=8 and s = 3</span></h2>
-
-<img data-src="index_files/figure-revealjs/unnamed-chunk-7-1.png" width="960" class="r-stretch"></section>
-<section id="all-simulated-time-series-3" class="slide level2">
-<h2>All Simulated Time Series</h2>
-
-<img data-src="index_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch"></section>
-<section id="marginal-and-joint-distributions-t8-and-s-4" class="slide level2 smaller">
-<h2><span class="r-fit-text">Marginal and Joint Distributions t=8 and s = 4</span></h2>
-
-<img data-src="index_files/figure-revealjs/unnamed-chunk-9-1.png" width="960" class="r-stretch"></section>
-<section id="all-simulated-time-series-4" class="slide level2">
-<h2>All Simulated Time Series</h2>
-
-<img data-src="index_files/figure-revealjs/unnamed-chunk-10-1.png" width="960" class="r-stretch"></section>
-<section id="marginal-and-joint-distributions-t8-and-s-5" class="slide level2 smaller">
-<h2><span class="r-fit-text">Marginal and Joint Distributions t=8 and s = 5</span></h2>
-
-<img data-src="index_files/figure-revealjs/unnamed-chunk-11-1.png" width="960" class="r-stretch"></section>
-<section id="all-simulated-time-series-5" class="slide level2">
-<h2>All Simulated Time Series</h2>
-
-<img data-src="index_files/figure-revealjs/unnamed-chunk-12-1.png" width="960" class="r-stretch"></section>
-<section id="marginal-and-joint-distributions-t8-and-s-6" class="slide level2 smaller">
-<h2><span class="r-fit-text">Marginal and Joint Distributions t=8 and s = 6</span></h2>
-
-<img data-src="index_files/figure-revealjs/unnamed-chunk-13-1.png" width="960" class="r-stretch"></section>
-<section id="all-simulated-time-series-6" class="slide level2">
-<h2>All Simulated Time Series</h2>
-
-<img data-src="index_files/figure-revealjs/unnamed-chunk-14-1.png" width="960" class="r-stretch"></section>
-<section id="marginal-and-joint-distributions-t8-and-s-7" class="slide level2 smaller">
-<h2><span class="r-fit-text">Marginal and Joint Distributions t=8 and s = 7</span></h2>
-
-<img data-src="index_files/figure-revealjs/unnamed-chunk-15-1.png" width="960" class="r-stretch"></section>
-<section id="all-simulated-time-series-7" class="slide level2">
-<h2>All Simulated Time Series</h2>
-
-<img data-src="index_files/figure-revealjs/unnamed-chunk-16-1.png" width="960" class="r-stretch"></section>
-<section id="marginal-and-joint-distributions-t8-and-s-8" class="slide level2 smaller">
-<h2><span class="r-fit-text">Marginal and Joint Distributions t=8 and s = 8</span></h2>
-
-<img data-src="index_files/figure-revealjs/unnamed-chunk-17-1.png" width="960" class="r-stretch"></section>
-<section id="all-simulated-time-series-8" class="slide level2">
-<h2>All Simulated Time Series</h2>
-
-<img data-src="index_files/figure-revealjs/unnamed-chunk-18-1.png" width="960" class="r-stretch"></section>
-<section id="marginal-and-joint-distributions-t8-and-s-9" class="slide level2 smaller">
-<h2><span class="r-fit-text">Marginal and Joint Distributions t=8 and s = 9</span></h2>
-
-<img data-src="index_files/figure-revealjs/unnamed-chunk-19-1.png" width="960" class="r-stretch"></section>
-<section id="all-simulated-time-series-9" class="slide level2">
-<h2>All Simulated Time Series</h2>
-
-<img data-src="index_files/figure-revealjs/unnamed-chunk-20-1.png" width="960" class="r-stretch"></section>
-<section id="marginal-and-joint-distributions-t8-and-s-10" class="slide level2 smaller">
-<h2><span class="r-fit-text">Marginal and Joint Distributions t=8 and s = 10</span></h2>
-
-<img data-src="index_files/figure-revealjs/unnamed-chunk-21-1.png" width="960" class="r-stretch"></section>
-<section id="visualizing-the-correlations" class="slide level2">
-<h2>Visualizing the correlations</h2>
-
-<img data-src="index_files/figure-revealjs/unnamed-chunk-22-1.png" width="960" class="r-stretch"></section>
-<section id="are-these-all-the-correlations" class="slide level2">
-<h2>Are these all the correlations?</h2>
-<p>No, just pairwise with <span class="math inline">\(x_8\)</span>. We could do all possible pairs:</p>
-
-<img data-src="index_files/figure-revealjs/unnamed-chunk-23-1.png" width="960" class="r-stretch"></section>
-<section id="distribution-of-all-the-correlations" class="slide level2">
-<h2>Distribution of all the correlations:</h2>
-
-<img data-src="index_files/figure-revealjs/unnamed-chunk-24-1.png" width="960" class="r-stretch"></section></section>
+<img data-src="images/IMG_0618.jpg" class="r-stretch"></section></section>
 <section>
-<section id="d-plots" class="title-slide slide level1 center">
-<h1>3D plots</h1>
+<section id="detrending" class="title-slide slide level1 center">
+<h1>Detrending</h1>
 
 </section>
-<section id="d-version-of-histogram-includes-s-t-plane" class="slide level2">
-<h2>3D version of histogram (includes <span class="math inline">\(s-t\)</span> plane)</h2>
-<div class="cell">
-<div class="cell-output-display">
-<div class="plotly html-widget html-fill-item" id="htmlwidget-28f05eb496dba0251a8e" style="width:960px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-28f05eb496dba0251a8e">{"x":{"visdat":{"c82435296c7":["function () ","plotlyVisDat"]},"cur_data":"c82435296c7","attrs":{"c82435296c7":{"x":{},"y":{},"z":{},"mode":"markers","size":0.10000000000000001,"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter3d"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"scene":{"xaxis":{"title":"s"},"yaxis":{"title":"t"},"zaxis":{"title":"cor"}},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":[1,2,3,4,5,6,7,8,9,10,1,2,3,4,5,6,7,8,9,10,1,2,3,4,5,6,7,8,9,10,1,2,3,4,5,6,7,8,9,10,1,2,3,4,5,6,7,8,9,10,1,2,3,4,5,6,7,8,9,10,1,2,3,4,5,6,7,8,9,10,1,2,3,4,5,6,7,8,9,10,1,2,3,4,5,6,7,8,9,10,1,2,3,4,5,6,7,8,9,10],"y":[1,1,1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,3,3,3,3,3,3,3,3,3,3,4,4,4,4,4,4,4,4,4,4,5,5,5,5,5,5,5,5,5,5,6,6,6,6,6,6,6,6,6,6,7,7,7,7,7,7,7,7,7,7,8,8,8,8,8,8,8,8,8,8,9,9,9,9,9,9,9,9,9,9,10,10,10,10,10,10,10,10,10,10],"z":[1,0.61054536273287319,0.28792043954370172,-0.062692952399689042,0.0013947296572716832,0.12233152580354685,0.23632867464682272,0.16215456791490471,-0.040551759735970402,-0.17486529566119341,0.61054536273287319,1,0.68098895198592257,0.35459509053556942,0.022366199956895812,0.019555258854077166,0.17077973811899197,0.021186556186348661,0.015233495467438794,-0.18636446290655412,0.28792043954370172,0.68098895198592257,1,0.67987670065468098,0.31099309955917287,-0.031364408516098938,0.018633941165562145,-0.063272112719632359,0.0015058708893262447,-0.11690768277677939,-0.062692952399689042,0.35459509053556942,0.67987670065468098,1,0.63176265944512899,0.27024763288337916,-0.058854770486381033,-0.10697126872498743,0.033145661960819722,-0.0074286862737555914,0.0013947296572716832,0.022366199956895812,0.31099309955917287,0.63176265944512899,1,0.69190154546781624,0.31837297034006318,-0.043857978758929064,-0.0034772548532608348,0.02613322904755264,0.12233152580354685,0.019555258854077166,-0.031364408516098938,0.27024763288337916,0.69190154546781624,1,0.70671620745337305,0.36231567151725841,0.051653851031286391,0.11939229243496408,0.23632867464682272,0.17077973811899197,0.018633941165562145,-0.058854770486381033,0.31837297034006318,0.70671620745337305,1,0.63622330782265979,0.30241792536222756,0.08399797913536082,0.16215456791490471,0.021186556186348661,-0.063272112719632359,-0.10697126872498743,-0.043857978758929064,0.36231567151725841,0.63622330782265979,1,0.68457360483961971,0.48648781153847898,-0.040551759735970402,0.015233495467438794,0.0015058708893262447,0.033145661960819722,-0.0034772548532608348,0.051653851031286391,0.30241792536222756,0.68457360483961971,1,0.73695712112228839,-0.17486529566119341,-0.18636446290655412,-0.11690768277677939,-0.0074286862737555914,0.02613322904755264,0.11939229243496408,0.08399797913536082,0.48648781153847898,0.73695712112228839,1],"mode":"markers","type":"scatter3d","marker":{"color":"rgba(31,119,180,1)","size":[55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55],"sizemode":"area","line":{"color":"rgba(31,119,180,1)"}},"textfont":{"size":55},"error_y":{"color":"rgba(31,119,180,1)","width":55},"error_x":{"color":"rgba(31,119,180,1)","width":55},"line":{"color":"rgba(31,119,180,1)","width":55},"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<section id="detrending-1" class="slide level2 smaller">
+<h2>Detrending</h2>
+<p>If a process is trend stationary (nonstationary in the mean, but stationary in the variance), can we just subtract off the trend and get back a stationary time series?</p>
+<p>Sometimes (assuming we are able to estimate it), and that’s called <strong>detrending</strong>.</p>
+</section>
+<section id="goal" class="slide level2">
+<h2>Goal:</h2>
+<p>Assuming trend stationarity (<span class="math inline">\(x_t = \mu_t + y_t\)</span>, where <span class="math inline">\(y_t\)</span> is stationary), find an estimate <span class="math inline">\(\widehat{\mu}_t\)</span> and compute</p>
+<p><span class="math display">\[
+\begin{align}
+\widehat{y_t} &amp;= x_t - \widehat{\mu_t}\\
+\text{Estimated Stationary process} &amp;= \text{Data - trend estimate}
+\end{align}
+\]</span> Note: Does <span class="math inline">\(y_t\)</span> remind you of anything from regression?</p>
+</section>
+<section id="example-subtracting-off-the-trend" class="slide level2 smaller">
+<h2>Example: Subtracting off the trend</h2>
+<div class="columns">
+<div class="column" style="width:30%;">
+<ul>
+<li>Dark yellow line: the trend estimate</li>
+<li>black: The observed data</li>
+<li>shaded region: 95% confidence bands on trend estimates.</li>
+</ul>
+<p>Can we make the time series stationary by subtracting off the trend?</p>
+</div><div class="column" style="width:70%;">
+<p><img data-src="images/TREND.png"></p>
 </div>
 </div>
 </section>
-<section id="simulated-auto-correlation-function-hatgamma_xh-with-a-blanket" class="slide level2">
-<h2><span class="r-fit-text">Simulated auto correlation function <span class="math inline">\(\hat{\gamma}_x(h)\)</span> (with a blanket)</span></h2>
+<section id="example-subtracting-off-the-trend-1" class="slide level2">
+<h2>Example: Subtracting off the trend</h2>
+<p>Does this time series appear stationary? In the mean, yes.</p>
+
+<img data-src="images/DIFF.png" class="r-stretch"></section>
+<section id="example-subtracting-off-the-trend-2" class="slide level2">
+<h2>Example: Subtracting off the trend</h2>
+<p>Have we captured the temporal structure in the time series? Yes (note: we will learn about ACF hypothesis tests/p-values during the “time series data analysis process”)</p>
+
+<img data-src="images/acf.png" class="r-stretch"></section>
+<section id="aside-managing-a-time-series-project-code-base" class="slide level2">
+<h2>Aside: managing a time series project code base</h2>
+<ul>
+<li>I manage the <a href="https://github.com/hou-wastewater-epi-org/online_trend_estimation/">GitHub for Houston Wastewater Epidemiology</a></li>
+<li>Check out the “issues”</li>
+<li>Section 1: Demo adding new issue (“basic” time series methods)</li>
+<li>Section 2: Demo adding new issue (link to definition of online estimation)</li>
+</ul>
+</section>
+<section id="activity-1-detrending-a-commodity-example-3.7" class="slide level2 smaller">
+<h2><span class="r-fit-text">Activity 1: Detrending a commodity (Example 3.7)</span></h2>
+<ul>
+<li>Given the code to generate the plot with the trend line, how would you view the equation of the trend line?</li>
+<li>Visualize the de-trended series. Does it appear stationary?</li>
+<li>Compute the acf of the salmon series and the detrended series. What do you notice?</li>
+</ul>
+                    <div id="Activity1"></div>
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function () {
+                            initializeTimer("Activity1", 300, "interaction");
+                        });
+                    </script>
+                
+</section>
+<section id="activity-1-solutions" class="slide level2 smaller">
+<h2>Activity 1 Solutions</h2>
+<ul>
+<li>Given the code to generate the plot with the trend line, how would you view the equation of the trend line?</li>
+</ul>
 <div class="cell">
 <div class="cell-output-display">
-<div class="plotly html-widget html-fill-item" id="htmlwidget-22752a7619b4ff3dfe37" style="width:960px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-22752a7619b4ff3dfe37">{"x":{"visdat":{"c821a1e0744":["function () ","plotlyVisDat"]},"cur_data":"c821a1e0744","attrs":{"c821a1e0744":{"z":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"surface","inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"scene":{"zaxis":{"title":"cor_mat"}},"hovermode":"closest","showlegend":false,"legend":{"yanchor":"top","y":0.5}},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"colorbar":{"title":"cor_mat","ticklen":2,"len":0.5,"lenmode":"fraction","y":1,"yanchor":"top"},"colorscale":[["0","rgba(68,1,84,1)"],["0.0416666666666667","rgba(70,19,97,1)"],["0.0833333333333333","rgba(72,32,111,1)"],["0.125","rgba(71,45,122,1)"],["0.166666666666667","rgba(68,58,128,1)"],["0.208333333333333","rgba(64,70,135,1)"],["0.25","rgba(60,82,138,1)"],["0.291666666666667","rgba(56,93,140,1)"],["0.333333333333333","rgba(49,104,142,1)"],["0.375","rgba(46,114,142,1)"],["0.416666666666667","rgba(42,123,142,1)"],["0.458333333333333","rgba(38,133,141,1)"],["0.5","rgba(37,144,140,1)"],["0.541666666666667","rgba(33,154,138,1)"],["0.583333333333333","rgba(39,164,133,1)"],["0.625","rgba(47,174,127,1)"],["0.666666666666667","rgba(53,183,121,1)"],["0.708333333333333","rgba(79,191,110,1)"],["0.75","rgba(98,199,98,1)"],["0.791666666666667","rgba(119,207,85,1)"],["0.833333333333333","rgba(147,214,70,1)"],["0.875","rgba(172,220,52,1)"],["0.916666666666667","rgba(199,225,42,1)"],["0.958333333333333","rgba(226,228,40,1)"],["1","rgba(253,231,37,1)"]],"showscale":true,"z":[[1,0.61054536273287319,0.28792043954370172,-0.062692952399689042,0.0013947296572716832,0.12233152580354685,0.23632867464682272,0.16215456791490471,-0.040551759735970402,-0.17486529566119341],[0.61054536273287319,1,0.68098895198592257,0.35459509053556942,0.022366199956895812,0.019555258854077166,0.17077973811899197,0.021186556186348661,0.015233495467438794,-0.18636446290655412],[0.28792043954370172,0.68098895198592257,1,0.67987670065468098,0.31099309955917287,-0.031364408516098938,0.018633941165562145,-0.063272112719632359,0.0015058708893262447,-0.11690768277677939],[-0.062692952399689042,0.35459509053556942,0.67987670065468098,1,0.63176265944512899,0.27024763288337916,-0.058854770486381033,-0.10697126872498743,0.033145661960819722,-0.0074286862737555914],[0.0013947296572716832,0.022366199956895812,0.31099309955917287,0.63176265944512899,1,0.69190154546781624,0.31837297034006318,-0.043857978758929064,-0.0034772548532608348,0.02613322904755264],[0.12233152580354685,0.019555258854077166,-0.031364408516098938,0.27024763288337916,0.69190154546781624,1,0.70671620745337305,0.36231567151725841,0.051653851031286391,0.11939229243496408],[0.23632867464682272,0.17077973811899197,0.018633941165562145,-0.058854770486381033,0.31837297034006318,0.70671620745337305,1,0.63622330782265979,0.30241792536222756,0.08399797913536082],[0.16215456791490471,0.021186556186348661,-0.063272112719632359,-0.10697126872498743,-0.043857978758929064,0.36231567151725841,0.63622330782265979,1,0.68457360483961971,0.48648781153847898],[-0.040551759735970402,0.015233495467438794,0.0015058708893262447,0.033145661960819722,-0.0034772548532608348,0.051653851031286391,0.30241792536222756,0.68457360483961971,1,0.73695712112228839],[-0.17486529566119341,-0.18636446290655412,-0.11690768277677939,-0.0074286862737555914,0.02613322904755264,0.11939229243496408,0.08399797913536082,0.48648781153847898,0.73695712112228839,1]],"type":"surface","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div>
+<figure>
+<p><img data-src="Lecture5Slides_files/figure-revealjs/unnamed-chunk-1-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = salmon ~ time(salmon), na.action = NULL)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-1.69187 -0.62453 -0.07024  0.51561  2.34959 
+
+Coefficients:
+               Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  -503.08947   34.44164  -14.61   &lt;2e-16 ***
+time(salmon)    0.25290    0.01713   14.76   &lt;2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.8814 on 164 degrees of freedom
+Multiple R-squared:  0.5706,    Adjusted R-squared:  0.568 
+F-statistic: 217.9 on 1 and 164 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<ul>
+<li>Visualize the de-trended series. Does it appear stationary?</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="Lecture5Slides_files/figure-revealjs/unnamed-chunk-2-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>Compute the acf of the salmon series and the detrended series. What do you notice?</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="Lecture5Slides_files/figure-revealjs/unnamed-chunk-3-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]  0.89  0.72  0.56  0.42  0.29  0.20  0.14  0.10  0.08  0.06  0.01 -0.07
+[13] -0.20 -0.33 -0.43 -0.50 -0.54 -0.58 -0.56 -0.50 -0.44 -0.35 -0.26 -0.19
+[25] -0.17 -0.17 -0.17 -0.17 -0.13 -0.09  0.01  0.14  0.27  0.37  0.45  0.48
+[37]  0.42  0.34  0.27  0.21  0.17  0.14  0.14  0.15  0.16  0.14  0.10  0.05</code></pre>
 </div>
 </div>
 </section>
-<section id="theoretical-hatgamma_xh-using-the-derived-formula-with-a-blanket" class="slide level2">
-<h2><span class="r-fit-text">Theoretical <span class="math inline">\(\hat{\gamma}_x(h)\)</span> (using the derived formula (with a blanket)</span></h2>
+<section id="activity-2-assuming-we-are-able-to-estimate-it" class="slide level2">
+<h2><span class="r-fit-text">Activity 2: “assuming we are able to estimate it”</span></h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>Look at pages 37-41 of the textbook</li>
+<li>what is “it” in this context? (what are we estimating?)</li>
+<li>If this is review, where did you first see these ideas?</li>
+<li>Put a dot on the math anxiety rating distribution on the back board</li>
+</ul>
+</div><div class="column">
+                    <div id="Activity2"></div>
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function () {
+                            initializeTimer("Activity2", 300, "interaction");
+                        });
+                    </script>
+                
+</div>
+</div>
+</section>
+<section id="activity-2solutions-assuming-we-are-able-to-estimate-it" class="slide level2 smaller">
+<h2><span class="r-fit-text">Activity 2</span><span style="color:green;">Solutions</span>: “assuming we are able to estimate it”</h2>
+<ul>
+<li>Look at pages 37-41 of the textbook ✅</li>
+<li>what is “it” in this context? (what are we estimating?)</li>
+</ul>
+<p><span style="color:green;">The trend (<span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span>), variance of the errors (<span class="math inline">\(\sigma^2_w\)</span>). The</span></p>
+<ul>
+<li>How are the estimates derived?</li>
+</ul>
+<p><span style="color:green;">Optimization (calculus)</span></p>
+<ul>
+<li>If this is review, where did you first see these ideas?</li>
+</ul>
+<p><span style="color:green;">You may have seen this in Regression or Stat 426 (estimation and sampling theory)</span></p>
+<ul>
+<li>Put a dot on the math anxiety rating distribution on the back board. Color the dot based on whether you seen the math/ideas before.</li>
+</ul>
+</section></section>
+<section>
+<section id="differencing" class="title-slide slide level1 center">
+<h1>Differencing</h1>
+
+</section>
+<section id="motivationmodel" class="slide level2 smaller">
+<h2>Motivation/model</h2>
+<p>Consider the trend stationary model (<span class="math inline">\(y_t\)</span> is stationary). <span class="math display">\[
+x_t = \mu_t + y_t
+\]</span> We saw how to estimate a <em>fixed</em> trend using a linear regression for the mean (<span class="math inline">\(\mu_t = \beta_0 + \beta_1t\)</span>)</p>
+<p>We then subtract off the estimate of the trend (detrend), <span class="math inline">\(\widehat{\mu_t}\)</span> so that we are working with a stationary time series:</p>
+<p><span class="math display">\[
+\widehat{y_t} = x_t - \widehat{\mu_t}
+\]</span></p>
+<p>What if the trend was not fixed? (dependent on <span class="math inline">\(t\)</span> beyond just “<span class="math inline">\(t\)</span> as a constant”)</p>
+</section>
+<section id="a-stochastic-trend-model" class="slide level2">
+<h2>A stochastic trend model</h2>
+<p>Change the model for the mean to incorporate a stochastic component (random walk with drift):</p>
+<p><span class="math display">\[
+\mu_t = \delta + \mu_{t-1} + w_t
+\]</span> Where <span class="math inline">\(w_t\)</span> is white noise independent of <span class="math inline">\(y_t\)</span>.</p>
+<p>Is <span class="math inline">\(\mu_t\)</span> stationary? No (it’s a random walk, nonstationary in both mean and covariance)</p>
+</section>
+<section id="how-to-get-back-to-a-stationary-time-series" class="slide level2">
+<h2>How to “get back” to a stationary time series?</h2>
+<p>Since the stochastic component depends on just one past time point, consider the series <span class="math inline">\(x_t - x_{t-1}\)</span>.</p>
+<p>This series is called the <strong>differenced</strong> series and the process is called <strong>differencing</strong>.</p>
+</section>
+<section id="computing-the-difference-series-in-terms-of-the-stochastic-trend-model" class="slide level2">
+<h2><span class="r-fit-text">Computing the difference series in terms of the (stochastic) trend model</span></h2>
+<p><span class="math display">\[
+\begin{align}
+x_{t} - x_{t-1} &amp;= (\mu_t + y_t) - (\mu_{t-1} - y_{t-1})\\
+&amp;= (\delta + \mu_{t-1} + w_t + y_t) - (\mu_{t-1} - y_{t-1})\\
+&amp; = \delta + w_t + y_t - y_{t-1}
+\end{align}
+\]</span> Need to compute mean function <span class="math inline">\(\E(x_t - x_{t-1}\)</span> and autocovariance function <span class="math inline">\(cov(x_t - x_{t-1}, x_s- x_{s-1})\)</span> and check if they do not depend on <span class="math inline">\(t\)</span> (mean) and just depend on the lag <span class="math inline">\(h = s-t\)</span>.</p>
+<p>…But the answer is we do get a stationary series!</p>
+</section>
+<section id="activity-3-simulating-a-random-walk-and-then-differencing-it" class="slide level2 scrollable">
+<h2><span class="r-fit-text">Activity 3: Simulating a random walk and then differencing it</span></h2>
+<ol type="1">
+<li>Simulate a random walk with no drift and plot it.</li>
+</ol>
+
+<img data-src="Lecture5Slides_files/figure-revealjs/unnamed-chunk-4-1.png" width="960" class="r-stretch"><ol start="2" type="1">
+<li>Use the <code>diff</code> function to difference the simulated series. Plot the result.</li>
+</ol>
+<ol start="3" type="1">
+<li>Does this series appear stationary? How do you know?</li>
+<li>Visualize the ACF of the differenced series. Does it look like white noise?</li>
+</ol>
+</section>
+<section id="activity-4-differencing-salmon-prices" class="slide level2 scrollable">
+<h2><span class="r-fit-text">Activity 4: Differencing Salmon Prices</span></h2>
+<ol type="1">
+<li>Compute and plot the differenced salmon series.</li>
+</ol>
 <div class="cell">
 <div class="cell-output-display">
-<div class="plotly html-widget html-fill-item" id="htmlwidget-515b79f7d95db561aaa1" style="width:960px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-515b79f7d95db561aaa1">{"x":{"visdat":{"c823a31b627":["function () ","plotlyVisDat"]},"cur_data":"c823a31b627","attrs":{"c823a31b627":{"z":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"surface","inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"scene":{"zaxis":{"title":"cor_mat_theoretical"}},"hovermode":"closest","showlegend":false,"legend":{"yanchor":"top","y":0.5}},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"colorbar":{"title":"cor_mat_theoretical","ticklen":2,"len":0.5,"lenmode":"fraction","y":1,"yanchor":"top"},"colorscale":[["0","rgba(68,1,84,1)"],["0.0416666666666667","rgba(70,19,97,1)"],["0.0833333333333333","rgba(72,32,111,1)"],["0.125","rgba(71,45,122,1)"],["0.166666666666667","rgba(68,58,128,1)"],["0.208333333333333","rgba(64,70,135,1)"],["0.25","rgba(60,82,138,1)"],["0.291666666666667","rgba(56,93,140,1)"],["0.333333333333333","rgba(49,104,142,1)"],["0.375","rgba(46,114,142,1)"],["0.416666666666667","rgba(42,123,142,1)"],["0.458333333333333","rgba(38,133,141,1)"],["0.5","rgba(37,144,140,1)"],["0.541666666666667","rgba(33,154,138,1)"],["0.583333333333333","rgba(39,164,133,1)"],["0.625","rgba(47,174,127,1)"],["0.666666666666667","rgba(53,183,121,1)"],["0.708333333333333","rgba(79,191,110,1)"],["0.75","rgba(98,199,98,1)"],["0.791666666666667","rgba(119,207,85,1)"],["0.833333333333333","rgba(147,214,70,1)"],["0.875","rgba(172,220,52,1)"],["0.916666666666667","rgba(199,225,42,1)"],["0.958333333333333","rgba(226,228,40,1)"],["1","rgba(253,231,37,1)"]],"showscale":true,"z":[[1,0.66666666666666663,0.33333333333333331,0,0,0,0,0,0,0],[0.66666666666666663,1,0.66666666666666663,0.33333333333333331,0,0,0,0,0,0],[0.33333333333333331,0.66666666666666663,1,0.66666666666666663,0.33333333333333331,0,0,0,0,0],[0,0.33333333333333331,0.66666666666666663,1,0.66666666666666663,0.33333333333333331,0,0,0,0],[0,0,0.33333333333333331,0.66666666666666663,1,0.66666666666666663,0.33333333333333331,0,0,0],[0,0,0,0.33333333333333331,0.66666666666666663,1,0.66666666666666663,0.33333333333333331,0,0],[0,0,0,0,0.33333333333333331,0.66666666666666663,1,0.66666666666666663,0.33333333333333331,0],[0,0,0,0,0,0.33333333333333331,0.66666666666666663,1,0.66666666666666663,0.33333333333333331],[0,0,0,0,0,0,0.33333333333333331,0.66666666666666663,1,0.66666666666666663],[0,0,0,0,0,0,0,0.33333333333333331,0.66666666666666663,1]],"type":"surface","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div>
+<figure>
+<p><img data-src="Lecture5Slides_files/figure-revealjs/unnamed-chunk-7-1.png" width="960"></p>
+</figure>
 </div>
 </div>
+</div>
+<ol start="2" type="1">
+<li>Does the series appear stationary?</li>
+<li>Visualize the acf of the differenced series. Does it look like white noise?</li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="Lecture5Slides_files/figure-revealjs/unnamed-chunk-8-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="activity-5-comparing-differencing-and-detrending" class="slide level2">
+<h2><span class="r-fit-text">Activity 5: Comparing Differencing and Detrending</span></h2>
+<p>Compare the Acfs of the differenced and detrended salmon series. What do you notice?</p>
+</section>
+<section id="activity-5-solutions-comparing-differencing-and-detrending" class="slide level2">
+<h2><span class="r-fit-text">Activity 5 Solutions: Comparing Differencing and Detrending</span></h2>
+<p>Compare the Acfs of the differenced and detrended salmon series. What do you notice?</p>
+</section>
+<section id="next-time-smoothing" class="slide level2">
+<h2>Next time: Smoothing</h2>
+<p>We’ve seen three explicity ways of modeling a trend (moving average (hw 1), and regression with time and random walk).</p>
+<p>How else could we model a trend?</p>
+</section>
+<section id="visual-example" class="slide level2">
+<h2>Visual example:</h2>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
