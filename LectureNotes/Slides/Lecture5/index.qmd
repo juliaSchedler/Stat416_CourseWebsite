@@ -1,5 +1,5 @@
 ---
-title: "Lecture 5 - Draft"
+title: "Lecture 5"
 author: Julia Schedler
 format: 
   revealjs: 
@@ -204,8 +204,7 @@ acf1(resid(fit), 48, main="detrended salmon price")
 :::
 :::
 
-
-## [Activity 2[Solutions]{style="color:green;"}: "assuming we are able to estimate it"]{.r-fit-text}{.smaller}
+## [Activity 2]{.r-fit-text}[Solutions]{style="color:green;"}: "assuming we are able to estimate it" {.smaller}
 
 -   Look at pages 37-41 of the textbook ✅
 -   what is "it" in this context? (what are we estimating?)
@@ -318,8 +317,7 @@ tsplot(x, main="random walk", ylab="", col=4)
 tsplot(diff(x))
 ```
 
-3.  Does this series appear stationary? How do you know?
-[Looks like some pseudo-cyclic behavior, so no.]{style="color:green;"}
+3.  Does this series appear stationary? How do you know? [Looks like some pseudo-cyclic behavior, so no.]{style="color:green;"}
 
 ## [Activity 3 Solutions: Simulating a random walk and then differencing it]{.r-fit-text}
 
@@ -349,7 +347,6 @@ acf(diff(x, lag = 1, diff = 1))
 
 ```
 
-
 ## [Activity 4 Solutions: Differencing Salmon Prices]{.r-fit-text}
 
 1.  Compute and plot the differenced salmon series.
@@ -361,7 +358,7 @@ tsplot(diff(salmon))
 
 2.  Does the series appear stationary?
 
-[In the mean-- yes, maybe?-- maybe a pseudo-cyclic type pattern? We should check the ACF ]{style="color:green;"}
+[In the mean-- yes, maybe?-- maybe a pseudo-cyclic type pattern? We should check the ACF]{style="color:green;"}
 
 3.  Visualize the acf of the differenced series. Does it look like white noise?
 
@@ -369,6 +366,7 @@ tsplot(diff(salmon))
 #| eval: true
 acf1(diff(salmon))
 ```
+
 [The acf of the differenced series appears to have patterns indicating annual cycles.]{style="color:green;"}
 
 ## [Activity 5: Comparing Differencing and Detrending]{.r-fit-text}
