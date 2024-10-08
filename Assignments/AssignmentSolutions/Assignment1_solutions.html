@@ -8,7 +8,7 @@
 
 <meta name="author" content="Julia Schedler">
 
-<title>Fall 24 Stat 416 Lecture Notes - Solutions: Assignment 2 Due 10/7 at Midnight</title>
+<title>Fall 24 Stat 416 Lecture Notes - Assignment 1</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -293,22 +293,14 @@ window.Quarto = {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#part-1-math" id="toc-part-1-math" class="nav-link active" data-scroll-target="#part-1-math">Part 1: Math</a></li>
-  <li><a href="#part-2-code" id="toc-part-2-code" class="nav-link" data-scroll-target="#part-2-code">Part 2: Code</a></li>
-  <li><a href="#part-3-reading" id="toc-part-3-reading" class="nav-link" data-scroll-target="#part-3-reading">Part 3: Reading</a></li>
-  </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="Assignment2_updated.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
-    </div>
+        
+    <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="Assignment1_solutions.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Solutions: Assignment 2 Due 10/7 at Midnight</h1>
+<h1 class="title">Assignment 1</h1>
 </div>
 
 
@@ -331,168 +323,236 @@ window.Quarto = {
 </header>
 
 
-<p>NOTE: I forgot to include a relevant detail for Part 2, number 7. The change is <strong>bolded.</strong> Sorry!!! Part 2 number 8 should be easier to answer now.</p>
-<section id="part-1-math" class="level2">
-<h2 class="anchored" data-anchor-id="part-1-math">Part 1: Math</h2>
-<p>In class, we have worked with “Signal plus noise Model” (equation 1.5)</p>
-<p><span class="math display">\[
-\begin{aligned}
-\text{Model: }&amp; x_t = 2\cos(2\pi\frac{t+15}{50}) + w_t\\
-\text{Mean function: }&amp; \mathbb{E}(x_t) = 2\cos(2\pi\frac{t+15}{50})
-\end{aligned}
-\]</span></p>
-<ol type="1">
-<li><p>[5 points] The mean function is derived in Example 2.4. Describe what happens in each step of the computation [3 points], and provide a “math stress” rating (1 = effortless, 100 = nightmare) and 3 emojis[2 points]. This is personal and there is no right answer.</p></li>
-<li><p>[5 points] Is the signal plus noise model stationary in the mean?</p></li>
-<li><p>[5 points] Write down <span class="math inline">\(\gamma_x(s,t)\)</span>, the autocovariance function of <span class="math inline">\(x_t\)</span> [3 points]. You may accomplish this in any way, including asking me personally in office hours or asking a classmate. Just make sure you cite the source![2 points]</p></li>
-<li><p>[6 points] Consider the model:</p>
-<p><span class="math display">\[
-y_t = x_t - 2\cos(2\pi\frac{t+15}{50})
-\]</span></p>
-<p>Compute the mean function of <span class="math inline">\(y_t\)</span> [3 points]. Is <span class="math inline">\(y_t\)</span> stationary in the mean?[1 point] How do you know?[2 points]</p></li>
-</ol>
-</section>
-<section id="part-2-code" class="level2">
-<h2 class="anchored" data-anchor-id="part-2-code">Part 2: Code</h2>
-<p>Note: I have set the code chunks here to have <code>eval: false</code> in the code chunk. Change that to <code>true</code> so that I can run your code easily.</p>
-<ol start="0" type="1">
-<li><p>[5 points] All your code runs without errors (unless that’s the point), and if there is a message, explain what it means. (Bonus: to be nice to me, submit a rendered pdf)</p></li>
-<li><p>[5 points] Simulate from an AR(1) process with coefficient 0.7 and 10 data points.</p></li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(astsa)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># your code here</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>w <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>) </span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>x_t <span class="ot">&lt;-</span> stats<span class="sc">::</span><span class="fu">filter</span>(<span class="at">x =</span> w, <span class="at">filter =</span> <span class="fl">0.7</span>, <span class="at">method =</span> <span class="st">"recursive"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>A paper I worked on as a research scientist considered the time series of the concentration (measured as <span class="math inline">\(\log_{10}\)</span> copies per Liter) of the SARS-CoV-2 virus from 5 different locations in the City of Houston, visualized in parts (c)-(g) of the figure below.</p>
+<p>The goal of this study was to see whether the information gleaned from sampling the lift stations, which represent smaller populations, was different than the information gleaned from sampling only the larger wastewater treatment plant. In other words, one research question was to determine whether the WWTP (dark blue) time series has different dynamics (behavior) than those that represent the lift stations.</p>
+<p>The methods in this paper are touched on in chapter 8 of our textbook. For this assignment, we will use the wastewater data as an example and practice our plotting and time series data science skills.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41598-024-56175-2/MediaObjects/41598_2024_56175_Fig1_HTML.png" class="img-fluid figure-img"></p>
+<figcaption>(a) The WWTP catchment areas for the City of Houston, with the WWTP of focus shaded. The box shows the extent of (b), the map showing the 4 lift stations considered in the analysis. (c–g) Plot the time series of Log10 Copies/L for the WWTP and the 4 lift station facilities, referred to as Lift Station A–D, with periods of missing values indicated by grey rectangles.</figcaption>
+</figure>
 </div>
+<ol type="1">
+<li>[6 points] Which of the time series has the most missing data? Which appears to have the most variability? Does the overall behavior of the series seem to be similar?</li>
+</ol>
+<p><span style="color:purple;"><strong>Missing data</strong>: The grey rectangles in the plots represent the missing data (per the caption). Lift station B has the most grey rectangles. In fact, it is missing data for almost half the study period, though thankfully not all in one “chunk”.</span></p>
+<p><span style="color:purple;"><strong>Variability</strong> Note that the time series have different scales on the y-axis that makes it a little difficult to comment on the relative variability of the series. Lift station C and lift station D have the largest range of the y-axis, and the data span that range, so it would be reasonable to say that lift stations C and D have the most variation.</span></p>
+<p><span style="color:purple;">This was not part of the question, but you could compute the variability of each series (ignoring the fact that it is a time series to gain preliminary insight). Indeed, lift station D and C have the highest variability as estimated by standard deviation.</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>ww <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://raw.githubusercontent.com/hou-wastewater-epi-org/online_trend_estimation/refs/heads/main/Data/synthetic_ww_time_series.csv"</span>, <span class="at">header =</span> T)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>ww <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(name) <span class="sc">%&gt;%</span> </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">sd =</span> <span class="fu">sd</span>(value, <span class="at">na.rm =</span> T)) <span class="sc">%&gt;%</span> </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(sd))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 2
+  name              sd
+  &lt;chr&gt;          &lt;dbl&gt;
+1 Lift station D 0.872
+2 Lift station C 0.781
+3 Lift station B 0.776
+4 WWTP           0.506
+5 Lift station A 0.497</code></pre>
+</div>
+</div>
+<p><span style="color:purple;"><strong>Trend</strong>: The overall behavior of the series appears similar: the peaks and valleys seem to be aligned across the series, even if the height of the peaks is not exactly the same. We might say these time series have similar temporal structure.</span></p>
 <ol start="2" type="1">
-<li>[6 points] Look at the documentation for the <code>stats::lag</code> function (run <code>?lag</code> in the console). State what package the function is in and what the function does[4 points]. Using <code>k = 1</code> compute a lag(1) version of <code>x_t</code> that you simulated above[2 points].</li>
+<li>[5 points] Load the (synthetic) wastewater data from <a href="https://raw.githubusercontent.com/hou-wastewater-epi-org/online_trend_estimation/refs/heads/main/Data/synthetic_ww_time_series.csv" class="uri">https://raw.githubusercontent.com/hou-wastewater-epi-org/online_trend_estimation/refs/heads/main/Data/synthetic_ww_time_series.csv</a> using the <code>read.csv</code> function</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x_t_lag1 <span class="ot">&lt;-</span> stats<span class="sc">::</span><span class="fu">lag</span>(x_t, <span class="at">k =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Import the csv here into r: https://raw.githubusercontent.com/hou-wastewater-epi-org/online_trend_estimation/refs/heads/main/Data/synthetic_ww_time_series.csv</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>ww <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://raw.githubusercontent.com/hou-wastewater-epi-org/online_trend_estimation/refs/heads/main/Data/synthetic_ww_time_series.csv"</span>, <span class="at">header =</span> T)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="do">## verify it worked</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ww) <span class="do">## the head() function prints the first 6 rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       dates           name    value ts_missing  colors
+1 2021-05-24 Lift station A 3.397031      FALSE #44AA99
+2 2021-05-31 Lift station A       NA       TRUE #44AA99
+3 2021-06-07 Lift station A       NA       TRUE #44AA99
+4 2021-06-14 Lift station A       NA       TRUE #44AA99
+5 2021-06-21 Lift station A 4.543146      FALSE #44AA99
+6 2021-06-28 Lift station A 4.356128      FALSE #44AA99</code></pre>
+</div>
 </div>
 <ol start="3" type="1">
-<li>[3 points] Run the following code and compare <code>x_t</code> and <code>x_t_lag1</code>.</li>
+<li>[5 points] Inspect the data. Verify that each of the series from the map above are included in the .csv (hint: what are the unique values of the <code>name</code> field?)</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cbind</span>(x_t, x_t_lag1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(ww<span class="sc">$</span>name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Time Series:
-Start = 0 
-End = 10 
-Frequency = 1 
-           x_t    x_t_lag1
- 0          NA  0.02680915
- 1  0.02680915  1.07210646
- 2  1.07210646  1.69187412
- 3  1.69187412  0.49424928
- 4  0.49424928 -0.83290269
- 5 -0.83290269 -2.17060192
- 6 -2.17060192 -1.03556686
- 7 -1.03556686  0.46384876
- 8  0.46384876 -0.42239489
- 9 -0.42239489 -0.18711631
-10 -0.18711631          NA</code></pre>
+<pre><code>[1] "Lift station A" "Lift station B" "Lift station C" "Lift station D"
+[5] "WWTP"          </code></pre>
+</div>
+</div>
+<p><span style="color:purple;">This technically answers the question, although if there were some issue with the data then running <code>unique</code> could be missleading– for example, if the .csv was cut off and there was only one observation for one fo the series, unique would return the same results as above. Instead, we can use <code>group_by</code> and <code>summarize</code> to gain more insight into the data for each series.</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>ww <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(name) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(), </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">mean =</span> <span class="fu">mean</span>(value, <span class="at">na.rm =</span> T), </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">num_missing =</span> <span class="fu">sum</span>(ts_missing)) <span class="do">## i included an indicator for whether a particular observation is missing for convenience.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 4
+  name               n  mean num_missing
+  &lt;chr&gt;          &lt;int&gt; &lt;dbl&gt;       &lt;int&gt;
+1 Lift station A    95  4.83          28
+2 Lift station B    95  4.55          42
+3 Lift station C    95  4.57           9
+4 Lift station D    95  4.70          18
+5 WWTP              95  4.45           4</code></pre>
 </div>
 </div>
 <ol start="4" type="1">
-<li>Make a time series plot of <code>x_t</code> and <code>x_t_1</code>. Do you notice the same features as when in the previous question?</li>
+<li>[5 points ] Convert the date field to a Date format using the function as.Date.</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tsplot</span>(x_t)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Assignment2_updated_files/figure-html/part2-4-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>ww<span class="sc">$</span>dates <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(ww<span class="sc">$</span>dates)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(ww<span class="sc">$</span>dates) <span class="do">## verify it worked</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Date"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ww<span class="sc">$</span>dates) <span class="do">## verify the format looks ok</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "2021-05-24" "2021-05-31" "2021-06-07" "2021-06-14" "2021-06-21"
+[6] "2021-06-28"</code></pre>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tsplot</span>(x_t_lag1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Assignment2_updated_files/figure-html/part2-4-2.png" class="img-fluid figure-img" width="672"></p>
-</figure>
+<p><span style="color:purple;">Telling R a character vector is a date allows us to reformat it using the <code>strptime</code> function by specifying a <code>format</code> argument– see the documentation for <code>strptime</code> for the options. Here I convert to “Month Name day, year” and also just the day of the week. Note that the time series is weekly so that we would expect all the days of the week to be the same (here Monday).</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">format</span>(<span class="at">x=</span> ww<span class="sc">$</span>dates, <span class="at">format =</span> <span class="st">"%B %d, %Y"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "May 24, 2021"  "May 31, 2021"  "June 07, 2021" "June 14, 2021"
+[5] "June 21, 2021" "June 28, 2021"</code></pre>
 </div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">format</span>(<span class="at">x=</span> ww<span class="sc">$</span>dates, <span class="at">format =</span> <span class="st">"%a"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Mon" "Mon" "Mon" "Mon" "Mon" "Mon"</code></pre>
 </div>
 </div>
 <ol start="5" type="1">
-<li>Run the below code. Why are the plots different? Are either particularly useful?</li>
+<li>[2 points] Install and load the <code>tidyverse</code> package.</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x_t, x_t_lag1)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">as.vector</span>(x_t), <span class="fu">as.vector</span>(x_t_lag1))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("tidyverse") # comment this line after you run it the first time</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p><span style="color:purple; ">Note that in these solutions, I already loaded tidyverse higher up since I was using some dplyr functions.</span></p>
 <ol start="6" type="1">
-<li>Instead of using <code>stats::lag</code>, use <code>dplyr::lag</code> to create a new version of <code>x_t_lag</code>. Repeat the code from steps 2-5. Describe how the output has changed.</li>
+<li>[5 points] We will work with just the WWTP series for now. Use <code>dplyr::filter</code> to extract the values for just the WWTP series.</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>x_t_lag1 <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">lag</span>(<span class="fu">as.vector</span>(x_t), <span class="at">n =</span> <span class="dv">1</span>)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x_t, x_t_lag1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Assignment2_updated_files/figure-html/part2-6-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">as.vector</span>(x_t), <span class="fu">as.vector</span>(x_t_lag1))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Assignment2_updated_files/figure-html/part2-6-2.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>ww_WWTP <span class="ot">&lt;-</span> ww <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">filter</span>(name <span class="sc">==</span> <span class="st">"WWTP"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="7" type="1">
-<li><strong>Re-simulate an AR(1) process as in number 1, but this time with 100 observations. Also recompute <code>x_t_lag1</code>.</strong> Fit an intercept-free regression model <strong>to predict</strong> <code>x_t</code> <strong>from</strong> <code>x_t_lag</code>. Provide the value of the slope estimate and interpret the value in the context of this simulation.</li>
+<li>[10 points] What is the time interval between the observations?</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>w <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>) </span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>x_t <span class="ot">&lt;-</span> stats<span class="sc">::</span><span class="fu">filter</span>(<span class="at">x =</span> w, <span class="at">filter =</span> <span class="fl">0.7</span>, <span class="at">method =</span> <span class="st">"recursive"</span>)</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>x_t_lag1 <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">lag</span>(<span class="fu">as.vector</span>(x_t), <span class="at">n =</span> <span class="dv">1</span>)</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>linear_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(x_t <span class="sc">~</span> <span class="sc">-</span><span class="dv">1</span> <span class="sc">+</span> x_t_lag1)</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(linear_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>ww_WWTP<span class="sc">$</span>dates[<span class="dv">2</span>] <span class="sc">-</span> ww_WWTP<span class="sc">$</span>dates[<span class="dv">1</span>] <span class="do">## difference between first two obs</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>
-Call:
-lm(formula = x_t ~ -1 + x_t_lag1)
-
-Residuals:
-     Min       1Q   Median       3Q      Max 
--2.25482 -0.76750 -0.01997  0.53041  1.69298 
-
-Coefficients:
-         Estimate Std. Error t value Pr(&gt;|t|)    
-x_t_lag1  0.63085    0.07873   8.012 2.39e-12 ***
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Residual standard error: 0.9374 on 98 degrees of freedom
-  (1 observation deleted due to missingness)
-Multiple R-squared:  0.3958,    Adjusted R-squared:  0.3896 
-F-statistic:  64.2 on 1 and 98 DF,  p-value: 2.386e-12</code></pre>
+<pre><code>Time difference of 7 days</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">diff</span>(ww_WWTP<span class="sc">$</span>dates) <span class="do">## difference between all obs-- recognize diff from lecture 5?? :)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Time differences in days
+ [1] 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7
+[39] 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7
+[77] 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7</code></pre>
 </div>
 </div>
 <ol start="8" type="1">
-<li>[11 points] Plot the <code>acf</code> of <code>x_t</code>[2 points] and the <code>acf</code> of the residuals from the regression model[4 points]. Which looks more like white noise?[2 points] What does this tell you about the temporal structure in <code>x_t</code> and its residuals?[3 points]</li>
+<li><p>[10 points] Use the <code>tsplot</code> function from the <code>astsa</code> package to plot the <code>WWTP</code> series.</p>
+<p>Make sure to use the <code>dates</code> field for the x-axis and specify good axis and plot labels using the <code>xlab</code>/<code>ylab</code>, and <code>main</code> arguments. (see the documentation <code>?tsplot</code> for more)</p></li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">acf</span>(x_t)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">acf</span>(<span class="fu">residuals</span>(linear_model))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(astsa) </span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tsplot</span>(<span class="at">x =</span> ww_WWTP<span class="sc">$</span>dates, <span class="at">y =</span> ww_WWTP<span class="sc">$</span>value, <span class="st">""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Assignment1_solutions_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
-</section>
-<section id="part-3-reading" class="level2">
-<h2 class="anchored" data-anchor-id="part-3-reading">Part 3: Reading</h2>
-<p>[9 points] Read sections <a href="https://otexts.com/fpp3/acf.html">2.8</a> and <a href="https://otexts.com/fpp3/wn.html">2.9</a> from Forecasting Principles and Practice. Make 3 connections [3 points each] to content from the course textbook (equations or similar examples.).</p>
+</div>
+</div>
+<ol start="9" type="1">
+<li>[10 points]Apply a moving average filter with 3 time points using the stats::filter function and save the result in a vector called <code>ww_ma_3</code>. You can choose the order of the moving average. (Similar to the final part of problem 1.1, see <a href="http://localhost:4512/LectureNotes/Lecture2.html#moving-averages-problem-1.1-part-c">here</a> in Lecture Notes).</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>ww_ma_3 <span class="ot">&lt;-</span> stats<span class="sc">::</span><span class="fu">filter</span>(ww_WWTP<span class="sc">$</span>value, <span class="at">filter =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>, <span class="dv">3</span>), <span class="at">sides =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>10.[10 points] Plot the moving average you computed on top of the tsplot in a different color using the lines function (see linked Problem 1.1 above). In the call to the lines function, also use <code>type = "l"</code> and <code>lwd = 2</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(astsa)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tsplot</span>(<span class="at">x =</span> ww_WWTP<span class="sc">$</span>dates, <span class="at">y =</span> ww_WWTP<span class="sc">$</span>value, </span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">main =</span> <span class="st">"WWTP Series and Moving Average filter with 3 time points"</span>,</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">type =</span> <span class="st">"b"</span>, <span class="at">xlab =</span> <span class="st">"Log10 Copies/L"</span>)</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="at">x =</span> ww_WWTP<span class="sc">$</span>dates, <span class="at">y =</span> ww_ma_3, <span class="at">lwd =</span> <span class="dv">2</span>, </span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">col =</span> <span class="st">"blueviolet"</span>, <span class="at">type =</span> <span class="st">"l"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Assignment1_solutions_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="11" type="1">
+<li>[15 points] Apply the moving average filter again, but this time use 5 time points, call it <code>ww_ma_5</code>. Plot just the wastewater series and the ww_ma_5 you just computed, and use a different color for this MA process than you used in question 10.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>ww_ma_5 <span class="ot">&lt;-</span> stats<span class="sc">::</span><span class="fu">filter</span>(ww_WWTP<span class="sc">$</span>value, <span class="at">filter =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">5</span>, <span class="dv">5</span>), <span class="at">sides =</span> <span class="dv">1</span>)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tsplot</span>(<span class="at">x =</span> ww_WWTP<span class="sc">$</span>dates, <span class="at">y =</span> ww_WWTP<span class="sc">$</span>value, </span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">main =</span> <span class="st">"Observed WWTP Series and Moving average smoother with 5 time points"</span>,</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">type =</span> <span class="st">"b"</span>)</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="at">x =</span> ww_WWTP<span class="sc">$</span>dates, <span class="at">y =</span> ww_ma_5, <span class="at">lwd =</span> <span class="dv">2</span>, </span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">col =</span> <span class="st">"darkgreen"</span>, <span class="at">type =</span> <span class="st">"l"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Assignment1_solutions_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="12" type="1">
+<li>[5 points]Inspect the plot you generated in questions 10 and 11. Which MA process looks “smoother”?</li>
+</ol>
+<p><span style="color:purple;">Since we are just visually inspecting time series, different people may notice different things when looking at the same plot. I would say that the smoother which uses five time points appears smoother: some of the places where the 3-point moving average appears particularly “jagged” is smoother for the 5-point. It’s a but easier to see when you plot them on the same plot.</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tsplot</span>(<span class="at">x =</span> ww_WWTP<span class="sc">$</span>dates, <span class="at">y =</span> ww_WWTP<span class="sc">$</span>value, </span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">main =</span> <span class="st">"Observed WWTP Series and both Moving Averages"</span>, <span class="at">type =</span> <span class="st">"b"</span>)</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="at">x =</span> ww_WWTP<span class="sc">$</span>dates, <span class="at">y =</span> ww_ma_5, </span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">"darkgreen"</span>, <span class="at">type =</span> <span class="st">"l"</span>)</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="at">x =</span> ww_WWTP<span class="sc">$</span>dates, <span class="at">y =</span> ww_ma_5, </span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">"darkgreen"</span>, <span class="at">type =</span> <span class="st">"l"</span>)</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="at">x =</span> ww_WWTP<span class="sc">$</span>dates, <span class="at">y =</span> ww_ma_3, </span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">"blueviolet"</span>, <span class="at">type =</span> <span class="st">"l"</span>)</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"bottomright"</span>, <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">"3-point"</span>, <span class="st">"5-point"</span>), </span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"blueviolet"</span>,<span class="st">"darkgreen"</span>), <span class="at">lwd =</span><span class="dv">2</span>)</span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a><span class="fu">rect</span>(<span class="at">xleft =</span> <span class="dv">19140</span>, <span class="at">xright =</span> <span class="dv">19161</span>, </span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">ytop =</span> <span class="fl">4.7</span>, <span class="at">ybottom =</span> <span class="fl">4.1</span>, </span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>     <span class="at">border =</span> <span class="st">"magenta"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Assignment1_solutions_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="13" type="1">
+<li>[10 points] Describe the different way that the missing data in the WWTP series impacts the moving average estimates for the case of 3 time points vs.&nbsp;5 time points.</li>
+</ol>
+<p><span style="color:purple;">Consider the right hand side of the missing data period near the beginning of 2022. The 3-point moving average (purple line) is able to “restart” sooner than the 5-point moving average (green line). This is because the 3-point moving average just has to wait until it has 3 points to re-start the estimation, wheras the 5-point must wait for 5 points.</span></p>
+<ol start="14" type="1">
+<li>[5 points] Note that the data you used for this activity was “synthetic” wastewater data. Why might a researcher share a synthetic version of their data? What do you think that might mean?</li>
+</ol>
+<p><span style="color:purple;">Synthetic data (at least how I use it) are data that are not directly observed, but rather simulated (or sampled) from a model that is fit using real data. In other words, it is made-up data that has similar properties to the real data. Researchers might decide to share synthetic data when they want people to be able to run their code for a paper, but the data are sensitive in nature, for example, have personally identifiable health information. Here, we followed CDC guidelines to not release the real data (or real names of the lift stations and WWTP) when the population served by the facility being sampled is less than 4,000.</span></p>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
