@@ -71,23 +71,23 @@ Conclusion:
 
 ## Notes on Robert Lund's Talk
 
-![](images/IMG_0625.jpg)
+![](../../images/IMG_0625.jpg)
 
 ## Notes on Robert Lund's Talk
 
-![](images/IMG_0626.jpg)
+![](../../images/IMG_0626.jpg)
 
 ## Notes from Matthias Katzfuss's talk
 
-![](images/IMG_0621.jpg)
+![](../../images/IMG_0621.jpg)
 
 ## Notes from Dan Cooley's talk
 
-![Math anxiety rating: 70, 🫥👹🧎‍♀️‍➡️](images/IMG_0622.jpg)
+![Math anxiety rating: 70](../../images/IMG_0622.jpg)
 
 ## Notes from Dan Cooley's talk
 
-![](images/IMG_0618.jpg)
+![](../../images/IMG_0618.jpg)
 
 # Detrending
 
@@ -120,7 +120,7 @@ Can we make the time series stationary by subtracting off the trend?
 :::
 
 ::: {.column width="70%"}
-![](images/TREND.png)
+![](../../images/TREND.png)
 :::
 :::
 
@@ -128,13 +128,13 @@ Can we make the time series stationary by subtracting off the trend?
 
 Does this time series appear stationary? In the mean, yes.
 
-![](images/DIFF.png)
+![](../../images/DIFF.png)
 
 ## Example: Subtracting off the trend
 
 Have we captured the temporal structure in the time series? Yes (note: we will learn about ACF hypothesis tests/p-values during the "time series data analysis process")
 
-![](images/acf.png)
+![](../../images/acf.png)
 
 ## Aside: managing a time series project code base
 
@@ -171,6 +171,7 @@ summary(fit)
 ```{r}
 #| eval: true
 tsplot(resid(fit), main="detrended salmon price")
+tsplot(salmon- fit$fitted.values)
 ```
 
 -   Compute the acf of the salmon series and the detrended series. What do you notice?
@@ -180,7 +181,10 @@ tsplot(resid(fit), main="detrended salmon price")
 
 ## two functions to use
 par(mfrow=c(2,1)) # plot their ACFs
+acf(salmon)
 acf(resid(fit))
+
+acf1(salmon)
 acf1(resid(fit), 48, main="detrended salmon price")
 ```
 
@@ -200,7 +204,8 @@ acf1(resid(fit), 48, main="detrended salmon price")
 :::
 :::
 
-## [Activity 2 ]{.r-fit-text}[Solutions]{style="color:green;"}: "assuming we are able to estimate it" {.smaller}
+
+## [Activity 2[Solutions]{style="color:green;"}: "assuming we are able to estimate it"]{.r-fit-text}{.smaller}
 
 -   Look at pages 37-41 of the textbook ✅
 -   what is "it" in this context? (what are we estimating?)
@@ -253,7 +258,7 @@ This series is called the **differenced** series and the process is called **dif
 
 $$
 \begin{align}
-x_{t} - x_{t-1} &= (\mu_t + y_t) - (\mu_{t-1} - y_{t-1})\\
+x_{t} - x_{t-1} &= (\mu_t + y_t) - (\mu_{t-1} + y_{t-1})\\
 &= (\delta + \mu_{t-1} + w_t + y_t) - (\mu_{t-1} - y_{t-1})\\
 & = \delta + w_t + y_t - y_{t-1}
 \end{align}
@@ -266,37 +271,72 @@ $$ Need to compute mean function $\E(x_t - x_{t-1}$ and autocovariance function 
 1.  Simulate a random walk with no drift and plot it.
 
 ```{r}
-#| eval: true
+#| eval: false
 
-## Simulate random walk w/ drift
-set.seed(24) # so you can reproduce the results
-w  = rnorm(200)  ## Gaussian white noise
-x  = cumsum(w)
-tsplot(x, main="random walk", ylab="", col=4)
- clip(0, 200, 0, 80)
- abline(a=0, b=0, lty=2, col=4) # drift
+# your code here (check lecture 1- visualizing a random walk)
 ```
 
 2.  Use the `diff` function to difference the simulated series. Plot the result.
 
 ```{r}
-tsplot(diff(w))
+#| eval: false
+
+# your code here
 ```
 
 3.  Does this series appear stationary? How do you know?
 4.  Visualize the ACF of the differenced series. Does it look like white noise?
 
 ```{r}
-acf(diff(w, lag = 1, diff = 1))
+#| eval: false
+
+# your code here
 ```
+
+## [Activity 3 Solutions: Simulating a random walk and then differencing it]{.r-fit-text}
+
+1.  Simulate a random walk with no drift and plot it.
+
+```{r}
+#| eval: true
+#| code-fold: show
+## Simulate random walk with no drift
+set.seed(24) # so you can reproduce the results
+w  = rnorm(200, mean = 0, sd = 1)  ## Gaussian white noise
+x  = cumsum(w)
+tsplot(x, main="random walk", ylab="", col=4)
+ clip(0, 200, 0, 80)
+ abline(a=0, b=0, lty=2, col=4) # drift
+```
+
+## [Activity 3 Solutions: Simulating a random walk and then differencing it]{.r-fit-text}
+
+2.  Use the `diff` function to difference the simulated series. Plot the result.
+
+```{r}
+#| eval: true
+tsplot(diff(x))
+```
+
+3.  Does this series appear stationary? How do you know?
+[Looks like some pseudo-cyclic behavior, so no.]{style="color:green;"}
+
+## [Activity 3 Solutions: Simulating a random walk and then differencing it]{.r-fit-text}
+
+4.  Visualize the ACF of the differenced series. Does it look like white noise?
+
+```{r}
+acf(diff(x, lag = 1, diff = 1))
+```
+
+[No-- looks like it could be an AR(1)?]{style="color:green;"}
 
 ## [Activity 4: Differencing Salmon Prices]{.r-fit-text}
 
 1.  Compute and plot the differenced salmon series.
 
 ```{r}
-#| eval: true
-tsplot(diff(salmon))
+#| eval: false
 # your code here
 ```
 
@@ -305,8 +345,31 @@ tsplot(diff(salmon))
 
 ```{r}
 #| eval: true
-acf(diff(salmon))
+# your code here
+
 ```
+
+
+## [Activity 4 Solutions: Differencing Salmon Prices]{.r-fit-text}
+
+1.  Compute and plot the differenced salmon series.
+
+```{r}
+#| eval: true
+tsplot(diff(salmon))
+```
+
+2.  Does the series appear stationary?
+
+[In the mean-- yes, maybe?-- maybe a pseudo-cyclic type pattern? We should check the ACF ]{style="color:green;"}
+
+3.  Visualize the acf of the differenced series. Does it look like white noise?
+
+```{r}
+#| eval: true
+acf1(diff(salmon))
+```
+[The acf of the differenced series appears to have patterns indicating annual cycles.]{style="color:green;"}
 
 ## [Activity 5: Comparing Differencing and Detrending]{.r-fit-text}
 
@@ -317,16 +380,19 @@ Compare the Acfs of the differenced and detrended salmon series. What do you not
 # your code here
 ```
 
-
-
 ## [Activity 5 Solutions: Comparing Differencing and Detrending]{.r-fit-text}
 
 Compare the Acfs of the differenced and detrended salmon series. What do you notice?
 
 ```{r}
-acf(resid(fit))
-acf(diff(salmon))
+#| eval: true
+
+par(mfrow = 2:1)
+acf1(resid(fit))
+acf1(diff(salmon))
 ```
+
+[The detrended series and the differenced series both show cycles, but the structure of those cycles appears different.]{style="color:green;"}
 
 ## Next time: Smoothing
 
@@ -338,9 +404,8 @@ How else could we model a trend?
 
 ```{r}
 #| code-fold: show
-
 tsplot(soi, col=4)
 lines(ksmooth(time(soi), soi, "normal", bandwidth=1), lwd=2, col=6)
-par(fig = c(.65, 1, .75, 1), new = TRUE) # the insert
+#par(fig = c(.65, 1, .75, 1), new = TRUE) # the insert
 curve(dnorm, -3, 3,  xaxt='n', yaxt='n', ann=FALSE)
 ```
