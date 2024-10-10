@@ -7,7 +7,7 @@ format:
   
 ---
 
-Download the .qmd source for this document [here](). 
+Download the .qmd source for this document [here](https://raw.githubusercontent.com/juliaSchedler/Stat416_CourseWebsite/refs/heads/main/Assignments/Assignment3.qmd).
 
 ## 1. Math
 Recall the so-called "trend-stationary" model 
