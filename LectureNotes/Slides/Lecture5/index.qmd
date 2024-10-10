@@ -217,7 +217,7 @@ acf1(resid(fit), 48, main="detrended salmon price")
 
 -   If this is review, where did you first see these ideas?
 
-[You may have seen this in Regression or Stat 426 (estimation and sampling theory)]{style="color:green;"}
+[You may have seen this in Regression or Stat 426 (estimation and sampling theory), or Advanced Econometrics]{style="color:green;"}
 
 -   Put a dot on the math anxiety rating distribution on the back board. Color the dot based on whether you seen the math/ideas before.
 

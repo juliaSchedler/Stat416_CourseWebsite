@@ -1,0 +1,44 @@
+```{r}
+
+library(tidyverse)
+library(purrr)
+library(astsa)
+library(png)
+library(ggpubr)
+library(patchwork)
+
+time_series <- read.csv("../Data/time_series.csv")
+source("../Code/model_tab_plots.R")
+time_series$time_index <- 1:nrow(time_series)
+
+all_plots <- time_series%>% pivot_longer(starts_with("y"), 
+                            names_to = "series") %>% 
+  dplyr::group_nest(series, keep = T) %>% 
+  tibble::deframe() %>% 
+  purrr::map(., ~ {
+  models_tabs(.x$value, ma_order = 5)
+})
+
+```
+
+## Plots
+
+::: panel-tabset
+```{r}
+#| label: convergence-plots
+#| warning: true
+#| results: asis
+#| eval: true
+
+purrr::iwalk(all_plots, ~{
+  cat('### ', .y, '\n\n')
+  
+  print(.x)
+  
+  cat('\n\n')
+})
+
+```
+:::
+
+s

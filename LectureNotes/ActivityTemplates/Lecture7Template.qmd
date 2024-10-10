@@ -1,0 +1,243 @@
+---
+Title: Lecture 6 Activities
+Author: Julia Schedler
+---
+
+# Setup
+
+## Part 0
+
+-   Create a folder somewhere on your computer called "Lecture6".
+
+-   Open R studio, and create a .qmd File and save inside the "Lecture6" folder as "Yourname_Lecture6.qmd".
+
+-   Toggle into "Source" mode (upper left corner)
+
+-   Copy the content on This Page and then toggle into visual mode
+
+-   Click the render button. Does what you get look like what's on this page?
+
+# Accounting for Trends
+
+## Part 1
+
+1.  Download the data `time_series.csv` from Canvas and create a sub-folder in your `Lecture6` folder called `Data`. Read in the data. Extract `y1`, the first time series, and name it `x_t`.
+
+```{r}
+library(astsa)
+time_series <- read.csv("../Data/time_series.csv")
+x_t <- time_series$y1
+```
+
+2.  Plot the data
+
+```{r}
+tsplot(x_t)
+```
+
+3.  In separate plot, again plot the time series and also plot a moving average smoother over the time series (use any $p$ you'd like).
+
+```{r}
+tsplot(x_t)
+
+ma_x_t <- stats::filter(x_t, filter =rep(1/5,5))
+
+lines(ma_x_t, col = "blueviolet")
+```
+
+3.  Detrend the time series with respect to the moving average estimate and plot the de-trended time series.
+
+```{r}
+detrended_ma <- x_t - ma_x_t
+tsplot(detrended_ma)
+
+```
+
+4.  In a separate plot, again plot the time series and also plot a simple linear regression line using 1:length(x) where x is the time series you are analyzing.
+
+```{r}
+time_index <- 1:length(x_t)
+lm_x_t <- lm(x_t~time_index)
+tsplot(x_t)
+reg_x_t <- lm_x_t$fitted.values
+lines(reg_x_t, col = "turquoise", lwd = 2)
+```
+
+5.  Detrend the time series with respect to the regression and plot the detrended series.
+
+```{r}
+detrended_reg <- x_t - reg_x_t
+tsplot(detrended_reg)
+```
+
+6.  Difference the time series and plot it in yet another plot.
+
+```{r}
+differenced <- c(diff(x_t), NA)
+tsplot(differenced)
+```
+
+7.  `Run par(mfrow = c(2,3))` and then re-run the plotting code for all 6 plots you just made in steps 1-6.
+
+```{r}
+par(mfrow = c(2,3))
+# number 1
+tsplot(x_t)
+  
+## number 2
+ma_x_t <- stats::filter(x_t, filter = rep(1/5, 5), method = "convolution")
+tsplot(x_t)
+lines(ma_x_t, col = "blueviolet", lwd = 2)
+  
+# number 3
+detrended_ma <- x_t - ma_x_t
+tsplot(detrended_ma)
+  
+# Number 4
+time_index <- 1:length(x_t)
+lm_x_t <- lm(x_t~time_index)
+tsplot(x_t)
+reg_x_t <- lm_x_t$fitted.values
+lines(reg_x_t, col = "turquoise", lwd = 2)
+  
+# number 5
+detrended_reg <- x_t - reg_x_t
+tsplot(detrended_reg)
+
+# Number 6
+differenced <- c(diff(x_t), NA)
+tsplot(differenced)
+```
+
+7.  Describe how the time series changed for each of the detrended series and also the differenced series. Do they appear stationary? (Make a table to organize the information.
+
+| Processing           | Change     | Stationary?                                                                                                                      |
+|----------------------|------------|----------------------------------------------------------------------------------------------------------------------------------|
+| x_t                  | \-         | Yes                                                                                                                              |
+| Detrend (MA)         | Negligible | Yes                                                                                                                              |
+| Detrend (Regression) | Negligible | Yes, also, the original regression line looks like it has a slope of about 0 and there don't appear to be any seasonal patterns. |
+| Difference           | Negligible | Yes                                                                                                                              |
+
+## Part 2
+
+Close Rstudio and re-open. Repeat Part1 on `y2` . To make your life easier, toggle into visual mode and copy everything from part 1 in source mode, scroll down under part 2, and then toggle back to Visual mode.
+
+1.  Read in the data. Extract `y2`
+
+```{r}
+#library(astsa)
+#time_series <- read.csv("../Data/time_series.csv")
+x_t <- time_series$y2
+```
+
+2.  Plot the data
+
+```{r}
+tsplot(x_t)
+```
+
+3.  In separate plot, again plot the time series and also plot a moving average smoother over the time series (use any $p$ you'd like).
+
+```{r}
+tsplot(x_t)
+
+ma_x_t <- stats::filter(x_t, filter =rep(1/5,5))
+
+lines(ma_x_t, col = "blueviolet")
+```
+
+3.  Detrend the time series with respect to the moving average estimate and plot the de-trended time series.
+
+```{r}
+detrended_ma <- x_t - ma_x_t
+tsplot(detrended_ma)
+
+```
+
+4.  In a separate plot, again plot the time series and also plot a simple linear regression line using 1:length(x) where x is the time series you are analyzing.
+
+```{r}
+time_index <- 1:length(x_t)
+lm_x_t <- lm(x_t~time_index)
+tsplot(x_t)
+reg_x_t <- lm_x_t$fitted.values
+lines(reg_x_t, col = "turquoise", lwd = 2)
+```
+
+5.  Detrend the time series with respect to the regression and plot the detrended series.
+
+```{r}
+detrended_reg <- x_t - reg_x_t
+tsplot(detrended_reg)
+```
+
+6.  Difference the time series and plot it in yet another plot.
+
+```{r}
+differenced <- c(diff(x_t), NA)
+tsplot(differenced)
+```
+
+7.  `Run par(mfrow = c(2,3))` and then re-run the plotting code for all 6 plots you just made in steps 1-6.
+
+```{r}
+par(mfrow = c(2,3))
+# number 1
+tsplot(x_t)
+  
+## number 2
+ma_x_t <- stats::filter(x_t, filter = rep(1/5, 5), method = "convolution")
+tsplot(x_t)
+lines(ma_x_t, col = "blueviolet", lwd = 2)
+  
+# number 3
+detrended_ma <- x_t - ma_x_t
+tsplot(detrended_ma)
+  
+# Number 4
+time_index <- 1:length(x_t)
+lm_x_t <- lm(x_t~time_index)
+tsplot(x_t)
+reg_x_t <- lm_x_t$fitted.values
+lines(reg_x_t, col = "turquoise", lwd = 2)
+  
+# number 5
+detrended_reg <- x_t - reg_x_t
+tsplot(detrended_reg)
+
+# Number 6
+differenced <- c(diff(x_t), NA)
+tsplot(differenced)
+```
+
+7.  Describe how the time series changed for each of the detrended series and also the differenced series. Do they appear stationary? (Make a table to organize the information.
+
+| Processing           | Change     | Stationary?                                            |
+|----------------------|------------|--------------------------------------------------------|
+| `y2`                 | \-         | Yes                                                    |
+| Detrend (MA)         | Negligible | Yes                                                    |
+| Detrend (Regression) | Negligible | Yes (regression line looks to have a slope of about 0) |
+| Difference           | Negligible | Yes                                                    |
+
+## Part 3
+
+Create a new folder in your `Lecture6` Directory called `Code`. Download the file `models.R` from Canvas and save it in the `Code` folder.
+
+1.  Inspect the code in `models.r`. What is it doing?
+2.  Run the function `models` on `y3.`
+
+```{r}
+source("../Code/models.R")
+
+models(time_series$y3, ma_order = 5)
+
+```
+
+3.  Describe how the time series changed for each of the detrended series and also the differenced series. Do they appear stationary? (Make a table to organize the information.)
+
+| Processing           | Change     | Stationary?                                            |
+|----------------------|------------|--------------------------------------------------------|
+| `y3`                 | \-         | Yes                                                    |
+| Detrend (MA)         | Negligible | Yes                                                    |
+| Detrend (Regression) | Negligible | Yes (regression line looks to have a slope of about 0) |
+| Difference           | Negligible | Yes                                                    |

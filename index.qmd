@@ -1,5 +1,9 @@
 # Welcome to Time Series! {.unnumbered}
 
-The lecture slides and code here are heavily drawn from the book I have selected for this course with some additional examples and visualizations that I think would be helpful for learning these important concepts!
+The lecture slides and code here are heavily drawn from examples in book I have selected for this course: [Time Series Analysis: A Data Analysis Approach Using R](https://www.taylorfrancis.com/books/mono/10.1201/9780429273285/time-series-robert-shumway-david-stoffer). I am extremely grateful to the authors for doing the heavy lifting of curating the data sets, code, and problem sets. Please consider purchasing this book for reference— it's wonderful, and there's [a more technical graduate version as well](https://link.springer.com/book/10.1007/978-3-319-52452-8) for those of you that yearn for more technical detail.
+
+![](https://images.tandf.co.uk/common/jackets/crclarge/978036722/9780367221096.jpg){fig-alt="The cover of Time Series: A Data analysis approach By Robert H Shumway and David S Stoffer. The cover is red with a time series plot of Monthly Carbon Dioxide readings at Mauna Loa Observatory. The time series shows an increasing trend with seasonan oscillations."}
+
+I have also added some additional examples from my own work and visualizations of simulations, covariance functions, etc., that I think would be helpful for learning these important concepts.
 
 Also, big thanks to our Lab Assistant, Bena Smith, for serving as editor for these notes (assuming I get them to her in time. Don't blame Bena for missed typos).

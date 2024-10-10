@@ -28,13 +28,13 @@ website:
         contents:
         - href: LectureNotes/Lecture5.qmd
         - href: LectureNotes/Lecture6.qmd
-        - href: Assignmetns/Assignment3.qmd
+       # - href: Assignmetns/Assignment3.qmd
         
       - section: "Week 4"
         contents: 
-        - href: LectureNotes/Lecture7.qmd
-        - href: LectureNotes/Lecture8.qmd
-        - href: Exams/PracticeMidterm.qmd
+        #- href: LectureNotes/Lecture7.qmd
+        #- href: LectureNotes/Lecture8.qmd
+       # - href: Exams/PracticeMidterm.qmd
 format:
   html:
     theme: cosmo

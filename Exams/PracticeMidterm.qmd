@@ -1,1 +1,3 @@
+idea: a moving average itself is stationary. Is a moving average of an arbitrary time series stationary?
 
+two moving average, with different weights
