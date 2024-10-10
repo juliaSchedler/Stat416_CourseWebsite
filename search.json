@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Welcome to Time Series!",
     "section": "",
-    "text": "Welcome to Time Series!\nThe lecture slides and code here are heavily drawn from the book I have selected for this course with some additional examples and visualizations that I think would be helpful for learning these important concepts!\nAlso, big thanks to our Lab Assistant, Bena Smith, for serving as editor for these notes (assuming I get them to her in time. Don’t blame Bena for missed typos).",
+    "text": "Welcome to Time Series!\nThe lecture slides and code here are heavily drawn from examples in book I have selected for this course: Time Series Analysis: A Data Analysis Approach Using R. I am extremely grateful to the authors for doing the heavy lifting of curating the data sets, code, and problem sets. Please consider purchasing this book for reference— it’s wonderful, and there’s a more technical graduate version as well for those of you that yearn for more technical detail.\n\nI have also added some additional examples from my own work and visualizations of simulations, covariance functions, etc., that I think would be helpful for learning these important concepts.\nAlso, big thanks to our Lab Assistant, Bena Smith, for serving as editor for these notes (assuming I get them to her in time. Don’t blame Bena for missed typos).",
     "crumbs": [
       "Home"
     ]
@@ -658,18 +658,212 @@
     "href": "LectureNotes/Lecture8.html",
     "title": "Lecture 8",
     "section": "",
-    "text": "Work in progress!",
-    "crumbs": [
-      "Week 4",
-      "Lecture 8"
-    ]
+    "text": "Work in progress!"
   },
   {
     "objectID": "LectureNotes/Lecture6.html",
     "href": "LectureNotes/Lecture6.html",
     "title": "Lecture 6",
     "section": "",
-    "text": "Work in progress!",
+    "text": "\\[\n\\newcommand\\E{{\\mathbb{E}}}\n\\]\n\nWe’ve been estimating trends and getting confused about stationarity :)",
+    "crumbs": [
+      "Week 3",
+      "Lecture 6"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture6.html#recap",
+    "href": "LectureNotes/Lecture6.html#recap",
+    "title": "Lecture 6",
+    "section": "",
+    "text": "\\[\n\\newcommand\\E{{\\mathbb{E}}}\n\\]\n\nWe’ve been estimating trends and getting confused about stationarity :)",
+    "crumbs": [
+      "Week 3",
+      "Lecture 6"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture6.html#a-look-ahead",
+    "href": "LectureNotes/Lecture6.html#a-look-ahead",
+    "title": "Lecture 6",
+    "section": "A look ahead",
+    "text": "A look ahead\nNext few weeks:\n\nAssignment 3 posted soon, Due Friday, October 18, we will review in class on Monday prior to midterm\nNext Monday: remote class: activity to start your “cheat sheet” and a data analysis challenge\nSometime next week: Practice midterm posted",
+    "crumbs": [
+      "Week 3",
+      "Lecture 6"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture6.html#where-is-the-template-file",
+    "href": "LectureNotes/Lecture6.html#where-is-the-template-file",
+    "title": "Lecture 6",
+    "section": "Where is the template file?",
+    "text": "Where is the template file?\n\nWe are going to create it, and you will submit a rendered pdf of today’s lecture as your “participation”.",
+    "crumbs": [
+      "Week 3",
+      "Lecture 6"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture6.html#getting-organized-with-quarto",
+    "href": "LectureNotes/Lecture6.html#getting-organized-with-quarto",
+    "title": "Lecture 6",
+    "section": "Getting organized with Quarto",
+    "text": "Getting organized with Quarto\nCreate a folder somewhere on your computer called “Lecture6”.\nOpen R studio, and create a .qmd File and save inside the “Lecture6” folder as “Yourname_Lecture6.qmd”.\nCreate a header for Activity 1.",
+    "crumbs": [
+      "Week 3",
+      "Lecture 6"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture6.html#today",
+    "href": "LectureNotes/Lecture6.html#today",
+    "title": "Lecture 6",
+    "section": "Today",
+    "text": "Today\n\nReview: Stationarity, White Noise, Autocovariance, and “temporal structure”\nSmoothing",
+    "crumbs": [
+      "Week 3",
+      "Lecture 6"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture6.html#activity-1-in-groups",
+    "href": "LectureNotes/Lecture6.html#activity-1-in-groups",
+    "title": "Lecture 6",
+    "section": "Activity 1: In groups:",
+    "text": "Activity 1: In groups:\nChoose two properties from:\n\nStationarity\nWhite Noise\nAutocovariance, and\n“temporal structure”\n\nDefine the properties in symbols and words and describe why they are different. Make sure to put this in your quarto file!\nWhen you’re done, share with another group. Put that group’s answer under another header.",
+    "crumbs": [
+      "Week 3",
+      "Lecture 6"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture6.html#go-around-and-share-as-a-class.",
+    "href": "LectureNotes/Lecture6.html#go-around-and-share-as-a-class.",
+    "title": "Lecture 6",
+    "section": "Go around and share as a class.",
+    "text": "Go around and share as a class.\n\nAdd one or two observations from other groups",
+    "crumbs": [
+      "Week 3",
+      "Lecture 6"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture6.html#data-set-focus-soi",
+    "href": "LectureNotes/Lecture6.html#data-set-focus-soi",
+    "title": "Lecture 6",
+    "section": "Data set focus: SOI",
+    "text": "Data set focus: SOI\nCode Source\nMore about SOI on Climate.gov\n\n\nCode\nlibrary(astsa)\ntsplot(soi, ylab=\"\", xlab=\"\", main=\"Southern Oscillation Index\", col=4)\ntext(1970, .91, \"COOL\", col=5)\ntext(1970,-.91, \"WARM\", col=6)",
+    "crumbs": [
+      "Week 3",
+      "Lecture 6"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture6.html#activity-2-moving-average-smoother-example-3.16",
+    "href": "LectureNotes/Lecture6.html#activity-2-moving-average-smoother-example-3.16",
+    "title": "Lecture 6",
+    "section": "Activity 2: Moving average smoother (Example 3.16)",
+    "text": "Activity 2: Moving average smoother (Example 3.16)\nCode source\n\n\nCode\nlibrary(astsa)\n#library(tidyverse)\n## \nw = c(.5, rep(1,11), .5)/12\nsoif = filter(soi, sides=2, filter=w)\ntsplot(soi, col=astsa.col(4,.7), ylim=c(-1, 1.15))\nlines(soif, lwd=2, col=4)\n# insert\npar(fig = c(.65, 1, .75, 1), new = TRUE)\nw1 = c(rep(0,20), w, rep(0,20))\nplot(w1, type=\"l\", ylim = c(-.02,.1), xaxt=\"n\", yaxt=\"n\", ann=FALSE)\n\n\n\n\n\n\n\n\n\nCode\npar(mfrow = c(1,1))\n\n## Detrend\n\n## Plot detrended\n\n## acfs\n\n\n\nThe code gives an error. Can you fix it?\nDoes the moving average smoother appear to be doing a good job of capturing the trend?\nDetrend the soi series with respect to the moving average smoother.\nPlot the detrended soi series\nCompute the acf of the soi series and detrended series. What do you notice?",
+    "crumbs": [
+      "Week 3",
+      "Lecture 6"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture6.html#activity-2-solution",
+    "href": "LectureNotes/Lecture6.html#activity-2-solution",
+    "title": "Lecture 6",
+    "section": "Activity 2 Solution",
+    "text": "Activity 2 Solution\n\n\nCode\nlibrary(astsa)\nlibrary(tidyverse)\n\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\n\nCode\n## \nw = c(.5, rep(1,11), .5)/12\nsoif = stats::filter(soi, sides=2, filter=w)\ntsplot(soi, col=astsa.col(4,.7), ylim=c(-1, 1.15))\nlines(soif, lwd=2, col=4)\npar(fig = c(.65, 1, .75, 1), new = TRUE)\nw1 = c(rep(0,20), w, rep(0,20))\nplot(w1, type=\"l\", ylim = c(-.02,.1), xaxt=\"n\", yaxt=\"n\", ann=FALSE)\n\n\n\n\n\n\n\n\n\nCode\npar(mfrow = c(1,1))\n\n## Detrend\ndetrended &lt;- soi-soif\n\n## Plot detrended\ntsplot(detrended)\n\n\n\n\n\n\n\n\n\nCode\n## acfs\nacf1(soif, na.action = na.pass)\n\n\n\n\n\n\n\n\n\n [1]  0.99  0.95  0.91  0.85  0.78  0.70  0.61  0.53  0.44  0.36  0.28  0.20\n[13]  0.14  0.08  0.04  0.00 -0.03 -0.05 -0.07 -0.08 -0.09 -0.10 -0.10 -0.10\n[25] -0.09 -0.08 -0.07 -0.06 -0.05 -0.04 -0.03 -0.01  0.00  0.02  0.04  0.06\n[37]  0.08  0.10  0.11  0.13  0.15  0.17  0.19  0.20  0.21  0.22  0.23  0.24\n\n\nCode\npar(mfrow = c(2,1))\nacf1(soi)\n\n\n [1]  0.60  0.37  0.21  0.05 -0.11 -0.19 -0.18 -0.10  0.05  0.22  0.36  0.41\n[13]  0.31  0.10 -0.06 -0.17 -0.29 -0.37 -0.32 -0.19 -0.04  0.15  0.31  0.35\n[25]  0.25  0.10 -0.03 -0.16 -0.28 -0.37 -0.32 -0.16 -0.02  0.17  0.33  0.39\n[37]  0.30  0.16  0.00 -0.13 -0.24 -0.27 -0.25 -0.13  0.06  0.21  0.38  0.40\n\n\nCode\nacf1(detrended, na.action = na.pass)\n\n\n\n\n\n\n\n\n\n [1]  0.45  0.15 -0.05 -0.27 -0.47 -0.51 -0.42 -0.28 -0.04  0.24  0.47  0.55\n[13]  0.43  0.15 -0.06 -0.22 -0.39 -0.49 -0.41 -0.23 -0.01  0.24  0.46  0.51\n[25]  0.39  0.17 -0.02 -0.20 -0.38 -0.51 -0.43 -0.23 -0.03  0.22  0.46  0.53\n[37]  0.40  0.19 -0.04 -0.22 -0.39 -0.43 -0.41 -0.25  0.00  0.21  0.44  0.48\n\n\n\nThe code gives an error. Can you fix it? We need to specify we want stats::filter not dplyr::filter\nDescribe the trend estimated by the moving average smoother. The moving average smoother smooths out the annual cycles (the shorter oscillations in the observed series) and emphasizes a longer range cycle– this is the El Niño pattern.\nDetrend the soi series with respect to the moving average smoother. Here, we just subtract the estimated trend from the observed series. Note that there will be missing values on the ends, but that’s ok.\nPlot the detrended soi series\nPlot the acf of the soi series, the moving average trend estimate, and detrended series. What do you notice?\n\nThe soi and detrended soi have similar acfs that both appear to reveal the annual cycle, though the magnitude of the correlations are different. The moving average smoother shows the longer term oscillation. Each of these series has temporal structure (does not look like white noise).",
+    "crumbs": [
+      "Week 3",
+      "Lecture 6"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture6.html#what-is-a-moving-average-smoother",
+    "href": "LectureNotes/Lecture6.html#what-is-a-moving-average-smoother",
+    "title": "Lecture 6",
+    "section": "What is a moving average smoother?",
+    "text": "What is a moving average smoother?\n\\[\nm_t = \\sum_{j = -k}^k a_j x_{t-j}\n\\]\nWhere \\(x_t\\) is any time series and the coefficients add to 1. How is this different from the “moving average model”?\n\nIn the model we’ve seen so far, we assume \\(x_t\\) is white noise and that the weights are equal\n\nWhat were the weights in the last example? How do you know? soif = stats::filter(soi, sides=2, filter=w) is portion of the code that computes the moving average. The weights are in the filter argument, so we need to look at what w is:\n\n\nCode\nw\n\n\n [1] 0.04166667 0.08333333 0.08333333 0.08333333 0.08333333 0.08333333\n [7] 0.08333333 0.08333333 0.08333333 0.08333333 0.08333333 0.08333333\n[13] 0.04166667\n\n\nCode\nplot(-6:6, w, ylim = c(0, .1), ylab = \"Weight\", xlab = \"distance from point we want the moving average estimate for\")",
+    "crumbs": [
+      "Week 3",
+      "Lecture 6"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture6.html#activity-3-kernel-smoothing-example-3.17",
+    "href": "LectureNotes/Lecture6.html#activity-3-kernel-smoothing-example-3.17",
+    "title": "Lecture 6",
+    "section": "Activity 3: Kernel smoothing (Example 3.17)",
+    "text": "Activity 3: Kernel smoothing (Example 3.17)\nCode source\n\n\nCode\ntsplot(soi, col=4)\nlines(ksmooth(time(soi), soi, \"normal\", bandwidth=1), lwd=2, col=6)\n\n\n\n\n\n\n\n\n\nCode\n## detrend\n\n## plot detrended\n\n## acfs\n\n\n\nDescribe the trend captured by the kernel smoother.\nChange the bandwith to 2 and re-plot the kernel smoother and soi series. Repeat with a bandwidth of 0.5. What do you think the bandwidth parameter does?\nDetrend the soi series with respect to the kernel smoother.\nPlot the detrended soi series\nPlot the acf of the soi series, the kernel trend estimate, and detrended series. What do you notice?",
+    "crumbs": [
+      "Week 3",
+      "Lecture 6"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture6.html#activity-3-solution",
+    "href": "LectureNotes/Lecture6.html#activity-3-solution",
+    "title": "Lecture 6",
+    "section": "Activity 3 Solution",
+    "text": "Activity 3 Solution\nCode source\n\n\nCode\ntsplot(soi, col=4, ylim = c(-1, 1.15))\nlines(ksmooth(time(soi), soi, \"normal\", bandwidth=1), lwd=2, col=6)\n\n\n\n\n\n\n\n\n\nCode\n## change bandwidth\ntsplot(soi, col=4, ylim = c(-1, 1.15))\nlines(ksmooth(time(soi), soi, \"normal\", bandwidth=2), lwd=2, col=6)\n\n\n\n\n\n\n\n\n\nCode\ntsplot(soi, col=4, ylim = c(-1, 1.15))\nlines(ksmooth(time(soi), soi, \"normal\", bandwidth=0.5), lwd=2, col=6)\n\n\n\n\n\n\n\n\n\nCode\n## Detrend\nsoi_ksmooth &lt;- ksmooth(time(soi), soi, \"normal\", bandwidth=1)\ndetrended &lt;- soi-soi_ksmooth$y\n\n## Plot detrended\ntsplot(detrended)\n\n\n\n\n\n\n\n\n\nCode\n## acfs\nacf1(soi_ksmooth$y, na.action = na.pass)\n\n\n\n\n\n\n\n\n\n [1]  0.99  0.96  0.92  0.86  0.80  0.73  0.65  0.58  0.50  0.43  0.35  0.29\n[13]  0.22  0.16  0.11  0.06  0.02 -0.01 -0.03 -0.05 -0.06 -0.06 -0.06 -0.06\n[25] -0.06 -0.06 -0.06 -0.05 -0.05 -0.04 -0.02  0.00\n\n\nCode\npar(mfrow = c(2,1))\nacf1(soi)\n\n\n [1]  0.60  0.37  0.21  0.05 -0.11 -0.19 -0.18 -0.10  0.05  0.22  0.36  0.41\n[13]  0.31  0.10 -0.06 -0.17 -0.29 -0.37 -0.32 -0.19 -0.04  0.15  0.31  0.35\n[25]  0.25  0.10 -0.03 -0.16 -0.28 -0.37 -0.32 -0.16 -0.02  0.17  0.33  0.39\n[37]  0.30  0.16  0.00 -0.13 -0.24 -0.27 -0.25 -0.13  0.06  0.21  0.38  0.40\n\n\nCode\nacf1(detrended, na.action = na.pass)\n\n\n\n\n\n\n\n\n\n [1]  0.42  0.12 -0.05 -0.23 -0.40 -0.46 -0.41 -0.28 -0.05  0.21  0.42  0.51\n[13]  0.39  0.13 -0.07 -0.20 -0.35 -0.45 -0.38 -0.22 -0.02  0.22  0.44  0.49\n[25]  0.36  0.14 -0.02 -0.18 -0.34 -0.47 -0.41 -0.21 -0.03  0.21  0.43  0.49\n[37]  0.37  0.17 -0.04 -0.21 -0.36 -0.40 -0.39 -0.24  0.01  0.20  0.42  0.45\n\n\n\nDescribe the trend captured by the kernel smoother. The Kernel smoother appears very similar to the moving average smoother, capturing the longer-term El Niño pattern and smoothing out the annual variation\nChange the bandwith to 2 and re-plot the kernel smoother and soi series. Repeat with a bandwidth of 0.5. What do you think the bandwidth parameter does? The higher the bandwidth, the “smoother” the kernel.\nDetrend the soi series with respect to the original kernel smoother with bandwidth 1. Here, we just subtract the estimated trend from the observed series. Note that here we do not have missing values at the ends of the series.\nPlot the detrended soi series. ** It looks pretty stationary**\nPlot the acf of the soi series, the kernel smoother trend estimate, and detrended series. What do you notice? Similar to the moving average smoother, we can see the structure as a result of the smoothing in the acf of the kernel smoother. The acf of the original series and the de-trended series look similar. Again, all have temporal structure.",
+    "crumbs": [
+      "Week 3",
+      "Lecture 6"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture6.html#what-is-a-kernel",
+    "href": "LectureNotes/Lecture6.html#what-is-a-kernel",
+    "title": "Lecture 6",
+    "section": "What is a kernel?",
+    "text": "What is a kernel?\nA kernel is a moving average smoother that uses a weight function (the kernel) to average the observations: \\[\nm_t = \\sum_{i = 1}^n w_i(t)x_{t_i}\n\\] Where the weight function is\n\\[\nw_i(t) = K \\left ( \\frac{t-t_i}{b}\\right ) / \\sum_{k = 1}^n K \\left(\\frac{t-t_k}{b} \\right )\n\\] Where \\(K(z) = \\exp(-z^2/2)\\) (anyone recognize this?)\nHow does this compare with the Moving Average smoother?",
+    "crumbs": [
+      "Week 3",
+      "Lecture 6"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture6.html#interpretation-of-bandwidth",
+    "href": "LectureNotes/Lecture6.html#interpretation-of-bandwidth",
+    "title": "Lecture 6",
+    "section": "Interpretation of bandwidth",
+    "text": "Interpretation of bandwidth\nSince time is in years here, and we would expect yearly cycles, we use a bandwidth of 1 to approximately smooth over the year.\nSo, bandwidth does control the degree of smoothness, but the actual value depends on the unit of time measurement (years, months, days, etc.)\nIf the data were monthly, we would use a bandwidth of 12:\n\n\nCode\nSOI = ts(soi, freq = 1) ## convert to monthly\ntsplot(SOI) ## note the x-axis\nlines(ksmooth(time(SOI), SOI, \"normal\", bandwidth = 12), lwd = 2, col = 4)",
+    "crumbs": [
+      "Week 3",
+      "Lecture 6"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture6.html#activity-4-loess-example-3.18",
+    "href": "LectureNotes/Lecture6.html#activity-4-loess-example-3.18",
+    "title": "Lecture 6",
+    "section": "Activity 4: Loess (Example 3.18)",
+    "text": "Activity 4: Loess (Example 3.18)\nCode source\n\n\nCode\ntsplot(soi, col=astsa.col(4,.6))\nlines(lowess(soi, f=.05), lwd=2, col=4) # El Niño cycle\n# lines(lowess(soi), lty=2, lwd=2, col=2) # trend (with default span)\n#- or -#\n##-- trend with CIs using loess --##\nlo = predict(loess(soi ~ time(soi)), se=TRUE)\ntrnd = ts(lo$fit, start=1950, freq=12) # put back ts attributes\nlines(trnd, col=6, lwd=2)\n L  = trnd - qt(0.975, lo$df)*lo$se\n U  = trnd + qt(0.975, lo$df)*lo$se\n xx = c(time(soi), rev(time(soi)))\n yy = c(L, rev(U))\npolygon(xx, yy, border=8, col=gray(.6, alpha=.4))\n\n\n\n\n\n\n\n\n\nCode\n## detrend wrt \"linear\" trend\n\n\n## detrend wrt \"seasonal\" trend \n\n\n## detrend wrt both\n\n\n\nNotice that there are two trends here. Describe the patterns in each.\nNote that the two smoother estimates use different functions. lowess specifies the f parameter, which is called the bandwidth . What is the name of argument that controls the the span parameter for the function . What does the span parameter control?\nDetrend the soi series with respect to the linear trend smoother and plot it, then do the same for the El Niño trend, then do the same subtracting off both. How do they look?",
+    "crumbs": [
+      "Week 3",
+      "Lecture 6"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture6.html#activity-4-solutions",
+    "href": "LectureNotes/Lecture6.html#activity-4-solutions",
+    "title": "Lecture 6",
+    "section": "Activity 4 Solutions",
+    "text": "Activity 4 Solutions\nCode source\n\n\nCode\ntsplot(soi, col=astsa.col(4,.6))\nlines(lowess(soi, f=.05), lwd=2, col=4) # El Niño cycle\n# lines(lowess(soi), lty=2, lwd=2, col=2) # trend (with default span)\n#- or -#\n##-- trend with CIs using loess --##\nlo = predict(loess(soi ~ time(soi), span = 1), se=TRUE)\ntrnd = ts(lo$fit, start=1950, freq=12) # put back ts attributes\nlines(trnd, col=6, lwd=2)\n L  = trnd - qt(0.975, lo$df)*lo$se\n U  = trnd + qt(0.975, lo$df)*lo$se\n xx = c(time(soi), rev(time(soi)))\n yy = c(L, rev(U))\npolygon(xx, yy, border=8, col=gray(.6, alpha=.4))\n\n\n\n\n\n\n\n\n\nCode\n## detrend wrt \"linear\" trend\ntsplot(soi - trnd)\n\n\n\n\n\n\n\n\n\nCode\n## detrend wrt \"seasonal\" trend \nsmoother &lt;- lowess(soi, f=.05)\ntsplot(soi - smoother$y)\n\n\n\n\n\n\n\n\n\nCode\n## detrend wrt both\ntsplot(soi- trnd - smoother$y)\n\n\n\n\n\n\n\n\n\n\nNotice that there are two trends here. Describe the patterns in each. There appears to be an approximately linear decreasing trend, and a trend which is similar to the moving average and kernel smoother. The linear-ish trend has a confidence band around it (have we seen that before?)\nNote that the two smoother estimates use different functions. lowess specifies the f parameter, which is called the bandwidth . What is the name of argument that controls the the span parameter for the function . What does the span parameter control?\n\nLooking at the documentation for loess, we see the function has an argument called span, and the defualt is 0.75. Note that the book is incorrect that the default is 2/3. The span controls the degree of smoothing. We will talk about what that means.\n\nDetrend the soi series with respect to the linear trend smoother and plot it, then do the same for the El Niño trend, then do the same subtracting off both. How do they look? They all look fairly similar.",
+    "crumbs": [
+      "Week 3",
+      "Lecture 6"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture6.html#revisiting-the-climate.gov-website",
+    "href": "LectureNotes/Lecture6.html#revisiting-the-climate.gov-website",
+    "title": "Lecture 6",
+    "section": "Revisiting the Climate.gov website",
+    "text": "Revisiting the Climate.gov website\nMore about SOI on Climate.gov\nCompare the plot to the smoother estimates we have plotted for the various activities.",
     "crumbs": [
       "Week 3",
       "Lecture 6"
@@ -977,7 +1171,7 @@
     "href": "LectureNotes/Lecture2.html#notation-and-data--white-noise",
     "title": "Lecture 2",
     "section": "Notation and Data- White noise",
-    "text": "Notation and Data- White noise\n“Let \\(w_t\\) be a white noise series”\n\n\n\nt\nRandom Variable\nExample data\n\n\n\n\n1\n\\(w_1 \\sim N(0, \\sigma_w^2)\\)\n0.4493517\n\n\n2\n\\(w_2 \\sim N(0, \\sigma_w^2)\\)\n-1.0526968\n\n\n\n\\(\\vdots\\)\n\\(\\vdots\\)\n\n\nt\n\\(w_t \\sim N(0, \\sigma^2_w)\\)\n0.5472852\n\n\n\\(\\vdots\\)\n\\(\\vdots\\)\n\\(\\vdots\\)\n\n\nn\n\\(w_n \\sim N(0, \\sigma_w^2)\\)\n-0.0540791\n\n\n\nIf we interpret the collection of \\(w_t\\) as a random vector, then \\(w_t \\sim MVN(\\vec{0}, I)\\) (why \\(I\\)?)\nNote: sometimes \\(w_t\\) could mean a (univariate) value of a white noise series for a particular time \\(t\\) (kind of like how you refer to an arbitrary \\(x_i\\) when you have a sample \\(x_1, \\dots, x_n\\)).",
+    "text": "Notation and Data- White noise\n“Let \\(w_t\\) be a white noise series”\n\n\n\nt\nRandom Variable\nExample data\n\n\n\n\n1\n\\(w_1 \\sim N(0, \\sigma_w^2)\\)\n-0.0858351\n\n\n2\n\\(w_2 \\sim N(0, \\sigma_w^2)\\)\n-1.9091891\n\n\n\n\\(\\vdots\\)\n\\(\\vdots\\)\n\n\nt\n\\(w_t \\sim N(0, \\sigma^2_w)\\)\n0.9840158\n\n\n\\(\\vdots\\)\n\\(\\vdots\\)\n\\(\\vdots\\)\n\n\nn\n\\(w_n \\sim N(0, \\sigma_w^2)\\)\n0.2530984\n\n\n\nIf we interpret the collection of \\(w_t\\) as a random vector, then \\(w_t \\sim MVN(\\vec{0}, I)\\) (why \\(I\\)?)\nNote: sometimes \\(w_t\\) could mean a (univariate) value of a white noise series for a particular time \\(t\\) (kind of like how you refer to an arbitrary \\(x_i\\) when you have a sample \\(x_1, \\dots, x_n\\)).",
     "crumbs": [
       "Week 1",
       "Lecture 2"
@@ -1402,6 +1596,13 @@
     ]
   },
   {
+    "objectID": "Exams/PracticeMidterm.html",
+    "href": "Exams/PracticeMidterm.html",
+    "title": "Fall 24 Stat 416 Lecture Notes",
+    "section": "",
+    "text": "idea: a moving average itself is stationary. Is a moving average of an arbitrary time series stationary?\ntwo moving average, with different weights"
+  },
+  {
     "objectID": "Assignments/AssignmentSolutions/Assignment1_solutions.html",
     "href": "Assignments/AssignmentSolutions/Assignment1_solutions.html",
     "title": "Assignment 1",
@@ -1489,7 +1690,7 @@
     "href": "Assignments/AssignmentSolutions/Assignment2_updated.html#part-2-code",
     "title": "Solutions: Assignment 2 Due 10/7 at Midnight",
     "section": "Part 2: Code",
-    "text": "Part 2: Code\nNote: I have set the code chunks here to have eval: false in the code chunk. Change that to true so that I can run your code easily.\n\n[5 points] All your code runs without errors (unless that’s the point), and if there is a message, explain what it means. (Bonus: to be nice to me, submit a rendered pdf)\n[5 points] Simulate from an AR(1) process with coefficient 0.7 and 10 data points.\n\n\nlibrary(astsa)\n\n# your code here\n\nw &lt;- rnorm(10) \nx_t &lt;- stats::filter(x = w, filter = 0.7, method = \"recursive\")\n\n\n[6 points] Look at the documentation for the stats::lag function (run ?lag in the console). State what package the function is in and what the function does[4 points]. Using k = 1 compute a lag(1) version of x_t that you simulated above[2 points].\n\n\nx_t_lag1 &lt;- stats::lag(x_t, k = 1)\n\n\n[3 points] Run the following code and compare x_t and x_t_lag1.\n\n\ncbind(x_t, x_t_lag1)\n\nTime Series:\nStart = 0 \nEnd = 10 \nFrequency = 1 \n           x_t    x_t_lag1\n 0          NA  0.02680915\n 1  0.02680915  1.07210646\n 2  1.07210646  1.69187412\n 3  1.69187412  0.49424928\n 4  0.49424928 -0.83290269\n 5 -0.83290269 -2.17060192\n 6 -2.17060192 -1.03556686\n 7 -1.03556686  0.46384876\n 8  0.46384876 -0.42239489\n 9 -0.42239489 -0.18711631\n10 -0.18711631          NA\n\n\n\nMake a time series plot of x_t and x_t_1. Do you notice the same features as when in the previous question?\n\n\ntsplot(x_t)\n\n\n\n\n\n\n\ntsplot(x_t_lag1)\n\n\n\n\n\n\n\n\n\nRun the below code. Why are the plots different? Are either particularly useful?\n\n\nplot(x_t, x_t_lag1)\nplot(as.vector(x_t), as.vector(x_t_lag1))\n\n\nInstead of using stats::lag, use dplyr::lag to create a new version of x_t_lag. Repeat the code from steps 2-5. Describe how the output has changed.\n\n\nx_t_lag1 &lt;- dplyr::lag(as.vector(x_t), n = 1)\nplot(x_t, x_t_lag1)\n\n\n\n\n\n\n\nplot(as.vector(x_t), as.vector(x_t_lag1))\n\n\n\n\n\n\n\n\n\nRe-simulate an AR(1) process as in number 1, but this time with 100 observations. Also recompute x_t_lag1. Fit an intercept-free regression model to predict x_t from x_t_lag. Provide the value of the slope estimate and interpret the value in the context of this simulation.\n\n\nw &lt;- rnorm(100) \nx_t &lt;- stats::filter(x = w, filter = 0.7, method = \"recursive\")\n\nx_t_lag1 &lt;- dplyr::lag(as.vector(x_t), n = 1)\n\nlinear_model &lt;- lm(x_t ~ -1 + x_t_lag1)\nsummary(linear_model)\n\n\nCall:\nlm(formula = x_t ~ -1 + x_t_lag1)\n\nResiduals:\n     Min       1Q   Median       3Q      Max \n-2.25482 -0.76750 -0.01997  0.53041  1.69298 \n\nCoefficients:\n         Estimate Std. Error t value Pr(&gt;|t|)    \nx_t_lag1  0.63085    0.07873   8.012 2.39e-12 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 0.9374 on 98 degrees of freedom\n  (1 observation deleted due to missingness)\nMultiple R-squared:  0.3958,    Adjusted R-squared:  0.3896 \nF-statistic:  64.2 on 1 and 98 DF,  p-value: 2.386e-12\n\n\n\n[11 points] Plot the acf of x_t[2 points] and the acf of the residuals from the regression model[4 points]. Which looks more like white noise?[2 points] What does this tell you about the temporal structure in x_t and its residuals?[3 points]\n\n\nacf(x_t)\nacf(residuals(linear_model))"
+    "text": "Part 2: Code\nNote: I have set the code chunks here to have eval: false in the code chunk. Change that to true so that I can run your code easily.\n\n[5 points] All your code runs without errors (unless that’s the point), and if there is a message, explain what it means. (Bonus: to be nice to me, submit a rendered pdf)\n[5 points] Simulate from an AR(1) process with coefficient 0.7 and 10 data points.\n\n\nlibrary(astsa)\n\n# your code here\n\nw &lt;- rnorm(10) \nx_t &lt;- stats::filter(x = w, filter = 0.7, method = \"recursive\")\n\n\n[6 points] Look at the documentation for the stats::lag function (run ?lag in the console). State what package the function is in and what the function does[4 points]. Using k = 1 compute a lag(1) version of x_t that you simulated above[2 points].\n\n\nx_t_lag1 &lt;- stats::lag(x_t, k = 1)\n\n\n[3 points] Run the following code and compare x_t and x_t_lag1.\n\n\ncbind(x_t, x_t_lag1)\n\nTime Series:\nStart = 0 \nEnd = 10 \nFrequency = 1 \n          x_t   x_t_lag1\n 0         NA -0.4906664\n 1 -0.4906664 -0.4726518\n 2 -0.4726518  0.9903218\n 3  0.9903218  2.6968376\n 4  2.6968376  1.9507429\n 5  1.9507429  1.9623413\n 6  1.9623413  0.7028394\n 7  0.7028394 -0.4424428\n 8 -0.4424428  1.4905658\n 9  1.4905658  1.1265770\n10  1.1265770         NA\n\n\n\nMake a time series plot of x_t and x_t_1. Do you notice the same features as when in the previous question?\n\n\ntsplot(x_t)\n\n\n\n\n\n\n\ntsplot(x_t_lag1)\n\n\n\n\n\n\n\n\n\nRun the below code. Why are the plots different? Are either particularly useful?\n\n\nplot(x_t, x_t_lag1)\nplot(as.vector(x_t), as.vector(x_t_lag1))\n\n\nInstead of using stats::lag, use dplyr::lag to create a new version of x_t_lag. Repeat the code from steps 2-5. Describe how the output has changed.\n\n\nx_t_lag1 &lt;- dplyr::lag(as.vector(x_t), n = 1)\nplot(x_t, x_t_lag1)\n\n\n\n\n\n\n\nplot(as.vector(x_t), as.vector(x_t_lag1))\n\n\n\n\n\n\n\n\n\nRe-simulate an AR(1) process as in number 1, but this time with 100 observations. Also recompute x_t_lag1. Fit an intercept-free regression model to predict x_t from x_t_lag. Provide the value of the slope estimate and interpret the value in the context of this simulation.\n\n\nw &lt;- rnorm(100) \nx_t &lt;- stats::filter(x = w, filter = 0.7, method = \"recursive\")\n\nx_t_lag1 &lt;- dplyr::lag(as.vector(x_t), n = 1)\n\nlinear_model &lt;- lm(x_t ~ -1 + x_t_lag1)\nsummary(linear_model)\n\n\nCall:\nlm(formula = x_t ~ -1 + x_t_lag1)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-2.4315 -0.6953  0.2390  0.7592  2.7060 \n\nCoefficients:\n         Estimate Std. Error t value Pr(&gt;|t|)    \nx_t_lag1  0.70276    0.07569   9.285 4.31e-15 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 1.044 on 98 degrees of freedom\n  (1 observation deleted due to missingness)\nMultiple R-squared:  0.468, Adjusted R-squared:  0.4626 \nF-statistic: 86.21 on 1 and 98 DF,  p-value: 4.31e-15\n\n\n\n[11 points] Plot the acf of x_t[2 points] and the acf of the residuals from the regression model[4 points]. Which looks more like white noise?[2 points] What does this tell you about the temporal structure in x_t and its residuals?[3 points]\n\n\nacf(x_t)\nacf(residuals(linear_model))"
   },
   {
     "objectID": "Assignments/AssignmentSolutions/Assignment2_updated.html#part-3-reading",
@@ -2570,11 +2771,70 @@
     "href": "LectureNotes/Lecture7.html",
     "title": "Lecture 7",
     "section": "",
-    "text": "Work in progress!",
-    "crumbs": [
-      "Week 4",
-      "Lecture 7"
-    ]
+    "text": "Phrase\nSymbols\nWords\n\n\n\n\n\\(x_t\\) is white noise\n\n\n\n\n\\(x_t\\) is stationary in the mean\n\n\n\n\n\\(x_t\\) is stationary in the autocovariance\n\n\n\n\n\\(x_t\\) is stationary\n\n\n\n\n\\(x_t\\) has temporal structure"
+  },
+  {
+    "objectID": "LectureNotes/Lecture7.html#activity-1-fill-out-this-table",
+    "href": "LectureNotes/Lecture7.html#activity-1-fill-out-this-table",
+    "title": "Lecture 7",
+    "section": "",
+    "text": "Phrase\nSymbols\nWords\n\n\n\n\n\\(x_t\\) is white noise\n\n\n\n\n\\(x_t\\) is stationary in the mean\n\n\n\n\n\\(x_t\\) is stationary in the autocovariance\n\n\n\n\n\\(x_t\\) is stationary\n\n\n\n\n\\(x_t\\) has temporal structure"
+  },
+  {
+    "objectID": "LectureNotes/Lecture7.html#activity-1-solutions-fill-out-this-table",
+    "href": "LectureNotes/Lecture7.html#activity-1-solutions-fill-out-this-table",
+    "title": "Lecture 7",
+    "section": "Activity 1 Solutions: Fill out this table",
+    "text": "Activity 1 Solutions: Fill out this table\n\n\n\n\n\n\n\n\n\nPhrase\nSymbols\nWords\nBonus content\n\n\n\n\n\\(x_t\\) is white noise\n\\[\n\\E(x_t)\n\\]\n\\[\n\\gamma(s,t) = \\begin{cases} \\sigma^2_w& \\text{ if } s = t\\\\ 0& \\text{ if } s \\ne t \\end{cases}\n\\]\n$x_1, x_2, \\dots, x_n \\text{ are }i.i.d $\n“Marginally (for a given \\(t\\)), \\(x_t\\) (”$x$ of \\(t\\)” or “$x$ sub \\(t\\)”) follows some distribution follows some distribution that is zero on average and are uncorrelated sigma w (sigma sub w) (except for when s = t, then the and x_s is independent of x_t for all s, t ”\nWhen we talk about white noise, an assumption is independence which necessarily implies we have multiple values of \\(t\\), and for each value of \\(t\\) we have a random vector \\(x_t\\) which satisfies the distributional assumptions. Also\n\\[\n\\gamma(t,t) = \\sigma^2_w = \\text{marginal\nvariance}\n\\]\n“Gamma of t comma t is sigma 2 w and is called the marginal variance of \\(x_t\\) , where we consider \\(x_t\\) to be a univariate random variable (think about how the word distribution was used in intro stats, that’s the setting)”\n\n\n\\(x_t\\) is stationary in the mean\n\\(\\E(x_t)\\) is not a function of \\(t\\)\nThe expected value of \\(x_t\\) does not have a \\(t\\) in the formula.\nThere is no temporal structure in the average behavior of \\(x\\).\nThis basically equates to \\(x_t\\) having a horizontal trend, where the y-intercept can be any value. For white noise, for example, it’s 0.\n\n\n\\(x_t\\) is stationary in the autocovariance\n\\(\\gamma_x(s,t) = \\gamma_x(h)\\) for all \\(s,t\\)\nThe autocovariance function depends only on the distance between time points, not the specific values of the time points.\nWhite noise is stationary, but if a time series \\(x_t\\) is stationary it is not necessarily white noise. For example, if \\(v_t\\) is a p-point moving average of white noise, the covariance function of \\(v_t\\) for the case when p = 3 is:\n\\[\n\\gamma_v(s,t) = \\begin{cases}\n3/9 \\sigma^2_w & s-t = 0\\\\\n2/9 \\sigma^2_w & \\vert s-t \\vert = 1\\\\\n1/9 \\sigma^2_w & \\vert s-t \\vert =2 \\\\\n0 & \\vert s-t \\vert &gt; 2\n\\end{cases}\n\\]\nWe can rewrite as a function of \\(h\\), meaning \\(v_t\\) is stationary in the autocovariance (or sometimes people just say covariance)\nThis is not the same function as \\(\\gamma_x(s,t)\\) for white noise\nSpecifically, notice that the right hand side contains the “covariance structure”, the possible magnitudes of dependence (left of comma) for given combinations of two time points \\(s\\) and \\(t\\). This is the meaningful difference between the two functions.\nThe left hand sides, while different because of the subscript, are just symbols for “covariance function of *” where * is the letter part of the time series in question, i.e. \\(\\gamma_v(s,t)\\) is the autocovariance function of \\(v_t\\).\n\n\n\\(x_t\\) is stationary\nBoth the previous cells\nBoth the previous cells\n“In general, a stationary time series will have no predictable patterns in the long-term.”- Forecasting Principles and Practice\n\n\n\\(x_t\\) has temporal structure\n\\(\\E(x_t)\\) is a function of \\(t\\)\nor\n\\(\\gamma_x(s,t)\\) is nonzero for some \\(s \\ne t\\)\nOn average, the value of the time series \\(x_t\\) varies with respect to \\(t\\).\n\\(x_t\\) exhibits temporal autocorrelation, or, knowing the value of \\(x_t\\) tells us something about the value of \\(x_s\\) when \\(\\gamma(s,t) &gt; 0\\)\nNotice that when the time series is stationary in the mean, we say there is no temporal structure in the mean, but the autocovariance can still have temporal structure and be stationary. (If it didn’t it wouldn’t be a very interesting time series!)"
+  },
+  {
+    "objectID": "LectureNotes/Lecture7.html#oh-no-wheres-the-template",
+    "href": "LectureNotes/Lecture7.html#oh-no-wheres-the-template",
+    "title": "Lecture 7",
+    "section": "Oh no, where’s the template?",
+    "text": "Oh no, where’s the template?\nWe’re going to make it ourselves!"
+  },
+  {
+    "objectID": "LectureNotes/Lecture7.html#part-0",
+    "href": "LectureNotes/Lecture7.html#part-0",
+    "title": "Lecture 7",
+    "section": "Part 0",
+    "text": "Part 0\n\nCreate a folder somewhere on your computer called “Lecture6”.\nOpen R studio, and create a .qmd File and save inside the “Lecture6” folder as “Yourname_Lecture6.qmd”.\nToggle into “Source” mode (upper left corner)\nCopy the content on This Page and then toggle into visual mode\nClick the render button. Does what you get look like what’s on this page?"
+  },
+  {
+    "objectID": "LectureNotes/Lecture7.html#save-your-.qmd-file-and-close-and-reopen-r.-render-your-.qmd-file.-any-errors",
+    "href": "LectureNotes/Lecture7.html#save-your-.qmd-file-and-close-and-reopen-r.-render-your-.qmd-file.-any-errors",
+    "title": "Lecture 7",
+    "section": "Save your .qmd file and close and reopen R. Render your .qmd file. Any errors?",
+    "text": "Save your .qmd file and close and reopen R. Render your .qmd file. Any errors?"
+  },
+  {
+    "objectID": "LectureNotes/Lecture7.html#activity-2",
+    "href": "LectureNotes/Lecture7.html#activity-2",
+    "title": "Lecture 7",
+    "section": "Activity 2",
+    "text": "Activity 2\nI have a data set with 5 different time series. The possibile sources are white noise, a moving average of some order \\(p\\) of white noise, a simulated trend stationary model where the temporal structure (mean function) is a simple linear regression line, and a real data set. One of the categories is duplicated.\nTry to identify which is which by completing the following steps for each series:\n\nPlot the time series.\nIn separate plot, again plot the time series and also plot a moving average smoother over the time series (use any \\(p\\) you’d like).\nDetrend the time series with respect to the moving average estimate and plot the de-trended time series.\nIn a separate plot, again plot the time series and also plot a simple linear regression line using 1:length(x) where x is the time series you are analyzing.\nDetrend the time series with respect to the regression and plot the detrended series.\nDifference the time series and plot it in yet another plot.\nRun par(mfrow = c(2,3)) and then re-run the plotting code for all 6 plots you just made in steps 1-6.\n\nWhich plots look like stationary time series? How does that inform your guess of the source of the series (i.e., which model it is comes from)\nIn steps 2-6 above, you generated 6 different time series. Run acf() on each of the series (plot the sample autocorrelation of each of the series). Which of the series looks like white noise? Which of the series looks like a moving average? Which of the series looks like there might be trend nonstationarity? For each of the 5 smoothed/detrended/differenced series, is the structure of the acf predictable based on the corresponding time series plot? If you had just seen the original data (i.e. the plot in number 1), would you be able to tell what the"
+  },
+  {
+    "objectID": "LectureNotes/Lecture7.html#activity-1",
+    "href": "LectureNotes/Lecture7.html#activity-1",
+    "title": "Lecture 7",
+    "section": "Activity 1:",
+    "text": "Activity 1:"
+  },
+  {
+    "objectID": "LectureNotes/Lecture7.html#seasonal-difference",
+    "href": "LectureNotes/Lecture7.html#seasonal-difference",
+    "title": "Lecture 7",
+    "section": "seasonal difference",
+    "text": "seasonal difference\ntsa4- p66 links to signal plus noise and calls it cyclic or periodic. Calls AR(2) pseudo-cyclic and describes the choice of roots to induce that behavior."
+  },
+  {
+    "objectID": "LectureNotes/Lecture7.html#lynx-and-predatorprey",
+    "href": "LectureNotes/Lecture7.html#lynx-and-predatorprey",
+    "title": "Lecture 7",
+    "section": "Lynx and Predator/prey",
+    "text": "Lynx and Predator/prey"
   },
   {
     "objectID": "LectureNotes/Slides/Lecture3/index.html#recap",
@@ -2824,245 +3084,245 @@
   {
     "objectID": "LectureNotes/Slides/Lecture5/index.html#link-to-template",
     "href": "LectureNotes/Slides/Lecture5/index.html#link-to-template",
-    "title": "Lecture 5 - Draft",
+    "title": "Lecture 5",
     "section": "Link to template",
     "text": "Link to template\n\n\\[\n\\newcommand\\E{{\\mathbb{E}}}\n\\]\n\n\n\n\nLink to Notes Template\n\n\nLecture5Template.qmd"
   },
   {
     "objectID": "LectureNotes/Slides/Lecture5/index.html#last-time",
     "href": "LectureNotes/Slides/Lecture5/index.html#last-time",
-    "title": "Lecture 5 - Draft",
+    "title": "Lecture 5",
     "section": "Last time",
     "text": "Last time\n\nTrend Stationarity model\nSalmon price example\nSimulating a time series to understand the autocovariance function"
   },
   {
     "objectID": "LectureNotes/Slides/Lecture5/index.html#today",
     "href": "LectureNotes/Slides/Lecture5/index.html#today",
-    "title": "Lecture 5 - Draft",
+    "title": "Lecture 5",
     "section": "Today",
     "text": "Today\n\nTime series at ENVR Conference\nDetrending\nActivities\nDifferencing"
   },
   {
     "objectID": "LectureNotes/Slides/Lecture5/index.html#a-look-ahead",
     "href": "LectureNotes/Slides/Lecture5/index.html#a-look-ahead",
-    "title": "Lecture 5 - Draft",
+    "title": "Lecture 5",
     "section": "A look ahead",
     "text": "A look ahead\n\nWeeks 1-2: terminology of time series models, working with various R functions relating to time series (Chapters 1-2)\nWeek 3: Trends, trends, trends (smoothing) (Chapters 2-3 in Shumway and Stoffer, Ch 8 in FPP)\nWeek 4: Time series regression (trends that depend on predictor variables), Forecasting (Chapter 5 and 7 in FPP)\nWeek 5: Time series data science process, and midterm (Chapter 5 in FPP, various parts in Shumway and Stoffer)\nWeek 6: Partial correlation and ARMA models (Chapter 4 in Shumway and Stoffer)\nWeek 7: ARIMA models (what they are, when to use them, and how to know if yours is trash) (Chapter 4 in Shumway and Stoffer, Chapter 9 in FPP)\nWeek 8: Cross-correlation and Multiple time series (Ch 2, Ch 3 in Shumway and Stoffer)\nWeek 9: Wiggle room/class choice\nWeek 10: Wiggle room/class choice"
   },
   {
     "objectID": "LectureNotes/Slides/Lecture5/index.html#is-a-trend-necessarily-linear",
     "href": "LectureNotes/Slides/Lecture5/index.html#is-a-trend-necessarily-linear",
-    "title": "Lecture 5 - Draft",
+    "title": "Lecture 5",
     "section": "Is a “trend” necessarily linear?",
     "text": "Is a “trend” necessarily linear?\n\n\nOh no, I have to talk to the intimidating experts\nThe very first talk: “A trend doesn’t have to be linear”- Robert Lund\nThe penultimate talk: “seasonal trend”\n\n\nConclusion:\n\n\nNope! Seems like “trend” = “mean function”"
   },
   {
     "objectID": "LectureNotes/Slides/Lecture5/index.html#lots-of-examples-of-vocab-weve-learned",
     "href": "LectureNotes/Slides/Lecture5/index.html#lots-of-examples-of-vocab-weve-learned",
-    "title": "Lecture 5 - Draft",
+    "title": "Lecture 5",
     "section": "Lots of examples of vocab we’ve learned…",
     "text": "Lots of examples of vocab we’ve learned…"
   },
   {
     "objectID": "LectureNotes/Slides/Lecture5/index.html#notes-on-robert-lunds-talk",
     "href": "LectureNotes/Slides/Lecture5/index.html#notes-on-robert-lunds-talk",
-    "title": "Lecture 5 - Draft",
+    "title": "Lecture 5",
     "section": "Notes on Robert Lund’s Talk",
     "text": "Notes on Robert Lund’s Talk"
   },
   {
     "objectID": "LectureNotes/Slides/Lecture5/index.html#notes-on-robert-lunds-talk-1",
     "href": "LectureNotes/Slides/Lecture5/index.html#notes-on-robert-lunds-talk-1",
-    "title": "Lecture 5 - Draft",
+    "title": "Lecture 5",
     "section": "Notes on Robert Lund’s Talk",
     "text": "Notes on Robert Lund’s Talk"
   },
   {
     "objectID": "LectureNotes/Slides/Lecture5/index.html#notes-from-matthias-katzfusss-talk",
     "href": "LectureNotes/Slides/Lecture5/index.html#notes-from-matthias-katzfusss-talk",
-    "title": "Lecture 5 - Draft",
+    "title": "Lecture 5",
     "section": "Notes from Matthias Katzfuss’s talk",
     "text": "Notes from Matthias Katzfuss’s talk"
   },
   {
     "objectID": "LectureNotes/Slides/Lecture5/index.html#notes-from-dan-cooleys-talk",
     "href": "LectureNotes/Slides/Lecture5/index.html#notes-from-dan-cooleys-talk",
-    "title": "Lecture 5 - Draft",
+    "title": "Lecture 5",
     "section": "Notes from Dan Cooley’s talk",
     "text": "Notes from Dan Cooley’s talk\n\nMath anxiety rating: 70"
   },
   {
     "objectID": "LectureNotes/Slides/Lecture5/index.html#notes-from-dan-cooleys-talk-1",
     "href": "LectureNotes/Slides/Lecture5/index.html#notes-from-dan-cooleys-talk-1",
-    "title": "Lecture 5 - Draft",
+    "title": "Lecture 5",
     "section": "Notes from Dan Cooley’s talk",
     "text": "Notes from Dan Cooley’s talk"
   },
   {
     "objectID": "LectureNotes/Slides/Lecture5/index.html#detrending-1",
     "href": "LectureNotes/Slides/Lecture5/index.html#detrending-1",
-    "title": "Lecture 5 - Draft",
+    "title": "Lecture 5",
     "section": "Detrending",
     "text": "Detrending\nIf a process is trend stationary (nonstationary in the mean, but stationary in the variance), can we just subtract off the trend and get back a stationary time series?\nSometimes (assuming we are able to estimate it), and that’s called detrending."
   },
   {
     "objectID": "LectureNotes/Slides/Lecture5/index.html#goal",
     "href": "LectureNotes/Slides/Lecture5/index.html#goal",
-    "title": "Lecture 5 - Draft",
+    "title": "Lecture 5",
     "section": "Goal:",
     "text": "Goal:\nAssuming trend stationarity (\\(x_t = \\mu_t + y_t\\), where \\(y_t\\) is stationary), find an estimate \\(\\widehat{\\mu}_t\\) and compute\n\\[\n\\begin{align}\n\\widehat{y_t} &= x_t - \\widehat{\\mu_t}\\\\\n\\text{Estimated Stationary process} &= \\text{Data - trend estimate}\n\\end{align}\n\\] Note: Does \\(y_t\\) remind you of anything from regression?"
   },
   {
     "objectID": "LectureNotes/Slides/Lecture5/index.html#example-subtracting-off-the-trend",
     "href": "LectureNotes/Slides/Lecture5/index.html#example-subtracting-off-the-trend",
-    "title": "Lecture 5 - Draft",
+    "title": "Lecture 5",
     "section": "Example: Subtracting off the trend",
     "text": "Example: Subtracting off the trend\n\n\n\nDark yellow line: the trend estimate\nblack: The observed data\nshaded region: 95% confidence bands on trend estimates.\n\nCan we make the time series stationary by subtracting off the trend?"
   },
   {
     "objectID": "LectureNotes/Slides/Lecture5/index.html#example-subtracting-off-the-trend-1",
     "href": "LectureNotes/Slides/Lecture5/index.html#example-subtracting-off-the-trend-1",
-    "title": "Lecture 5 - Draft",
+    "title": "Lecture 5",
     "section": "Example: Subtracting off the trend",
     "text": "Example: Subtracting off the trend\nDoes this time series appear stationary? In the mean, yes."
   },
   {
     "objectID": "LectureNotes/Slides/Lecture5/index.html#example-subtracting-off-the-trend-2",
     "href": "LectureNotes/Slides/Lecture5/index.html#example-subtracting-off-the-trend-2",
-    "title": "Lecture 5 - Draft",
+    "title": "Lecture 5",
     "section": "Example: Subtracting off the trend",
     "text": "Example: Subtracting off the trend\nHave we captured the temporal structure in the time series? Yes (note: we will learn about ACF hypothesis tests/p-values during the “time series data analysis process”)"
   },
   {
     "objectID": "LectureNotes/Slides/Lecture5/index.html#aside-managing-a-time-series-project-code-base",
     "href": "LectureNotes/Slides/Lecture5/index.html#aside-managing-a-time-series-project-code-base",
-    "title": "Lecture 5 - Draft",
+    "title": "Lecture 5",
     "section": "Aside: managing a time series project code base",
     "text": "Aside: managing a time series project code base\n\nI manage the GitHub for Houston Wastewater Epidemiology\nCheck out the “issues”\nSection 1: Demo adding new issue (“basic” time series methods)\nSection 2: Demo adding new issue (link to definition of online estimation)"
   },
   {
     "objectID": "LectureNotes/Slides/Lecture5/index.html#activity-1-detrending-a-commodity-example-3.7",
     "href": "LectureNotes/Slides/Lecture5/index.html#activity-1-detrending-a-commodity-example-3.7",
-    "title": "Lecture 5 - Draft",
+    "title": "Lecture 5",
     "section": "Activity 1: Detrending a commodity (Example 3.7)",
     "text": "Activity 1: Detrending a commodity (Example 3.7)\n\nGiven the code to generate the plot with the trend line, how would you view the equation of the trend line?\nVisualize the de-trended series. Does it appear stationary?\nCompute the acf of the salmon series and the detrended series. What do you notice?"
   },
   {
     "objectID": "LectureNotes/Slides/Lecture5/index.html#activity-1-solutions",
     "href": "LectureNotes/Slides/Lecture5/index.html#activity-1-solutions",
-    "title": "Lecture 5 - Draft",
+    "title": "Lecture 5",
     "section": "Activity 1 Solutions",
     "text": "Activity 1 Solutions\n\nGiven the code to generate the plot with the trend line, how would you view the equation of the trend line?\n\n\n\n\n\n\n\n\n\n\n\nCall:\nlm(formula = salmon ~ time(salmon), na.action = NULL)\n\nResiduals:\n     Min       1Q   Median       3Q      Max \n-1.69187 -0.62453 -0.07024  0.51561  2.34959 \n\nCoefficients:\n               Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)  -503.08947   34.44164  -14.61   &lt;2e-16 ***\ntime(salmon)    0.25290    0.01713   14.76   &lt;2e-16 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 0.8814 on 164 degrees of freedom\nMultiple R-squared:  0.5706,    Adjusted R-squared:  0.568 \nF-statistic: 217.9 on 1 and 164 DF,  p-value: &lt; 2.2e-16\n\n\n\nVisualize the de-trended series. Does it appear stationary?\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCompute the acf of the salmon series and the detrended series. What do you notice?\n\n\n\n\n\n\n\n\n\n\n [1] 0.93 0.84 0.75 0.68 0.61 0.54 0.50 0.47 0.45 0.42 0.39 0.33 0.25 0.18 0.12\n[16] 0.08 0.05 0.02 0.03 0.05 0.08 0.11 0.15 0.18 0.19 0.18 0.18 0.18 0.19 0.20\n[31] 0.24 0.29 0.36 0.41 0.45 0.46 0.43 0.38 0.34 0.30 0.26 0.23 0.21 0.21 0.20\n[46] 0.19 0.16 0.12\n\n\n\n\n\n\n\n\n\n [1]  0.89  0.72  0.56  0.42  0.29  0.20  0.14  0.10  0.08  0.06  0.01 -0.07\n[13] -0.20 -0.33 -0.43 -0.50 -0.54 -0.58 -0.56 -0.50 -0.44 -0.35 -0.26 -0.19\n[25] -0.17 -0.17 -0.17 -0.17 -0.13 -0.09  0.01  0.14  0.27  0.37  0.45  0.48\n[37]  0.42  0.34  0.27  0.21  0.17  0.14  0.14  0.15  0.16  0.14  0.10  0.05"
   },
   {
     "objectID": "LectureNotes/Slides/Lecture5/index.html#activity-2-assuming-we-are-able-to-estimate-it",
     "href": "LectureNotes/Slides/Lecture5/index.html#activity-2-assuming-we-are-able-to-estimate-it",
-    "title": "Lecture 5 - Draft",
+    "title": "Lecture 5",
     "section": "Activity 2: “assuming we are able to estimate it”",
     "text": "Activity 2: “assuming we are able to estimate it”\n\n\n\nLook at pages 37-41 of the textbook\nwhat is “it” in this context? (what are we estimating?)\nIf this is review, where did you first see these ideas?\nPut a dot on the math anxiety rating distribution on the back board"
   },
   {
     "objectID": "LectureNotes/Slides/Lecture5/index.html#activity-2solutions-assuming-we-are-able-to-estimate-it",
     "href": "LectureNotes/Slides/Lecture5/index.html#activity-2solutions-assuming-we-are-able-to-estimate-it",
-    "title": "Lecture 5 - Draft",
+    "title": "Lecture 5",
     "section": "Activity 2Solutions: “assuming we are able to estimate it”",
-    "text": "Activity 2Solutions: “assuming we are able to estimate it”\n\nLook at pages 37-41 of the textbook ✅\nwhat is “it” in this context? (what are we estimating?)\n\nThe trend (\\(\\beta_0\\) and \\(\\beta_1\\)), variance of the errors (\\(\\sigma^2_w\\)). The\n\nHow are the estimates derived?\n\nOptimization (calculus)\n\nIf this is review, where did you first see these ideas?\n\nYou may have seen this in Regression or Stat 426 (estimation and sampling theory)\n\nPut a dot on the math anxiety rating distribution on the back board. Color the dot based on whether you seen the math/ideas before."
+    "text": "Activity 2Solutions: “assuming we are able to estimate it”\n\nLook at pages 37-41 of the textbook ✅\nwhat is “it” in this context? (what are we estimating?)\n\nThe trend (\\(\\beta_0\\) and \\(\\beta_1\\)), variance of the errors (\\(\\sigma^2_w\\)). The\n\nHow are the estimates derived?\n\nOptimization (calculus)\n\nIf this is review, where did you first see these ideas?\n\nYou may have seen this in Regression or Stat 426 (estimation and sampling theory), or Advanced Econometrics\n\nPut a dot on the math anxiety rating distribution on the back board. Color the dot based on whether you seen the math/ideas before."
   },
   {
     "objectID": "LectureNotes/Slides/Lecture5/index.html#motivationmodel",
     "href": "LectureNotes/Slides/Lecture5/index.html#motivationmodel",
-    "title": "Lecture 5 - Draft",
+    "title": "Lecture 5",
     "section": "Motivation/model",
     "text": "Motivation/model\nConsider the trend stationary model (\\(y_t\\) is stationary). \\[\nx_t = \\mu_t + y_t\n\\] We saw how to estimate a fixed trend using a linear regression for the mean (\\(\\mu_t = \\beta_0 + \\beta_1t\\))\nWe then subtract off the estimate of the trend (detrend), \\(\\widehat{\\mu_t}\\) so that we are working with a stationary time series:\n\\[\n\\widehat{y_t} = x_t - \\widehat{\\mu_t}\n\\]\nWhat if the trend was not fixed? (dependent on \\(t\\) beyond just “\\(t\\) as a constant”)"
   },
   {
     "objectID": "LectureNotes/Slides/Lecture5/index.html#a-stochastic-trend-model",
     "href": "LectureNotes/Slides/Lecture5/index.html#a-stochastic-trend-model",
-    "title": "Lecture 5 - Draft",
+    "title": "Lecture 5",
     "section": "A stochastic trend model",
     "text": "A stochastic trend model\nChange the model for the mean to incorporate a stochastic component (random walk with drift):\n\\[\n\\mu_t = \\delta + \\mu_{t-1} + w_t\n\\] Where \\(w_t\\) is white noise independent of \\(y_t\\).\nIs \\(\\mu_t\\) stationary? No (it’s a random walk, nonstationary in both mean and covariance)"
   },
   {
     "objectID": "LectureNotes/Slides/Lecture5/index.html#how-to-get-back-to-a-stationary-time-series",
     "href": "LectureNotes/Slides/Lecture5/index.html#how-to-get-back-to-a-stationary-time-series",
-    "title": "Lecture 5 - Draft",
+    "title": "Lecture 5",
     "section": "How to “get back” to a stationary time series?",
     "text": "How to “get back” to a stationary time series?\nSince the stochastic component depends on just one past time point, consider the series \\(x_t - x_{t-1}\\).\nThis series is called the differenced series and the process is called differencing."
   },
   {
     "objectID": "LectureNotes/Slides/Lecture5/index.html#computing-the-difference-series-in-terms-of-the-stochastic-trend-model",
     "href": "LectureNotes/Slides/Lecture5/index.html#computing-the-difference-series-in-terms-of-the-stochastic-trend-model",
-    "title": "Lecture 5 - Draft",
+    "title": "Lecture 5",
     "section": "Computing the difference series in terms of the (stochastic) trend model",
     "text": "Computing the difference series in terms of the (stochastic) trend model\n\\[\n\\begin{align}\nx_{t} - x_{t-1} &= (\\mu_t + y_t) - (\\mu_{t-1} + y_{t-1})\\\\\n&= (\\delta + \\mu_{t-1} + w_t + y_t) - (\\mu_{t-1} - y_{t-1})\\\\\n& = \\delta + w_t + y_t - y_{t-1}\n\\end{align}\n\\] Need to compute mean function \\(\\E(x_t - x_{t-1}\\) and autocovariance function \\(cov(x_t - x_{t-1}, x_s- x_{s-1})\\) and check if they do not depend on \\(t\\) (mean) and just depend on the lag \\(h = s-t\\).\n…But the answer is we do get a stationary series!"
   },
   {
     "objectID": "LectureNotes/Slides/Lecture5/index.html#activity-3-simulating-a-random-walk-and-then-differencing-it",
     "href": "LectureNotes/Slides/Lecture5/index.html#activity-3-simulating-a-random-walk-and-then-differencing-it",
-    "title": "Lecture 5 - Draft",
+    "title": "Lecture 5",
     "section": "Activity 3: Simulating a random walk and then differencing it",
     "text": "Activity 3: Simulating a random walk and then differencing it\n\nSimulate a random walk with no drift and plot it.\n\n\nUse the diff function to difference the simulated series. Plot the result.\n\n\nDoes this series appear stationary? How do you know?\nVisualize the ACF of the differenced series. Does it look like white noise?"
   },
   {
     "objectID": "LectureNotes/Slides/Lecture5/index.html#activity-3-solutions-simulating-a-random-walk-and-then-differencing-it",
     "href": "LectureNotes/Slides/Lecture5/index.html#activity-3-solutions-simulating-a-random-walk-and-then-differencing-it",
-    "title": "Lecture 5 - Draft",
+    "title": "Lecture 5",
     "section": "Activity 3 Solutions: Simulating a random walk and then differencing it",
     "text": "Activity 3 Solutions: Simulating a random walk and then differencing it\n\nSimulate a random walk with no drift and plot it."
   },
   {
     "objectID": "LectureNotes/Slides/Lecture5/index.html#activity-3-solutions-simulating-a-random-walk-and-then-differencing-it-1",
     "href": "LectureNotes/Slides/Lecture5/index.html#activity-3-solutions-simulating-a-random-walk-and-then-differencing-it-1",
-    "title": "Lecture 5 - Draft",
+    "title": "Lecture 5",
     "section": "Activity 3 Solutions: Simulating a random walk and then differencing it",
     "text": "Activity 3 Solutions: Simulating a random walk and then differencing it\n\nUse the diff function to difference the simulated series. Plot the result.\n\n\n\nDoes this series appear stationary? How do you know? Looks like some pseudo-cyclic behavior, so no."
   },
   {
     "objectID": "LectureNotes/Slides/Lecture5/index.html#activity-3-solutions-simulating-a-random-walk-and-then-differencing-it-2",
     "href": "LectureNotes/Slides/Lecture5/index.html#activity-3-solutions-simulating-a-random-walk-and-then-differencing-it-2",
-    "title": "Lecture 5 - Draft",
+    "title": "Lecture 5",
     "section": "Activity 3 Solutions: Simulating a random walk and then differencing it",
     "text": "Activity 3 Solutions: Simulating a random walk and then differencing it\n\nVisualize the ACF of the differenced series. Does it look like white noise?\n\nNo– looks like it could be an AR(1)?"
   },
   {
     "objectID": "LectureNotes/Slides/Lecture5/index.html#activity-4-differencing-salmon-prices",
     "href": "LectureNotes/Slides/Lecture5/index.html#activity-4-differencing-salmon-prices",
-    "title": "Lecture 5 - Draft",
+    "title": "Lecture 5",
     "section": "Activity 4: Differencing Salmon Prices",
     "text": "Activity 4: Differencing Salmon Prices\n\nCompute and plot the differenced salmon series.\n\n\nDoes the series appear stationary?\nVisualize the acf of the differenced series. Does it look like white noise?"
   },
   {
     "objectID": "LectureNotes/Slides/Lecture5/index.html#activity-4-solutions-differencing-salmon-prices",
     "href": "LectureNotes/Slides/Lecture5/index.html#activity-4-solutions-differencing-salmon-prices",
-    "title": "Lecture 5 - Draft",
+    "title": "Lecture 5",
     "section": "Activity 4 Solutions: Differencing Salmon Prices",
     "text": "Activity 4 Solutions: Differencing Salmon Prices\n\nCompute and plot the differenced salmon series.\n\n\n\n\n\n\n\n\n\n\n\nDoes the series appear stationary?\n\nIn the mean– yes, maybe?– maybe a pseudo-cyclic type pattern? We should check the ACF\n\nVisualize the acf of the differenced series. Does it look like white noise?\n\n\n\n\n\n\n\n\n\n\n [1]  0.26 -0.02 -0.08 -0.10 -0.19 -0.11 -0.10 -0.06  0.02  0.07  0.15  0.24\n[13]  0.00 -0.15 -0.14 -0.07 -0.04 -0.23 -0.15 -0.05 -0.07 -0.06  0.13  0.21\n[25]  0.11 -0.01  0.00 -0.16 -0.09 -0.23 -0.10  0.04  0.12  0.09  0.23  0.34\n[37]  0.08 -0.06 -0.06 -0.08 -0.07 -0.09 -0.06  0.06  0.10  0.06  0.04  0.12\n\n\nThe acf of the differenced series appears to have patterns indicating annual cycles."
   },
   {
     "objectID": "LectureNotes/Slides/Lecture5/index.html#activity-5-comparing-differencing-and-detrending",
     "href": "LectureNotes/Slides/Lecture5/index.html#activity-5-comparing-differencing-and-detrending",
-    "title": "Lecture 5 - Draft",
+    "title": "Lecture 5",
     "section": "Activity 5: Comparing Differencing and Detrending",
     "text": "Activity 5: Comparing Differencing and Detrending\nCompare the Acfs of the differenced and detrended salmon series. What do you notice?"
   },
   {
     "objectID": "LectureNotes/Slides/Lecture5/index.html#activity-5-solutions-comparing-differencing-and-detrending",
     "href": "LectureNotes/Slides/Lecture5/index.html#activity-5-solutions-comparing-differencing-and-detrending",
-    "title": "Lecture 5 - Draft",
+    "title": "Lecture 5",
     "section": "Activity 5 Solutions: Comparing Differencing and Detrending",
     "text": "Activity 5 Solutions: Comparing Differencing and Detrending\nCompare the Acfs of the differenced and detrended salmon series. What do you notice?\n\n\n [1]  0.89  0.72  0.56  0.42  0.29  0.20  0.14  0.10  0.08  0.06  0.01 -0.07\n[13] -0.20 -0.33 -0.43 -0.50 -0.54 -0.58 -0.56 -0.50 -0.44 -0.35 -0.26 -0.19\n[25] -0.17 -0.17 -0.17 -0.17 -0.13 -0.09  0.01  0.14  0.27  0.37  0.45  0.48\n[37]  0.42  0.34  0.27  0.21  0.17  0.14  0.14  0.15  0.16  0.14  0.10  0.05\n\n\n\n [1]  0.26 -0.02 -0.08 -0.10 -0.19 -0.11 -0.10 -0.06  0.02  0.07  0.15  0.24\n[13]  0.00 -0.15 -0.14 -0.07 -0.04 -0.23 -0.15 -0.05 -0.07 -0.06  0.13  0.21\n[25]  0.11 -0.01  0.00 -0.16 -0.09 -0.23 -0.10  0.04  0.12  0.09  0.23  0.34\n[37]  0.08 -0.06 -0.06 -0.08 -0.07 -0.09 -0.06  0.06  0.10  0.06  0.04  0.12\n\n\nThe detrended series and the differenced series both show cycles, but the structure of those cycles appears different."
   },
   {
     "objectID": "LectureNotes/Slides/Lecture5/index.html#next-time-smoothing",
     "href": "LectureNotes/Slides/Lecture5/index.html#next-time-smoothing",
-    "title": "Lecture 5 - Draft",
+    "title": "Lecture 5",
     "section": "Next time: Smoothing",
     "text": "Next time: Smoothing\nWe’ve seen three explicity ways of modeling a trend (moving average (hw 1), and regression with time and random walk).\nHow else could we model a trend?"
   },
   {
     "objectID": "LectureNotes/Slides/Lecture5/index.html#visual-example",
     "href": "LectureNotes/Slides/Lecture5/index.html#visual-example",
-    "title": "Lecture 5 - Draft",
+    "title": "Lecture 5",
     "section": "Visual example:",
     "text": "Visual example:"
   },

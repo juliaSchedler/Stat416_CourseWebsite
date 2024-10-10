@@ -70,6 +70,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -83,7 +112,9 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../LectureNotes/Lecture7.html">Week 4</a></li><li class="breadcrumb-item"><a href="../LectureNotes/Lecture7.html">Lecture 7</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
+      Fall 24 Stat 416 Lecture Notes
+      </li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -196,33 +227,8 @@ ul.task-list li input[type="checkbox"] {
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
- <span class="menu-text">Week 4</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../LectureNotes/Lecture7.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Lecture 7</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../LectureNotes/Lecture8.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lecture 8</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../Exams/PracticeMidterm.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">PracticeMidterm.html</span></a>
-  </div>
-</li>
-      </ul>
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Week 4</span></span>
   </li>
     </ul>
     </div>
@@ -230,12 +236,30 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#activity-1-fill-out-this-table" id="toc-activity-1-fill-out-this-table" class="nav-link active" data-scroll-target="#activity-1-fill-out-this-table">Activity 1: Fill out this table</a></li>
+  <li><a href="#activity-1-solutions-fill-out-this-table" id="toc-activity-1-solutions-fill-out-this-table" class="nav-link" data-scroll-target="#activity-1-solutions-fill-out-this-table">Activity 1 Solutions: Fill out this table</a></li>
+  <li><a href="#oh-no-wheres-the-template" id="toc-oh-no-wheres-the-template" class="nav-link" data-scroll-target="#oh-no-wheres-the-template">Oh no, where’s the template?</a></li>
+  <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup">Setup</a>
+  <ul class="collapse">
+  <li><a href="#part-0" id="toc-part-0" class="nav-link" data-scroll-target="#part-0">Part 0</a></li>
+  <li><a href="#save-your-.qmd-file-and-close-and-reopen-r.-render-your-.qmd-file.-any-errors" id="toc-save-your-.qmd-file-and-close-and-reopen-r.-render-your-.qmd-file.-any-errors" class="nav-link" data-scroll-target="#save-your-.qmd-file-and-close-and-reopen-r.-render-your-.qmd-file.-any-errors">Save your .qmd file and close and reopen R. Render your .qmd file. Any errors?</a></li>
+  <li><a href="#activity-2" id="toc-activity-2" class="nav-link" data-scroll-target="#activity-2">Activity 2</a></li>
+  <li><a href="#activity-1" id="toc-activity-1" class="nav-link" data-scroll-target="#activity-1">Activity 1:</a></li>
+  <li><a href="#seasonal-difference" id="toc-seasonal-difference" class="nav-link" data-scroll-target="#seasonal-difference">seasonal difference</a></li>
+  <li><a href="#lynx-and-predatorprey" id="toc-lynx-and-predatorprey" class="nav-link" data-scroll-target="#lynx-and-predatorprey">Lynx and Predator/prey</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../LectureNotes/Lecture7.html">Week 4</a></li><li class="breadcrumb-item"><a href="../LectureNotes/Lecture7.html">Lecture 7</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Lecture 7</h1>
 </div>
@@ -260,9 +284,174 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Work in progress!</p>
+<section id="activity-1-fill-out-this-table" class="level2">
+<h2 class="anchored" data-anchor-id="activity-1-fill-out-this-table">Activity 1: Fill out this table</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Phrase</th>
+<th>Symbols</th>
+<th>Words</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(x_t\)</span> is white noise</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(x_t\)</span> is stationary in the mean</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(x_t\)</span> is stationary in the autocovariance</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(x_t\)</span> is stationary</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(x_t\)</span> has temporal structure</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="activity-1-solutions-fill-out-this-table" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="activity-1-solutions-fill-out-this-table">Activity 1 Solutions: Fill out this table</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 6%">
+<col style="width: 14%">
+<col style="width: 40%">
+<col style="width: 38%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Phrase</th>
+<th>Symbols</th>
+<th>Words</th>
+<th>Bonus content</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(x_t\)</span> is white noise</td>
+<td><p><span class="math display">\[
+\E(x_t)
+\]</span></p>
+<p><span class="math display">\[
+\gamma(s,t) = \begin{cases} \sigma^2_w&amp; \text{ if } s = t\\ 0&amp; \text{ if } s \ne t \end{cases}
+\]</span></p>
+<p>$x_1, x_2, \dots, x_n \text{ are }i.i.d $</p></td>
+<td>“Marginally (for a given <span class="math inline">\(t\)</span>), <span class="math inline">\(x_t\)</span> (”$x$ of <span class="math inline">\(t\)</span>” or “$x$ sub <span class="math inline">\(t\)</span>”) follows some distribution follows some distribution that is zero on average and are uncorrelated sigma w (sigma sub w) (except for when s = t, then the and x_s is independent of x_t for all s, t ”</td>
+<td><p>When we talk about white noise, an assumption is independence which necessarily implies we have multiple values of <span class="math inline">\(t\)</span>, and for each value of <span class="math inline">\(t\)</span> we have a random vector <span class="math inline">\(x_t\)</span> which satisfies the distributional assumptions. Also</p>
+<p><span class="math display">\[
+\gamma(t,t) = \sigma^2_w = \text{marginal
+variance}
+\]</span></p>
+<p>“Gamma of t comma t is sigma 2 w and is called the marginal variance of <span class="math inline">\(x_t\)</span> , where we consider <span class="math inline">\(x_t\)</span> to be a univariate random variable (think about how the word distribution was used in intro stats, that’s the setting)”</p></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(x_t\)</span> is stationary in the mean</td>
+<td><span class="math inline">\(\E(x_t)\)</span> is not a function of <span class="math inline">\(t\)</span></td>
+<td><p>The expected value of <span class="math inline">\(x_t\)</span> does not have a <span class="math inline">\(t\)</span> in the formula.</p>
+<p>There is no temporal structure in the average behavior of <span class="math inline">\(x\)</span>.</p></td>
+<td>This basically equates to <span class="math inline">\(x_t\)</span> having a horizontal trend, where the y-intercept can be any value. For white noise, for example, it’s 0.</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(x_t\)</span> is stationary in the autocovariance</td>
+<td><span class="math inline">\(\gamma_x(s,t) = \gamma_x(h)\)</span> for all <span class="math inline">\(s,t\)</span></td>
+<td>The autocovariance function depends only on the distance between time points, not the specific values of the time points.</td>
+<td><p>White noise is stationary, but if a time series <span class="math inline">\(x_t\)</span> is stationary it is not necessarily white noise. For example, if <span class="math inline">\(v_t\)</span> is a p-point moving average of white noise, the covariance function of <span class="math inline">\(v_t\)</span> for the case when p = 3 is:</p>
+<p><span class="math display">\[
+\gamma_v(s,t) = \begin{cases}
+3/9 \sigma^2_w &amp; s-t = 0\\
+2/9 \sigma^2_w &amp; \vert s-t \vert = 1\\
+1/9 \sigma^2_w &amp; \vert s-t \vert =2 \\
+0 &amp; \vert s-t \vert &gt; 2
+\end{cases}
+\]</span></p>
+<p>We can rewrite as a function of <span class="math inline">\(h\)</span>, meaning <span class="math inline">\(v_t\)</span> is stationary in the autocovariance (or sometimes people just say covariance)</p>
+<p>This is not the same function as <span class="math inline">\(\gamma_x(s,t)\)</span> for white noise</p>
+<p>Specifically, notice that the right hand side contains the “covariance structure”, the possible magnitudes of dependence (left of comma) for given combinations of two time points <span class="math inline">\(s\)</span> and <span class="math inline">\(t\)</span>. This is the meaningful difference between the two functions.</p>
+<p>The left hand sides, while different because of the subscript, are just symbols for “covariance function of *” where * is the letter part of the time series in question, i.e.&nbsp;<span class="math inline">\(\gamma_v(s,t)\)</span> is the autocovariance function of <span class="math inline">\(v_t\)</span>.</p></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(x_t\)</span> is stationary</td>
+<td>Both the previous cells</td>
+<td>Both the previous cells</td>
+<td>“In general, a stationary time series will have no predictable patterns in the long-term.”- Forecasting Principles and Practice</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(x_t\)</span> has temporal structure</td>
+<td><p><span class="math inline">\(\E(x_t)\)</span> is a function of <span class="math inline">\(t\)</span></p>
+<p>or</p>
+<p><span class="math inline">\(\gamma_x(s,t)\)</span> is nonzero for some <span class="math inline">\(s \ne t\)</span></p></td>
+<td><p>On average, the value of the time series <span class="math inline">\(x_t\)</span> varies with respect to <span class="math inline">\(t\)</span>.</p>
+<p><span class="math inline">\(x_t\)</span> exhibits temporal autocorrelation, or, knowing the value of <span class="math inline">\(x_t\)</span> tells us something about the value of <span class="math inline">\(x_s\)</span> when <span class="math inline">\(\gamma(s,t) &gt; 0\)</span></p></td>
+<td>Notice that when the time series is stationary in the mean, we say there is no temporal structure in the mean, but the autocovariance can still have temporal structure and be stationary. (If it didn’t it wouldn’t be a very interesting time series!)</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="oh-no-wheres-the-template" class="level2">
+<h2 class="anchored" data-anchor-id="oh-no-wheres-the-template">Oh no, where’s the template?</h2>
+<p>We’re going to make it ourselves!</p>
+</section>
+<section id="setup" class="level1">
+<h1>Setup</h1>
+<section id="part-0" class="level2">
+<h2 class="anchored" data-anchor-id="part-0">Part 0</h2>
+<ul>
+<li><p>Create a folder somewhere on your computer called “Lecture6”.</p></li>
+<li><p>Open R studio, and create a .qmd File and save inside the “Lecture6” folder as “Yourname_Lecture6.qmd”.</p></li>
+<li><p>Toggle into “Source” mode (upper left corner)</p></li>
+<li><p>Copy the content on This Page and then toggle into visual mode</p></li>
+<li><p>Click the render button. Does what you get look like what’s on this page?</p></li>
+</ul>
+</section>
+<section id="save-your-.qmd-file-and-close-and-reopen-r.-render-your-.qmd-file.-any-errors" class="level2">
+<h2 class="anchored" data-anchor-id="save-your-.qmd-file-and-close-and-reopen-r.-render-your-.qmd-file.-any-errors">Save your .qmd file and close and reopen R. Render your .qmd file. Any errors?</h2>
+</section>
+<section id="activity-2" class="level2">
+<h2 class="anchored" data-anchor-id="activity-2">Activity 2</h2>
+<p>I have a data set with 5 different time series. The possibile sources are white noise, a moving average of some order <span class="math inline">\(p\)</span> of white noise, a simulated trend stationary model where the temporal structure (mean function) is a simple linear regression line, and a real data set. One of the categories is duplicated.</p>
+<p>Try to identify which is which by completing the following steps for each series:</p>
+<ol type="1">
+<li>Plot the time series.</li>
+<li>In separate plot, again plot the time series and also plot a moving average smoother over the time series (use any <span class="math inline">\(p\)</span> you’d like).</li>
+<li>Detrend the time series with respect to the moving average estimate and plot the de-trended time series.</li>
+<li>In a separate plot, again plot the time series and also plot a simple linear regression line using <code>1:length(x)</code> where <code>x</code> is the time series you are analyzing.</li>
+<li>Detrend the time series with respect to the regression and plot the detrended series.</li>
+<li>Difference the time series and plot it in yet another plot.</li>
+<li>Run <code>par(mfrow = c(2,3))</code> and then re-run the plotting code for all 6 plots you just made in steps 1-6.</li>
+</ol>
+<p>Which plots look like stationary time series? How does that inform your guess of the source of the series (i.e., which model it is comes from)</p>
+<p>In steps 2-6 above, you generated 6 different time series. Run <code>acf()</code> on each of the series (plot the <strong>sample</strong> autocorrelation of each of the series). Which of the series looks like white noise? Which of the series looks like a moving average? Which of the series looks like there might be trend nonstationarity? For each of the 5 smoothed/detrended/differenced series, is the structure of the acf predictable based on the corresponding time series plot? If you had just seen the original data (i.e.&nbsp;the plot in number 1), would you be able to tell what the</p>
+</section>
+<section id="activity-1" class="level2">
+<h2 class="anchored" data-anchor-id="activity-1">Activity 1:</h2>
+</section>
+<section id="seasonal-difference" class="level2">
+<h2 class="anchored" data-anchor-id="seasonal-difference">seasonal difference</h2>
+<p>tsa4- p66 links to signal plus noise and calls it cyclic or periodic. Calls AR(2) pseudo-cyclic and describes the choice of roots to induce that behavior.</p>
+</section>
+<section id="lynx-and-predatorprey" class="level2">
+<h2 class="anchored" data-anchor-id="lynx-and-predatorprey">Lynx and Predator/prey</h2>
+</section>
+<section id="section" class="level2">
+<h2 class="anchored" data-anchor-id="section"></h2>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
