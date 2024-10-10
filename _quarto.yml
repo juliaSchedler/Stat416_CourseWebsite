@@ -28,7 +28,7 @@ website:
         contents:
         - href: LectureNotes/Lecture5.qmd
         - href: LectureNotes/Lecture6.qmd
-        - href: Assignmetns/Assignment3.qmd
+        - href: Assignments/Assignment3.qmd
         
       - section: "Week 4"
         contents: 
