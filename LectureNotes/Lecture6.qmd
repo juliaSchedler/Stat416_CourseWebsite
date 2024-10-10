@@ -2,6 +2,7 @@
 title: "Lecture 6"
 author: Julia Schedler
 format: 
+  docx: default
   html: 
     code-fold: show
 ---
