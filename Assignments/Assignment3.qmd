@@ -4,7 +4,7 @@ author: Your name
 format:
   html:
     embed-resources: true
-#  pdf: default
+  #pdf: default
   
 ---
 
@@ -20,10 +20,10 @@ $$
 
 2. We have considered a few possible models for the trend:
 $$
-\begin{align}
+\begin{aligned}
 \mu_{LM,t} &= \beta_0 + \beta_1 t  \\
 \mu_{RW,t} &=  \delta + \mu_{RW, t-1} + w_t
-\end{align}
+\end{aligned}
 $$
 2. [2 points] What do "RW" and "LM" stand for?
 
