@@ -4,6 +4,7 @@ author: Your name
 format:
   html:
     embed-resources: true
+#  pdf: default
   
 ---
 
