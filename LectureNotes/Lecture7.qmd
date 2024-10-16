@@ -343,11 +343,13 @@ plot_acfs(time_series$y5, main = "TS 5")
 
 #### ACF of the MA-5 detrended
 
--   `y1`-
--   `y2`-
--   `y3`-
--   `y4`-
--   `y5`-
+None of the MA(5)- detrended series look particularly like white noise, which is what we would want to see if we had fully accounted for the temporal structure in our model.
+
+-   `y1`- has some temporal structure, likely due to the fact that we appear to have started with white noise and then subtracted out the MA structure
+-   `y2`- has even more structure than `y1`
+-   `y3`- looks like white noise, except for a peak at `y5`
+-   `y4`- looks almost like white noise, except for lag 1 and 2 showing some modest negative autocorrelation
+-   `y5`- looks kind of like the white noise, but perhaps has a bit of structure
 
 #### ACF of the linear trends
 
@@ -355,26 +357,25 @@ These all look very similar. That is because each of our linear trend models are
 
 #### ACF of the linearly detrended
 
--   `y1`-
--   `y2`-
--   `y3`-
--   `y4`-
--   `y5`-
+-   `y1`- Looks like white noise– unsurprising since we subtracted off a near horizontal trend of 0, and we suspect a linear model
+-   `y2`- has significant autocorrelation at lag 1-- looks like the regression does *not* have independent errors, so probably not a great model
+-   `y3`- same as `y2`, but has a larger autocorrelation and for lags 2 and 3 as well
+-   `y4`- Looks like white noise– unsurprising since we linearly detrended and we suspect a linear model.
+-   `y5`- Not quite like white noise (most autocorrelations are small but positive), but doesn't look too bad.
 
 #### ACF of the differences
 
--   `y1`-
--   `y2`-
--   `y3`-
--   `y4`-
--   `y5`-
+-   `y1`- Significant lag 1 autocorrelation (makes sense since we differenced white noise, which added some dependence)
+-   `y2`- Significant lag 3 autocorrelation
+-   `y3`- Significant lag 5 autocorrelation
+-   `y4`- some lag 1 autocorrelation
+-   `y5`- some lag 1 autocorrelation
 
 ## Simulation solutions.
 
 ```{r}
 set.seed(0016)
 N <- 100
-png("image.png")
 ## Simulate white noise.
 y1 <- rnorm(N)
 
@@ -396,3 +397,50 @@ y4 <- 2.718 + 1.96*time_index + w
 data(Nile, package = "datasets")
 y5 <- as.vector(Nile)
 ```
+
+## Why doesn't the acf of the MA(5) look like white noise?
+
+-   I'm not exactly sure, but something about the estimation procedure in the `stats::filter()` function
+
+-   If you fit using the `arima` function, it looks fine:
+
+```{r}
+ma_5_mod <- arima(time_series$y3, c(0,0,5))
+acf(ma_5_mod$resid)
+```
+
+-   Estimation procedure matters!
+
+## A bit about the Nile Data
+
+```{r}
+tsplot(Nile, xlab = "Year", ylab = "Discharge at Aswan, 10^8 m^3", main = "Annual Volume")
+```
+
+## Where's Aswan? 
+
+Sun directly overhead at noon on the summer solstice– where the circumference of the earth was calculated like 2000 years ago. So cool!!! (not related to this data set(?))
+
+![](images/Egypt map.png)
+
+## A bit about the Nile Data
+
+"Level shift visible in the data at 1898" – how do we model "abrupt changes in distribution"?
+
+![](images/table.png)
+
+## Check out the paper!
+
+![](images/early_time_series.png)
+
+## Who's Barbara Bell?
+
+She's not cited formally... (data sets now get their own DOIs, ideally)
+
+-   Got her PhD at Harvard in 1944 in Astrophysics
+
+    -   [History of women at Harvard/Radcliffe](https://www.radcliffe.harvard.edu/event/2012-its-complicated-exhibition#:~:text=Mary%20Whiton%20Calkins%20(Smith%20AB,1886%2C%201890%E2%80%931891).) (a bit of a bummer to read)
+
+From (one of) her Obituary(ies):
+
+"Working with Donald Menzel, Harold Glazer, Giancarlo Noci and Robert Kurucz, **her research dealt primarily with observations of solar phenomena**. Barbara had a keen interest in history and travel, and in her later years traveled to all corners of the globe. She developed a particular interest in the ancient history of Egypt. **Her research expanded to include the variations in the floods of the Nile for which she sought to connect to solar fluctuations**. Using ancient accounts, she was **first to propose a linkage between prolonged drought and the societal collapse she called "The First Dark Age in Egypt"** in the early 1970s. She published several journal articles on the connection of climate fluctuations to the fall of Egyptian dynasties which have been widely cited in the literature. Loved by all who knew her, Barbara had **a sharp and curious mind, a kind heart and a cheerful disposition**. Intensely interested in her family and those around her, she donated generously her entire life to Harvard University and numerous charities. A **beloved sister and aunt**..."
