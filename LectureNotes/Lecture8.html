@@ -304,7 +304,7 @@ window.Quarto = {
   <li><a href="#activity-2-sort-of-example-3.15" id="toc-activity-2-sort-of-example-3.15" class="nav-link" data-scroll-target="#activity-2-sort-of-example-3.15">Activity 2 (sort of Example 3.15)</a></li>
   <li><a href="#activity-2-solutions-sort-of-example-3.15" id="toc-activity-2-solutions-sort-of-example-3.15" class="nav-link" data-scroll-target="#activity-2-solutions-sort-of-example-3.15">Activity 2 Solutions (sort of Example 3.15)</a></li>
   <li><a href="#activity-3-kinda-example-3.15" id="toc-activity-3-kinda-example-3.15" class="nav-link" data-scroll-target="#activity-3-kinda-example-3.15">Activity 3 (kinda Example 3.15)</a></li>
-  <li><a href="#activity-3-kinda-example-3.15-1" id="toc-activity-3-kinda-example-3.15-1" class="nav-link" data-scroll-target="#activity-3-kinda-example-3.15-1">Activity 3 (kinda Example 3.15)</a></li>
+  <li><a href="#activity-3-solutions-kinda-example-3.15" id="toc-activity-3-solutions-kinda-example-3.15" class="nav-link" data-scroll-target="#activity-3-solutions-kinda-example-3.15">Activity 3 Solutions (kinda Example 3.15)</a></li>
   <li><a href="#choosing-the-seasonal-index" id="toc-choosing-the-seasonal-index" class="nav-link" data-scroll-target="#choosing-the-seasonal-index">Choosing the seasonal index</a></li>
   <li><a href="#activity-4" id="toc-activity-4" class="nav-link" data-scroll-target="#activity-4">Activity 4</a></li>
   <li><a href="#activity-4-solutions" id="toc-activity-4-solutions" class="nav-link" data-scroll-target="#activity-4-solutions">Activity 4 Solutions</a></li>
@@ -420,7 +420,6 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p>Explain how the scatterplots below relate to the sample autocorrelation function of <code>soi</code>.</p>
 <ol type="1">
 <li><p>Explain how the scatterplots below relate to the sample autocorrelation function of <code>soi</code>.</p></li>
 <li><p>Do the lagplots/loess trend estimates suggest that sample auto<em>correlation</em> is a meaningful measurement for the temporal lag relationships?</p></li>
@@ -563,34 +562,29 @@ window.Quarto = {
 <span id="cb16-6"><a href="#cb16-6"></a></span>
 <span id="cb16-7"><a href="#cb16-7"></a>z1 <span class="ot">=</span> <span class="fu">cos</span>(<span class="dv">2</span><span class="sc">*</span>pi<span class="sc">*</span><span class="dv">1</span><span class="sc">:</span>n<span class="sc">/</span><span class="dv">12</span>)</span>
 <span id="cb16-8"><a href="#cb16-8"></a>z2 <span class="ot">=</span> <span class="fu">sin</span>(<span class="dv">2</span><span class="sc">*</span>pi<span class="sc">*</span><span class="dv">1</span><span class="sc">:</span>n<span class="sc">/</span><span class="dv">12</span>)</span>
-<span id="cb16-9"><a href="#cb16-9"></a><span class="fu">summary</span>(fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(x<span class="sc">~</span> <span class="dv">0</span> <span class="sc">+</span> z1 <span class="sc">+</span> z2)) <span class="co"># zero to exclude intercept</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-Call:
-lm(formula = x ~ 0 + z1 + z2)
-
-Residuals:
-     Min       1Q   Median       3Q      Max 
--0.70187 -0.16132  0.00053  0.15572  0.62818 
-
-Coefficients:
-    Estimate Std. Error t value Pr(&gt;|t|)    
-z1  0.494705   0.015859  31.194   &lt;2e-16 ***
-z2 -0.001529   0.015824  -0.097    0.923    
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Residual standard error: 0.2384 on 451 degrees of freedom
-Multiple R-squared:  0.6833,    Adjusted R-squared:  0.6819 
-F-statistic: 486.5 on 2 and 451 DF,  p-value: &lt; 2.2e-16</code></pre>
-</div>
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">1</span>))</span>
-<span id="cb18-2"><a href="#cb18-2"></a><span class="fu">tsplot</span>(x, <span class="at">col=</span><span class="dv">4</span>)</span>
-<span id="cb18-3"><a href="#cb18-3"></a><span class="fu">tsplot</span>(x, <span class="at">ylab=</span><span class="fu">expression</span>(<span class="fu">hat</span>(x)), <span class="at">col=</span><span class="fu">astsa.col</span>(<span class="dv">4</span>, .<span class="dv">5</span>))</span>
-<span id="cb18-4"><a href="#cb18-4"></a><span class="fu">lines</span>(<span class="fu">fitted</span>(fit), <span class="at">col=</span><span class="dv">2</span>, <span class="at">lwd=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-9"><a href="#cb16-9"></a><span class="fu">summary</span>(fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(x<span class="sc">~</span> <span class="dv">0</span> <span class="sc">+</span> z1 <span class="sc">+</span> z2)) <span class="co"># zero to exclude intercept</span></span>
+<span id="cb16-10"><a href="#cb16-10"></a><span class="do">## </span></span>
+<span id="cb16-11"><a href="#cb16-11"></a><span class="do">## Call:</span></span>
+<span id="cb16-12"><a href="#cb16-12"></a><span class="do">## lm(formula = x ~ 0 + z1 + z2)</span></span>
+<span id="cb16-13"><a href="#cb16-13"></a><span class="do">## </span></span>
+<span id="cb16-14"><a href="#cb16-14"></a><span class="do">## Residuals:</span></span>
+<span id="cb16-15"><a href="#cb16-15"></a><span class="do">##      Min       1Q   Median       3Q      Max </span></span>
+<span id="cb16-16"><a href="#cb16-16"></a><span class="do">## -0.70187 -0.16132  0.00053  0.15572  0.62818 </span></span>
+<span id="cb16-17"><a href="#cb16-17"></a><span class="do">## </span></span>
+<span id="cb16-18"><a href="#cb16-18"></a><span class="do">## Coefficients:</span></span>
+<span id="cb16-19"><a href="#cb16-19"></a><span class="do">##     Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span id="cb16-20"><a href="#cb16-20"></a><span class="do">## z1  0.494705   0.015859  31.194   &lt;2e-16 ***</span></span>
+<span id="cb16-21"><a href="#cb16-21"></a><span class="do">## z2 -0.001529   0.015824  -0.097    0.923    </span></span>
+<span id="cb16-22"><a href="#cb16-22"></a><span class="do">## ---</span></span>
+<span id="cb16-23"><a href="#cb16-23"></a><span class="do">## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span>
+<span id="cb16-24"><a href="#cb16-24"></a><span class="do">## </span></span>
+<span id="cb16-25"><a href="#cb16-25"></a><span class="do">## Residual standard error: 0.2384 on 451 degrees of freedom</span></span>
+<span id="cb16-26"><a href="#cb16-26"></a><span class="do">## Multiple R-squared:  0.6833, Adjusted R-squared:  0.6819 </span></span>
+<span id="cb16-27"><a href="#cb16-27"></a><span class="do">## F-statistic: 486.5 on 2 and 451 DF,  p-value: &lt; 2.2e-16</span></span>
+<span id="cb16-28"><a href="#cb16-28"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">1</span>))</span>
+<span id="cb16-29"><a href="#cb16-29"></a><span class="fu">tsplot</span>(x, <span class="at">col=</span><span class="dv">4</span>)</span>
+<span id="cb16-30"><a href="#cb16-30"></a><span class="fu">tsplot</span>(x, <span class="at">ylab=</span><span class="fu">expression</span>(<span class="fu">hat</span>(x)), <span class="at">col=</span><span class="fu">astsa.col</span>(<span class="dv">4</span>, .<span class="dv">5</span>))</span>
+<span id="cb16-31"><a href="#cb16-31"></a><span class="fu">lines</span>(<span class="fu">fitted</span>(fit), <span class="at">col=</span><span class="dv">2</span>, <span class="at">lwd=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -601,8 +595,8 @@ F-statistic: 486.5 on 2 and 451 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span>
-<span id="cb19-2"><a href="#cb19-2"></a><span class="fu">acf</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span>
+<span id="cb17-2"><a href="#cb17-2"></a><span class="fu">acf</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -613,7 +607,7 @@ F-statistic: 486.5 on 2 and 451 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="fu">acf</span>(<span class="fu">resid</span>(fit))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="fu">acf</span>(<span class="fu">resid</span>(fit))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -635,42 +629,37 @@ F-statistic: 486.5 on 2 and 451 DF,  p-value: &lt; 2.2e-16</code></pre>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="fu">set.seed</span>(<span class="dv">807</span>) <span class="co"># so you can reproduce these results</span></span>
-<span id="cb21-2"><a href="#cb21-2"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(soi)</span>
-<span id="cb21-3"><a href="#cb21-3"></a>x  <span class="ot">=</span> <span class="fl">0.5</span><span class="sc">*</span><span class="fu">cos</span>(<span class="dv">2</span><span class="sc">*</span>pi<span class="sc">*</span><span class="dv">1</span><span class="sc">:</span>n<span class="sc">/</span><span class="dv">12</span>) <span class="sc">+</span> <span class="fu">rnorm</span>(n,<span class="dv">0</span>,.<span class="dv">25</span>)</span>
-<span id="cb21-4"><a href="#cb21-4"></a></span>
-<span id="cb21-5"><a href="#cb21-5"></a></span>
-<span id="cb21-6"><a href="#cb21-6"></a></span>
-<span id="cb21-7"><a href="#cb21-7"></a>z1 <span class="ot">=</span> <span class="fu">cos</span>(<span class="dv">2</span><span class="sc">*</span>pi<span class="sc">*</span><span class="dv">1</span><span class="sc">:</span>n<span class="sc">/</span><span class="dv">12</span>)</span>
-<span id="cb21-8"><a href="#cb21-8"></a>z2 <span class="ot">=</span> <span class="fu">sin</span>(<span class="dv">2</span><span class="sc">*</span>pi<span class="sc">*</span><span class="dv">1</span><span class="sc">:</span>n<span class="sc">/</span><span class="dv">12</span>)</span>
-<span id="cb21-9"><a href="#cb21-9"></a><span class="fu">summary</span>(fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(x<span class="sc">~</span> <span class="dv">0</span> <span class="sc">+</span> z1 <span class="sc">+</span> z2)) <span class="co"># zero to exclude intercept</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-Call:
-lm(formula = x ~ 0 + z1 + z2)
-
-Residuals:
-     Min       1Q   Median       3Q      Max 
--0.70187 -0.16132  0.00053  0.15572  0.62818 
-
-Coefficients:
-    Estimate Std. Error t value Pr(&gt;|t|)    
-z1  0.494705   0.015859  31.194   &lt;2e-16 ***
-z2 -0.001529   0.015824  -0.097    0.923    
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Residual standard error: 0.2384 on 451 degrees of freedom
-Multiple R-squared:  0.6833,    Adjusted R-squared:  0.6819 
-F-statistic: 486.5 on 2 and 451 DF,  p-value: &lt; 2.2e-16</code></pre>
-</div>
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">1</span>))</span>
-<span id="cb23-2"><a href="#cb23-2"></a><span class="fu">tsplot</span>(x, <span class="at">col=</span><span class="dv">4</span>)</span>
-<span id="cb23-3"><a href="#cb23-3"></a><span class="fu">tsplot</span>(x, <span class="at">ylab=</span><span class="fu">expression</span>(<span class="fu">hat</span>(x)), <span class="at">col=</span><span class="fu">astsa.col</span>(<span class="dv">4</span>, .<span class="dv">5</span>))</span>
-<span id="cb23-4"><a href="#cb23-4"></a><span class="fu">lines</span>(<span class="fu">fitted</span>(fit), <span class="at">col=</span><span class="dv">2</span>, <span class="at">lwd=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="fu">set.seed</span>(<span class="dv">807</span>) <span class="co"># so you can reproduce these results</span></span>
+<span id="cb19-2"><a href="#cb19-2"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(soi)</span>
+<span id="cb19-3"><a href="#cb19-3"></a>x  <span class="ot">=</span> <span class="fl">0.5</span><span class="sc">*</span><span class="fu">cos</span>(<span class="dv">2</span><span class="sc">*</span>pi<span class="sc">*</span><span class="dv">1</span><span class="sc">:</span>n<span class="sc">/</span><span class="dv">12</span>) <span class="sc">+</span> <span class="fu">rnorm</span>(n,<span class="dv">0</span>,.<span class="dv">25</span>)</span>
+<span id="cb19-4"><a href="#cb19-4"></a></span>
+<span id="cb19-5"><a href="#cb19-5"></a></span>
+<span id="cb19-6"><a href="#cb19-6"></a></span>
+<span id="cb19-7"><a href="#cb19-7"></a>z1 <span class="ot">=</span> <span class="fu">cos</span>(<span class="dv">2</span><span class="sc">*</span>pi<span class="sc">*</span><span class="dv">1</span><span class="sc">:</span>n<span class="sc">/</span><span class="dv">12</span>)</span>
+<span id="cb19-8"><a href="#cb19-8"></a>z2 <span class="ot">=</span> <span class="fu">sin</span>(<span class="dv">2</span><span class="sc">*</span>pi<span class="sc">*</span><span class="dv">1</span><span class="sc">:</span>n<span class="sc">/</span><span class="dv">12</span>)</span>
+<span id="cb19-9"><a href="#cb19-9"></a><span class="fu">summary</span>(fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(x<span class="sc">~</span> <span class="dv">0</span> <span class="sc">+</span> z1 <span class="sc">+</span> z2)) <span class="co"># zero to exclude intercept</span></span>
+<span id="cb19-10"><a href="#cb19-10"></a><span class="do">## </span></span>
+<span id="cb19-11"><a href="#cb19-11"></a><span class="do">## Call:</span></span>
+<span id="cb19-12"><a href="#cb19-12"></a><span class="do">## lm(formula = x ~ 0 + z1 + z2)</span></span>
+<span id="cb19-13"><a href="#cb19-13"></a><span class="do">## </span></span>
+<span id="cb19-14"><a href="#cb19-14"></a><span class="do">## Residuals:</span></span>
+<span id="cb19-15"><a href="#cb19-15"></a><span class="do">##      Min       1Q   Median       3Q      Max </span></span>
+<span id="cb19-16"><a href="#cb19-16"></a><span class="do">## -0.70187 -0.16132  0.00053  0.15572  0.62818 </span></span>
+<span id="cb19-17"><a href="#cb19-17"></a><span class="do">## </span></span>
+<span id="cb19-18"><a href="#cb19-18"></a><span class="do">## Coefficients:</span></span>
+<span id="cb19-19"><a href="#cb19-19"></a><span class="do">##     Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span id="cb19-20"><a href="#cb19-20"></a><span class="do">## z1  0.494705   0.015859  31.194   &lt;2e-16 ***</span></span>
+<span id="cb19-21"><a href="#cb19-21"></a><span class="do">## z2 -0.001529   0.015824  -0.097    0.923    </span></span>
+<span id="cb19-22"><a href="#cb19-22"></a><span class="do">## ---</span></span>
+<span id="cb19-23"><a href="#cb19-23"></a><span class="do">## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span>
+<span id="cb19-24"><a href="#cb19-24"></a><span class="do">## </span></span>
+<span id="cb19-25"><a href="#cb19-25"></a><span class="do">## Residual standard error: 0.2384 on 451 degrees of freedom</span></span>
+<span id="cb19-26"><a href="#cb19-26"></a><span class="do">## Multiple R-squared:  0.6833, Adjusted R-squared:  0.6819 </span></span>
+<span id="cb19-27"><a href="#cb19-27"></a><span class="do">## F-statistic: 486.5 on 2 and 451 DF,  p-value: &lt; 2.2e-16</span></span>
+<span id="cb19-28"><a href="#cb19-28"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">1</span>))</span>
+<span id="cb19-29"><a href="#cb19-29"></a><span class="fu">tsplot</span>(x, <span class="at">col=</span><span class="dv">4</span>)</span>
+<span id="cb19-30"><a href="#cb19-30"></a><span class="fu">tsplot</span>(x, <span class="at">ylab=</span><span class="fu">expression</span>(<span class="fu">hat</span>(x)), <span class="at">col=</span><span class="fu">astsa.col</span>(<span class="dv">4</span>, .<span class="dv">5</span>))</span>
+<span id="cb19-31"><a href="#cb19-31"></a><span class="fu">lines</span>(<span class="fu">fitted</span>(fit), <span class="at">col=</span><span class="dv">2</span>, <span class="at">lwd=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -681,8 +670,8 @@ F-statistic: 486.5 on 2 and 451 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span>
-<span id="cb24-2"><a href="#cb24-2"></a><span class="fu">acf</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span>
+<span id="cb20-2"><a href="#cb20-2"></a><span class="fu">acf</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -693,7 +682,7 @@ F-statistic: 486.5 on 2 and 451 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="fu">acf</span>(<span class="fu">resid</span>(fit))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="fu">acf</span>(<span class="fu">resid</span>(fit))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -706,7 +695,7 @@ F-statistic: 486.5 on 2 and 451 DF,  p-value: &lt; 2.2e-16</code></pre>
 <ol type="1">
 <li>How does the simulated series <code>x</code> relate to the previous example?</li>
 </ol>
-<p>We commented that the residual temporal structure is seasonal and could be modeled by a sinusoid. Since the correlation appears to peak at integer lags, we choose a cosine over a sine. Here, we are simulating seasonal data, not analyzing the <code>soi</code> data. We do generate the same number of observations as a</p>
+<p>We commented that the residual temporal structure is seasonal and could be modeled by a sinusoid. Since the correlation appears to start at a high point, then decrease and reach a maximum at 1 (12 months), we choose a cosine over a sine. Here, we are simulating seasonal data, not analyzing the <code>soi</code> data. We do generate the same number of observations as a</p>
 <ol start="2" type="1">
 <li>What is the estimated equation for the red line?</li>
 </ol>
@@ -727,36 +716,31 @@ F-statistic: 486.5 on 2 and 451 DF,  p-value: &lt; 2.2e-16</code></pre>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>z1 <span class="ot">=</span> <span class="fu">cos</span>(<span class="dv">2</span><span class="sc">*</span>pi<span class="sc">*</span><span class="dv">1</span><span class="sc">:</span>n<span class="sc">/</span><span class="dv">12</span>)</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>z2 <span class="ot">=</span> <span class="fu">sin</span>(<span class="dv">2</span><span class="sc">*</span>pi<span class="sc">*</span><span class="dv">1</span><span class="sc">:</span>n<span class="sc">/</span><span class="dv">12</span>)</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(soi<span class="sc">~</span> <span class="dv">0</span> <span class="sc">+</span> z1 <span class="sc">+</span> z2)) <span class="co"># zero to exclude intercept</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-Call:
-lm(formula = soi ~ 0 + z1 + z2)
-
-Residuals:
-     Min       1Q   Median       3Q      Max 
--0.91474 -0.13174  0.08774  0.31774  0.81148 
-
-Coefficients:
-   Estimate Std. Error t value Pr(&gt;|t|)    
-z1  0.31292    0.02118  14.775  &lt; 2e-16 ***
-z2  0.07348    0.02113   3.477 0.000556 ***
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Residual standard error: 0.3184 on 451 degrees of freedom
-Multiple R-squared:  0.3385,    Adjusted R-squared:  0.3356 
-F-statistic: 115.4 on 2 and 451 DF,  p-value: &lt; 2.2e-16</code></pre>
-</div>
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">1</span>))</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tsplot</span>(x, <span class="at">col=</span><span class="dv">4</span>)</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tsplot</span>(x, <span class="at">ylab=</span><span class="fu">expression</span>(<span class="fu">hat</span>(x)), <span class="at">col=</span><span class="fu">astsa.col</span>(<span class="dv">4</span>, .<span class="dv">5</span>))</span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">fitted</span>(fit), <span class="at">col=</span><span class="dv">2</span>, <span class="at">lwd=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>z1 <span class="ot">=</span> <span class="fu">cos</span>(<span class="dv">2</span><span class="sc">*</span>pi<span class="sc">*</span><span class="dv">1</span><span class="sc">:</span>n<span class="sc">/</span><span class="dv">12</span>)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>z2 <span class="ot">=</span> <span class="fu">sin</span>(<span class="dv">2</span><span class="sc">*</span>pi<span class="sc">*</span><span class="dv">1</span><span class="sc">:</span>n<span class="sc">/</span><span class="dv">12</span>)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(soi<span class="sc">~</span> <span class="dv">0</span> <span class="sc">+</span> z1 <span class="sc">+</span> z2)) <span class="co"># zero to exclude intercept</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Call:</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="do">## lm(formula = soi ~ 0 + z1 + z2)</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="do">## Residuals:</span></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a><span class="do">##      Min       1Q   Median       3Q      Max </span></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a><span class="do">## -0.91474 -0.13174  0.08774  0.31774  0.81148 </span></span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a><span class="do">## Coefficients:</span></span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a><span class="do">##    Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a><span class="do">## z1  0.31292    0.02118  14.775  &lt; 2e-16 ***</span></span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a><span class="do">## z2  0.07348    0.02113   3.477 0.000556 ***</span></span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a><span class="do">## ---</span></span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a><span class="do">## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a><span class="do">## Residual standard error: 0.3184 on 451 degrees of freedom</span></span>
+<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a><span class="do">## Multiple R-squared:  0.3385, Adjusted R-squared:  0.3356 </span></span>
+<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a><span class="do">## F-statistic: 115.4 on 2 and 451 DF,  p-value: &lt; 2.2e-16</span></span>
+<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">1</span>))</span>
+<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a><span class="fu">tsplot</span>(<span class="fu">ts</span>(soi), <span class="at">col=</span><span class="dv">4</span>)</span>
+<span id="cb22-24"><a href="#cb22-24" aria-hidden="true" tabindex="-1"></a><span class="fu">tsplot</span>(<span class="fu">ts</span>(soi), <span class="at">ylab=</span><span class="fu">expression</span>(<span class="fu">hat</span>(soi)), <span class="at">col=</span><span class="fu">astsa.col</span>(<span class="dv">4</span>, .<span class="dv">5</span>))</span>
+<span id="cb22-25"><a href="#cb22-25" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">fitted</span>(fit), <span class="at">col=</span><span class="dv">2</span>, <span class="at">lwd=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -767,8 +751,8 @@ F-statistic: 115.4 on 2 and 451 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">acf1</span>(<span class="fu">ts</span>(<span class="fu">resid</span>(fit),<span class="at">freq =</span> <span class="dv">12</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">acf1</span>(<span class="fu">ts</span>(<span class="fu">resid</span>(fit),<span class="at">freq =</span> <span class="dv">12</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -777,12 +761,74 @@ F-statistic: 115.4 on 2 and 451 DF,  p-value: &lt; 2.2e-16</code></pre>
 </figure>
 </div>
 </div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1]  0.46  0.31  0.34  0.35  0.31  0.26  0.20  0.13  0.08  0.07  0.09  0.08
-[13]  0.01 -0.12 -0.09  0.00  0.01 -0.03 -0.03 -0.03 -0.06 -0.04  0.01  0.00
-[25] -0.07 -0.12 -0.05  0.03  0.03 -0.04 -0.04  0.00 -0.05 -0.02  0.04  0.06
-[37]  0.00 -0.02 -0.01  0.05  0.07  0.09  0.05  0.05  0.09  0.07  0.15  0.12</code></pre>
+<pre><code>##  [1]  0.46  0.31  0.34  0.35  0.31  0.26  0.20  0.13  0.08  0.07  0.09  0.08
+## [13]  0.01 -0.12 -0.09  0.00  0.01 -0.03 -0.03 -0.03 -0.06 -0.04  0.01  0.00
+## [25] -0.07 -0.12 -0.05  0.03  0.03 -0.04 -0.04  0.00 -0.05 -0.02  0.04  0.06
+## [37]  0.00 -0.02 -0.01  0.05  0.07  0.09  0.05  0.05  0.09  0.07  0.15  0.12</code></pre>
 </div>
+<ol type="1">
+<li>What’s the difference between the model estimated in <code>fit</code> above vs.&nbsp;in Activity 2?</li>
+<li>What is the equation of the estimated seasonal trend?</li>
+<li>Does the temporal structure in <code>soi</code> appear to be captured by the seasonal model?</li>
+<li>Why convert to a time series before plotting the sample acf?</li>
+</ol>
+</section>
+<section id="activity-3-solutions-kinda-example-3.15" class="level2">
+<h2 class="anchored" data-anchor-id="activity-3-solutions-kinda-example-3.15">Activity 3 Solutions (kinda Example 3.15)</h2>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>z1 <span class="ot">=</span> <span class="fu">cos</span>(<span class="dv">2</span><span class="sc">*</span>pi<span class="sc">*</span><span class="dv">1</span><span class="sc">:</span>n<span class="sc">/</span><span class="dv">12</span>)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>z2 <span class="ot">=</span> <span class="fu">sin</span>(<span class="dv">2</span><span class="sc">*</span>pi<span class="sc">*</span><span class="dv">1</span><span class="sc">:</span>n<span class="sc">/</span><span class="dv">12</span>)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>soi_fit <span class="ot">&lt;-</span><span class="fu">lm</span>(soi<span class="sc">~</span>  z1 <span class="sc">+</span> z2)</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(soi_fit) <span class="co"># zero to exclude intercept</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="do">## Call:</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="do">## lm(formula = soi ~ z1 + z2)</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a><span class="do">## Residuals:</span></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a><span class="do">##     Min      1Q  Median      3Q     Max </span></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a><span class="do">## -0.9967 -0.2122  0.0053  0.2353  0.7295 </span></span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a><span class="do">## Coefficients:</span></span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a><span class="do">##             Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a><span class="do">## (Intercept)  0.08146    0.01448   5.627 3.23e-08 ***</span></span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a><span class="do">## z1           0.31378    0.02050  15.310  &lt; 2e-16 ***</span></span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a><span class="do">## z2           0.07299    0.02045   3.569 0.000396 ***</span></span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a><span class="do">## ---</span></span>
+<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a><span class="do">## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span>
+<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb25-21"><a href="#cb25-21" aria-hidden="true" tabindex="-1"></a><span class="do">## Residual standard error: 0.3081 on 450 degrees of freedom</span></span>
+<span id="cb25-22"><a href="#cb25-22" aria-hidden="true" tabindex="-1"></a><span class="do">## Multiple R-squared:  0.3549, Adjusted R-squared:  0.352 </span></span>
+<span id="cb25-23"><a href="#cb25-23" aria-hidden="true" tabindex="-1"></a><span class="do">## F-statistic: 123.8 on 2 and 450 DF,  p-value: &lt; 2.2e-16</span></span>
+<span id="cb25-24"><a href="#cb25-24" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">1</span>))</span>
+<span id="cb25-25"><a href="#cb25-25" aria-hidden="true" tabindex="-1"></a><span class="fu">tsplot</span>(<span class="fu">ts</span>(soi), <span class="at">col=</span><span class="dv">4</span>)</span>
+<span id="cb25-26"><a href="#cb25-26" aria-hidden="true" tabindex="-1"></a><span class="fu">tsplot</span>(<span class="fu">ts</span>(soi), <span class="at">ylab=</span><span class="fu">expression</span>(<span class="fu">hat</span>(x)), <span class="at">col=</span><span class="fu">astsa.col</span>(<span class="dv">4</span>, .<span class="dv">5</span>))</span>
+<span id="cb25-27"><a href="#cb25-27" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(soi_fit<span class="sc">$</span>fitted.values, <span class="at">col=</span><span class="dv">2</span>, <span class="at">lwd=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Lecture8_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">acf1</span>(<span class="fu">ts</span>(<span class="fu">resid</span>(fit),<span class="at">freq =</span> <span class="dv">12</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Lecture8_files/figure-html/unnamed-chunk-12-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<pre><code>##  [1]  0.46  0.31  0.34  0.35  0.31  0.26  0.20  0.13  0.08  0.07  0.09  0.08
+## [13]  0.01 -0.12 -0.09  0.00  0.01 -0.03 -0.03 -0.03 -0.06 -0.04  0.01  0.00
+## [25] -0.07 -0.12 -0.05  0.03  0.03 -0.04 -0.04  0.00 -0.05 -0.02  0.04  0.06
+## [37]  0.00 -0.02 -0.01  0.05  0.07  0.09  0.05  0.05  0.09  0.07  0.15  0.12</code></pre>
 </div>
 <ol type="1">
 <li>What’s the difference between the model estimated in <code>fit</code> above vs.&nbsp;in Activity 2?</li>
@@ -802,75 +848,6 @@ F-statistic: 115.4 on 2 and 451 DF,  p-value: &lt; 2.2e-16</code></pre>
 <li>Why convert to a time series before plotting the sample acf?</li>
 </ol>
 <p>This is to make the lag comparable to the other acf plots we were looking at earlier. The residual series <code>resid(fit)</code> is just a <code>vector</code>, not a <code>ts</code>, so the <code>acf</code> will assume a frequency of 1, or monthly. The shape of the plot will look the same, it’s just a labeling consistency thing that captures the annual pattern.</p>
-</section>
-<section id="activity-3-kinda-example-3.15-1" class="level2">
-<h2 class="anchored" data-anchor-id="activity-3-kinda-example-3.15-1">Activity 3 (kinda Example 3.15)</h2>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>z1 <span class="ot">=</span> <span class="fu">cos</span>(<span class="dv">2</span><span class="sc">*</span>pi<span class="sc">*</span><span class="dv">1</span><span class="sc">:</span>n<span class="sc">/</span><span class="dv">12</span>)</span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>z2 <span class="ot">=</span> <span class="fu">sin</span>(<span class="dv">2</span><span class="sc">*</span>pi<span class="sc">*</span><span class="dv">1</span><span class="sc">:</span>n<span class="sc">/</span><span class="dv">12</span>)</span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(soi<span class="sc">~</span> <span class="dv">0</span> <span class="sc">+</span> z1 <span class="sc">+</span> z2)) <span class="co"># zero to exclude intercept</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-Call:
-lm(formula = soi ~ 0 + z1 + z2)
-
-Residuals:
-     Min       1Q   Median       3Q      Max 
--0.91474 -0.13174  0.08774  0.31774  0.81148 
-
-Coefficients:
-   Estimate Std. Error t value Pr(&gt;|t|)    
-z1  0.31292    0.02118  14.775  &lt; 2e-16 ***
-z2  0.07348    0.02113   3.477 0.000556 ***
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Residual standard error: 0.3184 on 451 degrees of freedom
-Multiple R-squared:  0.3385,    Adjusted R-squared:  0.3356 
-F-statistic: 115.4 on 2 and 451 DF,  p-value: &lt; 2.2e-16</code></pre>
-</div>
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">1</span>))</span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tsplot</span>(x, <span class="at">col=</span><span class="dv">4</span>)</span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tsplot</span>(x, <span class="at">ylab=</span><span class="fu">expression</span>(<span class="fu">hat</span>(x)), <span class="at">col=</span><span class="fu">astsa.col</span>(<span class="dv">4</span>, .<span class="dv">5</span>))</span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">fitted</span>(fit), <span class="at">col=</span><span class="dv">2</span>, <span class="at">lwd=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Lecture8_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">acf1</span>(<span class="fu">ts</span>(<span class="fu">resid</span>(fit),<span class="at">freq =</span> <span class="dv">12</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Lecture8_files/figure-html/unnamed-chunk-12-2.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1]  0.46  0.31  0.34  0.35  0.31  0.26  0.20  0.13  0.08  0.07  0.09  0.08
-[13]  0.01 -0.12 -0.09  0.00  0.01 -0.03 -0.03 -0.03 -0.06 -0.04  0.01  0.00
-[25] -0.07 -0.12 -0.05  0.03  0.03 -0.04 -0.04  0.00 -0.05 -0.02  0.04  0.06
-[37]  0.00 -0.02 -0.01  0.05  0.07  0.09  0.05  0.05  0.09  0.07  0.15  0.12</code></pre>
-</div>
-</div>
-<ol type="1">
-<li>What’s the difference between the model estimated in <code>fit</code> above vs.&nbsp;in Activity 2?</li>
-<li>What is the equation of the estimated seasonal trend?</li>
-<li>Does the temporal structure in <code>soi</code> appear to be captured by the seasonal model?</li>
-<li>Why convert to a time series before plotting the sample acf?</li>
-</ol>
 </section>
 <section id="choosing-the-seasonal-index" class="level2">
 <h2 class="anchored" data-anchor-id="choosing-the-seasonal-index">Choosing the seasonal index</h2>
@@ -908,9 +885,9 @@ F-statistic: 115.4 on 2 and 451 DF,  p-value: &lt; 2.2e-16</code></pre>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("lubridate")</span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>?period</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("lubridate")</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>?period</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
