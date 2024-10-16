@@ -44,7 +44,6 @@ library(astsa)
 lag1.plot(soi, 12, col=4, cex=1)      # Figure 3.10
 ```
 
-Explain how the scatterplots below relate to the sample autocorrelation function of `soi`.
 
 1.  Explain how the scatterplots below relate to the sample autocorrelation function of `soi`.
 
@@ -133,6 +132,7 @@ This is explored in chapters 6 and 7 (possible end of quarter topic).
 
 ```{r}
 #| code-line-numbers: true
+#| collapse: true
 set.seed(807) # so you can reproduce these results
 n <- length(soi)
 x  = 0.5*cos(2*pi*1:n/12) + rnorm(n,0,.25)
@@ -160,6 +160,7 @@ acf(resid(fit))
 
 ```{r}
 #| code-line-numbers: true
+#| collapse: true
 set.seed(807) # so you can reproduce these results
 n <- length(soi)
 x  = 0.5*cos(2*pi*1:n/12) + rnorm(n,0,.25)
@@ -180,7 +181,7 @@ acf(resid(fit))
 
 1.  How does the simulated series `x` relate to the previous example?
 
-We commented that the residual temporal structure is seasonal and could be modeled by a sinusoid. Since the correlation appears to peak at integer lags, we choose a cosine over a sine. Here, we are simulating seasonal data, not analyzing the `soi` data. We do generate the same number of observations as a
+We commented that the residual temporal structure is seasonal and could be modeled by a sinusoid. Since the correlation appears to start at a high point, then decrease and reach a maximum at 1 (12 months), we choose a cosine over a sine. Here, we are simulating seasonal data, not analyzing the `soi` data. We do generate the same number of observations as a
 
 2.  What is the estimated equation for the red line?
 
@@ -199,13 +200,38 @@ They look very similar.
 ## Activity 3 (kinda Example 3.15)
 
 ```{r}
+#| collapse: true
 z1 = cos(2*pi*1:n/12)
 z2 = sin(2*pi*1:n/12)
 summary(fit <- lm(soi~ 0 + z1 + z2)) # zero to exclude intercept
 par(mfrow=c(2,1))
-tsplot(x, col=4)
-tsplot(x, ylab=expression(hat(x)), col=astsa.col(4, .5))
+tsplot(ts(soi), col=4)
+tsplot(ts(soi), ylab=expression(hat(soi)), col=astsa.col(4, .5))
 lines(fitted(fit), col=2, lwd=2)
+par(mfrow=c(1,1))
+acf1(ts(resid(fit),freq = 12))
+```
+
+1.  What's the difference between the model estimated in `fit` above vs. in Activity 2?
+2.  What is the equation of the estimated seasonal trend?
+3.  Does the temporal structure in `soi` appear to be captured by the seasonal model?
+4.  Why convert to a time series before plotting the sample acf?
+
+
+
+
+## Activity 3 Solutions (kinda Example 3.15)
+
+```{r}
+#| collapse: true
+z1 = cos(2*pi*1:n/12)
+z2 = sin(2*pi*1:n/12)
+soi_fit <-lm(soi~  z1 + z2)
+summary(soi_fit) # zero to exclude intercept
+par(mfrow=c(2,1))
+tsplot(ts(soi), col=4)
+tsplot(ts(soi), ylab=expression(hat(x)), col=astsa.col(4, .5))
+lines(soi_fit$fitted.values, col=2, lwd=2)
 par(mfrow=c(1,1))
 acf1(ts(resid(fit),freq = 12))
 ```
@@ -227,25 +253,6 @@ No. If the temporal structure were captured, the acf of the residuals would look
 4.  Why convert to a time series before plotting the sample acf?
 
 This is to make the lag comparable to the other acf plots we were looking at earlier. The residual series `resid(fit)` is just a `vector`, not a `ts`, so the `acf` will assume a frequency of 1, or monthly. The shape of the plot will look the same, it's just a labeling consistency thing that captures the annual pattern.
-
-## Activity 3 (kinda Example 3.15)
-
-```{r}
-z1 = cos(2*pi*1:n/12)
-z2 = sin(2*pi*1:n/12)
-summary(fit <- lm(soi~ 0 + z1 + z2)) # zero to exclude intercept
-par(mfrow=c(2,1))
-tsplot(x, col=4)
-tsplot(x, ylab=expression(hat(x)), col=astsa.col(4, .5))
-lines(fitted(fit), col=2, lwd=2)
-par(mfrow=c(1,1))
-acf1(ts(resid(fit),freq = 12))
-```
-
-1.  What's the difference between the model estimated in `fit` above vs. in Activity 2?
-2.  What is the equation of the estimated seasonal trend?
-3.  Does the temporal structure in `soi` appear to be captured by the seasonal model?
-4.  Why convert to a time series before plotting the sample acf?
 
 
 ## Choosing the seasonal index
