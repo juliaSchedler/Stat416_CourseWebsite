@@ -1,0 +1,16 @@
+```
+title: Interesting note on the Nile data
+
+```
+
+
+## The nile data
+
+```{r}
+library(astsa)
+tsplot(Nile)
+```
+
+[Link to article](https://www-jstor-org.calpoly.idm.oclc.org/stable/2335202?sid=primo&seq=6) (needs Cal Poly login)
+
+The data are the yearly volume of the Nile at 

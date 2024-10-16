@@ -1,5 +1,5 @@
 ---
-title: "Lecture 8"
+title: "Lecture 8 (with solutions)"
 author: Julia Schedler
 format: 
   html: 
@@ -10,4 +10,299 @@ filters:
   - timer
 ---
 
-Work in progress!
+## Recall the SOI data
+
+SOI : Southern Oscillation Index, a climate variable. Low values correspond to warming and high values correspond to cooling. Plotting a smoother estimate (say, kernel) reveals the El Niño cycle. (we explored this in Lecture 6).
+
+```{r}
+library(astsa)
+tsplot(soi, col=4, ylim = c(-1, 1.15))
+lines(ksmooth(time(soi), soi, "normal", bandwidth=1), lwd=2, col=6)
+```
+
+## The autocorrelation function
+
+```{r}
+soi_ksmooth <- ksmooth(time(soi), soi, "normal", bandwidth=1)
+detrended <- soi-soi_ksmooth$y
+
+## acf of soi/ detrended soi
+par(mfrow = c(2,1))
+acf1(soi)
+acf1(detrended)
+par(mfrow = c(1,1))
+```
+
+Note the clear seasonal pattern– it's yearly (monthly frequency divided by 12 means a lag of 1 is a year). Also, values +/-1 year apart have nearly identical correlation structure to those +/- 2 years apart, and so on (the heights of the "bumps" are about the same. I'm showing the detrended acf to emphasize that once we have "detrended" out the El Niño pattern, we still see an annual pattern.
+
+The pattern in the detrended acf might be called "residual temporal structure", specifically, a seasonal pattern.
+
+## Activity 1 (Example 3.13)
+
+```{r}
+library(astsa)
+lag1.plot(soi, 12, col=4, cex=1)      # Figure 3.10
+```
+
+Explain how the scatterplots below relate to the sample autocorrelation function of `soi`.
+
+1.  Explain how the scatterplots below relate to the sample autocorrelation function of `soi`.
+
+2.  Do the lagplots/loess trend estimates suggest that sample auto*correlation* is a meaningful measurement for the temporal lag relationships?
+
+```{=html}
+<!-- -->
+```
+3.  Is all the information in the acf represented in the scatterplot matrix of lagplots?
+
+## Activity 1 Solutions
+
+```{r}
+library(astsa)
+lag1.plot(soi, 12, col=4, cex=1)      # Figure 3.10
+```
+
+1.  Explain how the scatterplots below relate to the sample autocorrelation function of `soi`.
+
+    The sample correlation in the upper right corner of each of the scatterplots match the height of the bar for the corresponding lag.
+
+    -   The plot in the upper left is the lag1 scatterplot (`soi(t)` vs. `soi(t-1)`). The correlation is 0.6, which is the height of the bar for lag 1 (0.08 on x-axis) is in the acf.
+
+    -   The plot in the middle left is the lag2 scatterplot (`soi(t)` vs. `soi(t-2)`). The correlation is 0.37, which is the height of the bar for lag 2 (0.17 on the x-axis) is in the acf.
+
+    -   ...
+
+    -   the third row, first column is the lag7 scatterplot (`soi(t)` vs. `soi(t-7)`). The correlation is -0.18, which is the height of the bar for lag 7 (0.58 on x-axis) is in the acf.
+
+    -   ...
+
+    -   The plot in the upper left is the lag11 scatterplot (`soi(t)` vs. `soi(t-11)`). The correlation is 0.36, which is the height of the bar for lag 11 (.92 on x-axis) is in the acf.
+
+    -   The plot in the middle left is the lag12 scatterplot (`soi(t)` vs. `soi(t-12)`). The correlation is 0.41, which is the height of the bar for lag 12 (1 on x-axis) is in the acf.
+
+2.  Do the lagplots/loess trend estimates suggest that sample auto*correlation* is a meaningful measurement for the temporal lag relationships?
+
+Note that loess is a method for estimating a trend between any two variables (last lecture, one variable was deterministic time) that can allow for nonlinear relationships. Most of the loess fits look fairly linear, meaning that the auto*correlation* is meaningful (since correlation is a linear measurement of strength, but we can compute correlation for any two vectors regardless of how inappropriate it is).
+
+3.  Is all the information in the acf represented in the scatterplot matrix of lagplots?
+
+In an empirical sense, no. We would need to compute the correlation of lags 13, 14, ... 4\*12 = 48, since that's how far the x-axis goes on the sample autocorrelation estimate plotted by the `acf1` function.
+
+In a statistical sense, yes. It seems like the cyclical pattern is very stable (no drop off at later lags), so we could probably represent all the temporal structure with a sinusoid based on the month:
+
+```{r}
+month <- seq(from = 0, to = 2*pi, by = 2*pi/12)
+sinusoid <- cos(month)
+plot(1:13, sinusoid, xlab = "\'month\'", ylab = "cos(\"month\")")
+abline(h = 0)
+```
+
+Then if we repeat that four times:
+
+```{r}
+month <- seq(from = 0, to = 8*pi, by = 2*pi/12)
+sinusoid <- cos(month)
+plot(1:49, sinusoid, xlab = "Month (#)", ylab = "cos(\"month\")")
+abline(h = 0)
+```
+
+... and add vertical lines...
+
+```{r}
+month <- seq(from = 0, to = 8*pi, by = 2*pi/12)
+sinusoid <- cos(month)
+plot(1:49, sinusoid, xlab = "\'month\'", ylab = "cos(\"month\")")
+abline(h = 0)
+segments(x0 = 1:49, y0= 0, y1 = sinusoid)
+```
+
+... it starts to look like the acf– the scaling is just off.
+
+```{r}
+par(mfrow = c(2,1))
+acf1(soi)
+plot(1:49, sinusoid, xlab = "\'month\'", ylab = "cos(\"month\")")
+abline(h = 0)
+segments(x0 = 1:49, y0= 0, y1 = sinusoid)
+par(mfrow = c(1,1))
+```
+
+This is explored in chapters 6 and 7 (possible end of quarter topic).
+
+## Activity 2 (sort of Example 3.15)
+
+```{r}
+#| code-line-numbers: true
+set.seed(807) # so you can reproduce these results
+n <- length(soi)
+x  = 0.5*cos(2*pi*1:n/12) + rnorm(n,0,.25)
+
+
+
+z1 = cos(2*pi*1:n/12)
+z2 = sin(2*pi*1:n/12)
+summary(fit <- lm(x~ 0 + z1 + z2)) # zero to exclude intercept
+par(mfrow=c(2,1))
+tsplot(x, col=4)
+tsplot(x, ylab=expression(hat(x)), col=astsa.col(4, .5))
+lines(fitted(fit), col=2, lwd=2)
+par(mfrow=c(1,1))
+acf(x)
+acf(resid(fit))
+```
+
+1.  How does the simulated series `x` relate to the previous example?
+2.  What is the estimated equation for the red line?
+3.  Is it surprising that the red line appears to fit the simulated series so well?
+4.  Compare the autocorrelation function of `soi` to the autocorrelation function of the simulated series.
+
+## Activity 2 Solutions (sort of Example 3.15)
+
+```{r}
+#| code-line-numbers: true
+set.seed(807) # so you can reproduce these results
+n <- length(soi)
+x  = 0.5*cos(2*pi*1:n/12) + rnorm(n,0,.25)
+
+
+
+z1 = cos(2*pi*1:n/12)
+z2 = sin(2*pi*1:n/12)
+summary(fit <- lm(x~ 0 + z1 + z2)) # zero to exclude intercept
+par(mfrow=c(2,1))
+tsplot(x, col=4)
+tsplot(x, ylab=expression(hat(x)), col=astsa.col(4, .5))
+lines(fitted(fit), col=2, lwd=2)
+par(mfrow=c(1,1))
+acf(x)
+acf(resid(fit))
+```
+
+1.  How does the simulated series `x` relate to the previous example?
+
+We commented that the residual temporal structure is seasonal and could be modeled by a sinusoid. Since the correlation appears to peak at integer lags, we choose a cosine over a sine. Here, we are simulating seasonal data, not analyzing the `soi` data. We do generate the same number of observations as a
+
+2.  What is the estimated equation for the red line?
+
+$$
+\hat{x} = 0.495\cos \left (\frac{2\pi t}{12} \right) -0.002\sin \left (\frac{2\pi t}{12} \right)
+$$
+
+3.  Is it surprising that the red line appears to fit the simulated series so well?
+
+No. The estimated equation weights the sine term as essentially 0, and the cosine term near 0.5. The model was generated using $0.5\cos \left (\frac{2\pi t}{12} \right)$ for the trend component. Additionally, the acf of the residuals looks like white noise, which is what we simulated (with a smaller standard deviation to mimic the range of the `soi` data, though).
+
+4.  Compare the autocorrelation function of `soi` to the autocorrelation function of the simulated series.
+
+They look very similar.
+
+## Activity 3 (kinda Example 3.15)
+
+```{r}
+z1 = cos(2*pi*1:n/12)
+z2 = sin(2*pi*1:n/12)
+summary(fit <- lm(soi~ 0 + z1 + z2)) # zero to exclude intercept
+par(mfrow=c(2,1))
+tsplot(x, col=4)
+tsplot(x, ylab=expression(hat(x)), col=astsa.col(4, .5))
+lines(fitted(fit), col=2, lwd=2)
+par(mfrow=c(1,1))
+acf1(ts(resid(fit),freq = 12))
+```
+
+1.  What's the difference between the model estimated in `fit` above vs. in Activity 2?
+
+Here, we are modeling the real `soi` data, not the simulated data. However, we are using the same format of the model (just estimating the two amplitudes, one each for the sine and cosine terms).
+
+2.  What is the equation of the estimated seasonal trend?
+
+$$
+\hat{x} = 0.313\cos \left (\frac{2\pi t}{12} \right) +0.073 \sin \left (\frac{2\pi t}{12} \right )
+$$
+
+3.  Does the temporal structure in `soi` appear to be captured by the seasonal model?
+
+No. If the temporal structure were captured, the acf of the residuals would look like white noise, but it does not. (Harmonics??)
+
+4.  Why convert to a time series before plotting the sample acf?
+
+This is to make the lag comparable to the other acf plots we were looking at earlier. The residual series `resid(fit)` is just a `vector`, not a `ts`, so the `acf` will assume a frequency of 1, or monthly. The shape of the plot will look the same, it's just a labeling consistency thing that captures the annual pattern.
+
+## Activity 3 (kinda Example 3.15)
+
+```{r}
+z1 = cos(2*pi*1:n/12)
+z2 = sin(2*pi*1:n/12)
+summary(fit <- lm(soi~ 0 + z1 + z2)) # zero to exclude intercept
+par(mfrow=c(2,1))
+tsplot(x, col=4)
+tsplot(x, ylab=expression(hat(x)), col=astsa.col(4, .5))
+lines(fitted(fit), col=2, lwd=2)
+par(mfrow=c(1,1))
+acf1(ts(resid(fit),freq = 12))
+```
+
+1.  What's the difference between the model estimated in `fit` above vs. in Activity 2?
+2.  What is the equation of the estimated seasonal trend?
+3.  Does the temporal structure in `soi` appear to be captured by the seasonal model?
+4.  Why convert to a time series before plotting the sample acf?
+
+
+## Choosing the seasonal index
+
+-   If you have quarterly data, period is 4 (freq 1/4)
+-   If you have monthly data, period is 12 (freq 1/12)
+-   If you have weekly data, period is 52 (freq 1/52)
+-   If you have daily data, period is 365.25 (freq 1/365.25)
+
+There might be cases where the frequency is something else, but maybe not in the context of *annual* seasonality.
+
+## Activity 4 
+
+What is the period for the following seasonal patterns for data collected every minute?
+
+-   Hourly
+
+-   Daily
+
+-   Weekly
+
+-   Monthly
+
+## Activity 4 Solutions
+
+What is the period for the following seasonal patterns for data collected every minute?
+
+-   Hourly: 60
+
+-   Daily: 60\*24 = 1440
+
+-   Weekly: 1440\*7 = 10080
+
+-   Monthly = 60\*24\*30 = 43,200 (approximation)
+
+-   Yearly = 60\*24\*365.25 = 525,960
+
+## More complicated "seasonality"
+
+```{r}
+#| eval: false
+#install.packages("lubridate")
+library(lubridate)
+?period
+```
+
+## A note on terminology
+
+| Concept                                           | Term in S&S (red book)                                                                                       | Term in FPP (free book) |
+|---------------------------------------------------|--------------------------------------------------------------------------------------------------------------|-------------------------|
+| Variation between a max and a min (fixed period)  | cyclic (introduced as precise seasonality after talking about seasonal differencing in SARIMA model section) | seasonal                |
+| Variation between a max and a min (random period) | pseudo\*-cyclic                                                                                              | cyclic                  |
+
+\*pseudo means "false"
+
+The same word can mean very different things. Yikes!!! This is why we need a little math (understanding what a period is) to be able to communicate successfully about time series.
+
+## Example 3.13/3.14
+
+I skipped over the lagplots of 
