@@ -259,14 +259,33 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../Assignments/Assignment3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Assignment 3 Due Friday, October 18 at midnight</span></a>
+ <span class="menu-text">Assignment 3</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Week 4</span></span>
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Week 4</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../LectureNotes/Lecture7.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 7 Solutions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../LectureNotes/Lecture8.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 8 (with solutions)</span></a>
+  </div>
+</li>
+      </ul>
   </li>
     </ul>
     </div>
@@ -282,7 +301,7 @@ window.Quarto = {
   <li><a href="#part-2-code" id="toc-part-2-code" class="nav-link" data-scroll-target="#part-2-code">Part 2: Code</a></li>
   <li><a href="#part-3-reading" id="toc-part-3-reading" class="nav-link" data-scroll-target="#part-3-reading">Part 3: Reading</a></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="Assignment2_updated.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -323,9 +342,34 @@ window.Quarto = {
 \end{aligned}
 \]</span></p>
 <ol type="1">
-<li><p>[5 points] The mean function is derived in Example 2.4. Describe what happens in each step of the computation [3 points], and provide a “math stress” rating (1 = effortless, 100 = nightmare) and 3 emojis[2 points]. This is personal and there is no right answer.</p></li>
-<li><p>[5 points] Is the signal plus noise model stationary in the mean?</p></li>
-<li><p>[5 points] Write down <span class="math inline">\(\gamma_x(s,t)\)</span>, the autocovariance function of <span class="math inline">\(x_t\)</span> [3 points]. You may accomplish this in any way, including asking me personally in office hours or asking a classmate. Just make sure you cite the source![2 points]</p></li>
+<li>[5 points] The mean function is derived in Example 2.4. Describe what happens in each step of the computation [3 points], and provide a “math stress” rating (1 = effortless, 100 = nightmare) and 3 emojis[2 points]. This is personal and there is no right answer.</li>
+</ol>
+<p><strong> The first line of the computation plugs the equation for our particular time series model, <span class="math inline">\(x_t\)</span>, into the definition of the mean function (expected value of <span class="math inline">\(x_t\)</span>), and also has the notation <span class="math inline">\(\mu_{xt}\)</span> for the mean function. Two steps occur in the second line: the linearity of expectation splits the formula into the sum of two terms, then rewrites <span class="math inline">\(\E(2\cos(2\pi\frac{t+15}{50}))\)</span> as <span class="math inline">\(2\pi\frac{t+15}{50}\)</span> since that expression is a constant with respect to the expectation. Finally, the steps between the second and third lines is to know that <span class="math inline">\(\E(w_t)\)</span> is 0 since <span class="math inline">\(w_t\)</span> is white noise. </strong></p>
+<ol start="2" type="1">
+<li>[5 points] Is the signal plus noise model stationary in the mean?</li>
+</ol>
+<p><strong>No.&nbsp;There is a <span class="math inline">\(t\)</span> in the equation, so the mean function depends on <span class="math inline">\(t\)</span>, which violates the definition of mean stationarity.</strong></p>
+<ol start="3" type="1">
+<li>[5 points] Write down <span class="math inline">\(\gamma_x(s,t)\)</span>, the autocovariance function of <span class="math inline">\(x_t\)</span> [3 points]. You may accomplish this in any way, including asking me personally in office hours or asking a classmate. Just make sure you cite the source![2 points] ** When <span class="math inline">\(s \ne t\)</span>, the autocovariance function is computed by starting with the formula for our time series <span class="math inline">\(x_t\)</span> and the definition of autocovariance:</li>
+</ol>
+<p><span class="math display">\[
+\begin{align}
+\gamma_x(s,t) &amp;= E[(x_t - \mu_{xt})(x_s - \mu_{xs})] \\
+&amp;= E[(2\cos(2\pi\frac{t+15}{50}) + w_t - \mu_{xt})(2\cos(2\pi\frac{s+15}{50}) + w_s - \mu_{xs})] \\
+&amp;= E[(2\cos(2\pi\frac{t+15}{50}) + w_t - 2\cos(2\pi\frac{t+15}{50}))(2\cos(2\pi\frac{s+15}{50}) + w_s - 2\cos(2\pi\frac{s+15}{50}))] \\
+&amp; = E[(w_t)(w_s)] \\
+&amp;= 0
+\end{align}
+\]</span> Where the last step yields zero because <span class="math inline">\(w_t\)</span> and <span class="math inline">\(w_s\)</span> are independent. If <span class="math inline">\(s = t\)</span>, then the steps are the same, but at the last step we get <span class="math display">\[
+\gamma_x(t,t) = E(w_t\cdot w_t) = var(w_t) = \sigma_w^2
+\]</span> in other words, the variance of the underlying white noise process.</p>
+<p>The autocovariance function is then: <span class="math display">\[
+\begin{cases}
+\sigma^2_w &amp; \text{ if } s=t \\
+0 &amp; \text{ if } s \ne t
+\end{cases}
+\]</span> **</p>
+<ol start="4" type="1">
 <li><p>[6 points] Consider the model:</p>
 <p><span class="math display">\[
 y_t = x_t - 2\cos(2\pi\frac{t+15}{50})
@@ -365,17 +409,17 @@ Start = 0
 End = 10 
 Frequency = 1 
           x_t   x_t_lag1
- 0         NA  0.4534272
- 1  0.4534272 -0.3540071
- 2 -0.3540071 -0.2974080
- 3 -0.2974080 -0.5138195
- 4 -0.5138195  0.8574236
- 5  0.8574236  1.3724253
- 6  1.3724253  0.6073727
- 7  0.6073727  0.4809461
- 8  0.4809461  0.6986966
- 9  0.6986966 -0.7511539
-10 -0.7511539         NA</code></pre>
+ 0         NA  0.2298873
+ 1  0.2298873 -2.0546681
+ 2 -2.0546681 -2.3450603
+ 3 -2.3450603 -1.4025370
+ 4 -1.4025370 -0.8439902
+ 5 -0.8439902 -1.6016787
+ 6 -1.6016787 -0.8810979
+ 7 -0.8810979 -1.7255323
+ 8 -1.7255323 -2.1240207
+ 9 -2.1240207  0.1532393
+10  0.1532393         NA</code></pre>
 </div>
 </div>
 <ol start="4" type="1">
@@ -445,19 +489,19 @@ Call:
 lm(formula = x_t ~ -1 + x_t_lag1)
 
 Residuals:
-    Min      1Q  Median      3Q     Max 
--2.2601 -0.7419 -0.1633  0.6301  2.1733 
+     Min       1Q   Median       3Q      Max 
+-2.82665 -0.50893 -0.00692  0.66445  2.30933 
 
 Coefficients:
          Estimate Std. Error t value Pr(&gt;|t|)    
-x_t_lag1  0.62203    0.08176   7.608 1.72e-11 ***
+x_t_lag1  0.69708    0.07346   9.489 1.56e-15 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 1.023 on 98 degrees of freedom
+Residual standard error: 0.9775 on 98 degrees of freedom
   (1 observation deleted due to missingness)
-Multiple R-squared:  0.3713,    Adjusted R-squared:  0.3649 
-F-statistic: 57.89 on 1 and 98 DF,  p-value: 1.72e-11</code></pre>
+Multiple R-squared:  0.4788,    Adjusted R-squared:  0.4735 
+F-statistic: 90.04 on 1 and 98 DF,  p-value: 1.557e-15</code></pre>
 </div>
 </div>
 <ol start="8" type="1">
