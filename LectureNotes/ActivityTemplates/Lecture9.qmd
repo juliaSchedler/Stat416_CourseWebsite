@@ -1,0 +1,234 @@
+---
+title: Lecture 9
+author: Julia Schedler
+format: html
+---
+
+## Announcements{.smaller}
+
+- Office hours:
+  - today: 4-6pm
+  - tomorrow: 9:30-11 and 2:30-4 (note different than announcement)
+  
+- Assignment 3: 
+  - Solutions posted tonight
+  - ask any questions you'd like in class
+  - Hopefully have grades tonight, for sure tomorrow
+
+## Time Series Data Analysis Process
+
+- What should it be?
+- Scientific method?
+- What if I don't need a scientific level of rigor?
+
+## [Scientific method (according to wikipedia)]{.r-fit-text}{.smaller}
+
+An iterative, pragmatic scheme of the four points above is sometimes offered as a guideline for proceeding:
+
+1. Define a question
+2. Gather information and resources (observe)
+3. Form an explanatory hypothesis
+4. Test the hypothesis by performing an experiment and collecting data in a reproducible manner
+5. Analyze the data
+6. Interpret the data and draw conclusions that serve as a starting point for a new hypothesis
+7. Publish results
+8. Retest (frequently done by other scientists)
+
+The iterative cycle inherent in this step-by-step method goes from point 3 to 6 and back to 3 again.
+
+
+## [Scientific method (according to ChatGPT)]{.r-fit-text}{.smaller}
+
+1. Observation
+2. Question
+3. Hypothesis
+4. Experiment
+5. Data Collection and Analysis
+6. Conclusion
+7. Report Results
+8. Replication
+
+**note: interesting the first two steps are flipped!**
+
+## What about a non-scientific context?
+
+- Do businesses do science?
+- Methods of iterative inquiry are not owned by scientists
+
+## [Business Problem-solving process(chatGPT)]{.r-fit-text}{.smaller}
+
+1. Identify the Problem (similar to observation)
+2. Define Objectives/Goals (related to formulating a question)
+3. Generate Hypotheses/Solutions (like hypothesis formation)
+4. Test/Implement Solutions (similar to experimentation)
+5. Analyze Results (equivalent to data collection and analysis)
+6. Make Decisions (conclusion phase)
+7. Monitor and Review (parallels replication)
+
+## A personal note
+
+What does **data driven** mean? 
+
+- I thought scientific
+- I thought wrong :(
+- I got very frustrated and considered getting an MBA just so I could understand the motivations of management
+- I gate-kept the term research on a company-wide zoom meeting
+- I got laid off and became a research scientist :)
+
+**Defining goals clearly for analytic thinkers is very important. Clarification questions should not be intended or received as hostile. Alas.**
+
+## Activity 1{.smaller}
+
+Here are some time series data analysis tools we have learned in class. Where do they fit in the scientific method?
+
+- time series plot
+- autocorrelation plot
+- lag plot
+- trend estimation
+- detrending 
+- differencing
+- writing out a mathematical model
+- optimizing plots (adding good axis labels, etc)
+- ask a time series research question
+
+## Activity 1 Solutions
+
+(using chatGPT list)
+
+- time series plot: **1, 5, 6, 7**
+- autocorrelation plot: **1, 5**
+- lag plot: **5**
+- trend estimation: **5, 6, 7**
+- detrending: **5**
+- differencing: **5**
+- writing out a mathematical model: **5, 7**
+- optimizing plots (adding good axis labels, etc): **7**
+- ask a time series research question: **2, 3**
+
+
+## Activity 2
+What are some things we have *not* done?
+
+
+## Activity 2 Solutions
+What are some things we have *not* done?
+- replicate results
+- test a specific hypothesis (well, we kind of have)
+- report/publish results
+- experiment / collect data
+
+## Activity 3: Applying the data analysis process
+
+1. Create a .qmd file
+2. Add headers for each step of the scientific method or business problem-solving process
+3. Apply the appropriate tools at each step of the process for the AirPassengers data.
+
+## 1. Observation
+
+```{r}
+#| echo: true
+#| collapse: true
+#| code-fold: true
+library(astsa)
+?AirPassengers
+summary(AirPassengers)
+tsplot(AirPassengers)
+```
+
+## 2. Question {.smaller}
+
+- Are the number of air passengers increasing over time? If so, how fast?
+  - Is there an increasing trend? What is the form of the trend?
+- Is there a seasonality to the monthly number of air passengers? When are the peaks?
+  - Is there a seasonal trend? What is the period? When are the peaks?
+- What is a plausible range of values for the predicted number of passngers for the next month?
+  - Can we make a forecast? If so, how good do we expect this forecast to be?
+
+## 3. Hypothesis
+
+- There is an increasing linear trend.
+- There is a seasonal component.
+- We can accurately model the time series using tools that allow forecasting.
+
+## 4. Experiment
+
+- Not really applicable here...
+
+## 5. Data collection and analysis
+
+- Data already collected! In practice, we may need to clean it.
+- Exploratory data analysis: decompose?
+
+```{r}
+plot(decompose(AirPassengers)) ## hmm
+``` 
+
+## 5. Data collection and analysis
+
+- Data already collected! In practice, we may need to clean it.
+- Exploratory data analysis: decompose?
+
+```{r}
+AP_decomp <- decompose(AirPassengers, type = "multiplicative")
+plot(AP_decomp) ## hmm
+``` 
+
+## 5. Data Collection and analysis
+- Doesn't look quite right... maybe we should talk to the senior analyst about a more advanced modeling technique?
+
+```{r}
+acf(AP_decomp$random, na.action = na.pass)
+```
+## 5. Data Collection and analysis
+```{r}
+lag1.plot(AirPassengers, 12) ## hmmm
+```
+## 5. Data Collection and analysis
+```{r}
+lag1.plot(AP_decomp$random[!is.na(AP_decomp$random)], 12, ) ## hmmm
+```
+Linear fit looks ok, but still some structure in the residuals.
+
+## 6. Conclusion{.smaller}
+
+- It appears there is some trend and seasonality in the number of monthly air passengers, 
+- but we need some more advanced modeling tools to fully capture it.
+- Current model:
+
+$$
+x_t = \mu_t\cdot s_t  + y_t
+$$
+  
+  - $x_t$ is the data
+  - $y_t$ is (ideally) white noise
+  - $\mu_t$ is an increasing trend (estimated by moving average)
+  - $s_t$ is a seasonal component
+  - we make a *multiplicative* assumption
+  
+## A peep ahead{.scrollable}
+
+```{r}
+#| echo: true
+
+plot(AirPassengers, type = "l")
+points(AP_decomp$seasonal*AP_decomp$trend, col = "blueviolet", type = "l")
+
+AP.hw <- HoltWinters(AirPassengers, seasonal = "mult")
+plot(AP.hw)
+AP.predict <- predict(AP.hw, n.ahead = 4*12)
+plot(AP.hw, type = "l", col = "red", xlim = c(1950, 1965), ylim = c(100, 800))
+points(AirPassengers, type = "l")
+points(AP.predict, type = "l", lty = 2, col = "red") 
+acf(AirPassengers - fitted(AP.hw)[,1])
+```
+  
+## Report results
+
+- Paper write up
+- Slide presentation
+- Video summary
+
+Lots of ways to report results...
+
+## Questions on anything!
+

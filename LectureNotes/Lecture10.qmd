@@ -1,0 +1,461 @@
+---
+title: Lecture 10
+author: Julia Schedler
+format: 
+  html:
+    code-fold: true
+    code-overflow: wrap
+scrollable: true
+slide-number: true
+---
+
+## Announcements
+
+-   Assignment 1 due next Monday night at Midnight
+
+-   Posted some time today or tomorrow morning
+
+-   Midterm grades by next Monday
+
+## Recall the "Time series data analysis process" {.smaller}
+
+1.  Observation
+2.  Question
+3.  Hypothesis
+4.  Experiment
+5.  Data Collection and Analysis
+6.  Conclusion
+7.  Report Results
+8.  Replication
+
+## "Observations" of the day
+
+```{r}
+library(fpp3)
+library(tidyverse)
+library(astsa)
+egy_econ <- global_economy %>%
+              dplyr::filter(Code == "EGY")
+
+tsplot(x = egy_econ$Year, y = egy_econ$Exports, ylab = "%GDP",
+       xlab = "Year", main = "Egyptian Exports as %GDP, 1960-2017")
+
+```
+
+## "Observations" of the day
+
+```{r}
+library(astsa)
+tsplot(gnp, xlab = "Year", ylab = "Billions of US Dollars", 
+       main = "GNP of US, 1947-2002 (seasonally adjusted)")
+```
+
+## Activity 1: Define a question
+
+::: {#Activity1 .timer seconds="300" starton="interaction"}
+:::
+
+## Research Questions of the Day
+
+-   What is the estimated value of the Quarterly Adjusted GNP for 2002, Q4?
+
+-   What is the estimated percent of Egyptian GDP due to exports in 2018?
+
+Note: These are both *forecasting* questions.
+
+## Methodological Questions of the Day
+
+-   When do we want to fit an ARMA model?
+-   When do we want to fit an ARIMA model?
+-   How do we identify the order(s) of the ARIMA(p,d,q) model?
+-   How can we check assumptions of a model?
+-   How do we compare models?
+-   How can we forecast from a model?
+
+## Definition of ARMA model
+
+A time series $x_t$ is ARMA(p,q) if
+
+$$
+x_t = \alpha + \phi_1 x_{t-1} + \phi_2 x_{t-2} + \dots + \phi_p x_{t-p} + w_t + \theta_1 w_{t-1} + \theta_2 w_{t-2} + \dots + \theta_q x_{t-1} 
+$$ Where $\phi_p \ne 0, \theta_q \ne 0, \sigma^2_w > 0$ (and the model is causal and invertible)
+
+## Causal and invertible? 😱
+
+-   For "causal", if the time series is stationary it has a causal representation (depends on past, not future)
+-   For "Intertible", it's so the moving average part gives us a unique model
+
+## A note non-uniqueness of Moving Average {.smaller}
+
+Consider the MA model and its theoretical autocorrelation function, where $\sigma^2_w$ is the white noise variance
+
+$$
+\begin{aligned}
+x_t &= w_t + \theta w_{t-1}\\
+\gamma(h) &= \begin{cases}
+(1+\theta^2)\sigma^2_w & \Vert h \Vert = 0 \\
+\theta \sigma^2_w & \Vert h \Vert = 1 \\
+0 & \Vert h \Vert > 1 
+\end{cases}
+\end{aligned}
+$$ Consider two possible values for $\theta$ and $\sigma^2_w$:
+
+::: columns
+::: column
+$\theta = 5, \sigma^2_w = 1$
+
+$$
+\gamma(h) = \begin{cases}
+(1+5^2)\cdot1 & \Vert h \Vert = 0 \\
+5\cdot 1 & \Vert h \Vert = 1 \\
+0 & \Vert h \Vert > 1 
+\end{cases}
+$$
+:::
+
+::: column
+$\theta = 1/5, \sigma^2_w = 25$
+
+$$
+\gamma(h) = \begin{cases}
+(1+(1/5)^2)\cdot 25 & \Vert h \Vert = 0 \\
+1/5\cdot 25 & \Vert h \Vert = 1 \\
+0 & \Vert h \Vert > 1 
+\end{cases}
+$$
+:::
+:::
+
+Both simplify to $$
+\gamma(h) = \begin{cases}
+26 & \Vert h \Vert = 0 \\
+5 & \Vert h \Vert = 1 \\
+0 & \Vert h \Vert > 1 
+\end{cases}
+$$
+
+In practice we cannot distinguish the difference between the two models (they are stochastically the same). So, we will choose the invertible model, which is the one with $\sigma^2_w =25$, $\theta = 1/5$ (see Shumway and Stoffer page 72-73, example 4.6 for details.)
+
+## Interpretation of ARMA model
+
+If we let $\epsilon_t = w_t + \theta_1 w_{t-1} + \theta_2 w_{t-2} + \dots + \theta_q x_{t-1}$, then if $x_t$ is ARMA(p,q), $$
+x_t = \alpha + \phi_1 x_{t-1} + \phi_2 x_{t-2} + \dots + \phi_p x_{t-p} + \epsilon_t 
+$$
+
+-   Recognize the linear regression structure?
+-   Difference: constraints on $\phi, \theta$.
+
+## Activity 2: Fit an ARMA model?
+
+Is there any seasonality (fixed-length cycles)? If so, probably want to use a seasonal model (not ARMA)
+
+```{r}
+tsplot(x = egy_econ$Year, y = egy_econ$Exports, ylab = "%GDP",
+       xlab = "Year", main = "Egyptian Exports as %GDP, 1960-2017")
+```
+
+## Activity 2 Solution: Fit an ARMA model?
+
+No, the cycles are not of fixed length
+
+```{r}
+tsplot(x = egy_econ$Year, y = egy_econ$Exports, ylab = "%GDP",
+       xlab = "Year", main = "Egyptian Exports as %GDP, 1960-2017")
+low_years <- c(1972, 1987, 1999, 2016)
+abline(v = low_years)
+diff(low_years)
+```
+
+## Choosing the order of ARMA models
+
+## Activity 3: Recall MA ACF
+
+```{r}
+set.seed(807)
+par(mfrow = c(1,2))
+acf(arima.sim(list(ma = c(0.25, 0.5, .25)), n = 1000), main = "MA(3), theta = (.25, .5, .25)")
+acf(arima.sim(list(ma = c(0.75, 0.5, .25)), n = 1000),
+    main ="MA(3), theta = (0.75, 0.5, .25)")
+```
+
+Propose a rule for choosing the order of the MA model.
+
+## What about AR?
+
+```{r}
+#| error: true
+#| code-fold: show
+set.seed(807)
+par(mfrow = c(1,2))
+acf(arima.sim(list(ar = c(0.25, 0.5)), n = 1000), main = "MA(3), theta = (.25, .5, .25)")
+acf(arima.sim(list(ar = c(0.75, 0.5)), n = 1000),
+    main ="MA(3), theta = (0.75, 0.5, .25)")
+```
+
+## Activity 4: Fix the AR model so it is stationary
+
+```{r}
+#| eval: false
+#| echo: true
+set.seed(807)
+par(mfrow = c(1,2))
+acf(arima.sim(list(ar = c(0.25, 0.5)), n = 1000), main = "MA(3), theta = (.25, .5, .25)")
+acf(arima.sim(list(ar = c(FIXME, FIXME)), n = 1000),
+    main ="MA(3), theta = (FIX, FIX)")
+```
+
+## Activity 4 Solution: Fix the AR model so it is stationary
+
+```{r}
+#| eval: true
+set.seed(2024)
+par(mfrow = c(1,2))
+acf(arima.sim(list(ar = c(0.25, 0.5)), n = 1000), main = "AR(2), phi = (.25, .5)")
+acf(arima.sim(list(ar = c(1.5, -0.75)), n = 1000),
+    main ="AR(2), phi = (1.5, -.75)")
+```
+
+## Making sure AR is stationary
+
+-   Is complicated
+-   Is taken care of in estimation by software
+
+## AR or MA or both?
+
+Consider two of the models just simulated:
+
+```{r}
+set.seed(9382094)
+par(mfrow = c(1,2))
+acf(arima.sim(list(ar = c(1.5, -0.75)), n = 1000),
+    main ="AR(2), phi = (1.5, -.75)")
+acf(arima.sim(list(ma = c(0.75, 0.5, .25)), n = 1000),
+    main ="MA(3), theta = (0.75, 0.5, .25)")
+```
+
+-   Shape is similar, but not identical
+-   Is there a better way to tell?
+
+## Partial Autocorrelation plot
+
+The PACF is the correlation between $x_t$ and $x_{t-k}$ that is not explained by lags $1, 2, \ldots, k-1$.
+
+"Removes" the autocorrelation of the previous lags.
+
+Useful in determining the order of an Autoregressive process, and in combination with ACF, choosing between an AR or an MA model.
+
+## PACF of two series we just saw
+
+```{r}
+set.seed(9382094)
+par(mfrow = c(1,2))
+pacf(arima.sim(list(ar = c(1.5, -0.75)), n = 1000),
+    main ="AR(2), phi = (1.5, -.75)")
+pacf(arima.sim(list(ma = c(0.75, 0.5, .25)), n = 1000),
+    main ="MA(3), theta = (0.75, 0.5, .25)")
+```
+
+## ACF and PACF
+
+```{r}
+set.seed(9382094)
+par(mfrow = c(2,2))
+ar_sim <- arima.sim(list(ar = c(1.5, -0.75)), n = 1000)
+ma_sim <- arima.sim(list(ma = c(0.75, 0.5, .25)), n = 1000)
+acf(ar_sim,
+    main ="AR(2), phi = (1.5, -.75)")
+acf(ma_sim,
+    main ="MA(3), theta = (0.75, 0.5, .25)")
+pacf(ar_sim,
+    main ="AR(2), phi = (1.5, -.75)")
+pacf(ma_sim,
+    main ="MA(3), theta = (0.75, 0.5, .25)")
+```
+
+## AR or MA or both
+
+|      | AR(p)                | MA(q)                | ARMA(p,q) |
+|------|----------------------|----------------------|-----------|
+| ACF  | Tails off            | Cuts off after lag q | Tails off |
+| PACF | Cuts off after lag p | Tails off            | Tails off |
+
+: Behavior of ACF/PACF for ARMA Models
+
+## Activity 5: AR or MA or both?
+
+```{r}
+library(fpp3)
+
+par(mfrow = c(2,2))
+tsplot(x = egy_econ$Year, y = egy_econ$Exports, 
+       xlab = "Year")
+
+acf(egy_econ$Exports)
+pacf(egy_econ$Exports)
+
+```
+
+ACF: Tails off; PACF: Cuts off after lag 4. Maybe an AR(4), or some sort of ARMA?
+
+## Fitting an ARMA model
+
+Use the `sarima` function, specify p, d, q (d = 0 for ARMA).
+
+```{r}
+#| eval: true
+fitted_arma <- sarima(egy_econ$Exports, p = 4, d = 0, q = 0, details = FALSE)
+
+```
+
+## FPP way
+
+```{r}
+#| code-fold: show
+#| echo: true
+fit_auto <- global_economy |>
+  filter(Code == "EGY") |>
+  model(ARIMA(Exports)) ## automatic ARIMA
+report(fit_auto)
+```
+
+## Which model should we choose?
+
+-   One that fits well
+
+-   We can use AICc to choose between models that seem to have good fit
+
+## AR(4) vs. ARMA(2,1)
+
+```{r}
+report(fit_auto)
+fit_manual <- global_economy |>
+  filter(Code == "EGY") |>
+  model(ARIMA(Exports ~ pdq(4,0,0))) ## AR(4)
+report(fit_manual)
+
+```
+
+Very similar! Let's check the residuals
+
+## Check model fit
+
+```{r}
+#| code-fold: show
+#| echo: true
+gg_tsdisplay(residuals(fit_auto), plot_type = "partial")
+gg_tsdisplay(residuals(fit_manual), plot_type = "partial")
+
+```
+
+## Make a forecast
+
+```{r}
+#| echo: true
+#| code-fold: show
+
+fit_auto %>% 
+   forecast(h=5) |>
+  autoplot(global_economy)
+
+
+fit_manual %>% 
+   forecast(h=5) |>
+  autoplot(global_economy)
+
+egy_forecast <- ## save auto forecast 
+fit_auto %>% 
+   forecast(h=5) 
+
+```
+
+## How did the forecasts do?
+
+```{r}
+#| label: updated_data
+updated_data <- read.csv("../../API_NE.EXP.GNFS.ZS_DS2_en_csv_v2_11065/API_NE.EXP.GNFS.ZS_DS2_en_csv_v2_11065.csv", skip = 4)
+
+## extract egypt and pivot (I used github copilot for this!)
+egy_econ_updated <- updated_data %>%
+  dplyr::filter(Country.Code == "EGY") %>%
+  pivot_longer(cols = -c(Country.Name, Country.Code, Indicator.Name, Indicator.Code),
+               names_to = "Year", values_to = "Exports") %>%
+  mutate(Year = as.numeric(substr(Year, 2, 20)))
+    ## remove leading x from year
+
+
+
+tsplot(egy_econ_updated$Year, egy_econ_updated$Exports, ylab = "%GDP",
+       xlab = "Year", main = "Egyptian Exports as %GDP, 1960-2017", type = "b", lty = 2, 
+       ylim = c(10, 40), lwd = 2)
+lines(egy_econ$Year, egy_econ$Exports, col = "red", type = "b", lwd = 2)
+lines(egy_forecast$Year, egy_forecast$.mean, col = "blue", lwd = 2)
+legend("topright", legend = c("Historical Data", "Forecast", "Recent Data"), col = c("red", "blue", "black"), 
+       lty = c(1,1,2), lwd = c(2,2,2))
+
+```
+
+## Plot analysis
+
+-   the historic data and the updated data mostly agree, except for the last shared point in 2017
+-   The forecast for 2018 is spot-on
+-   The later forecasts are not at all correct
+
+## Modeling workflow
+
+![](https://otexts.com/fpp3/figs/arimaflowchart.png)
+
+# GNP Series Example
+
+## GNP series
+
+Does the series appear stationary?
+
+```{r}
+tsplot(gnp, xlab = "Year", ylab = "Billions of US Dollars", 
+       main = "GNP of US, 1947-2002 (seasonally adjusted)")
+```
+
+## Acf and pacf of GNP
+
+```{r}
+acf(gnp)
+pacf(gnp)
+```
+
+## Differenced GNP series
+
+Does the series appear stationary?
+
+```{r}
+tsplot(diff(gnp), xlab = "Year", ylab = "Billions of US Dollars", 
+       main = "Differenced GNP of US, 1947-2002 (seasonally adjusted)")
+```
+
+## ACF and PACF of differenced GNP series
+
+```{r}
+acf(diff(gnp))
+pacf(diff(gnp))
+```
+
+## ARIMA models
+
+A time series is said to be ARIMA(p,d,q) if
+
+$$
+\nabla^dx_t = (1-B)^dx_t
+$$
+
+Is ARMA(p,q)
+
+## Next time
+
+-   More on ARMA vs. ARIMA
+
+-   Box-cox transformations
+
+-   Parameter redundancy
+
+-   Portmanteau tests
+
+-   (maybe) Seasonal ARIMA?

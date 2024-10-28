@@ -39,6 +39,9 @@ website:
       - section: "Week 5"
         contents:
         - href: LectureNotes/Lecture9.qmd
+      - section: "Week 6"
+        contents:
+        - href: LectureNotes/Lecture10.qmd
 format:
   html:
     theme: cosmo
