@@ -826,7 +826,7 @@
     "href": "LectureNotes/LectureN.html",
     "title": "Fall 24 Stat 416 Lecture Notes",
     "section": "",
-    "text": "11 year solar cycle\nhttps://www.sidc.be/SILSO/faq2\n\nGalileo\nRobust time series &lt;3\nMultiplicity of stations\nsmoothed weighted monthly average\n\nyesssssssss\n\n\n2024 storms\n\nhttps://www.sidc.be/article/impacts-severe-geomagnetic-storm"
+    "text": "11 year solar cycle\nhttps://www.sidc.be/SILSO/faq2\n\nGalileo\nRobust time series &lt;3\nMultiplicity of stations\nsmoothed weighted monthly average\n\nyesssssssss\n\nhttps://www.statsmodels.org/stable/examples/notebooks/generated/stationarity_detrending_adf_kpss.html\n\n2024 storms\n\nhttps://www.sidc.be/article/impacts-severe-geomagnetic-storm"
   },
   {
     "objectID": "LectureNotes/LectureN.html#the-moon",
@@ -1511,7 +1511,7 @@
     "href": "LectureNotes/Lecture2.html#notation-and-data--white-noise",
     "title": "Lecture 2",
     "section": "Notation and Data- White noise",
-    "text": "Notation and Data- White noise\n“Let \\(w_t\\) be a white noise series”\n\n\n\nt\nRandom Variable\nExample data\n\n\n\n\n1\n\\(w_1 \\sim N(0, \\sigma_w^2)\\)\n-1.445116\n\n\n2\n\\(w_2 \\sim N(0, \\sigma_w^2)\\)\n0.7078221\n\n\n\n\\(\\vdots\\)\n\\(\\vdots\\)\n\n\nt\n\\(w_t \\sim N(0, \\sigma^2_w)\\)\n0.2288706\n\n\n\\(\\vdots\\)\n\\(\\vdots\\)\n\\(\\vdots\\)\n\n\nn\n\\(w_n \\sim N(0, \\sigma_w^2)\\)\n0.6100899\n\n\n\nIf we interpret the collection of \\(w_t\\) as a random vector, then \\(w_t \\sim MVN(\\vec{0}, I)\\) (why \\(I\\)?)\nNote: sometimes \\(w_t\\) could mean a (univariate) value of a white noise series for a particular time \\(t\\) (kind of like how you refer to an arbitrary \\(x_i\\) when you have a sample \\(x_1, \\dots, x_n\\)).",
+    "text": "Notation and Data- White noise\n“Let \\(w_t\\) be a white noise series”\n\n\n\nt\nRandom Variable\nExample data\n\n\n\n\n1\n\\(w_1 \\sim N(0, \\sigma_w^2)\\)\n-0.5328698\n\n\n2\n\\(w_2 \\sim N(0, \\sigma_w^2)\\)\n0.074672\n\n\n\n\\(\\vdots\\)\n\\(\\vdots\\)\n\n\nt\n\\(w_t \\sim N(0, \\sigma^2_w)\\)\n-1.2123504\n\n\n\\(\\vdots\\)\n\\(\\vdots\\)\n\\(\\vdots\\)\n\n\nn\n\\(w_n \\sim N(0, \\sigma_w^2)\\)\n-0.2455599\n\n\n\nIf we interpret the collection of \\(w_t\\) as a random vector, then \\(w_t \\sim MVN(\\vec{0}, I)\\) (why \\(I\\)?)\nNote: sometimes \\(w_t\\) could mean a (univariate) value of a white noise series for a particular time \\(t\\) (kind of like how you refer to an arbitrary \\(x_i\\) when you have a sample \\(x_1, \\dots, x_n\\)).",
     "crumbs": [
       "Week 1",
       "Lecture 2"
@@ -1936,6 +1936,616 @@
     ]
   },
   {
+    "objectID": "LectureNotes/Lecture10.html#announcements",
+    "href": "LectureNotes/Lecture10.html#announcements",
+    "title": "Lecture 10",
+    "section": "Announcements",
+    "text": "Announcements\n\nAssignment 1 due next Monday night at Midnight\nPosted some time today or tomorrow morning\nMidterm grades by next Monday\nA note on AI use\nGrading update",
+    "crumbs": [
+      "Week 6",
+      "Lecture 10"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture10.html#recall-the-time-series-data-analysis-process",
+    "href": "LectureNotes/Lecture10.html#recall-the-time-series-data-analysis-process",
+    "title": "Lecture 10",
+    "section": "Recall the “Time series data analysis process”",
+    "text": "Recall the “Time series data analysis process”\n\nObservation\nQuestion\nHypothesis\nExperiment\nData Collection and Analysis\nConclusion\nReport Results\nReplication",
+    "crumbs": [
+      "Week 6",
+      "Lecture 10"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture10.html#observations-of-the-day",
+    "href": "LectureNotes/Lecture10.html#observations-of-the-day",
+    "title": "Lecture 10",
+    "section": "“Observations” of the day",
+    "text": "“Observations” of the day",
+    "crumbs": [
+      "Week 6",
+      "Lecture 10"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture10.html#observations-of-the-day-1",
+    "href": "LectureNotes/Lecture10.html#observations-of-the-day-1",
+    "title": "Lecture 10",
+    "section": "“Observations” of the day",
+    "text": "“Observations” of the day",
+    "crumbs": [
+      "Week 6",
+      "Lecture 10"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture10.html#activity-1-define-a-question",
+    "href": "LectureNotes/Lecture10.html#activity-1-define-a-question",
+    "title": "Lecture 10",
+    "section": "Activity 1: Define a question",
+    "text": "Activity 1: Define a question",
+    "crumbs": [
+      "Week 6",
+      "Lecture 10"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture10.html#research-questions-of-the-day",
+    "href": "LectureNotes/Lecture10.html#research-questions-of-the-day",
+    "title": "Lecture 10",
+    "section": "Research Questions of the Day",
+    "text": "Research Questions of the Day\n\nWhat is the estimated value of the Quarterly Adjusted GNP for 2002, Q4?\nWhat is the estimated percent of Egyptian GDP due to exports in 2018?\n\nNote: These are both forecasting questions.",
+    "crumbs": [
+      "Week 6",
+      "Lecture 10"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture10.html#methodological-questions-of-the-day",
+    "href": "LectureNotes/Lecture10.html#methodological-questions-of-the-day",
+    "title": "Lecture 10",
+    "section": "Methodological Questions of the Day",
+    "text": "Methodological Questions of the Day\n\nWhen do we want to fit an ARMA model?\nWhen do we want to fit an ARIMA model?\nHow do we identify the order(s) of the ARIMA(p,d,q) model?\nHow can we check assumptions of a model?\nHow do we compare models?\nHow can we forecast from a model?",
+    "crumbs": [
+      "Week 6",
+      "Lecture 10"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture10.html#definition-of-arma-model",
+    "href": "LectureNotes/Lecture10.html#definition-of-arma-model",
+    "title": "Lecture 10",
+    "section": "Definition of ARMA model",
+    "text": "Definition of ARMA model\nA time series \\(x_t\\) is ARMA(p,q) if\n\\[\nx_t = \\alpha + \\phi_1 x_{t-1} + \\phi_2 x_{t-2} + \\dots + \\phi_p x_{t-p} + w_t + \\theta_1 w_{t-1} + \\theta_2 w_{t-2} + \\dots + \\theta_q w_{t-q}\n\\] Where \\(\\phi_p \\ne 0, \\theta_q \\ne 0, \\sigma^2_w &gt; 0\\) (and the model is causal and invertible)",
+    "crumbs": [
+      "Week 6",
+      "Lecture 10"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture10.html#causal-and-invertible",
+    "href": "LectureNotes/Lecture10.html#causal-and-invertible",
+    "title": "Lecture 10",
+    "section": "Causal and invertible? 😱",
+    "text": "Causal and invertible? 😱\n\nFor “causal”, if the time series is stationary it has a causal representation (depends on past, not future)\nFor “Intertible”, it’s so the moving average part gives us a unique model",
+    "crumbs": [
+      "Week 6",
+      "Lecture 10"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture10.html#a-note-non-uniqueness-of-moving-average",
+    "href": "LectureNotes/Lecture10.html#a-note-non-uniqueness-of-moving-average",
+    "title": "Lecture 10",
+    "section": "A note non-uniqueness of Moving Average",
+    "text": "A note non-uniqueness of Moving Average\nConsider the MA model and its theoretical autocorrelation function, where \\(\\sigma^2_w\\) is the white noise variance\n\\[\n\\begin{aligned}\nx_t &= w_t + \\theta w_{t-1}\\\\\n\\gamma(h) &= \\begin{cases}\n(1+\\theta^2)\\sigma^2_w & \\Vert h \\Vert = 0 \\\\\n\\theta \\sigma^2_w & \\Vert h \\Vert = 1 \\\\\n0 & \\Vert h \\Vert &gt; 1\n\\end{cases}\n\\end{aligned}\n\\] Consider two possible values for \\(\\theta\\) and \\(\\sigma^2_w\\):\n\n\n\\(\\theta = 5, \\sigma^2_w = 1\\)\n\\[\n\\gamma(h) = \\begin{cases}\n(1+5^2)\\cdot1 & \\Vert h \\Vert = 0 \\\\\n5\\cdot 1 & \\Vert h \\Vert = 1 \\\\\n0 & \\Vert h \\Vert &gt; 1\n\\end{cases}\n\\]\n\n\\(\\theta = 1/5, \\sigma^2_w = 25\\)\n\\[\n\\gamma(h) = \\begin{cases}\n(1+(1/5)^2)\\cdot 25 & \\Vert h \\Vert = 0 \\\\\n1/5\\cdot 25 & \\Vert h \\Vert = 1 \\\\\n0 & \\Vert h \\Vert &gt; 1\n\\end{cases}\n\\]\n\n\nBoth simplify to \\[\n\\gamma(h) = \\begin{cases}\n26 & \\Vert h \\Vert = 0 \\\\\n5 & \\Vert h \\Vert = 1 \\\\\n0 & \\Vert h \\Vert &gt; 1\n\\end{cases}\n\\]\nIn practice we cannot distinguish the difference between the two models (they are stochastically the same). So, we will choose the invertible model, which is the one with \\(\\sigma^2_w =25\\), \\(\\theta = 1/5\\) (see Shumway and Stoffer page 72-73, example 4.6 for details.)",
+    "crumbs": [
+      "Week 6",
+      "Lecture 10"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture10.html#interpretation-of-arma-model",
+    "href": "LectureNotes/Lecture10.html#interpretation-of-arma-model",
+    "title": "Lecture 10",
+    "section": "Interpretation of ARMA model",
+    "text": "Interpretation of ARMA model\nIf we let \\(\\epsilon_t = w_t + \\theta_1 w_{t-1} + \\theta_2 w_{t-2} + \\dots + \\theta_q w_{t-q}\\), then if \\(x_t\\) is ARMA(p,q), \\[\nx_t = \\alpha + \\phi_1 x_{t-1} + \\phi_2 x_{t-2} + \\dots + \\phi_p x_{t-p} + \\epsilon_t\n\\]\n\nRecognize the linear regression structure?\nDifference: constraints on \\(\\phi, \\theta\\).",
+    "crumbs": [
+      "Week 6",
+      "Lecture 10"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture10.html#activity-2-fit-an-arma-model",
+    "href": "LectureNotes/Lecture10.html#activity-2-fit-an-arma-model",
+    "title": "Lecture 10",
+    "section": "Activity 2: Fit an ARMA model?",
+    "text": "Activity 2: Fit an ARMA model?\nIs there any seasonality (fixed-length cycles)? If so, probably want to use a seasonal model (not ARMA)",
+    "crumbs": [
+      "Week 6",
+      "Lecture 10"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture10.html#activity-2-solution-fit-an-arma-model",
+    "href": "LectureNotes/Lecture10.html#activity-2-solution-fit-an-arma-model",
+    "title": "Lecture 10",
+    "section": "Activity 2 Solution: Fit an ARMA model?",
+    "text": "Activity 2 Solution: Fit an ARMA model?\nNo, the cycles are not of fixed length\n\n\n\n[1] 15 12 17",
+    "crumbs": [
+      "Week 6",
+      "Lecture 10"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture10.html#choosing-the-order-of-arma-models",
+    "href": "LectureNotes/Lecture10.html#choosing-the-order-of-arma-models",
+    "title": "Lecture 10",
+    "section": "Choosing the order of ARMA models",
+    "text": "Choosing the order of ARMA models",
+    "crumbs": [
+      "Week 6",
+      "Lecture 10"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture10.html#activity-3-recall-ma-acf",
+    "href": "LectureNotes/Lecture10.html#activity-3-recall-ma-acf",
+    "title": "Lecture 10",
+    "section": "Activity 3: Recall MA ACF",
+    "text": "Activity 3: Recall MA ACF\n\nPropose a rule for choosing the order of the MA model.",
+    "crumbs": [
+      "Week 6",
+      "Lecture 10"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture10.html#what-about-ar",
+    "href": "LectureNotes/Lecture10.html#what-about-ar",
+    "title": "Lecture 10",
+    "section": "What about AR?",
+    "text": "What about AR?\n\n\nError in arima.sim(list(ar = c(0.75, 0.5)), n = 1000): 'ar' part of model is not stationary",
+    "crumbs": [
+      "Week 6",
+      "Lecture 10"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture10.html#activity-4-fix-the-ar-model-so-it-is-stationary",
+    "href": "LectureNotes/Lecture10.html#activity-4-fix-the-ar-model-so-it-is-stationary",
+    "title": "Lecture 10",
+    "section": "Activity 4: Fix the AR model so it is stationary",
+    "text": "Activity 4: Fix the AR model so it is stationary\n\n\nCode\nset.seed(807)\npar(mfrow = c(1,2))\nacf(arima.sim(list(ar = c(0.25, 0.5)), n = 1000), main = \"AR(2), theta = (.25, .5)\")\nacf(arima.sim(list(ar = c(FIXME, FIXME)), n = 1000),\n    main =\"AR(2), theta = (FIX, FIX)\") #hint (lecture 1)",
+    "crumbs": [
+      "Week 6",
+      "Lecture 10"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture10.html#activity-4-solution-fix-the-ar-model-so-it-is-stationary",
+    "href": "LectureNotes/Lecture10.html#activity-4-solution-fix-the-ar-model-so-it-is-stationary",
+    "title": "Lecture 10",
+    "section": "Activity 4 Solution: Fix the AR model so it is stationary",
+    "text": "Activity 4 Solution: Fix the AR model so it is stationary",
+    "crumbs": [
+      "Week 6",
+      "Lecture 10"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture10.html#making-sure-ar-is-stationary",
+    "href": "LectureNotes/Lecture10.html#making-sure-ar-is-stationary",
+    "title": "Lecture 10",
+    "section": "Making sure AR is stationary",
+    "text": "Making sure AR is stationary\n\nIs complicated\nIs taken care of in estimation by software",
+    "crumbs": [
+      "Week 6",
+      "Lecture 10"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture10.html#ar-or-ma-or-both",
+    "href": "LectureNotes/Lecture10.html#ar-or-ma-or-both",
+    "title": "Lecture 10",
+    "section": "AR or MA or both?",
+    "text": "AR or MA or both?\nConsider two of the models just simulated:\n\n\nShape is similar, but not identical\nIs there a better way to tell?",
+    "crumbs": [
+      "Week 6",
+      "Lecture 10"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture10.html#partial-autocorrelation-plot",
+    "href": "LectureNotes/Lecture10.html#partial-autocorrelation-plot",
+    "title": "Lecture 10",
+    "section": "Partial Autocorrelation plot",
+    "text": "Partial Autocorrelation plot\nThe PACF is the correlation between \\(x_t\\) and \\(x_{t-k}\\) that is not explained by lags \\(1, 2, \\ldots, k-1\\).\n“Removes” the autocorrelation of the previous lags.\nUseful in determining the order of an Autoregressive process, and in combination with ACF, choosing between an AR or an MA model.",
+    "crumbs": [
+      "Week 6",
+      "Lecture 10"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture10.html#pacf-of-two-series-we-just-saw",
+    "href": "LectureNotes/Lecture10.html#pacf-of-two-series-we-just-saw",
+    "title": "Lecture 10",
+    "section": "PACF of two series we just saw",
+    "text": "PACF of two series we just saw",
+    "crumbs": [
+      "Week 6",
+      "Lecture 10"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture10.html#acf-and-pacf",
+    "href": "LectureNotes/Lecture10.html#acf-and-pacf",
+    "title": "Lecture 10",
+    "section": "ACF and PACF",
+    "text": "ACF and PACF",
+    "crumbs": [
+      "Week 6",
+      "Lecture 10"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture10.html#ar-or-ma-or-both-1",
+    "href": "LectureNotes/Lecture10.html#ar-or-ma-or-both-1",
+    "title": "Lecture 10",
+    "section": "AR or MA or both",
+    "text": "AR or MA or both\n\nBehavior of ACF/PACF for ARMA Models\n\n\n\nAR(p)\nMA(q)\nARMA(p,q)\n\n\n\n\nACF\nTails off\nCuts off after lag q\nTails off\n\n\nPACF\nCuts off after lag p\nTails off\nTails off",
+    "crumbs": [
+      "Week 6",
+      "Lecture 10"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture10.html#activity-5-ar-or-ma-or-both",
+    "href": "LectureNotes/Lecture10.html#activity-5-ar-or-ma-or-both",
+    "title": "Lecture 10",
+    "section": "Activity 5: AR or MA or both?",
+    "text": "Activity 5: AR or MA or both?\n\nACF: Tails off; PACF: Cuts off after lag 4. Maybe an AR(4), or some sort of ARMA?",
+    "crumbs": [
+      "Week 6",
+      "Lecture 10"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture10.html#fitting-an-arma-model",
+    "href": "LectureNotes/Lecture10.html#fitting-an-arma-model",
+    "title": "Lecture 10",
+    "section": "Fitting an ARMA model",
+    "text": "Fitting an ARMA model\nUse the sarima function, specify p, d, q (d = 0 for ARMA).\n\n\n&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;\n \nCoefficients: \n      Estimate     SE t.value p.value\nar1     0.9861 0.1247  7.9103  0.0000\nar2    -0.1715 0.1865 -0.9199  0.3618\nar3     0.1807 0.1865  0.9688  0.3370\nar4    -0.3283 0.1273 -2.5779  0.0128\nxmean  20.0986 1.0699 18.7858  0.0000\n\nsigma^2 estimated as 7.204995 on 53 degrees of freedom \n \nAIC = 5.052611  AICc = 5.072505  BIC = 5.265761",
+    "crumbs": [
+      "Week 6",
+      "Lecture 10"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture10.html#fpp-way",
+    "href": "LectureNotes/Lecture10.html#fpp-way",
+    "title": "Lecture 10",
+    "section": "FPP way",
+    "text": "FPP way\n\n\nCode\nfit_auto &lt;- global_economy |&gt;\n  filter(Code == \"EGY\") |&gt;\n  model(ARIMA(Exports)) ## automatic ARIMA\nreport(fit_auto)\n\n\nSeries: Exports \nModel: ARIMA(2,0,1) w/ mean \n\nCoefficients:\n         ar1      ar2      ma1  constant\n      1.6764  -0.8034  -0.6896    2.5623\ns.e.  0.1111   0.0928   0.1492    0.1161\n\nsigma^2 estimated as 8.046:  log likelihood=-141.57\nAIC=293.13   AICc=294.29   BIC=303.43",
+    "crumbs": [
+      "Week 6",
+      "Lecture 10"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture10.html#which-model-should-we-choose",
+    "href": "LectureNotes/Lecture10.html#which-model-should-we-choose",
+    "title": "Lecture 10",
+    "section": "Which model should we choose?",
+    "text": "Which model should we choose?\n\nOne that fits well\nWe can use AICc to choose between models that seem to have good fit",
+    "crumbs": [
+      "Week 6",
+      "Lecture 10"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture10.html#ar4-vs.-arma21",
+    "href": "LectureNotes/Lecture10.html#ar4-vs.-arma21",
+    "title": "Lecture 10",
+    "section": "AR(4) vs. ARMA(2,1)",
+    "text": "AR(4) vs. ARMA(2,1)\n\n\nSeries: Exports \nModel: ARIMA(2,0,1) w/ mean \n\nCoefficients:\n         ar1      ar2      ma1  constant\n      1.6764  -0.8034  -0.6896    2.5623\ns.e.  0.1111   0.0928   0.1492    0.1161\n\nsigma^2 estimated as 8.046:  log likelihood=-141.57\nAIC=293.13   AICc=294.29   BIC=303.43\n\n\nSeries: Exports \nModel: ARIMA(4,0,0) w/ mean \n\nCoefficients:\n         ar1      ar2     ar3      ar4  constant\n      0.9861  -0.1715  0.1807  -0.3283    6.6922\ns.e.  0.1247   0.1865  0.1865   0.1273    0.3562\n\nsigma^2 estimated as 7.885:  log likelihood=-140.53\nAIC=293.05   AICc=294.7   BIC=305.41\n\n\nVery similar! Let’s check the residuals",
+    "crumbs": [
+      "Week 6",
+      "Lecture 10"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture10.html#check-model-fit",
+    "href": "LectureNotes/Lecture10.html#check-model-fit",
+    "title": "Lecture 10",
+    "section": "Check model fit",
+    "text": "Check model fit\n\n\nCode\ngg_tsdisplay(residuals(fit_auto), plot_type = \"partial\")\n\n\n\n\n\n\n\n\n\nCode\ngg_tsdisplay(residuals(fit_manual), plot_type = \"partial\")",
+    "crumbs": [
+      "Week 6",
+      "Lecture 10"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture10.html#make-a-forecast",
+    "href": "LectureNotes/Lecture10.html#make-a-forecast",
+    "title": "Lecture 10",
+    "section": "Make a forecast",
+    "text": "Make a forecast\n\n\nCode\nfit_auto %&gt;% \n   forecast(h=5) |&gt;\n  autoplot(global_economy)\n\n\n\n\n\n\n\n\n\nCode\nfit_manual %&gt;% \n   forecast(h=5) |&gt;\n  autoplot(global_economy)\n\n\n\n\n\n\n\n\n\nCode\negy_forecast &lt;- ## save auto forecast \nfit_auto %&gt;% \n   forecast(h=5)",
+    "crumbs": [
+      "Week 6",
+      "Lecture 10"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture10.html#how-did-the-forecasts-do",
+    "href": "LectureNotes/Lecture10.html#how-did-the-forecasts-do",
+    "title": "Lecture 10",
+    "section": "How did the forecasts do?",
+    "text": "How did the forecasts do?",
+    "crumbs": [
+      "Week 6",
+      "Lecture 10"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture10.html#plot-analysis",
+    "href": "LectureNotes/Lecture10.html#plot-analysis",
+    "title": "Lecture 10",
+    "section": "Plot analysis",
+    "text": "Plot analysis\n\nthe historic data and the updated data mostly agree, except for the last shared point in 2017\nThe forecast for 2018 is spot-on\nThe later forecasts are not at all correct",
+    "crumbs": [
+      "Week 6",
+      "Lecture 10"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture10.html#modeling-workflow",
+    "href": "LectureNotes/Lecture10.html#modeling-workflow",
+    "title": "Lecture 10",
+    "section": "Modeling workflow",
+    "text": "Modeling workflow",
+    "crumbs": [
+      "Week 6",
+      "Lecture 10"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture10.html#gnp-series",
+    "href": "LectureNotes/Lecture10.html#gnp-series",
+    "title": "Lecture 10",
+    "section": "GNP series",
+    "text": "GNP series\nDoes the series appear stationary?",
+    "crumbs": [
+      "Week 6",
+      "Lecture 10"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture10.html#acf-and-pacf-of-gnp",
+    "href": "LectureNotes/Lecture10.html#acf-and-pacf-of-gnp",
+    "title": "Lecture 10",
+    "section": "Acf and pacf of GNP",
+    "text": "Acf and pacf of GNP",
+    "crumbs": [
+      "Week 6",
+      "Lecture 10"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture10.html#differenced-gnp-series",
+    "href": "LectureNotes/Lecture10.html#differenced-gnp-series",
+    "title": "Lecture 10",
+    "section": "Differenced GNP series",
+    "text": "Differenced GNP series\nDoes the series appear stationary?",
+    "crumbs": [
+      "Week 6",
+      "Lecture 10"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture10.html#acf-and-pacf-of-differenced-gnp-series",
+    "href": "LectureNotes/Lecture10.html#acf-and-pacf-of-differenced-gnp-series",
+    "title": "Lecture 10",
+    "section": "ACF and PACF of differenced GNP series",
+    "text": "ACF and PACF of differenced GNP series",
+    "crumbs": [
+      "Week 6",
+      "Lecture 10"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture10.html#arima-models",
+    "href": "LectureNotes/Lecture10.html#arima-models",
+    "title": "Lecture 10",
+    "section": "ARIMA models",
+    "text": "ARIMA models\nA time series is said to be ARIMA(p,d,q) if\n\\[\n\\nabla^dx_t = (1-B)^dx_t\n\\]\nIs ARMA(p,q). In other words, if after an order \\(d\\) difference we get an ARMA model. To bring in the parameters, we write\n\\[\n\\phi(B)(1-B)^dx_t = \\alpha + \\theta(B)w_t\n\\]\nHere, \\(\\phi(B) = 1 - \\phi_1B - \\phi_2B^2 - \\dots - \\phi_p B^p\\) and \\(\\theta(B) = 1 + \\theta_1 B + \\theta_2 B^2 + \\dots + \\theta_q B^q\\)",
+    "crumbs": [
+      "Week 6",
+      "Lecture 10"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture10.html#example-arima110",
+    "href": "LectureNotes/Lecture10.html#example-arima110",
+    "title": "Lecture 10",
+    "section": "Example: ARIMA(1,1,0):",
+    "text": "Example: ARIMA(1,1,0):\nSince \\(q = 0\\), \\(\\theta(B) = 1\\). Since \\(q = 1\\), \\(\\phi(B) = 1-\\phi_1B\\). Finally, \\(d = 1\\) so\n\\[\n\\begin{aligned}\n\\phi(B) (1-B)^dx_t &= \\alpha + \\theta(B) w_t \\\\\n(1 - \\phi_1B)(1-B)^1x_t &= \\alpha + 1\\cdot w_t\\\\\n(1- \\phi_1B)(x_t -x_{t-1}) &= \\alpha + w_t \\\\\nx_t - x_{t-1} - (\\phi_1Bx_t + \\phi_1Bx_{t-1}) &= \\alpha + w_t \\\\\nx_t - x_{t-1} - (\\phi_1x_{t-1} + \\phi_1x_{t-2}) &= \\alpha + w_t \\\\\nx_t - x_{t-1} &= \\alpha + \\phi_1(x_{t-1} - x_{t-2})  + w_t\n\\end{aligned}\n\\]",
+    "crumbs": [
+      "Week 6",
+      "Lecture 10"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture10.html#next-time",
+    "href": "LectureNotes/Lecture10.html#next-time",
+    "title": "Lecture 10",
+    "section": "Next time",
+    "text": "Next time\n\nMore on ARMA vs. ARIMA\nBox-cox transformations\nParameter redundancy\nPortmanteau tests\nUnit root tests\n(maybe) Seasonal ARIMA?",
+    "crumbs": [
+      "Week 6",
+      "Lecture 10"
+    ]
+  },
+  {
+    "objectID": "Exams/PracticeMidterm.html",
+    "href": "Exams/PracticeMidterm.html",
+    "title": "Fall 24 Stat 416 Lecture Notes",
+    "section": "",
+    "text": "idea: a moving average itself is stationary. Is a moving average of an arbitrary time series stationary?\ntwo moving average, with different weights"
+  },
+  {
+    "objectID": "Assignments/AssignmentSolutions/Assignment1_solutions.html",
+    "href": "Assignments/AssignmentSolutions/Assignment1_solutions.html",
+    "title": "Assignment 1",
+    "section": "",
+    "text": "A paper I worked on as a research scientist considered the time series of the concentration (measured as \\(\\log_{10}\\) copies per Liter) of the SARS-CoV-2 virus from 5 different locations in the City of Houston, visualized in parts (c)-(g) of the figure below.\nThe goal of this study was to see whether the information gleaned from sampling the lift stations, which represent smaller populations, was different than the information gleaned from sampling only the larger wastewater treatment plant. In other words, one research question was to determine whether the WWTP (dark blue) time series has different dynamics (behavior) than those that represent the lift stations.\nThe methods in this paper are touched on in chapter 8 of our textbook. For this assignment, we will use the wastewater data as an example and practice our plotting and time series data science skills.\n\n\n\n(a) The WWTP catchment areas for the City of Houston, with the WWTP of focus shaded. The box shows the extent of (b), the map showing the 4 lift stations considered in the analysis. (c–g) Plot the time series of Log10 Copies/L for the WWTP and the 4 lift station facilities, referred to as Lift Station A–D, with periods of missing values indicated by grey rectangles.\n\n\n\n[6 points] Which of the time series has the most missing data? Which appears to have the most variability? Does the overall behavior of the series seem to be similar?\n\nMissing data: The grey rectangles in the plots represent the missing data (per the caption). Lift station B has the most grey rectangles. In fact, it is missing data for almost half the study period, though thankfully not all in one “chunk”.\nVariability Note that the time series have different scales on the y-axis that makes it a little difficult to comment on the relative variability of the series. Lift station C and lift station D have the largest range of the y-axis, and the data span that range, so it would be reasonable to say that lift stations C and D have the most variation.\nThis was not part of the question, but you could compute the variability of each series (ignoring the fact that it is a time series to gain preliminary insight). Indeed, lift station D and C have the highest variability as estimated by standard deviation.\n\nlibrary(tidyverse)\nww &lt;- read.csv(\"https://raw.githubusercontent.com/hou-wastewater-epi-org/online_trend_estimation/refs/heads/main/Data/synthetic_ww_time_series.csv\", header = T)\n\nww %&gt;% group_by(name) %&gt;% \n  summarise(sd = sd(value, na.rm = T)) %&gt;% \n  arrange(desc(sd))\n\n# A tibble: 5 × 2\n  name              sd\n  &lt;chr&gt;          &lt;dbl&gt;\n1 Lift station D 0.872\n2 Lift station C 0.781\n3 Lift station B 0.776\n4 WWTP           0.506\n5 Lift station A 0.497\n\n\nTrend: The overall behavior of the series appears similar: the peaks and valleys seem to be aligned across the series, even if the height of the peaks is not exactly the same. We might say these time series have similar temporal structure.\n\n[5 points] Load the (synthetic) wastewater data from https://raw.githubusercontent.com/hou-wastewater-epi-org/online_trend_estimation/refs/heads/main/Data/synthetic_ww_time_series.csv using the read.csv function\n\n\n## Import the csv here into r: https://raw.githubusercontent.com/hou-wastewater-epi-org/online_trend_estimation/refs/heads/main/Data/synthetic_ww_time_series.csv\n\nww &lt;- read.csv(\"https://raw.githubusercontent.com/hou-wastewater-epi-org/online_trend_estimation/refs/heads/main/Data/synthetic_ww_time_series.csv\", header = T)\n\n## verify it worked\n\nhead(ww) ## the head() function prints the first 6 rows\n\n       dates           name    value ts_missing  colors\n1 2021-05-24 Lift station A 3.397031      FALSE #44AA99\n2 2021-05-31 Lift station A       NA       TRUE #44AA99\n3 2021-06-07 Lift station A       NA       TRUE #44AA99\n4 2021-06-14 Lift station A       NA       TRUE #44AA99\n5 2021-06-21 Lift station A 4.543146      FALSE #44AA99\n6 2021-06-28 Lift station A 4.356128      FALSE #44AA99\n\n\n\n[5 points] Inspect the data. Verify that each of the series from the map above are included in the .csv (hint: what are the unique values of the name field?)\n\n\nunique(ww$name)\n\n[1] \"Lift station A\" \"Lift station B\" \"Lift station C\" \"Lift station D\"\n[5] \"WWTP\"          \n\n\nThis technically answers the question, although if there were some issue with the data then running unique could be missleading– for example, if the .csv was cut off and there was only one observation for one fo the series, unique would return the same results as above. Instead, we can use group_by and summarize to gain more insight into the data for each series.\n\nww %&gt;% group_by(name) %&gt;% \n  summarise(n = n(), \n            mean = mean(value, na.rm = T), \n            num_missing = sum(ts_missing)) ## i included an indicator for whether a particular observation is missing for convenience.\n\n# A tibble: 5 × 4\n  name               n  mean num_missing\n  &lt;chr&gt;          &lt;int&gt; &lt;dbl&gt;       &lt;int&gt;\n1 Lift station A    95  4.83          28\n2 Lift station B    95  4.55          42\n3 Lift station C    95  4.57           9\n4 Lift station D    95  4.70          18\n5 WWTP              95  4.45           4\n\n\n\n[5 points ] Convert the date field to a Date format using the function as.Date.\n\n\nww$dates &lt;- as.Date(ww$dates)\nclass(ww$dates) ## verify it worked\n\n[1] \"Date\"\n\nhead(ww$dates) ## verify the format looks ok\n\n[1] \"2021-05-24\" \"2021-05-31\" \"2021-06-07\" \"2021-06-14\" \"2021-06-21\"\n[6] \"2021-06-28\"\n\n\nTelling R a character vector is a date allows us to reformat it using the strptime function by specifying a format argument– see the documentation for strptime for the options. Here I convert to “Month Name day, year” and also just the day of the week. Note that the time series is weekly so that we would expect all the days of the week to be the same (here Monday).\n\nhead(format(x= ww$dates, format = \"%B %d, %Y\"))\n\n[1] \"May 24, 2021\"  \"May 31, 2021\"  \"June 07, 2021\" \"June 14, 2021\"\n[5] \"June 21, 2021\" \"June 28, 2021\"\n\nhead(format(x= ww$dates, format = \"%a\"))\n\n[1] \"Mon\" \"Mon\" \"Mon\" \"Mon\" \"Mon\" \"Mon\"\n\n\n\n[2 points] Install and load the tidyverse package.\n\n\n#install.packages(\"tidyverse\") # comment this line after you run it the first time\nlibrary(tidyverse) \n\nNote that in these solutions, I already loaded tidyverse higher up since I was using some dplyr functions.\n\n[5 points] We will work with just the WWTP series for now. Use dplyr::filter to extract the values for just the WWTP series.\n\n\nww_WWTP &lt;- ww %&gt;% dplyr::filter(name == \"WWTP\")\n\n\n[10 points] What is the time interval between the observations?\n\n\nww_WWTP$dates[2] - ww_WWTP$dates[1] ## difference between first two obs\n\nTime difference of 7 days\n\ndiff(ww_WWTP$dates) ## difference between all obs-- recognize diff from lecture 5?? :)\n\nTime differences in days\n [1] 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7\n[39] 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7\n[77] 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7\n\n\n\n[10 points] Use the tsplot function from the astsa package to plot the WWTP series.\nMake sure to use the dates field for the x-axis and specify good axis and plot labels using the xlab/ylab, and main arguments. (see the documentation ?tsplot for more)\n\n\nlibrary(astsa) \ntsplot(x = ww_WWTP$dates, y = ww_WWTP$value, \"\")\n\n\n\n\n\n\n\n\n\n[10 points]Apply a moving average filter with 3 time points using the stats::filter function and save the result in a vector called ww_ma_3. You can choose the order of the moving average. (Similar to the final part of problem 1.1, see here in Lecture Notes).\n\n\nww_ma_3 &lt;- stats::filter(ww_WWTP$value, filter = rep(1/3, 3), sides = 1)\n\n10.[10 points] Plot the moving average you computed on top of the tsplot in a different color using the lines function (see linked Problem 1.1 above). In the call to the lines function, also use type = \"l\" and lwd = 2.\n\nlibrary(astsa)\ntsplot(x = ww_WWTP$dates, y = ww_WWTP$value, \n       main = \"WWTP Series and Moving Average filter with 3 time points\",\n       type = \"b\", xlab = \"Log10 Copies/L\")\nlines(x = ww_WWTP$dates, y = ww_ma_3, lwd = 2, \n      col = \"blueviolet\", type = \"l\")\n\n\n\n\n\n\n\n\n\n[15 points] Apply the moving average filter again, but this time use 5 time points, call it ww_ma_5. Plot just the wastewater series and the ww_ma_5 you just computed, and use a different color for this MA process than you used in question 10.\n\n\nww_ma_5 &lt;- stats::filter(ww_WWTP$value, filter = rep(1/5, 5), sides = 1)\ntsplot(x = ww_WWTP$dates, y = ww_WWTP$value, \n       main = \"Observed WWTP Series and Moving average smoother with 5 time points\",\n       type = \"b\")\nlines(x = ww_WWTP$dates, y = ww_ma_5, lwd = 2, \n      col = \"darkgreen\", type = \"l\")\n\n\n\n\n\n\n\n\n\n[5 points]Inspect the plot you generated in questions 10 and 11. Which MA process looks “smoother”?\n\nSince we are just visually inspecting time series, different people may notice different things when looking at the same plot. I would say that the smoother which uses five time points appears smoother: some of the places where the 3-point moving average appears particularly “jagged” is smoother for the 5-point. It’s a but easier to see when you plot them on the same plot.\n\ntsplot(x = ww_WWTP$dates, y = ww_WWTP$value, \n       main = \"Observed WWTP Series and both Moving Averages\", type = \"b\")\nlines(x = ww_WWTP$dates, y = ww_ma_5, \n      lwd = 2, col = \"darkgreen\", type = \"l\")\nlines(x = ww_WWTP$dates, y = ww_ma_5, \n      lwd = 2, col = \"darkgreen\", type = \"l\")\nlines(x = ww_WWTP$dates, y = ww_ma_3, \n      lwd = 2, col = \"blueviolet\", type = \"l\")\nlegend(\"bottomright\", legend = c(\"3-point\", \"5-point\"), \n       col = c(\"blueviolet\",\"darkgreen\"), lwd =2)\nrect(xleft = 19140, xright = 19161, \n     ytop = 4.7, ybottom = 4.1, \n     border = \"magenta\", lwd = 2)\n\n\n\n\n\n\n\n\n\n[10 points] Describe the different way that the missing data in the WWTP series impacts the moving average estimates for the case of 3 time points vs. 5 time points.\n\nConsider the right hand side of the missing data period near the beginning of 2022. The 3-point moving average (purple line) is able to “restart” sooner than the 5-point moving average (green line). This is because the 3-point moving average just has to wait until it has 3 points to re-start the estimation, wheras the 5-point must wait for 5 points.\n\n[5 points] Note that the data you used for this activity was “synthetic” wastewater data. Why might a researcher share a synthetic version of their data? What do you think that might mean?\n\nSynthetic data (at least how I use it) are data that are not directly observed, but rather simulated (or sampled) from a model that is fit using real data. In other words, it is made-up data that has similar properties to the real data. Researchers might decide to share synthetic data when they want people to be able to run their code for a paper, but the data are sensitive in nature, for example, have personally identifiable health information. Here, we followed CDC guidelines to not release the real data (or real names of the lift stations and WWTP) when the population served by the facility being sampled is less than 4,000."
+  },
+  {
+    "objectID": "Assignments/Assignment3.html",
+    "href": "Assignments/Assignment3.html",
+    "title": "Assignment 3 Due Friday, October 18 at midnight",
+    "section": "",
+    "text": "Download the .qmd source for this document here.",
+    "crumbs": [
+      "Week 3",
+      "Assignment 3"
+    ]
+  },
+  {
+    "objectID": "Assignments/Assignment3.html#math",
+    "href": "Assignments/Assignment3.html#math",
+    "title": "Assignment 3 Due Friday, October 18 at midnight",
+    "section": "1. Math",
+    "text": "1. Math\nRecall the so-called “trend-stationary” model \\[\nx_t = \\mu_t + y_t\n\\]\n\n[3 points] There are three terms (symbols) in that equation. Which symbol corresponds to the trend, and which corresponds to the stationary part? What would you call the remaining symbol?\nWe have considered a few possible models for the trend: \\[\n\\begin{aligned}\n\\mu_{LM,t} &= \\beta_0 + \\beta_1 t  \\\\\n\\mu_{RW,t} &=  \\delta + \\mu_{RW, t-1} + w_t\n\\end{aligned}\n\\]\n[2 points] What do “RW” and “LM” stand for?\n[4 points] Between \\(\\mu_{LM,t}\\) and \\(\\mu_{RW,t}\\), which has “more interesting” temporal structure[2 points]? Why[2 points]?\n[4 points] Write down the equations for \\(x_{LM, t}\\) and \\(x_{RW,t}\\)\n\nConsider this (edited) excerpt from the textbook (page 49):\n\n\n\n\n\n\nDifferencing vs. Detrending\n\n\n\nOne advantage of differencing over detrending to remove trend is that no parameters are estimated in the differencing operation. One disadvantage, however, is that differencing does not yield and estimate of the stationary process \\(y_t\\).\nFor example, if we difference a random walk \\(x_t\\) with drift \\(\\delta\\),\n\\[\nx_t - x_{t-1} = \\delta + w_t + y_t - y_{t-1}.\n\\]\nIf an estimate of \\(y_t\\) is essential, then detrending may be more appropriate. This would be the case, for example, if we were interested in the business cycle of commodities.\nIf the goal is to coerce the data to stationarity, then differencing may be more appropriate. Differencing is also a viable tool if the trend is fixed, that is, when using \\(\\mu_{LM,t}\\) as the trend model, we have: \\[\nx_t - x_{t-1} = \\beta_1 + y_t - y_{t-1}\n\\] Because differencing plays a central role in time series analysis, it receives its own notaiton. The first difference is denoted: \\[\n\\nabla x_t = x_t - x_{t-1}\n\\] As we have seen, the first difference eliminates a linear trend. A second difference can eliminate a quadratic trend, and so on. Differences of order \\(d\\) are denoted: \\[\n\\nabla^d = (1-B)^d\n\\]\n\n\n\n[1 point] Take a look in the book. What is \\(B\\) called?\n[6 points] Why is it an “advantage” that no parameters are estimated in the differencing operation?\n[6 points] Connect part 2 question 9 below to a sentence in the above excerpt.\n[10 points] What kind of plot might you make to check if the data has been “coerced to stationarity”?\n[3 points] Rate your math anxiety (1 = effortless, 100 = nightmare) while working on this problem.",
+    "crumbs": [
+      "Week 3",
+      "Assignment 3"
+    ]
+  },
+  {
+    "objectID": "Assignments/Assignment3.html#data-analysis-code",
+    "href": "Assignments/Assignment3.html#data-analysis-code",
+    "title": "Assignment 3 Due Friday, October 18 at midnight",
+    "section": "2. Data Analysis (code)",
+    "text": "2. Data Analysis (code)\n\n[10 points] Adapt the code from Example 1.2 in the book to plot just the global land temperature series in a time series plot. [2 points]. Describe the structure of the trend and/or seasonal components, if present[8 points].\n\n\n# your code here\n\n\n[4 points] How frequently were the observations collected?\n\n\n# your code here\n\n\n[5 points] Plot the autocorrelation function of the global land temperature series. Comment on the temporal structure.\n\n\n# your code here\n\n\n[15 points] Estimate the trend of the series using a symmetric, equally weighted 5-point moving average[4 points]. Plot the trend estimate on top of the data [4 points]. Comment on the trend– does it reveal any patterns difficult to see in the data?[7 points]\n\n\n# your code here\n\n\n[10 points] Estimate the trend of the series using a linear regression on time[3 points]. Plot the trend estimate on top of the data[3 points]. Is this trend estimate comparable to the moving average?[4 points]\n\n\n# your code here\n\n\n[15 points] De-trend the data with respect to each of the trends you estimated [4 points each]. Make a time series plot of each result [1 point each] and an acf of each result [1 point each]. Comment on the temporal structure in each of the plots.\n\n\n# your code here\n\n\n[20 points] Difference the time series and plot the result[5 points]. Also compute the acf and plot it[5 points]. Comment on whether the differencing has “coerced the data to stationarity”[10 points].\n\n\n# your code here\n\n\n[11 points] Estimate the sum of squared error for both the linear regression and the moving average [3 points each]. What do they suggest about which model is “better”?[3 points] Does this agree with your visual assessments in 3 and 4?[2 points]\n\n\n# your code here\n\n\n[10 points] Why can’t you do part 6 for the differenced series?\n[3 points] Ensure that when you render the document to .html to turn in that you have embed-resources: true in the options at the top of the document (you may also turn in a pdf). Also, set message to false for all the code chunks.",
+    "crumbs": [
+      "Week 3",
+      "Assignment 3"
+    ]
+  },
+  {
+    "objectID": "Assignments/Assignment3.html#the-literature",
+    "href": "Assignments/Assignment3.html#the-literature",
+    "title": "Assignment 3 Due Friday, October 18 at midnight",
+    "section": "3. The literature",
+    "text": "3. The literature\nThe original paper for the data set you just analyzed can be found here.\n\n[2 points] Set a timer for 5 minutes. Find one sentence you feel you understand, and one you do not understand but would like to understand better.\n[4 points] Take a look at Figure 6. There are six time series plotted. One is the data plotted in number 1 of the coding portion, the other is the moving average estimate estimated in number 3. Which of the six series are they?\n[4 points] The textbook for our class states on page 3 that “the data are annual temperature anomalies averaged over the Earth’s land area.”. Does the book state what is specifically meant by “anomaly” here?\n[2 points] Consider the concept of averaging over the Earth’s land area, then take a look at Figure 1. Describe in therms of the “circles” how you might calculate that global average.\n[15 points] Figure 3 plots correlation coefficients between annual mean temperature changes for pairs of randomly selected stations having at least 50 common years in their records. How can you rephrase “annual mean tempearture changes” in terms of detrending or differencing?",
+    "crumbs": [
+      "Week 3",
+      "Assignment 3"
+    ]
+  },
+  {
+    "objectID": "Assignments/Assignment3.html#weights",
+    "href": "Assignments/Assignment3.html#weights",
+    "title": "Assignment 3 Due Friday, October 18 at midnight",
+    "section": "4. Weights",
+    "text": "4. Weights\n\n[6 points] One might consider the points I have given to each numbered problem as “weights”. Based on the weights, which content is the most important? Answer on both the individual problem level and the section level (i.e. math, code, etc).",
+    "crumbs": [
+      "Week 3",
+      "Assignment 3"
+    ]
+  },
+  {
+    "objectID": "Assignments/Assignment1.html",
+    "href": "Assignments/Assignment1.html",
+    "title": "Stat 416 Assignment 1 Due Monday, September 30 at 11:59:59PM",
+    "section": "",
+    "text": "A paper I worked on as a research scientist considered the time series of the concentration (measured as \\(\\log_{10}\\) copies per Liter) of the SARS-CoV-2 virus from 5 different locations in the City of Houston, visualized in parts (c)-(g) of the figure below.\nThe goal of this study was to see whether the information gleaned from sampling the lift stations, which represent smaller populations, was different than the information gleaned from sampling only the larger wastewater treatment plant. In other words, one research question was to determine whether the WWTP (dark blue) time series has different dynamics (behavior) than those that represent the lift stations.\nThe methods in this paper are touched on in chapter 8 of our textbook. For this assignment, we will use the wastewater data as an example and practice our plotting and time series data science skills.\n\n\n\n(a) The WWTP catchment areas for the City of Houston, with the WWTP of focus shaded. The box shows the extent of (b), the map showing the 4 lift stations considered in the analysis. (c–g) Plot the time series of Log10 Copies/L for the WWTP and the 4 lift station facilities, referred to as Lift Station A–D, with periods of missing values indicated by grey rectangles.\n\n\n\nWhich of the time series has the most missing data? Which appears to have the most variability? Does the overall behavior of the series seem to be similar?\nLoad the (synthetic) wastewater data from https://raw.githubusercontent.com/hou-wastewater-epi-org/online_trend_estimation/refs/heads/main/Data/synthetic_ww_time_series.csv using the read.csv function\nInspect the data. Verify that each of the series from the map above are included in the .csv (hint: what are the unique values of the name field?)\nConvert the date field to a Date format using the function as.Date.\nInstall and load the tidyverse package.\nWe will work with just the WWTP series for now. Use dplyr::filter to extract the values for just the WWTP series.\n\nww &lt;- read.csv(#your code here)\n\nww$dates &lt;- as.Date(# your code here)\n\n#install.packages(\"tidyverse\")\nlibrary(tidyverse)\nww_WWTP &lt;- ww %&gt;% dplyr::filter(#your code here)\n\nWhat is the time interval between the observations? How do you know?\nUse the tsplot function from the astsa package to plot the WWTP series.\nMake sure to use the dates field for the x-axis and specify good axis and plot labels using the xlab/ylab, and main arguments. (see the documentation ?tsplot for more)\nApply a moving average filter with 3 time points using the stats::filter function and save the result in a vector called ww_ma_3. You can choose the order of the moving average. (Similar to the final part of problem 1.1, see here in Lecture Notes).\n\nww_ma_3 &lt;- stats::filter(#your code here)\n\nPlot the moving average you computed on top of the tsplot in a different color using the lines function (see linked Problem 1.1 above). In the call to the lines function, also use type = l and lwd = 2.\n\ntsplot(# your code here)\nlines(# your code here)\n\nApply the moving average filter again, but this time use 5 time points, call it ww_ma_5. Plot just the WWTP series data and the ww_ma_5 you just computed, and use a different color for this MA process than you used in question 10.\nInspect the plot you generated in questions 10 and 11. Which MA process looks “smoother”?\nDescribe the different way that the missing data in the WWTP series impacts the moving average estimates for the case of 3 time points vs. 5 time points.",
+    "crumbs": [
+      "Week 1",
+      "Assignment 1"
+    ]
+  },
+  {
+    "objectID": "Assignments/Assignment2_updated.html",
+    "href": "Assignments/Assignment2_updated.html",
+    "title": "Assignment 2 Due 10/7 at Midnight",
+    "section": "",
+    "text": "NOTE: I forgot to include a relevant detail for Part 2, number 7. The change is bolded. Sorry!!! Part 2 number 8 should be easier to answer now.",
+    "crumbs": [
+      "Week 2",
+      "Assignment 2"
+    ]
+  },
+  {
+    "objectID": "Assignments/Assignment2_updated.html#part-1-math",
+    "href": "Assignments/Assignment2_updated.html#part-1-math",
+    "title": "Assignment 2 Due 10/7 at Midnight",
+    "section": "Part 1: Math",
+    "text": "Part 1: Math\nIn class, we have worked with “Signal plus noise Model” (equation 1.5)\n\\[\n\\begin{aligned}\n\\text{Model: }& x_t = 2\\cos(2\\pi\\frac{t+15}{50}) + w_t\\\\\n\\text{Mean function: }& \\mathbb{E}(x_t) = 2\\cos(2\\pi\\frac{t+15}{50})\n\\end{aligned}\n\\]\n\n[5 points] The mean function is derived in Example 2.4. Describe what happens in each step of the computation [3 points], and provide a “math stress” rating (1 = effortless, 100 = nightmare) and 3 emojis[2 points]. This is personal and there is no right answer.\n[5 points] Is the signal plus noise model stationary in the mean?\n[5 points] Write down \\(\\gamma_x(s,t)\\), the autocovariance function of \\(x_t\\) [3 points]. You may accomplish this in any way, including asking me personally in office hours or asking a classmate. Just make sure you cite the source![2 points]\n[6 points] Consider the model:\n\\[\ny_t = x_t - 2\\cos(2\\pi\\frac{t+15}{50})\n\\]\nCompute the mean function of \\(y_t\\) [3 points]. Is \\(y_t\\) stationary in the mean?[1 point] How do you know?[2 points]",
+    "crumbs": [
+      "Week 2",
+      "Assignment 2"
+    ]
+  },
+  {
+    "objectID": "Assignments/Assignment2_updated.html#part-2-code",
+    "href": "Assignments/Assignment2_updated.html#part-2-code",
+    "title": "Assignment 2 Due 10/7 at Midnight",
+    "section": "Part 2: Code",
+    "text": "Part 2: Code\nNote: I have set the code chunks here to have eval: false in the code chunk. Change that to true so that I can run your code easily.\n\n[5 points] All your code runs without errors (unless that’s the point), and if there is a message, explain what it means. (Bonus: to be nice to me, submit a rendered pdf)\n[5 points] Simulate from an AR(1) process with coefficient 0.7 and 10 data points.\n\n\nlibrary(astsa)\n\n# your code here\n\n\n[6 points] Look at the documentation for the stats::lag function (run ?lag in the console). State what package the function is in and what the function does[4 points]. Using k = 1 compute a lag(1) version of x_t that you simulated above[2 points].\n\n\nx_t_lag1 &lt;- # your code here\n\n\n[3 points] Run the following code and compare x_t and x_t_lag1.\n\n\ncbind(x_t, x_t_lag1)\n\n\nMake a time series plot of x_t and x_t_1. Do you notice the same features as when in the previous question?\n\n\n# your code here\n\n\nRun the below code. Why are the plots different? Are either particularly useful?\n\n\nplot(x_t, x_t_lag1)\nplot(as.vector(x_t), as.vector(x_t_lag1))\n\n\nInstead of using stats::lag, use dplyr::lag to create a new version of x_t_lag. Repeat the code from steps 2-5. Describe how the output has changed.\n\n\nx_t_lag1 &lt;- dplyr::lag(# your code here)\n\n\nRe-simulate an AR(1) process as in number 1, but this time with 100 observations. Also recompute x_t_lag1. Fit an intercept-free regression model to predict x_t from x_t_lag. Provide the value of the slope estimate and interpret the value in the context of this simulation.\n\n\nlinear_model &lt;- # your code here\n\n\n[11 points] Plot the acf of x_t[2 points] and the acf of the residuals from the regression model[4 points]. Which looks more like white noise?[2 points] What does this tell you about the temporal structure in x_t and its residuals?[3 points]\n\n\n# your code here",
+    "crumbs": [
+      "Week 2",
+      "Assignment 2"
+    ]
+  },
+  {
+    "objectID": "Assignments/Assignment2_updated.html#part-3-reading",
+    "href": "Assignments/Assignment2_updated.html#part-3-reading",
+    "title": "Assignment 2 Due 10/7 at Midnight",
+    "section": "Part 3: Reading",
+    "text": "Part 3: Reading\n[9 points] Read sections 2.8 and 2.9 from Forecasting Principles and Practice. Make 3 connections [3 points each] to content from the course textbook (equations or similar examples.).",
+    "crumbs": [
+      "Week 2",
+      "Assignment 2"
+    ]
+  },
+  {
+    "objectID": "Assignments/AssignmentSolutions/Assignment2_updated.html",
+    "href": "Assignments/AssignmentSolutions/Assignment2_updated.html",
+    "title": "Solutions: Assignment 2 Due 10/7 at Midnight",
+    "section": "",
+    "text": "NOTE: I forgot to include a relevant detail for Part 2, number 7. The change is bolded. Sorry!!! Part 2 number 8 should be easier to answer now."
+  },
+  {
+    "objectID": "Assignments/AssignmentSolutions/Assignment2_updated.html#part-1-math",
+    "href": "Assignments/AssignmentSolutions/Assignment2_updated.html#part-1-math",
+    "title": "Solutions: Assignment 2 Due 10/7 at Midnight",
+    "section": "Part 1: Math",
+    "text": "Part 1: Math\nIn class, we have worked with “Signal plus noise Model” (equation 1.5)\n\\[\n\\begin{aligned}\n\\text{Model: }& x_t = 2\\cos(2\\pi\\frac{t+15}{50}) + w_t\\\\\n\\text{Mean function: }& \\mathbb{E}(x_t) = 2\\cos(2\\pi\\frac{t+15}{50})\n\\end{aligned}\n\\]\n\n[5 points] The mean function is derived in Example 2.4. Describe what happens in each step of the computation [3 points], and provide a “math stress” rating (1 = effortless, 100 = nightmare) and 3 emojis[2 points]. This is personal and there is no right answer.\n\n The first line of the computation plugs the equation for our particular time series model, \\(x_t\\), into the definition of the mean function (expected value of \\(x_t\\)), and also has the notation \\(\\mu_{xt}\\) for the mean function. Two steps occur in the second line: the linearity of expectation splits the formula into the sum of two terms, then rewrites \\(\\E(2\\cos(2\\pi\\frac{t+15}{50}))\\) as \\(2\\pi\\frac{t+15}{50}\\) since that expression is a constant with respect to the expectation. Finally, the steps between the second and third lines is to know that \\(\\E(w_t)\\) is 0 since \\(w_t\\) is white noise. \n\n[5 points] Is the signal plus noise model stationary in the mean?\n\nNo. There is a \\(t\\) in the equation, so the mean function depends on \\(t\\), which violates the definition of mean stationarity.\n\n[5 points] Write down \\(\\gamma_x(s,t)\\), the autocovariance function of \\(x_t\\) [3 points]. You may accomplish this in any way, including asking me personally in office hours or asking a classmate. Just make sure you cite the source![2 points] ** When \\(s \\ne t\\), the autocovariance function is computed by starting with the formula for our time series \\(x_t\\) and the definition of autocovariance:\n\n\\[\n\\begin{align}\n\\gamma_x(s,t) &= E[(x_t - \\mu_{xt})(x_s - \\mu_{xs})] \\\\\n&= E[(2\\cos(2\\pi\\frac{t+15}{50}) + w_t - \\mu_{xt})(2\\cos(2\\pi\\frac{s+15}{50}) + w_s - \\mu_{xs})] \\\\\n&= E[(2\\cos(2\\pi\\frac{t+15}{50}) + w_t - 2\\cos(2\\pi\\frac{t+15}{50}))(2\\cos(2\\pi\\frac{s+15}{50}) + w_s - 2\\cos(2\\pi\\frac{s+15}{50}))] \\\\\n& = E[(w_t)(w_s)] \\\\\n&= 0\n\\end{align}\n\\] Where the last step yields zero because \\(w_t\\) and \\(w_s\\) are independent. If \\(s = t\\), then the steps are the same, but at the last step we get \\[\n\\gamma_x(t,t) = E(w_t\\cdot w_t) = var(w_t) = \\sigma_w^2\n\\] in other words, the variance of the underlying white noise process.\nThe autocovariance function is then: \\[\n\\begin{cases}\n\\sigma^2_w & \\text{ if } s=t \\\\\n0 & \\text{ if } s \\ne t\n\\end{cases}\n\\] **\n\n[6 points] Consider the model:\n\\[\ny_t = x_t - 2\\cos(2\\pi\\frac{t+15}{50})\n\\]\nCompute the mean function of \\(y_t\\) [3 points]. Is \\(y_t\\) stationary in the mean?[1 point] How do you know?[2 points]"
+  },
+  {
+    "objectID": "Assignments/AssignmentSolutions/Assignment2_updated.html#part-2-code",
+    "href": "Assignments/AssignmentSolutions/Assignment2_updated.html#part-2-code",
+    "title": "Solutions: Assignment 2 Due 10/7 at Midnight",
+    "section": "Part 2: Code",
+    "text": "Part 2: Code\nNote: I have set the code chunks here to have eval: false in the code chunk. Change that to true so that I can run your code easily.\n\n[5 points] All your code runs without errors (unless that’s the point), and if there is a message, explain what it means. (Bonus: to be nice to me, submit a rendered pdf)\n[5 points] Simulate from an AR(1) process with coefficient 0.7 and 10 data points.\n\n\nlibrary(astsa)\n\n# your code here\n\nw &lt;- rnorm(10) \nx_t &lt;- stats::filter(x = w, filter = 0.7, method = \"recursive\")\n\n\n[6 points] Look at the documentation for the stats::lag function (run ?lag in the console). State what package the function is in and what the function does[4 points]. Using k = 1 compute a lag(1) version of x_t that you simulated above[2 points].\n\n\nx_t_lag1 &lt;- stats::lag(x_t, k = 1)\n\n\n[3 points] Run the following code and compare x_t and x_t_lag1.\n\n\ncbind(x_t, x_t_lag1)\n\nTime Series:\nStart = 0 \nEnd = 10 \nFrequency = 1 \n          x_t   x_t_lag1\n 0         NA  1.7298055\n 1  1.7298055  1.8436377\n 2  1.8436377  1.5250020\n 3  1.5250020  3.1826948\n 4  3.1826948  2.6849235\n 5  2.6849235  1.3207012\n 6  1.3207012  0.9004424\n 7  0.9004424  0.2550636\n 8  0.2550636 -0.2386291\n 9 -0.2386291  1.5649764\n10  1.5649764         NA\n\n\n\nMake a time series plot of x_t and x_t_1. Do you notice the same features as when in the previous question?\n\n\ntsplot(x_t)\n\n\n\n\n\n\n\ntsplot(x_t_lag1)\n\n\n\n\n\n\n\n\n\nRun the below code. Why are the plots different? Are either particularly useful?\n\n\nplot(x_t, x_t_lag1)\nplot(as.vector(x_t), as.vector(x_t_lag1))\n\n\nInstead of using stats::lag, use dplyr::lag to create a new version of x_t_lag. Repeat the code from steps 2-5. Describe how the output has changed.\n\n\nx_t_lag1 &lt;- dplyr::lag(as.vector(x_t), n = 1)\nplot(x_t, x_t_lag1)\n\n\n\n\n\n\n\nplot(as.vector(x_t), as.vector(x_t_lag1))\n\n\n\n\n\n\n\n\n\nRe-simulate an AR(1) process as in number 1, but this time with 100 observations. Also recompute x_t_lag1. Fit an intercept-free regression model to predict x_t from x_t_lag. Provide the value of the slope estimate and interpret the value in the context of this simulation.\n\n\nw &lt;- rnorm(100) \nx_t &lt;- stats::filter(x = w, filter = 0.7, method = \"recursive\")\n\nx_t_lag1 &lt;- dplyr::lag(as.vector(x_t), n = 1)\n\nlinear_model &lt;- lm(x_t ~ -1 + x_t_lag1)\nsummary(linear_model)\n\n\nCall:\nlm(formula = x_t ~ -1 + x_t_lag1)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-1.8293 -0.4927  0.1799  0.8012  1.7263 \n\nCoefficients:\n         Estimate Std. Error t value Pr(&gt;|t|)    \nx_t_lag1  0.67673    0.07732   8.753 6.13e-14 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 0.8785 on 98 degrees of freedom\n  (1 observation deleted due to missingness)\nMultiple R-squared:  0.4387,    Adjusted R-squared:  0.433 \nF-statistic: 76.61 on 1 and 98 DF,  p-value: 6.129e-14\n\n\n\n[11 points] Plot the acf of x_t[2 points] and the acf of the residuals from the regression model[4 points]. Which looks more like white noise?[2 points] What does this tell you about the temporal structure in x_t and its residuals?[3 points]\n\n\nacf(x_t)\nacf(residuals(linear_model))"
+  },
+  {
+    "objectID": "Assignments/AssignmentSolutions/Assignment2_updated.html#part-3-reading",
+    "href": "Assignments/AssignmentSolutions/Assignment2_updated.html#part-3-reading",
+    "title": "Solutions: Assignment 2 Due 10/7 at Midnight",
+    "section": "Part 3: Reading",
+    "text": "Part 3: Reading\n[9 points] Read sections 2.8 and 2.9 from Forecasting Principles and Practice. Make 3 connections [3 points each] to content from the course textbook (equations or similar examples.)."
+  },
+  {
+    "objectID": "Exams/Exam1.html",
+    "href": "Exams/Exam1.html",
+    "title": "Fall 24 Stat 416 Lecture Notes",
+    "section": "",
+    "text": "Gotcha!"
+  },
+  {
     "objectID": "LectureNotes/Lecture1.html#agenda",
     "href": "LectureNotes/Lecture1.html#agenda",
     "title": "Lecture 1",
@@ -2255,613 +2865,498 @@
     ]
   },
   {
-    "objectID": "Exams/Exam1.html",
-    "href": "Exams/Exam1.html",
-    "title": "Fall 24 Stat 416 Lecture Notes",
+    "objectID": "LectureNotes/Lecture11.html",
+    "href": "LectureNotes/Lecture11.html",
+    "title": "Lecture 11",
     "section": "",
-    "text": "Gotcha!"
+    "text": "Assignment 4 posted",
+    "crumbs": [
+      "Week 6",
+      "Lecture 11"
+    ]
   },
   {
-    "objectID": "Assignments/AssignmentSolutions/Assignment2_updated.html",
-    "href": "Assignments/AssignmentSolutions/Assignment2_updated.html",
-    "title": "Solutions: Assignment 2 Due 10/7 at Midnight",
+    "objectID": "LectureNotes/Lecture11.html#announcements",
+    "href": "LectureNotes/Lecture11.html#announcements",
+    "title": "Lecture 11",
     "section": "",
-    "text": "NOTE: I forgot to include a relevant detail for Part 2, number 7. The change is bolded. Sorry!!! Part 2 number 8 should be easier to answer now."
-  },
-  {
-    "objectID": "Assignments/AssignmentSolutions/Assignment2_updated.html#part-1-math",
-    "href": "Assignments/AssignmentSolutions/Assignment2_updated.html#part-1-math",
-    "title": "Solutions: Assignment 2 Due 10/7 at Midnight",
-    "section": "Part 1: Math",
-    "text": "Part 1: Math\nIn class, we have worked with “Signal plus noise Model” (equation 1.5)\n\\[\n\\begin{aligned}\n\\text{Model: }& x_t = 2\\cos(2\\pi\\frac{t+15}{50}) + w_t\\\\\n\\text{Mean function: }& \\mathbb{E}(x_t) = 2\\cos(2\\pi\\frac{t+15}{50})\n\\end{aligned}\n\\]\n\n[5 points] The mean function is derived in Example 2.4. Describe what happens in each step of the computation [3 points], and provide a “math stress” rating (1 = effortless, 100 = nightmare) and 3 emojis[2 points]. This is personal and there is no right answer.\n\n The first line of the computation plugs the equation for our particular time series model, \\(x_t\\), into the definition of the mean function (expected value of \\(x_t\\)), and also has the notation \\(\\mu_{xt}\\) for the mean function. Two steps occur in the second line: the linearity of expectation splits the formula into the sum of two terms, then rewrites \\(\\E(2\\cos(2\\pi\\frac{t+15}{50}))\\) as \\(2\\pi\\frac{t+15}{50}\\) since that expression is a constant with respect to the expectation. Finally, the steps between the second and third lines is to know that \\(\\E(w_t)\\) is 0 since \\(w_t\\) is white noise. \n\n[5 points] Is the signal plus noise model stationary in the mean?\n\nNo. There is a \\(t\\) in the equation, so the mean function depends on \\(t\\), which violates the definition of mean stationarity.\n\n[5 points] Write down \\(\\gamma_x(s,t)\\), the autocovariance function of \\(x_t\\) [3 points]. You may accomplish this in any way, including asking me personally in office hours or asking a classmate. Just make sure you cite the source![2 points] ** When \\(s \\ne t\\), the autocovariance function is computed by starting with the formula for our time series \\(x_t\\) and the definition of autocovariance:\n\n\\[\n\\begin{align}\n\\gamma_x(s,t) &= E[(x_t - \\mu_{xt})(x_s - \\mu_{xs})] \\\\\n&= E[(2\\cos(2\\pi\\frac{t+15}{50}) + w_t - \\mu_{xt})(2\\cos(2\\pi\\frac{s+15}{50}) + w_s - \\mu_{xs})] \\\\\n&= E[(2\\cos(2\\pi\\frac{t+15}{50}) + w_t - 2\\cos(2\\pi\\frac{t+15}{50}))(2\\cos(2\\pi\\frac{s+15}{50}) + w_s - 2\\cos(2\\pi\\frac{s+15}{50}))] \\\\\n& = E[(w_t)(w_s)] \\\\\n&= 0\n\\end{align}\n\\] Where the last step yields zero because \\(w_t\\) and \\(w_s\\) are independent. If \\(s = t\\), then the steps are the same, but at the last step we get \\[\n\\gamma_x(t,t) = E(w_t\\cdot w_t) = var(w_t) = \\sigma_w^2\n\\] in other words, the variance of the underlying white noise process.\nThe autocovariance function is then: \\[\n\\begin{cases}\n\\sigma^2_w & \\text{ if } s=t \\\\\n0 & \\text{ if } s \\ne t\n\\end{cases}\n\\] **\n\n[6 points] Consider the model:\n\\[\ny_t = x_t - 2\\cos(2\\pi\\frac{t+15}{50})\n\\]\nCompute the mean function of \\(y_t\\) [3 points]. Is \\(y_t\\) stationary in the mean?[1 point] How do you know?[2 points]"
-  },
-  {
-    "objectID": "Assignments/AssignmentSolutions/Assignment2_updated.html#part-2-code",
-    "href": "Assignments/AssignmentSolutions/Assignment2_updated.html#part-2-code",
-    "title": "Solutions: Assignment 2 Due 10/7 at Midnight",
-    "section": "Part 2: Code",
-    "text": "Part 2: Code\nNote: I have set the code chunks here to have eval: false in the code chunk. Change that to true so that I can run your code easily.\n\n[5 points] All your code runs without errors (unless that’s the point), and if there is a message, explain what it means. (Bonus: to be nice to me, submit a rendered pdf)\n[5 points] Simulate from an AR(1) process with coefficient 0.7 and 10 data points.\n\n\nlibrary(astsa)\n\n# your code here\n\nw &lt;- rnorm(10) \nx_t &lt;- stats::filter(x = w, filter = 0.7, method = \"recursive\")\n\n\n[6 points] Look at the documentation for the stats::lag function (run ?lag in the console). State what package the function is in and what the function does[4 points]. Using k = 1 compute a lag(1) version of x_t that you simulated above[2 points].\n\n\nx_t_lag1 &lt;- stats::lag(x_t, k = 1)\n\n\n[3 points] Run the following code and compare x_t and x_t_lag1.\n\n\ncbind(x_t, x_t_lag1)\n\nTime Series:\nStart = 0 \nEnd = 10 \nFrequency = 1 \n          x_t   x_t_lag1\n 0         NA  0.9687306\n 1  0.9687306  1.7137530\n 2  1.7137530 -0.4216498\n 3 -0.4216498 -0.3270390\n 4 -0.3270390  0.1748165\n 5  0.1748165 -1.3931887\n 6 -1.3931887 -1.9872487\n 7 -1.9872487 -1.8572513\n 8 -1.8572513 -0.8162178\n 9 -0.8162178 -0.3622603\n10 -0.3622603         NA\n\n\n\nMake a time series plot of x_t and x_t_1. Do you notice the same features as when in the previous question?\n\n\ntsplot(x_t)\n\n\n\n\n\n\n\ntsplot(x_t_lag1)\n\n\n\n\n\n\n\n\n\nRun the below code. Why are the plots different? Are either particularly useful?\n\n\nplot(x_t, x_t_lag1)\nplot(as.vector(x_t), as.vector(x_t_lag1))\n\n\nInstead of using stats::lag, use dplyr::lag to create a new version of x_t_lag. Repeat the code from steps 2-5. Describe how the output has changed.\n\n\nx_t_lag1 &lt;- dplyr::lag(as.vector(x_t), n = 1)\nplot(x_t, x_t_lag1)\n\n\n\n\n\n\n\nplot(as.vector(x_t), as.vector(x_t_lag1))\n\n\n\n\n\n\n\n\n\nRe-simulate an AR(1) process as in number 1, but this time with 100 observations. Also recompute x_t_lag1. Fit an intercept-free regression model to predict x_t from x_t_lag. Provide the value of the slope estimate and interpret the value in the context of this simulation.\n\n\nw &lt;- rnorm(100) \nx_t &lt;- stats::filter(x = w, filter = 0.7, method = \"recursive\")\n\nx_t_lag1 &lt;- dplyr::lag(as.vector(x_t), n = 1)\n\nlinear_model &lt;- lm(x_t ~ -1 + x_t_lag1)\nsummary(linear_model)\n\n\nCall:\nlm(formula = x_t ~ -1 + x_t_lag1)\n\nResiduals:\n     Min       1Q   Median       3Q      Max \n-2.46996 -0.49808 -0.01557  0.64799  1.48602 \n\nCoefficients:\n         Estimate Std. Error t value Pr(&gt;|t|)    \nx_t_lag1  0.67957    0.07415   9.164 7.88e-15 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 0.9326 on 98 degrees of freedom\n  (1 observation deleted due to missingness)\nMultiple R-squared:  0.4615,    Adjusted R-squared:  0.456 \nF-statistic: 83.99 on 1 and 98 DF,  p-value: 7.88e-15\n\n\n\n[11 points] Plot the acf of x_t[2 points] and the acf of the residuals from the regression model[4 points]. Which looks more like white noise?[2 points] What does this tell you about the temporal structure in x_t and its residuals?[3 points]\n\n\nacf(x_t)\nacf(residuals(linear_model))"
-  },
-  {
-    "objectID": "Assignments/AssignmentSolutions/Assignment2_updated.html#part-3-reading",
-    "href": "Assignments/AssignmentSolutions/Assignment2_updated.html#part-3-reading",
-    "title": "Solutions: Assignment 2 Due 10/7 at Midnight",
-    "section": "Part 3: Reading",
-    "text": "Part 3: Reading\n[9 points] Read sections 2.8 and 2.9 from Forecasting Principles and Practice. Make 3 connections [3 points each] to content from the course textbook (equations or similar examples.)."
-  },
-  {
-    "objectID": "Assignments/Assignment3.html",
-    "href": "Assignments/Assignment3.html",
-    "title": "Assignment 3 Due Friday, October 18 at midnight",
-    "section": "",
-    "text": "Download the .qmd source for this document here.",
-    "crumbs": [
-      "Week 3",
-      "Assignment 3"
-    ]
-  },
-  {
-    "objectID": "Assignments/Assignment3.html#math",
-    "href": "Assignments/Assignment3.html#math",
-    "title": "Assignment 3 Due Friday, October 18 at midnight",
-    "section": "1. Math",
-    "text": "1. Math\nRecall the so-called “trend-stationary” model \\[\nx_t = \\mu_t + y_t\n\\]\n\n[3 points] There are three terms (symbols) in that equation. Which symbol corresponds to the trend, and which corresponds to the stationary part? What would you call the remaining symbol?\nWe have considered a few possible models for the trend: \\[\n\\begin{aligned}\n\\mu_{LM,t} &= \\beta_0 + \\beta_1 t  \\\\\n\\mu_{RW,t} &=  \\delta + \\mu_{RW, t-1} + w_t\n\\end{aligned}\n\\]\n[2 points] What do “RW” and “LM” stand for?\n[4 points] Between \\(\\mu_{LM,t}\\) and \\(\\mu_{RW,t}\\), which has “more interesting” temporal structure[2 points]? Why[2 points]?\n[4 points] Write down the equations for \\(x_{LM, t}\\) and \\(x_{RW,t}\\)\n\nConsider this (edited) excerpt from the textbook (page 49):\n\n\n\n\n\n\nDifferencing vs. Detrending\n\n\n\nOne advantage of differencing over detrending to remove trend is that no parameters are estimated in the differencing operation. One disadvantage, however, is that differencing does not yield and estimate of the stationary process \\(y_t\\).\nFor example, if we difference a random walk \\(x_t\\) with drift \\(\\delta\\),\n\\[\nx_t - x_{t-1} = \\delta + w_t + y_t - y_{t-1}.\n\\]\nIf an estimate of \\(y_t\\) is essential, then detrending may be more appropriate. This would be the case, for example, if we were interested in the business cycle of commodities.\nIf the goal is to coerce the data to stationarity, then differencing may be more appropriate. Differencing is also a viable tool if the trend is fixed, that is, when using \\(\\mu_{LM,t}\\) as the trend model, we have: \\[\nx_t - x_{t-1} = \\beta_1 + y_t - y_{t-1}\n\\] Because differencing plays a central role in time series analysis, it receives its own notaiton. The first difference is denoted: \\[\n\\nabla x_t = x_t - x_{t-1}\n\\] As we have seen, the first difference eliminates a linear trend. A second difference can eliminate a quadratic trend, and so on. Differences of order \\(d\\) are denoted: \\[\n\\nabla^d = (1-B)^d\n\\]\n\n\n\n[1 point] Take a look in the book. What is \\(B\\) called?\n[6 points] Why is it an “advantage” that no parameters are estimated in the differencing operation?\n[6 points] Connect part 2 question 9 below to a sentence in the above excerpt.\n[10 points] What kind of plot might you make to check if the data has been “coerced to stationarity”?\n[3 points] Rate your math anxiety (1 = effortless, 100 = nightmare) while working on this problem.",
-    "crumbs": [
-      "Week 3",
-      "Assignment 3"
-    ]
-  },
-  {
-    "objectID": "Assignments/Assignment3.html#data-analysis-code",
-    "href": "Assignments/Assignment3.html#data-analysis-code",
-    "title": "Assignment 3 Due Friday, October 18 at midnight",
-    "section": "2. Data Analysis (code)",
-    "text": "2. Data Analysis (code)\n\n[10 points] Adapt the code from Example 1.2 in the book to plot just the global land temperature series in a time series plot. [2 points]. Describe the structure of the trend and/or seasonal components, if present[8 points].\n\n\n# your code here\n\n\n[4 points] How frequently were the observations collected?\n\n\n# your code here\n\n\n[5 points] Plot the autocorrelation function of the global land temperature series. Comment on the temporal structure.\n\n\n# your code here\n\n\n[15 points] Estimate the trend of the series using a symmetric, equally weighted 5-point moving average[4 points]. Plot the trend estimate on top of the data [4 points]. Comment on the trend– does it reveal any patterns difficult to see in the data?[7 points]\n\n\n# your code here\n\n\n[10 points] Estimate the trend of the series using a linear regression on time[3 points]. Plot the trend estimate on top of the data[3 points]. Is this trend estimate comparable to the moving average?[4 points]\n\n\n# your code here\n\n\n[15 points] De-trend the data with respect to each of the trends you estimated [4 points each]. Make a time series plot of each result [1 point each] and an acf of each result [1 point each]. Comment on the temporal structure in each of the plots.\n\n\n# your code here\n\n\n[20 points] Difference the time series and plot the result[5 points]. Also compute the acf and plot it[5 points]. Comment on whether the differencing has “coerced the data to stationarity”[10 points].\n\n\n# your code here\n\n\n[11 points] Estimate the sum of squared error for both the linear regression and the moving average [3 points each]. What do they suggest about which model is “better”?[3 points] Does this agree with your visual assessments in 3 and 4?[2 points]\n\n\n# your code here\n\n\n[10 points] Why can’t you do part 6 for the differenced series?\n[3 points] Ensure that when you render the document to .html to turn in that you have embed-resources: true in the options at the top of the document (you may also turn in a pdf). Also, set message to false for all the code chunks.",
-    "crumbs": [
-      "Week 3",
-      "Assignment 3"
-    ]
-  },
-  {
-    "objectID": "Assignments/Assignment3.html#the-literature",
-    "href": "Assignments/Assignment3.html#the-literature",
-    "title": "Assignment 3 Due Friday, October 18 at midnight",
-    "section": "3. The literature",
-    "text": "3. The literature\nThe original paper for the data set you just analyzed can be found here.\n\n[2 points] Set a timer for 5 minutes. Find one sentence you feel you understand, and one you do not understand but would like to understand better.\n[4 points] Take a look at Figure 6. There are six time series plotted. One is the data plotted in number 1 of the coding portion, the other is the moving average estimate estimated in number 3. Which of the six series are they?\n[4 points] The textbook for our class states on page 3 that “the data are annual temperature anomalies averaged over the Earth’s land area.”. Does the book state what is specifically meant by “anomaly” here?\n[2 points] Consider the concept of averaging over the Earth’s land area, then take a look at Figure 1. Describe in therms of the “circles” how you might calculate that global average.\n[15 points] Figure 3 plots correlation coefficients between annual mean temperature changes for pairs of randomly selected stations having at least 50 common years in their records. How can you rephrase “annual mean tempearture changes” in terms of detrending or differencing?",
-    "crumbs": [
-      "Week 3",
-      "Assignment 3"
-    ]
-  },
-  {
-    "objectID": "Assignments/Assignment3.html#weights",
-    "href": "Assignments/Assignment3.html#weights",
-    "title": "Assignment 3 Due Friday, October 18 at midnight",
-    "section": "4. Weights",
-    "text": "4. Weights\n\n[6 points] One might consider the points I have given to each numbered problem as “weights”. Based on the weights, which content is the most important? Answer on both the individual problem level and the section level (i.e. math, code, etc).",
-    "crumbs": [
-      "Week 3",
-      "Assignment 3"
-    ]
-  },
-  {
-    "objectID": "Assignments/Assignment1.html",
-    "href": "Assignments/Assignment1.html",
-    "title": "Stat 416 Assignment 1 Due Monday, September 30 at 11:59:59PM",
-    "section": "",
-    "text": "A paper I worked on as a research scientist considered the time series of the concentration (measured as \\(\\log_{10}\\) copies per Liter) of the SARS-CoV-2 virus from 5 different locations in the City of Houston, visualized in parts (c)-(g) of the figure below.\nThe goal of this study was to see whether the information gleaned from sampling the lift stations, which represent smaller populations, was different than the information gleaned from sampling only the larger wastewater treatment plant. In other words, one research question was to determine whether the WWTP (dark blue) time series has different dynamics (behavior) than those that represent the lift stations.\nThe methods in this paper are touched on in chapter 8 of our textbook. For this assignment, we will use the wastewater data as an example and practice our plotting and time series data science skills.\n\n\n\n(a) The WWTP catchment areas for the City of Houston, with the WWTP of focus shaded. The box shows the extent of (b), the map showing the 4 lift stations considered in the analysis. (c–g) Plot the time series of Log10 Copies/L for the WWTP and the 4 lift station facilities, referred to as Lift Station A–D, with periods of missing values indicated by grey rectangles.\n\n\n\nWhich of the time series has the most missing data? Which appears to have the most variability? Does the overall behavior of the series seem to be similar?\nLoad the (synthetic) wastewater data from https://raw.githubusercontent.com/hou-wastewater-epi-org/online_trend_estimation/refs/heads/main/Data/synthetic_ww_time_series.csv using the read.csv function\nInspect the data. Verify that each of the series from the map above are included in the .csv (hint: what are the unique values of the name field?)\nConvert the date field to a Date format using the function as.Date.\nInstall and load the tidyverse package.\nWe will work with just the WWTP series for now. Use dplyr::filter to extract the values for just the WWTP series.\n\nww &lt;- read.csv(#your code here)\n\nww$dates &lt;- as.Date(# your code here)\n\n#install.packages(\"tidyverse\")\nlibrary(tidyverse)\nww_WWTP &lt;- ww %&gt;% dplyr::filter(#your code here)\n\nWhat is the time interval between the observations? How do you know?\nUse the tsplot function from the astsa package to plot the WWTP series.\nMake sure to use the dates field for the x-axis and specify good axis and plot labels using the xlab/ylab, and main arguments. (see the documentation ?tsplot for more)\nApply a moving average filter with 3 time points using the stats::filter function and save the result in a vector called ww_ma_3. You can choose the order of the moving average. (Similar to the final part of problem 1.1, see here in Lecture Notes).\n\nww_ma_3 &lt;- stats::filter(#your code here)\n\nPlot the moving average you computed on top of the tsplot in a different color using the lines function (see linked Problem 1.1 above). In the call to the lines function, also use type = l and lwd = 2.\n\ntsplot(# your code here)\nlines(# your code here)\n\nApply the moving average filter again, but this time use 5 time points, call it ww_ma_5. Plot just the WWTP series data and the ww_ma_5 you just computed, and use a different color for this MA process than you used in question 10.\nInspect the plot you generated in questions 10 and 11. Which MA process looks “smoother”?\nDescribe the different way that the missing data in the WWTP series impacts the moving average estimates for the case of 3 time points vs. 5 time points.",
-    "crumbs": [
-      "Week 1",
-      "Assignment 1"
-    ]
-  },
-  {
-    "objectID": "Assignments/Assignment2_updated.html",
-    "href": "Assignments/Assignment2_updated.html",
-    "title": "Assignment 2 Due 10/7 at Midnight",
-    "section": "",
-    "text": "NOTE: I forgot to include a relevant detail for Part 2, number 7. The change is bolded. Sorry!!! Part 2 number 8 should be easier to answer now.",
-    "crumbs": [
-      "Week 2",
-      "Assignment 2"
-    ]
-  },
-  {
-    "objectID": "Assignments/Assignment2_updated.html#part-1-math",
-    "href": "Assignments/Assignment2_updated.html#part-1-math",
-    "title": "Assignment 2 Due 10/7 at Midnight",
-    "section": "Part 1: Math",
-    "text": "Part 1: Math\nIn class, we have worked with “Signal plus noise Model” (equation 1.5)\n\\[\n\\begin{aligned}\n\\text{Model: }& x_t = 2\\cos(2\\pi\\frac{t+15}{50}) + w_t\\\\\n\\text{Mean function: }& \\mathbb{E}(x_t) = 2\\cos(2\\pi\\frac{t+15}{50})\n\\end{aligned}\n\\]\n\n[5 points] The mean function is derived in Example 2.4. Describe what happens in each step of the computation [3 points], and provide a “math stress” rating (1 = effortless, 100 = nightmare) and 3 emojis[2 points]. This is personal and there is no right answer.\n[5 points] Is the signal plus noise model stationary in the mean?\n[5 points] Write down \\(\\gamma_x(s,t)\\), the autocovariance function of \\(x_t\\) [3 points]. You may accomplish this in any way, including asking me personally in office hours or asking a classmate. Just make sure you cite the source![2 points]\n[6 points] Consider the model:\n\\[\ny_t = x_t - 2\\cos(2\\pi\\frac{t+15}{50})\n\\]\nCompute the mean function of \\(y_t\\) [3 points]. Is \\(y_t\\) stationary in the mean?[1 point] How do you know?[2 points]",
-    "crumbs": [
-      "Week 2",
-      "Assignment 2"
-    ]
-  },
-  {
-    "objectID": "Assignments/Assignment2_updated.html#part-2-code",
-    "href": "Assignments/Assignment2_updated.html#part-2-code",
-    "title": "Assignment 2 Due 10/7 at Midnight",
-    "section": "Part 2: Code",
-    "text": "Part 2: Code\nNote: I have set the code chunks here to have eval: false in the code chunk. Change that to true so that I can run your code easily.\n\n[5 points] All your code runs without errors (unless that’s the point), and if there is a message, explain what it means. (Bonus: to be nice to me, submit a rendered pdf)\n[5 points] Simulate from an AR(1) process with coefficient 0.7 and 10 data points.\n\n\nlibrary(astsa)\n\n# your code here\n\n\n[6 points] Look at the documentation for the stats::lag function (run ?lag in the console). State what package the function is in and what the function does[4 points]. Using k = 1 compute a lag(1) version of x_t that you simulated above[2 points].\n\n\nx_t_lag1 &lt;- # your code here\n\n\n[3 points] Run the following code and compare x_t and x_t_lag1.\n\n\ncbind(x_t, x_t_lag1)\n\n\nMake a time series plot of x_t and x_t_1. Do you notice the same features as when in the previous question?\n\n\n# your code here\n\n\nRun the below code. Why are the plots different? Are either particularly useful?\n\n\nplot(x_t, x_t_lag1)\nplot(as.vector(x_t), as.vector(x_t_lag1))\n\n\nInstead of using stats::lag, use dplyr::lag to create a new version of x_t_lag. Repeat the code from steps 2-5. Describe how the output has changed.\n\n\nx_t_lag1 &lt;- dplyr::lag(# your code here)\n\n\nRe-simulate an AR(1) process as in number 1, but this time with 100 observations. Also recompute x_t_lag1. Fit an intercept-free regression model to predict x_t from x_t_lag. Provide the value of the slope estimate and interpret the value in the context of this simulation.\n\n\nlinear_model &lt;- # your code here\n\n\n[11 points] Plot the acf of x_t[2 points] and the acf of the residuals from the regression model[4 points]. Which looks more like white noise?[2 points] What does this tell you about the temporal structure in x_t and its residuals?[3 points]\n\n\n# your code here",
-    "crumbs": [
-      "Week 2",
-      "Assignment 2"
-    ]
-  },
-  {
-    "objectID": "Assignments/Assignment2_updated.html#part-3-reading",
-    "href": "Assignments/Assignment2_updated.html#part-3-reading",
-    "title": "Assignment 2 Due 10/7 at Midnight",
-    "section": "Part 3: Reading",
-    "text": "Part 3: Reading\n[9 points] Read sections 2.8 and 2.9 from Forecasting Principles and Practice. Make 3 connections [3 points each] to content from the course textbook (equations or similar examples.).",
-    "crumbs": [
-      "Week 2",
-      "Assignment 2"
-    ]
-  },
-  {
-    "objectID": "Assignments/AssignmentSolutions/Assignment1_solutions.html",
-    "href": "Assignments/AssignmentSolutions/Assignment1_solutions.html",
-    "title": "Assignment 1",
-    "section": "",
-    "text": "A paper I worked on as a research scientist considered the time series of the concentration (measured as \\(\\log_{10}\\) copies per Liter) of the SARS-CoV-2 virus from 5 different locations in the City of Houston, visualized in parts (c)-(g) of the figure below.\nThe goal of this study was to see whether the information gleaned from sampling the lift stations, which represent smaller populations, was different than the information gleaned from sampling only the larger wastewater treatment plant. In other words, one research question was to determine whether the WWTP (dark blue) time series has different dynamics (behavior) than those that represent the lift stations.\nThe methods in this paper are touched on in chapter 8 of our textbook. For this assignment, we will use the wastewater data as an example and practice our plotting and time series data science skills.\n\n\n\n(a) The WWTP catchment areas for the City of Houston, with the WWTP of focus shaded. The box shows the extent of (b), the map showing the 4 lift stations considered in the analysis. (c–g) Plot the time series of Log10 Copies/L for the WWTP and the 4 lift station facilities, referred to as Lift Station A–D, with periods of missing values indicated by grey rectangles.\n\n\n\n[6 points] Which of the time series has the most missing data? Which appears to have the most variability? Does the overall behavior of the series seem to be similar?\n\nMissing data: The grey rectangles in the plots represent the missing data (per the caption). Lift station B has the most grey rectangles. In fact, it is missing data for almost half the study period, though thankfully not all in one “chunk”.\nVariability Note that the time series have different scales on the y-axis that makes it a little difficult to comment on the relative variability of the series. Lift station C and lift station D have the largest range of the y-axis, and the data span that range, so it would be reasonable to say that lift stations C and D have the most variation.\nThis was not part of the question, but you could compute the variability of each series (ignoring the fact that it is a time series to gain preliminary insight). Indeed, lift station D and C have the highest variability as estimated by standard deviation.\n\nlibrary(tidyverse)\nww &lt;- read.csv(\"https://raw.githubusercontent.com/hou-wastewater-epi-org/online_trend_estimation/refs/heads/main/Data/synthetic_ww_time_series.csv\", header = T)\n\nww %&gt;% group_by(name) %&gt;% \n  summarise(sd = sd(value, na.rm = T)) %&gt;% \n  arrange(desc(sd))\n\n# A tibble: 5 × 2\n  name              sd\n  &lt;chr&gt;          &lt;dbl&gt;\n1 Lift station D 0.872\n2 Lift station C 0.781\n3 Lift station B 0.776\n4 WWTP           0.506\n5 Lift station A 0.497\n\n\nTrend: The overall behavior of the series appears similar: the peaks and valleys seem to be aligned across the series, even if the height of the peaks is not exactly the same. We might say these time series have similar temporal structure.\n\n[5 points] Load the (synthetic) wastewater data from https://raw.githubusercontent.com/hou-wastewater-epi-org/online_trend_estimation/refs/heads/main/Data/synthetic_ww_time_series.csv using the read.csv function\n\n\n## Import the csv here into r: https://raw.githubusercontent.com/hou-wastewater-epi-org/online_trend_estimation/refs/heads/main/Data/synthetic_ww_time_series.csv\n\nww &lt;- read.csv(\"https://raw.githubusercontent.com/hou-wastewater-epi-org/online_trend_estimation/refs/heads/main/Data/synthetic_ww_time_series.csv\", header = T)\n\n## verify it worked\n\nhead(ww) ## the head() function prints the first 6 rows\n\n       dates           name    value ts_missing  colors\n1 2021-05-24 Lift station A 3.397031      FALSE #44AA99\n2 2021-05-31 Lift station A       NA       TRUE #44AA99\n3 2021-06-07 Lift station A       NA       TRUE #44AA99\n4 2021-06-14 Lift station A       NA       TRUE #44AA99\n5 2021-06-21 Lift station A 4.543146      FALSE #44AA99\n6 2021-06-28 Lift station A 4.356128      FALSE #44AA99\n\n\n\n[5 points] Inspect the data. Verify that each of the series from the map above are included in the .csv (hint: what are the unique values of the name field?)\n\n\nunique(ww$name)\n\n[1] \"Lift station A\" \"Lift station B\" \"Lift station C\" \"Lift station D\"\n[5] \"WWTP\"          \n\n\nThis technically answers the question, although if there were some issue with the data then running unique could be missleading– for example, if the .csv was cut off and there was only one observation for one fo the series, unique would return the same results as above. Instead, we can use group_by and summarize to gain more insight into the data for each series.\n\nww %&gt;% group_by(name) %&gt;% \n  summarise(n = n(), \n            mean = mean(value, na.rm = T), \n            num_missing = sum(ts_missing)) ## i included an indicator for whether a particular observation is missing for convenience.\n\n# A tibble: 5 × 4\n  name               n  mean num_missing\n  &lt;chr&gt;          &lt;int&gt; &lt;dbl&gt;       &lt;int&gt;\n1 Lift station A    95  4.83          28\n2 Lift station B    95  4.55          42\n3 Lift station C    95  4.57           9\n4 Lift station D    95  4.70          18\n5 WWTP              95  4.45           4\n\n\n\n[5 points ] Convert the date field to a Date format using the function as.Date.\n\n\nww$dates &lt;- as.Date(ww$dates)\nclass(ww$dates) ## verify it worked\n\n[1] \"Date\"\n\nhead(ww$dates) ## verify the format looks ok\n\n[1] \"2021-05-24\" \"2021-05-31\" \"2021-06-07\" \"2021-06-14\" \"2021-06-21\"\n[6] \"2021-06-28\"\n\n\nTelling R a character vector is a date allows us to reformat it using the strptime function by specifying a format argument– see the documentation for strptime for the options. Here I convert to “Month Name day, year” and also just the day of the week. Note that the time series is weekly so that we would expect all the days of the week to be the same (here Monday).\n\nhead(format(x= ww$dates, format = \"%B %d, %Y\"))\n\n[1] \"May 24, 2021\"  \"May 31, 2021\"  \"June 07, 2021\" \"June 14, 2021\"\n[5] \"June 21, 2021\" \"June 28, 2021\"\n\nhead(format(x= ww$dates, format = \"%a\"))\n\n[1] \"Mon\" \"Mon\" \"Mon\" \"Mon\" \"Mon\" \"Mon\"\n\n\n\n[2 points] Install and load the tidyverse package.\n\n\n#install.packages(\"tidyverse\") # comment this line after you run it the first time\nlibrary(tidyverse) \n\nNote that in these solutions, I already loaded tidyverse higher up since I was using some dplyr functions.\n\n[5 points] We will work with just the WWTP series for now. Use dplyr::filter to extract the values for just the WWTP series.\n\n\nww_WWTP &lt;- ww %&gt;% dplyr::filter(name == \"WWTP\")\n\n\n[10 points] What is the time interval between the observations?\n\n\nww_WWTP$dates[2] - ww_WWTP$dates[1] ## difference between first two obs\n\nTime difference of 7 days\n\ndiff(ww_WWTP$dates) ## difference between all obs-- recognize diff from lecture 5?? :)\n\nTime differences in days\n [1] 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7\n[39] 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7\n[77] 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7\n\n\n\n[10 points] Use the tsplot function from the astsa package to plot the WWTP series.\nMake sure to use the dates field for the x-axis and specify good axis and plot labels using the xlab/ylab, and main arguments. (see the documentation ?tsplot for more)\n\n\nlibrary(astsa) \ntsplot(x = ww_WWTP$dates, y = ww_WWTP$value, \"\")\n\n\n\n\n\n\n\n\n\n[10 points]Apply a moving average filter with 3 time points using the stats::filter function and save the result in a vector called ww_ma_3. You can choose the order of the moving average. (Similar to the final part of problem 1.1, see here in Lecture Notes).\n\n\nww_ma_3 &lt;- stats::filter(ww_WWTP$value, filter = rep(1/3, 3), sides = 1)\n\n10.[10 points] Plot the moving average you computed on top of the tsplot in a different color using the lines function (see linked Problem 1.1 above). In the call to the lines function, also use type = \"l\" and lwd = 2.\n\nlibrary(astsa)\ntsplot(x = ww_WWTP$dates, y = ww_WWTP$value, \n       main = \"WWTP Series and Moving Average filter with 3 time points\",\n       type = \"b\", xlab = \"Log10 Copies/L\")\nlines(x = ww_WWTP$dates, y = ww_ma_3, lwd = 2, \n      col = \"blueviolet\", type = \"l\")\n\n\n\n\n\n\n\n\n\n[15 points] Apply the moving average filter again, but this time use 5 time points, call it ww_ma_5. Plot just the wastewater series and the ww_ma_5 you just computed, and use a different color for this MA process than you used in question 10.\n\n\nww_ma_5 &lt;- stats::filter(ww_WWTP$value, filter = rep(1/5, 5), sides = 1)\ntsplot(x = ww_WWTP$dates, y = ww_WWTP$value, \n       main = \"Observed WWTP Series and Moving average smoother with 5 time points\",\n       type = \"b\")\nlines(x = ww_WWTP$dates, y = ww_ma_5, lwd = 2, \n      col = \"darkgreen\", type = \"l\")\n\n\n\n\n\n\n\n\n\n[5 points]Inspect the plot you generated in questions 10 and 11. Which MA process looks “smoother”?\n\nSince we are just visually inspecting time series, different people may notice different things when looking at the same plot. I would say that the smoother which uses five time points appears smoother: some of the places where the 3-point moving average appears particularly “jagged” is smoother for the 5-point. It’s a but easier to see when you plot them on the same plot.\n\ntsplot(x = ww_WWTP$dates, y = ww_WWTP$value, \n       main = \"Observed WWTP Series and both Moving Averages\", type = \"b\")\nlines(x = ww_WWTP$dates, y = ww_ma_5, \n      lwd = 2, col = \"darkgreen\", type = \"l\")\nlines(x = ww_WWTP$dates, y = ww_ma_5, \n      lwd = 2, col = \"darkgreen\", type = \"l\")\nlines(x = ww_WWTP$dates, y = ww_ma_3, \n      lwd = 2, col = \"blueviolet\", type = \"l\")\nlegend(\"bottomright\", legend = c(\"3-point\", \"5-point\"), \n       col = c(\"blueviolet\",\"darkgreen\"), lwd =2)\nrect(xleft = 19140, xright = 19161, \n     ytop = 4.7, ybottom = 4.1, \n     border = \"magenta\", lwd = 2)\n\n\n\n\n\n\n\n\n\n[10 points] Describe the different way that the missing data in the WWTP series impacts the moving average estimates for the case of 3 time points vs. 5 time points.\n\nConsider the right hand side of the missing data period near the beginning of 2022. The 3-point moving average (purple line) is able to “restart” sooner than the 5-point moving average (green line). This is because the 3-point moving average just has to wait until it has 3 points to re-start the estimation, wheras the 5-point must wait for 5 points.\n\n[5 points] Note that the data you used for this activity was “synthetic” wastewater data. Why might a researcher share a synthetic version of their data? What do you think that might mean?\n\nSynthetic data (at least how I use it) are data that are not directly observed, but rather simulated (or sampled) from a model that is fit using real data. In other words, it is made-up data that has similar properties to the real data. Researchers might decide to share synthetic data when they want people to be able to run their code for a paper, but the data are sensitive in nature, for example, have personally identifiable health information. Here, we followed CDC guidelines to not release the real data (or real names of the lift stations and WWTP) when the population served by the facility being sampled is less than 4,000."
-  },
-  {
-    "objectID": "Exams/PracticeMidterm.html",
-    "href": "Exams/PracticeMidterm.html",
-    "title": "Fall 24 Stat 416 Lecture Notes",
-    "section": "",
-    "text": "idea: a moving average itself is stationary. Is a moving average of an arbitrary time series stationary?\ntwo moving average, with different weights"
-  },
-  {
-    "objectID": "LectureNotes/Lecture10.html",
-    "href": "LectureNotes/Lecture10.html",
-    "title": "Lecture 10",
-    "section": "",
-    "text": "Assignment 1 due next Monday night at Midnight\nPosted some time today or tomorrow morning\nMidterm grades by next Monday",
+    "text": "Assignment 4 posted",
     "crumbs": [
       "Week 6",
-      "Lecture 10"
+      "Lecture 11"
     ]
   },
   {
-    "objectID": "LectureNotes/Lecture10.html#announcements",
-    "href": "LectureNotes/Lecture10.html#announcements",
-    "title": "Lecture 10",
-    "section": "",
-    "text": "Assignment 1 due next Monday night at Midnight\nPosted some time today or tomorrow morning\nMidterm grades by next Monday",
+    "objectID": "LectureNotes/Lecture11.html#last-time",
+    "href": "LectureNotes/Lecture11.html#last-time",
+    "title": "Lecture 11",
+    "section": "Last time",
+    "text": "Last time\nU.S. GNP data– clearly has a trend, nonstationary\n\n\nCode\nlibrary(fpp3); library(astsa)\n\n\nRegistered S3 method overwritten by 'tsibble':\n  method               from \n  as_tibble.grouped_df dplyr\n\n\n── Attaching packages ──────────────────────────────────────────── fpp3 1.0.1 ──\n\n\n✔ tibble      3.2.1     ✔ tsibble     1.1.5\n✔ dplyr       1.1.4     ✔ tsibbledata 0.4.1\n✔ tidyr       1.3.1     ✔ feasts      0.4.1\n✔ lubridate   1.9.3     ✔ fable       0.4.0\n✔ ggplot2     3.5.1     \n\n\n── Conflicts ───────────────────────────────────────────────── fpp3_conflicts ──\n✖ lubridate::date()    masks base::date()\n✖ dplyr::filter()      masks stats::filter()\n✖ tsibble::intersect() masks base::intersect()\n✖ tsibble::interval()  masks lubridate::interval()\n✖ dplyr::lag()         masks stats::lag()\n✖ tsibble::setdiff()   masks base::setdiff()\n✖ tsibble::union()     masks base::union()\n\n\nCode\ntsplot(gnp)",
     "crumbs": [
       "Week 6",
-      "Lecture 10"
+      "Lecture 11"
     ]
   },
   {
-    "objectID": "LectureNotes/Lecture10.html#recall-the-time-series-data-analysis-process",
-    "href": "LectureNotes/Lecture10.html#recall-the-time-series-data-analysis-process",
-    "title": "Lecture 10",
-    "section": "Recall the “Time series data analysis process”",
-    "text": "Recall the “Time series data analysis process”\n\nObservation\nQuestion\nHypothesis\nExperiment\nData Collection and Analysis\nConclusion\nReport Results\nReplication",
+    "objectID": "LectureNotes/Lecture11.html#is-the-trend-linear",
+    "href": "LectureNotes/Lecture11.html#is-the-trend-linear",
+    "title": "Lecture 11",
+    "section": "Is the trend linear?",
+    "text": "Is the trend linear?\nNot exactly…\n\n\nCode\ntsplot(gnp)\nabline(lm(gnp~time(gnp)), col = \"blueviolet\", lwd = 2)",
     "crumbs": [
       "Week 6",
-      "Lecture 10"
+      "Lecture 11"
     ]
   },
   {
-    "objectID": "LectureNotes/Lecture10.html#observations-of-the-day",
-    "href": "LectureNotes/Lecture10.html#observations-of-the-day",
-    "title": "Lecture 10",
-    "section": "“Observations” of the day",
-    "text": "“Observations” of the day\n\n\nCode\nlibrary(fpp3)\n\n\nRegistered S3 method overwritten by 'tsibble':\n  method               from \n  as_tibble.grouped_df dplyr\n\n\n── Attaching packages ──────────────────────────────────────────── fpp3 1.0.1 ──\n\n\n✔ tibble      3.2.1     ✔ tsibble     1.1.5\n✔ dplyr       1.1.4     ✔ tsibbledata 0.4.1\n✔ tidyr       1.3.1     ✔ feasts      0.4.1\n✔ lubridate   1.9.3     ✔ fable       0.4.0\n✔ ggplot2     3.5.1     \n\n\n── Conflicts ───────────────────────────────────────────────── fpp3_conflicts ──\n✖ lubridate::date()    masks base::date()\n✖ dplyr::filter()      masks stats::filter()\n✖ tsibble::intersect() masks base::intersect()\n✖ tsibble::interval()  masks lubridate::interval()\n✖ dplyr::lag()         masks stats::lag()\n✖ tsibble::setdiff()   masks base::setdiff()\n✖ tsibble::union()     masks base::union()\n\n\nCode\nlibrary(tidyverse)\n\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ forcats 1.0.0     ✔ readr   2.1.5\n✔ purrr   1.0.2     ✔ stringr 1.5.1\n\n\n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter()     masks stats::filter()\n✖ tsibble::interval() masks lubridate::interval()\n✖ dplyr::lag()        masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\n\nCode\nlibrary(astsa)\negy_econ &lt;- global_economy %&gt;%\n              dplyr::filter(Code == \"EGY\")\n\ntsplot(x = egy_econ$Year, y = egy_econ$Exports, ylab = \"%GDP\",\n       xlab = \"Year\", main = \"Egyptian Exports as %GDP, 1960-2017\")",
+    "objectID": "LectureNotes/Lecture11.html#try-taking-the-log",
+    "href": "LectureNotes/Lecture11.html#try-taking-the-log",
+    "title": "Lecture 11",
+    "section": "Try taking the log?",
+    "text": "Try taking the log?\nMuch better! But, still not stationary.\n\n\nCode\nlog_gnp &lt;- log(gnp)\ntsplot(log_gnp)\nabline(lm(log_gnp~time(log_gnp)), col = \"blueviolet\", lwd = 2)",
     "crumbs": [
       "Week 6",
-      "Lecture 10"
+      "Lecture 11"
     ]
   },
   {
-    "objectID": "LectureNotes/Lecture10.html#observations-of-the-day-1",
-    "href": "LectureNotes/Lecture10.html#observations-of-the-day-1",
-    "title": "Lecture 10",
-    "section": "“Observations” of the day",
-    "text": "“Observations” of the day\n\n\nCode\nlibrary(astsa)\ntsplot(gnp, xlab = \"Year\", ylab = \"Billions of US Dollars\", \n       main = \"GNP of US, 1947-2002 (seasonally adjusted)\")",
+    "objectID": "LectureNotes/Lecture11.html#try-differencing",
+    "href": "LectureNotes/Lecture11.html#try-differencing",
+    "title": "Lecture 11",
+    "section": "Try differencing?",
+    "text": "Try differencing?\nIs this stationary? No? Yes? Maybe there’s a bit of a trend?\n\n\nCode\ntsplot(diff(log_gnp))",
     "crumbs": [
       "Week 6",
-      "Lecture 10"
+      "Lecture 11"
     ]
   },
   {
-    "objectID": "LectureNotes/Lecture10.html#activity-1-define-a-question",
-    "href": "LectureNotes/Lecture10.html#activity-1-define-a-question",
-    "title": "Lecture 10",
-    "section": "Activity 1: Define a question",
-    "text": "Activity 1: Define a question",
+    "objectID": "LectureNotes/Lecture11.html#unit-root-tests",
+    "href": "LectureNotes/Lecture11.html#unit-root-tests",
+    "title": "Lecture 11",
+    "section": "Unit root tests",
+    "text": "Unit root tests\n\n\nAugmented Dickey-Fuller (ADF)\n\nNull hypothesis: random walk (nonstationary)\nAlternative hypothesis: stationary data\n\n\nKwiatkowski-Phillips-Schmidt-Shin (KPSS)\n\nNull hypothesis: stationary data\nAlternative hypothesis: nonstationary data",
     "crumbs": [
       "Week 6",
-      "Lecture 10"
+      "Lecture 11"
     ]
   },
   {
-    "objectID": "LectureNotes/Lecture10.html#research-questions-of-the-day",
-    "href": "LectureNotes/Lecture10.html#research-questions-of-the-day",
-    "title": "Lecture 10",
-    "section": "Research Questions of the Day",
-    "text": "Research Questions of the Day\n\nWhat is the estimated value of the Quarterly Adjusted GNP for 2002, Q4?\nWhat is the estimated percent of Egyptian GDP due to exports in 2018?\n\nNote: These are both forecasting questions.",
+    "objectID": "LectureNotes/Lecture11.html#whats-a-unit",
+    "href": "LectureNotes/Lecture11.html#whats-a-unit",
+    "title": "Lecture 11",
+    "section": "What’s a unit?",
+    "text": "What’s a unit?\n1 (one)",
     "crumbs": [
       "Week 6",
-      "Lecture 10"
+      "Lecture 11"
     ]
   },
   {
-    "objectID": "LectureNotes/Lecture10.html#methodological-questions-of-the-day",
-    "href": "LectureNotes/Lecture10.html#methodological-questions-of-the-day",
-    "title": "Lecture 10",
-    "section": "Methodological Questions of the Day",
-    "text": "Methodological Questions of the Day\n\nWhen do we want to fit an ARMA model?\nWhen do we want to fit an ARIMA model?\nHow do we identify the order(s) of the ARIMA(p,d,q) model?\nHow can we check assumptions of a model?\nHow do we compare models?\nHow can we forecast from a model?",
+    "objectID": "LectureNotes/Lecture11.html#whats-a-root-of-a-polynomial",
+    "href": "LectureNotes/Lecture11.html#whats-a-root-of-a-polynomial",
+    "title": "Lecture 11",
+    "section": "What’s a root of a polynomial?",
+    "text": "What’s a root of a polynomial?\nExample:Find the roots of \\(1 - Ax + Bx^2 = 0\\)\nUse the quadratic formula:\n\\[\nx = \\frac{A \\pm \\sqrt{A^2  - 4B }}{2B}\n\\] A unit root would be where \\(x = 1\\) is a solution.",
     "crumbs": [
       "Week 6",
-      "Lecture 10"
+      "Lecture 11"
     ]
   },
   {
-    "objectID": "LectureNotes/Lecture10.html#definition-of-arma-model",
-    "href": "LectureNotes/Lecture10.html#definition-of-arma-model",
-    "title": "Lecture 10",
-    "section": "Definition of ARMA model",
-    "text": "Definition of ARMA model\nA time series \\(x_t\\) is ARMA(p,q) if\n\\[\nx_t = \\alpha + \\phi_1 x_{t-1} + \\phi_2 x_{t-2} + \\dots + \\phi_p x_{t-p} + w_t + \\theta_1 w_{t-1} + \\theta_2 w_{t-2} + \\dots + \\theta_q x_{t-1}\n\\] Where \\(\\phi_p \\ne 0, \\theta_q \\ne 0, \\sigma^2_w &gt; 0\\) (and the model is causal and invertible)",
+    "objectID": "LectureNotes/Lecture11.html#what-do-we-care-about-being-one",
+    "href": "LectureNotes/Lecture11.html#what-do-we-care-about-being-one",
+    "title": "Lecture 11",
+    "section": "What do we care about being one?",
+    "text": "What do we care about being one?\nFor an AR(1),\n\\[\nx_t = \\phi x_{t-1} + w_t\n\\]\nIf \\(\\phi = 1\\), we have a random walk (nonstationary). We’d like a hypothesis test that is able to use information about plausible values of \\(\\phi\\) so that we can see if 1 is plausible.",
     "crumbs": [
       "Week 6",
-      "Lecture 10"
+      "Lecture 11"
     ]
   },
   {
-    "objectID": "LectureNotes/Lecture10.html#causal-and-invertible",
-    "href": "LectureNotes/Lecture10.html#causal-and-invertible",
-    "title": "Lecture 10",
-    "section": "Causal and invertible? 😱",
-    "text": "Causal and invertible? 😱\n\nFor “causal”, if the time series is stationary it has a causal representation (depends on past, not future)\nFor “Intertible”, it’s so the moving average part gives us a unique model",
+    "objectID": "LectureNotes/Lecture11.html#wait-wheres-the-polynomial-advanced-topic",
+    "href": "LectureNotes/Lecture11.html#wait-wheres-the-polynomial-advanced-topic",
+    "title": "Lecture 11",
+    "section": "Wait, where’s the polynomial? (Advanced topic)",
+    "text": "Wait, where’s the polynomial? (Advanced topic)\nIt’s the AR polynomial– the polynomial with respect to the lag operator. If the AR polynomial has a unit root, the data are nonstationary.\nBut since it corresponds to having \\(\\phi = 1\\), we can derive the distribution of our estimate of \\(\\phi\\), \\(\\widehat{\\phi}\\), and use reasonable distributional assumptions so that we can calculate a p-value. If the roots are less than or equal to 1, that’s nonstationary.",
     "crumbs": [
       "Week 6",
-      "Lecture 10"
+      "Lecture 11"
     ]
   },
   {
-    "objectID": "LectureNotes/Lecture10.html#a-note-non-uniqueness-of-moving-average",
-    "href": "LectureNotes/Lecture10.html#a-note-non-uniqueness-of-moving-average",
-    "title": "Lecture 10",
-    "section": "A note non-uniqueness of Moving Average",
-    "text": "A note non-uniqueness of Moving Average\nConsider the MA model and its theoretical autocorrelation function, where \\(\\sigma^2_w\\) is the white noise variance\n\\[\n\\begin{aligned}\nx_t &= w_t + \\theta w_{t-1}\\\\\n\\gamma(h) &= \\begin{cases}\n(1+\\theta^2)\\sigma^2_w & \\Vert h \\Vert = 0 \\\\\n\\theta \\sigma^2_w & \\Vert h \\Vert = 1 \\\\\n0 & \\Vert h \\Vert &gt; 1\n\\end{cases}\n\\end{aligned}\n\\] Consider two possible values for \\(\\theta\\) and \\(\\sigma^2_w\\):\n\n\n\\(\\theta = 5, \\sigma^2_w = 1\\)\n\\[\n\\gamma(h) = \\begin{cases}\n(1+5^2)\\cdot1 & \\Vert h \\Vert = 0 \\\\\n5\\cdot 1 & \\Vert h \\Vert = 1 \\\\\n0 & \\Vert h \\Vert &gt; 1\n\\end{cases}\n\\]\n\n\\(\\theta = 1/5, \\sigma^2_w = 25\\)\n\\[\n\\gamma(h) = \\begin{cases}\n(1+(1/5)^2)\\cdot 25 & \\Vert h \\Vert = 0 \\\\\n1/5\\cdot 25 & \\Vert h \\Vert = 1 \\\\\n0 & \\Vert h \\Vert &gt; 1\n\\end{cases}\n\\]\n\n\nBoth simplify to \\[\n\\gamma(h) = \\begin{cases}\n26 & \\Vert h \\Vert = 0 \\\\\n5 & \\Vert h \\Vert = 1 \\\\\n0 & \\Vert h \\Vert &gt; 1\n\\end{cases}\n\\]\nIn practice we cannot distinguish the difference between the two models (they are stochastically the same). So, we will choose the invertible model, which is the one with \\(\\sigma^2_w =25\\), \\(\\theta = 1/5\\) (see Shumway and Stoffer page 72-73, example 4.6 for details.)",
+    "objectID": "LectureNotes/Lecture11.html#unit-root-test-in-r-using-features-function",
+    "href": "LectureNotes/Lecture11.html#unit-root-test-in-r-using-features-function",
+    "title": "Lecture 11",
+    "section": "Unit root test in R using features function",
+    "text": "Unit root test in R using features function\n\n\nCode\nlog_gnp |&gt; \n  diff() |&gt;\n  as_tsibble() |&gt; \n  features(value, unitroot_kpss)\n\n\n# A tibble: 1 × 2\n  kpss_stat kpss_pvalue\n      &lt;dbl&gt;       &lt;dbl&gt;\n1     0.141         0.1\n\n\nSince the p-value is small, we fail to reject the null hypothesis that the data is not stationary.",
     "crumbs": [
       "Week 6",
-      "Lecture 10"
+      "Lecture 11"
     ]
   },
   {
-    "objectID": "LectureNotes/Lecture10.html#interpretation-of-arma-model",
-    "href": "LectureNotes/Lecture10.html#interpretation-of-arma-model",
-    "title": "Lecture 10",
-    "section": "Interpretation of ARMA model",
-    "text": "Interpretation of ARMA model\nIf we let \\(\\epsilon_t = w_t + \\theta_1 w_{t-1} + \\theta_2 w_{t-2} + \\dots + \\theta_q x_{t-1}\\), then if \\(x_t\\) is ARMA(p,q), \\[\nx_t = \\alpha + \\phi_1 x_{t-1} + \\phi_2 x_{t-2} + \\dots + \\phi_p x_{t-p} + \\epsilon_t\n\\]\n\nRecognize the linear regression structure?\nDifference: constraints on \\(\\phi, \\theta\\).",
+    "objectID": "LectureNotes/Lecture11.html#activity-0",
+    "href": "LectureNotes/Lecture11.html#activity-0",
+    "title": "Lecture 11",
+    "section": "Activity 0",
+    "text": "Activity 0\n\n## find the number of differences needed to make the *original* data (not log transformed) stationary",
     "crumbs": [
       "Week 6",
-      "Lecture 10"
+      "Lecture 11"
     ]
   },
   {
-    "objectID": "LectureNotes/Lecture10.html#activity-2-fit-an-arma-model",
-    "href": "LectureNotes/Lecture10.html#activity-2-fit-an-arma-model",
-    "title": "Lecture 10",
-    "section": "Activity 2: Fit an ARMA model?",
-    "text": "Activity 2: Fit an ARMA model?\nIs there any seasonality (fixed-length cycles)? If so, probably want to use a seasonal model (not ARMA)\n\n\nCode\ntsplot(x = egy_econ$Year, y = egy_econ$Exports, ylab = \"%GDP\",\n       xlab = \"Year\", main = \"Egyptian Exports as %GDP, 1960-2017\")",
+    "objectID": "LectureNotes/Lecture11.html#in-practice",
+    "href": "LectureNotes/Lecture11.html#in-practice",
+    "title": "Lecture 11",
+    "section": "In practice",
+    "text": "In practice\nUse the unitroot_ndiffs() function to figure out how many differences you need.\n\nndiffs_lognp &lt;- log_gnp |&gt; \n  as_tsibble() |&gt; \n  features(value, unitroot_ndiffs)\n\nndiffs_lognp\n\n# A tibble: 1 × 1\n  ndiffs\n   &lt;int&gt;\n1      1\n\n## note-- if we did not take the log, it says we'd need two!\ngnp |&gt; \n  as_tsibble() |&gt; \n  features(value, unitroot_ndiffs)\n\n# A tibble: 1 × 1\n  ndiffs\n   &lt;int&gt;\n1      2",
     "crumbs": [
       "Week 6",
-      "Lecture 10"
+      "Lecture 11"
     ]
   },
   {
-    "objectID": "LectureNotes/Lecture10.html#activity-2-solution-fit-an-arma-model",
-    "href": "LectureNotes/Lecture10.html#activity-2-solution-fit-an-arma-model",
-    "title": "Lecture 10",
-    "section": "Activity 2 Solution: Fit an ARMA model?",
-    "text": "Activity 2 Solution: Fit an ARMA model?\nNo, the cycles are not of fixed length\n\n\nCode\ntsplot(x = egy_econ$Year, y = egy_econ$Exports, ylab = \"%GDP\",\n       xlab = \"Year\", main = \"Egyptian Exports as %GDP, 1960-2017\")\nlow_years &lt;- c(1972, 1987, 1999, 2016)\nabline(v = low_years)\n\n\n\n\n\n\n\n\n\nCode\ndiff(low_years)\n\n\n[1] 15 12 17",
+    "objectID": "LectureNotes/Lecture11.html#recall-the-arima-modeling-workflow",
+    "href": "LectureNotes/Lecture11.html#recall-the-arima-modeling-workflow",
+    "title": "Lecture 11",
+    "section": "Recall the ARIMA modeling workflow",
+    "text": "Recall the ARIMA modeling workflow",
     "crumbs": [
       "Week 6",
-      "Lecture 10"
+      "Lecture 11"
     ]
   },
   {
-    "objectID": "LectureNotes/Lecture10.html#choosing-the-order-of-arma-models",
-    "href": "LectureNotes/Lecture10.html#choosing-the-order-of-arma-models",
-    "title": "Lecture 10",
-    "section": "Choosing the order of ARMA models",
-    "text": "Choosing the order of ARMA models",
+    "objectID": "LectureNotes/Lecture11.html#activity-1-manual-analysis",
+    "href": "LectureNotes/Lecture11.html#activity-1-manual-analysis",
+    "title": "Lecture 11",
+    "section": "Activity 1: Manual analysis",
+    "text": "Activity 1: Manual analysis\n\nFind the order of the ARMA(p,q) process for the log differenced GNP.\nCheck the residuals",
     "crumbs": [
       "Week 6",
-      "Lecture 10"
+      "Lecture 11"
     ]
   },
   {
-    "objectID": "LectureNotes/Lecture10.html#activity-3-recall-ma-acf",
-    "href": "LectureNotes/Lecture10.html#activity-3-recall-ma-acf",
-    "title": "Lecture 10",
-    "section": "Activity 3: Recall MA ACF",
-    "text": "Activity 3: Recall MA ACF\n\n\nCode\nset.seed(807)\npar(mfrow = c(1,2))\nacf(arima.sim(list(ma = c(0.25, 0.5, .25)), n = 1000), main = \"MA(3), theta = (.25, .5, .25)\")\nacf(arima.sim(list(ma = c(0.75, 0.5, .25)), n = 1000),\n    main =\"MA(3), theta = (0.75, 0.5, .25)\")\n\n\n\n\n\n\n\n\n\nPropose a rule for choosing the order of the MA model.",
+    "objectID": "LectureNotes/Lecture11.html#activity-1-solutions-manual",
+    "href": "LectureNotes/Lecture11.html#activity-1-solutions-manual",
+    "title": "Lecture 11",
+    "section": "Activity 1 Solutions (manual)",
+    "text": "Activity 1 Solutions (manual)\nManual: look at ACF and PACF. The ACF maybe cuts at lag 2 and the PACF appears to tail off. So maybe MA(2)?\n\n\nCode\ndiff_log_gnp &lt;- diff(log_gnp, differences = ndiffs_lognp$ndiffs)\n\npar(mfrow = c(1,2))\ndiff_log_gnp |&gt; \n  acf1()\n\n\n [1]  0.35  0.19 -0.01 -0.12 -0.17 -0.11 -0.09 -0.04  0.04  0.05  0.03 -0.12\n[13] -0.13 -0.10 -0.11  0.05  0.07  0.10  0.06  0.07 -0.09 -0.05 -0.10 -0.05\n[25]  0.00\n\n\nCode\ndiff_log_gnp |&gt; \n  pacf()",
     "crumbs": [
       "Week 6",
-      "Lecture 10"
+      "Lecture 11"
     ]
   },
   {
-    "objectID": "LectureNotes/Lecture10.html#what-about-ar",
-    "href": "LectureNotes/Lecture10.html#what-about-ar",
-    "title": "Lecture 10",
-    "section": "What about AR?",
-    "text": "What about AR?\n\n\nCode\nset.seed(807)\npar(mfrow = c(1,2))\nacf(arima.sim(list(ar = c(0.25, 0.5)), n = 1000), main = \"MA(3), theta = (.25, .5, .25)\")\nacf(arima.sim(list(ar = c(0.75, 0.5)), n = 1000),\n    main =\"MA(3), theta = (0.75, 0.5, .25)\")\n\n\nError in arima.sim(list(ar = c(0.75, 0.5)), n = 1000): 'ar' part of model is not stationary",
+    "objectID": "LectureNotes/Lecture11.html#handy-table",
+    "href": "LectureNotes/Lecture11.html#handy-table",
+    "title": "Lecture 11",
+    "section": "Handy table",
+    "text": "Handy table\n\n\n\n\nAR(p)\nMA(q)\nARMA(p,q)\n\n\n\n\nACF\nTails off\nCuts off after lag q\nTails off\n\n\nPACF\nCuts off after lag p\nTails off\nTails off",
     "crumbs": [
       "Week 6",
-      "Lecture 10"
+      "Lecture 11"
     ]
   },
   {
-    "objectID": "LectureNotes/Lecture10.html#activity-4-fix-the-ar-model-so-it-is-stationary",
-    "href": "LectureNotes/Lecture10.html#activity-4-fix-the-ar-model-so-it-is-stationary",
-    "title": "Lecture 10",
-    "section": "Activity 4: Fix the AR model so it is stationary",
-    "text": "Activity 4: Fix the AR model so it is stationary\n\n\nCode\nset.seed(807)\npar(mfrow = c(1,2))\nacf(arima.sim(list(ar = c(0.25, 0.5)), n = 1000), main = \"MA(3), theta = (.25, .5, .25)\")\nacf(arima.sim(list(ar = c(FIXME, FIXME)), n = 1000),\n    main =\"MA(3), theta = (FIX, FIX)\")",
+    "objectID": "LectureNotes/Lecture11.html#activity-1-solutions-manual-1",
+    "href": "LectureNotes/Lecture11.html#activity-1-solutions-manual-1",
+    "title": "Lecture 11",
+    "section": "Activity 1 Solutions (manual)",
+    "text": "Activity 1 Solutions (manual)\n\n\nCode\ndiff_log_gnp |&gt; \n  as_tsibble() |&gt;\n  model(ARIMA(value ~ pdq(0,0,2) + PDQ(0,0,0))) |&gt; ## force nonseasonal\n  report()\n\n\nSeries: value \nModel: ARIMA(0,0,2) w/ mean \n\nCoefficients:\n         ma1     ma2  constant\n      0.3028  0.2035    0.0083\ns.e.  0.0654  0.0644    0.0010\n\nsigma^2 estimated as 9.041e-05:  log likelihood=719.96\nAIC=-1431.93   AICc=-1431.75   BIC=-1418.32",
     "crumbs": [
       "Week 6",
-      "Lecture 10"
+      "Lecture 11"
     ]
   },
   {
-    "objectID": "LectureNotes/Lecture10.html#activity-4-solution-fix-the-ar-model-so-it-is-stationary",
-    "href": "LectureNotes/Lecture10.html#activity-4-solution-fix-the-ar-model-so-it-is-stationary",
-    "title": "Lecture 10",
-    "section": "Activity 4 Solution: Fix the AR model so it is stationary",
-    "text": "Activity 4 Solution: Fix the AR model so it is stationary\n\n\nCode\nset.seed(2024)\npar(mfrow = c(1,2))\nacf(arima.sim(list(ar = c(0.25, 0.5)), n = 1000), main = \"AR(2), phi = (.25, .5)\")\nacf(arima.sim(list(ar = c(1.5, -0.75)), n = 1000),\n    main =\"AR(2), phi = (1.5, -.75)\")",
+    "objectID": "LectureNotes/Lecture11.html#activity-1-solutions",
+    "href": "LectureNotes/Lecture11.html#activity-1-solutions",
+    "title": "Lecture 11",
+    "section": "Activity 1 Solutions",
+    "text": "Activity 1 Solutions\n\n\nCode\nmanual_fit &lt;- diff_log_gnp |&gt; \n  as_tsibble() |&gt;\n  model(ARIMA(value ~ pdq(0,0,2) + PDQ(0,0,0)))\n\nresiduals(manual_fit) |&gt; gg_tsdisplay(plot_type = \"histogram\")\n\n\nPlot variable not specified, automatically selected `y = .resid`\n\n\n\n\n\n\n\n\n\nThe residuals look like white noise",
     "crumbs": [
       "Week 6",
-      "Lecture 10"
+      "Lecture 11"
     ]
   },
   {
-    "objectID": "LectureNotes/Lecture10.html#making-sure-ar-is-stationary",
-    "href": "LectureNotes/Lecture10.html#making-sure-ar-is-stationary",
-    "title": "Lecture 10",
-    "section": "Making sure AR is stationary",
-    "text": "Making sure AR is stationary\n\nIs complicated\nIs taken care of in estimation by software",
+    "objectID": "LectureNotes/Lecture11.html#what-about-automatic",
+    "href": "LectureNotes/Lecture11.html#what-about-automatic",
+    "title": "Lecture 11",
+    "section": "What about automatic?",
+    "text": "What about automatic?\nDifferent answer– but, looking at the ACFS, kind of reasonable.\n\n\nCode\ndiff_log_gnp |&gt; \n  as_tsibble() |&gt;\n  model(ARIMA(value)) |&gt;\n  report()\n\n\nSeries: value \nModel: ARIMA(1,0,0) w/ mean \n\nCoefficients:\n         ar1  constant\n      0.3467    0.0054\ns.e.  0.0627    0.0006\n\nsigma^2 estimated as 9.112e-05:  log likelihood=718.61\nAIC=-1431.22   AICc=-1431.11   BIC=-1421.01",
     "crumbs": [
       "Week 6",
-      "Lecture 10"
+      "Lecture 11"
     ]
   },
   {
-    "objectID": "LectureNotes/Lecture10.html#ar-or-ma-or-both",
-    "href": "LectureNotes/Lecture10.html#ar-or-ma-or-both",
-    "title": "Lecture 10",
-    "section": "AR or MA or both?",
-    "text": "AR or MA or both?\nConsider two of the models just simulated:\n\n\nCode\nset.seed(9382094)\npar(mfrow = c(1,2))\nacf(arima.sim(list(ar = c(1.5, -0.75)), n = 1000),\n    main =\"AR(2), phi = (1.5, -.75)\")\nacf(arima.sim(list(ma = c(0.75, 0.5, .25)), n = 1000),\n    main =\"MA(3), theta = (0.75, 0.5, .25)\")\n\n\n\n\n\n\n\n\n\n\nShape is similar, but not identical\nIs there a better way to tell?",
+    "objectID": "LectureNotes/Lecture11.html#specifying-d-in-the-arima-call",
+    "href": "LectureNotes/Lecture11.html#specifying-d-in-the-arima-call",
+    "title": "Lecture 11",
+    "section": "Specifying \\(d\\) in the ARIMA call",
+    "text": "Specifying \\(d\\) in the ARIMA call\nWork with the non-differenced data, and specify \\(d =1\\) in pdq(). We get the same estimated model.\n\n\nCode\nar1_fit_fable &lt;- log_gnp |&gt; \n  as_tsibble() |&gt;\n  model(ARIMA(value ~ pdq(1,1,0) + PDQ(0,0,0))) ## force nonseasonal\n  \nreport(ar1_fit_fable)\n\n\nSeries: value \nModel: ARIMA(1,1,0) w/ drift \n\nCoefficients:\n         ar1  constant\n      0.3467    0.0054\ns.e.  0.0627    0.0006\n\nsigma^2 estimated as 9.136e-05:  log likelihood=718.61\nAIC=-1431.22   AICc=-1431.11   BIC=-1421.01",
     "crumbs": [
       "Week 6",
-      "Lecture 10"
+      "Lecture 11"
     ]
   },
   {
-    "objectID": "LectureNotes/Lecture10.html#partial-autocorrelation-plot",
-    "href": "LectureNotes/Lecture10.html#partial-autocorrelation-plot",
-    "title": "Lecture 10",
-    "section": "Partial Autocorrelation plot",
-    "text": "Partial Autocorrelation plot\nThe PACF is the correlation between \\(x_t\\) and \\(x_{t-k}\\) that is not explained by lags \\(1, 2, \\ldots, k-1\\).\n“Removes” the autocorrelation of the previous lags.\nUseful in determining the order of an Autoregressive process, and in combination with ACF, choosing between an AR or an MA model.",
+    "objectID": "LectureNotes/Lecture11.html#going-fully-automated",
+    "href": "LectureNotes/Lecture11.html#going-fully-automated",
+    "title": "Lecture 11",
+    "section": "Going fully automated",
+    "text": "Going fully automated\nAllow ARIMA to choose the order of the differencing \\(d\\) and \\(p,q\\).\nBased on corrected AIC, this is slightly better than our model. But this model is quite complicated!\n\n\nCode\nfully_auto_fit &lt;- log_gnp |&gt; \n  as_tsibble() |&gt;\n  model(ARIMA(value ~ PDQ(0,0,0))) |&gt; ## force nonseasonal\n  \n  report(fully_auto_fit)\n\n\nSeries: value \nModel: ARIMA(3,1,1) w/ drift \n\nCoefficients:\n         ar1      ar2      ar3      ma1  constant\n      1.0905  -0.1251  -0.1739  -0.7881    0.0017\ns.e.  0.3027   0.1529   0.0777   0.3112    0.0001\n\nsigma^2 estimated as 8.906e-05:  log likelihood=722.89\nAIC=-1433.78   AICc=-1433.39   BIC=-1413.36",
     "crumbs": [
       "Week 6",
-      "Lecture 10"
+      "Lecture 11"
     ]
   },
   {
-    "objectID": "LectureNotes/Lecture10.html#pacf-of-two-series-we-just-saw",
-    "href": "LectureNotes/Lecture10.html#pacf-of-two-series-we-just-saw",
-    "title": "Lecture 10",
-    "section": "PACF of two series we just saw",
-    "text": "PACF of two series we just saw\n\n\nCode\nset.seed(9382094)\npar(mfrow = c(1,2))\npacf(arima.sim(list(ar = c(1.5, -0.75)), n = 1000),\n    main =\"AR(2), phi = (1.5, -.75)\")\npacf(arima.sim(list(ma = c(0.75, 0.5, .25)), n = 1000),\n    main =\"MA(3), theta = (0.75, 0.5, .25)\")",
+    "objectID": "LectureNotes/Lecture11.html#activity-2-should-we-go-fully-automated",
+    "href": "LectureNotes/Lecture11.html#activity-2-should-we-go-fully-automated",
+    "title": "Lecture 11",
+    "section": "Activity 2: Should we go fully automated??",
+    "text": "Activity 2: Should we go fully automated??\n\nGo to the ASTSA package github and click “Estimation” under 4.ARIMA\nRead between the watermelon 🍉 and alien 👽\nAre they using the ARIMA function? Is the function they are using different?\nExplain how the code under “DON’T BELIEVE IT?? OK… HERE YOU GO” provides evidence that automatic arima functions don’t work",
     "crumbs": [
       "Week 6",
-      "Lecture 10"
+      "Lecture 11"
     ]
   },
   {
-    "objectID": "LectureNotes/Lecture10.html#acf-and-pacf",
-    "href": "LectureNotes/Lecture10.html#acf-and-pacf",
-    "title": "Lecture 10",
-    "section": "ACF and PACF",
-    "text": "ACF and PACF\n\n\nCode\nset.seed(9382094)\npar(mfrow = c(2,2))\nar_sim &lt;- arima.sim(list(ar = c(1.5, -0.75)), n = 1000)\nma_sim &lt;- arima.sim(list(ma = c(0.75, 0.5, .25)), n = 1000)\nacf(ar_sim,\n    main =\"AR(2), phi = (1.5, -.75)\")\nacf(ma_sim,\n    main =\"MA(3), theta = (0.75, 0.5, .25)\")\npacf(ar_sim,\n    main =\"AR(2), phi = (1.5, -.75)\")\npacf(ma_sim,\n    main =\"MA(3), theta = (0.75, 0.5, .25)\")",
+    "objectID": "LectureNotes/Lecture11.html#using-the-sarima-function-for-diagnostics",
+    "href": "LectureNotes/Lecture11.html#using-the-sarima-function-for-diagnostics",
+    "title": "Lecture 11",
+    "section": "Using the sarima function for diagnostics",
+    "text": "Using the sarima function for diagnostics\n\n\nCode\nsarima(log_gnp, p = 1, d = 1, q = 0)\n\n\ninitial  value -4.589567 \niter   2 value -4.654150\niter   3 value -4.654150\niter   4 value -4.654151\niter   4 value -4.654151\niter   4 value -4.654151\nfinal  value -4.654151 \nconverged\ninitial  value -4.655919 \niter   2 value -4.655921\niter   3 value -4.655921\niter   4 value -4.655922\niter   5 value -4.655922\niter   5 value -4.655922\niter   5 value -4.655922\nfinal  value -4.655922 \nconverged\n&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;\n \nCoefficients: \n         Estimate     SE t.value p.value\nar1        0.3467 0.0627  5.5255       0\nconstant   0.0083 0.0010  8.5398       0\n\nsigma^2 estimated as 9.029576e-05 on 220 degrees of freedom \n \nAIC = -6.446939  AICc = -6.446692  BIC = -6.400957",
     "crumbs": [
       "Week 6",
-      "Lecture 10"
+      "Lecture 11"
     ]
   },
   {
-    "objectID": "LectureNotes/Lecture10.html#ar-or-ma-or-both-1",
-    "href": "LectureNotes/Lecture10.html#ar-or-ma-or-both-1",
-    "title": "Lecture 10",
-    "section": "AR or MA or both",
-    "text": "AR or MA or both\n\nBehavior of ACF/PACF for ARMA Models\n\n\n\nAR(p)\nMA(q)\nARMA(p,q)\n\n\n\n\nACF\nTails off\nCuts off after lag q\nTails off\n\n\nPACF\nCuts off after lag p\nTails off\nTails off",
+    "objectID": "LectureNotes/Lecture11.html#activity-3-p-values-for-ljung-box-statistic",
+    "href": "LectureNotes/Lecture11.html#activity-3-p-values-for-ljung-box-statistic",
+    "title": "Lecture 11",
+    "section": "Activity 3: p-values for Ljung-Box statistic",
+    "text": "Activity 3: p-values for Ljung-Box statistic\n\nWhen an R function for fitting a model gives you a diagnostic plot by default, it’s good to understand that plot– it’s probably useful!\nUse whatever resources you can to figure out what that bottom plot means",
     "crumbs": [
       "Week 6",
-      "Lecture 10"
+      "Lecture 11"
     ]
   },
   {
-    "objectID": "LectureNotes/Lecture10.html#activity-5-ar-or-ma-or-both",
-    "href": "LectureNotes/Lecture10.html#activity-5-ar-or-ma-or-both",
-    "title": "Lecture 10",
-    "section": "Activity 5: AR or MA or both?",
-    "text": "Activity 5: AR or MA or both?\n\n\nCode\nlibrary(fpp3)\n\npar(mfrow = c(2,2))\ntsplot(x = egy_econ$Year, y = egy_econ$Exports, \n       xlab = \"Year\")\n\nacf(egy_econ$Exports)\npacf(egy_econ$Exports)\n\n\n\n\n\n\n\n\n\nACF: Tails off; PACF: Cuts off after lag 4. Maybe an AR(4), or some sort of ARMA?",
+    "objectID": "LectureNotes/Lecture11.html#testing-if-the-residuals-are-white-noise",
+    "href": "LectureNotes/Lecture11.html#testing-if-the-residuals-are-white-noise",
+    "title": "Lecture 11",
+    "section": "Testing if the residuals are white noise",
+    "text": "Testing if the residuals are white noise\nPortmanteau tests (French for suitcase or coat rack carrying several items of clothing) (do the residuals “carry information”\n\nNull hypothesis: Residuals are generated by a white noise process.\nAlternative hypothesis: Residuals are not generated by a white noise process.\n\nLots of options for tests, we will use Ljung-Box (default output)",
     "crumbs": [
       "Week 6",
-      "Lecture 10"
+      "Lecture 11"
     ]
   },
   {
-    "objectID": "LectureNotes/Lecture10.html#fitting-an-arma-model",
-    "href": "LectureNotes/Lecture10.html#fitting-an-arma-model",
-    "title": "Lecture 10",
-    "section": "Fitting an ARMA model",
-    "text": "Fitting an ARMA model\nUse the sarima function, specify p, d, q (d = 0 for ARMA).\n\n\nCode\nfitted_arma &lt;- sarima(egy_econ$Exports, p = 4, d = 0, q = 0, details = FALSE)\n\n\n&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;\n \nCoefficients: \n      Estimate     SE t.value p.value\nar1     0.9861 0.1247  7.9103  0.0000\nar2    -0.1715 0.1865 -0.9199  0.3618\nar3     0.1807 0.1865  0.9688  0.3370\nar4    -0.3283 0.1273 -2.5779  0.0128\nxmean  20.0986 1.0699 18.7858  0.0000\n\nsigma^2 estimated as 7.204995 on 53 degrees of freedom \n \nAIC = 5.052611  AICc = 5.072505  BIC = 5.265761",
+    "objectID": "LectureNotes/Lecture11.html#ljung-box-in-fable",
+    "href": "LectureNotes/Lecture11.html#ljung-box-in-fable",
+    "title": "Lecture 11",
+    "section": "Ljung-box in fable",
+    "text": "Ljung-box in fable\n\n\nCode\nresiduals(ar1_fit_fable) |&gt;\nfeatures(.resid,ljung_box, lag = 10)\n\n\n# A tibble: 1 × 3\n  .model                                     lb_stat lb_pvalue\n  &lt;chr&gt;                                        &lt;dbl&gt;     &lt;dbl&gt;\n1 ARIMA(value ~ pdq(1, 1, 0) + PDQ(0, 0, 0))    10.7     0.382",
     "crumbs": [
       "Week 6",
-      "Lecture 10"
+      "Lecture 11"
     ]
   },
   {
-    "objectID": "LectureNotes/Lecture10.html#fpp-way",
-    "href": "LectureNotes/Lecture10.html#fpp-way",
-    "title": "Lecture 10",
-    "section": "FPP way",
-    "text": "FPP way\n\n\nCode\nfit_auto &lt;- global_economy |&gt;\n  filter(Code == \"EGY\") |&gt;\n  model(ARIMA(Exports)) ## automatic ARIMA\nreport(fit_auto)\n\n\nSeries: Exports \nModel: ARIMA(2,0,1) w/ mean \n\nCoefficients:\n         ar1      ar2      ma1  constant\n      1.6764  -0.8034  -0.6896    2.5623\ns.e.  0.1111   0.0928   0.1492    0.1161\n\nsigma^2 estimated as 8.046:  log likelihood=-141.57\nAIC=293.13   AICc=294.29   BIC=303.43",
+    "objectID": "LectureNotes/Lecture11.html#goal-define-seasonal-arima-model",
+    "href": "LectureNotes/Lecture11.html#goal-define-seasonal-arima-model",
+    "title": "Lecture 11",
+    "section": "Goal: define Seasonal Arima model",
+    "text": "Goal: define Seasonal Arima model\nWant:\n\\[\nARIMA(p, d, q)\\times(P,D,Q)_{S}\n\\]\n\nfirst part is the same as before– nonseasonal\nsecond part is similar to before, but we interpret lags as having a seasonal period.",
     "crumbs": [
       "Week 6",
-      "Lecture 10"
+      "Lecture 11"
     ]
   },
   {
-    "objectID": "LectureNotes/Lecture10.html#which-model-should-we-choose",
-    "href": "LectureNotes/Lecture10.html#which-model-should-we-choose",
-    "title": "Lecture 10",
-    "section": "Which model should we choose?",
-    "text": "Which model should we choose?\n\nOne that fits well\nWe can use AICc to choose between models that seem to have good fit",
+    "objectID": "LectureNotes/Lecture11.html#pure-seasonal-arima",
+    "href": "LectureNotes/Lecture11.html#pure-seasonal-arima",
+    "title": "Lecture 11",
+    "section": "Pure Seasonal ARIMA",
+    "text": "Pure Seasonal ARIMA\nA time series \\(x_t\\) is said to follow a Pure Seasonal ARIMA model, with parameters \\(P, D, Q\\), and seasonal period \\(S\\) (or \\(T\\)), if\n\n\\(x_t\\) has a seasonal component with period \\(S\\)\nis ARIMA(P,D,Q) where we interpret the lag as a seasonal lag, i.e. lagging by \\(S\\)",
     "crumbs": [
       "Week 6",
-      "Lecture 10"
+      "Lecture 11"
     ]
   },
   {
-    "objectID": "LectureNotes/Lecture10.html#ar4-vs.-arma21",
-    "href": "LectureNotes/Lecture10.html#ar4-vs.-arma21",
-    "title": "Lecture 10",
-    "section": "AR(4) vs. ARMA(2,1)",
-    "text": "AR(4) vs. ARMA(2,1)\n\n\nCode\nreport(fit_auto)\n\n\nSeries: Exports \nModel: ARIMA(2,0,1) w/ mean \n\nCoefficients:\n         ar1      ar2      ma1  constant\n      1.6764  -0.8034  -0.6896    2.5623\ns.e.  0.1111   0.0928   0.1492    0.1161\n\nsigma^2 estimated as 8.046:  log likelihood=-141.57\nAIC=293.13   AICc=294.29   BIC=303.43\n\n\nCode\nfit_manual &lt;- global_economy |&gt;\n  filter(Code == \"EGY\") |&gt;\n  model(ARIMA(Exports ~ pdq(4,0,0))) ## AR(4)\nreport(fit_manual)\n\n\nSeries: Exports \nModel: ARIMA(4,0,0) w/ mean \n\nCoefficients:\n         ar1      ar2     ar3      ar4  constant\n      0.9861  -0.1715  0.1807  -0.3283    6.6922\ns.e.  0.1247   0.1865  0.1865   0.1273    0.3562\n\nsigma^2 estimated as 7.885:  log likelihood=-140.53\nAIC=293.05   AICc=294.7   BIC=305.41\n\n\nVery similar! Let’s check the residuals",
+    "objectID": "LectureNotes/Lecture11.html#simulating-a-pure-seasonal-ar1-process",
+    "href": "LectureNotes/Lecture11.html#simulating-a-pure-seasonal-ar1-process",
+    "title": "Lecture 11",
+    "section": "Simulating a pure seasonal AR(1) process",
+    "text": "Simulating a pure seasonal AR(1) process\nNotice the peaks every January– the seasonal period here is 12 (or 1 if we divide by 12).\nThe same “tailing off”/“cutting off” behavior is the same, but we look for seasonal spikes",
     "crumbs": [
       "Week 6",
-      "Lecture 10"
+      "Lecture 11"
     ]
   },
   {
-    "objectID": "LectureNotes/Lecture10.html#check-model-fit",
-    "href": "LectureNotes/Lecture10.html#check-model-fit",
-    "title": "Lecture 10",
-    "section": "Check model fit",
-    "text": "Check model fit\n\n\nCode\ngg_tsdisplay(residuals(fit_auto), plot_type = \"partial\")\n\n\nPlot variable not specified, automatically selected `y = .resid`\n\n\n\n\n\n\n\n\n\nCode\ngg_tsdisplay(residuals(fit_manual), plot_type = \"partial\")\n\n\nPlot variable not specified, automatically selected `y = .resid`",
+    "objectID": "LectureNotes/Lecture11.html#hawaiian-quarterly-occupancy",
+    "href": "LectureNotes/Lecture11.html#hawaiian-quarterly-occupancy",
+    "title": "Lecture 11",
+    "section": "Hawaiian Quarterly Occupancy",
+    "text": "Hawaiian Quarterly Occupancy\nThe two plots show the time series, and the extracted seasonal component.",
     "crumbs": [
       "Week 6",
-      "Lecture 10"
+      "Lecture 11"
     ]
   },
   {
-    "objectID": "LectureNotes/Lecture10.html#make-a-forecast",
-    "href": "LectureNotes/Lecture10.html#make-a-forecast",
-    "title": "Lecture 10",
-    "section": "Make a forecast",
-    "text": "Make a forecast\n\n\nCode\nfit_auto %&gt;% \n   forecast(h=5) |&gt;\n  autoplot(global_economy)\n\n\n\n\n\n\n\n\n\nCode\nfit_manual %&gt;% \n   forecast(h=5) |&gt;\n  autoplot(global_economy)\n\n\n\n\n\n\n\n\n\nCode\negy_forecast &lt;- ## save auto forecast \nfit_auto %&gt;% \n   forecast(h=5)",
+    "objectID": "LectureNotes/Lecture11.html#hawaiian-quarterly-occupancy-1",
+    "href": "LectureNotes/Lecture11.html#hawaiian-quarterly-occupancy-1",
+    "title": "Lecture 11",
+    "section": "Hawaiian Quarterly Occupancy",
+    "text": "Hawaiian Quarterly Occupancy",
     "crumbs": [
       "Week 6",
-      "Lecture 10"
+      "Lecture 11"
     ]
   },
   {
-    "objectID": "LectureNotes/Lecture10.html#how-did-the-forecasts-do",
-    "href": "LectureNotes/Lecture10.html#how-did-the-forecasts-do",
-    "title": "Lecture 10",
-    "section": "How did the forecasts do?",
-    "text": "How did the forecasts do?\n\n\nCode\nupdated_data &lt;- read.csv(\"../../API_NE.EXP.GNFS.ZS_DS2_en_csv_v2_11065/API_NE.EXP.GNFS.ZS_DS2_en_csv_v2_11065.csv\", skip = 4)\n\n## extract egypt and pivot (I used github copilot for this!)\negy_econ_updated &lt;- updated_data %&gt;%\n  dplyr::filter(Country.Code == \"EGY\") %&gt;%\n  pivot_longer(cols = -c(Country.Name, Country.Code, Indicator.Name, Indicator.Code),\n               names_to = \"Year\", values_to = \"Exports\") %&gt;%\n  mutate(Year = as.numeric(substr(Year, 2, 20)))\n    ## remove leading x from year\n\n\n\ntsplot(egy_econ_updated$Year, egy_econ_updated$Exports, ylab = \"%GDP\",\n       xlab = \"Year\", main = \"Egyptian Exports as %GDP, 1960-2017\", type = \"b\", lty = 2, \n       ylim = c(10, 40), lwd = 2)\nlines(egy_econ$Year, egy_econ$Exports, col = \"red\", type = \"b\", lwd = 2)\nlines(egy_forecast$Year, egy_forecast$.mean, col = \"blue\", lwd = 2)\nlegend(\"topright\", legend = c(\"Historical Data\", \"Forecast\", \"Recent Data\"), col = c(\"red\", \"blue\", \"black\"), \n       lty = c(1,1,2), lwd = c(2,2,2))",
+    "objectID": "LectureNotes/Lecture11.html#carbon-dioxide-readings",
+    "href": "LectureNotes/Lecture11.html#carbon-dioxide-readings",
+    "title": "Lecture 11",
+    "section": "Carbon Dioxide Readings",
+    "text": "Carbon Dioxide Readings\nMonthly \\(CO_2\\) readings at Mauna Loa Observatory\nDo we see a seasonal pattern?\n\n\nCode\ntsplot(cardox, col=4, ylab=expression(CO[2]))\ntitle(\"Monthly Carbon Dioxide Readings - Mauna Loa Observatory \", cex.main=1)",
     "crumbs": [
       "Week 6",
-      "Lecture 10"
+      "Lecture 11"
     ]
   },
   {
-    "objectID": "LectureNotes/Lecture10.html#plot-analysis",
-    "href": "LectureNotes/Lecture10.html#plot-analysis",
-    "title": "Lecture 10",
-    "section": "Plot analysis",
-    "text": "Plot analysis\n\nthe historic data and the updated data mostly agree, except for the last shared point in 2017\nThe forecast for 2018 is spot-on\nThe later forecasts are not at all correct",
+    "objectID": "LectureNotes/Lecture11.html#whats-the-acf",
+    "href": "LectureNotes/Lecture11.html#whats-the-acf",
+    "title": "Lecture 11",
+    "section": "What’s the acf?",
+    "text": "What’s the acf?\n\n\nCode\nacf(cardox)",
     "crumbs": [
       "Week 6",
-      "Lecture 10"
+      "Lecture 11"
     ]
   },
   {
-    "objectID": "LectureNotes/Lecture10.html#modeling-workflow",
-    "href": "LectureNotes/Lecture10.html#modeling-workflow",
-    "title": "Lecture 10",
-    "section": "Modeling workflow",
-    "text": "Modeling workflow",
+    "objectID": "LectureNotes/Lecture11.html#lets-try-a-seasonal-difference",
+    "href": "LectureNotes/Lecture11.html#lets-try-a-seasonal-difference",
+    "title": "Lecture 11",
+    "section": "Let’s try a seasonal difference!",
+    "text": "Let’s try a seasonal difference!\n\n\nCode\ntsplot(diff(cardox,12), col=4, \nylab=expression(nabla[12]~CO[2]))",
     "crumbs": [
       "Week 6",
-      "Lecture 10"
+      "Lecture 11"
     ]
   },
   {
-    "objectID": "LectureNotes/Lecture10.html#gnp-series",
-    "href": "LectureNotes/Lecture10.html#gnp-series",
-    "title": "Lecture 10",
-    "section": "GNP series",
-    "text": "GNP series\nDoes the series appear stationary?\n\n\nCode\ntsplot(gnp, xlab = \"Year\", ylab = \"Billions of US Dollars\", \n       main = \"GNP of US, 1947-2002 (seasonally adjusted)\")",
+    "objectID": "LectureNotes/Lecture11.html#check-the-acf",
+    "href": "LectureNotes/Lecture11.html#check-the-acf",
+    "title": "Lecture 11",
+    "section": "Check the acf",
+    "text": "Check the acf\nStill a trend..difference again?\n\n\nCode\nacf(diff(cardox, 12))",
     "crumbs": [
       "Week 6",
-      "Lecture 10"
+      "Lecture 11"
     ]
   },
   {
-    "objectID": "LectureNotes/Lecture10.html#acf-and-pacf-of-gnp",
-    "href": "LectureNotes/Lecture10.html#acf-and-pacf-of-gnp",
-    "title": "Lecture 10",
-    "section": "Acf and pacf of GNP",
-    "text": "Acf and pacf of GNP\n\n\nCode\nacf(gnp)\n\n\n\n\n\n\n\n\n\nCode\npacf(gnp)",
+    "objectID": "LectureNotes/Lecture11.html#difference-and-seasonal-difference",
+    "href": "LectureNotes/Lecture11.html#difference-and-seasonal-difference",
+    "title": "Lecture 11",
+    "section": "Difference and Seasonal Difference",
+    "text": "Difference and Seasonal Difference\nLooks pretty stationary!\n\n\nCode\ntsplot(diff(diff(cardox, 12)))",
     "crumbs": [
       "Week 6",
-      "Lecture 10"
+      "Lecture 11"
     ]
   },
   {
-    "objectID": "LectureNotes/Lecture10.html#differenced-gnp-series",
-    "href": "LectureNotes/Lecture10.html#differenced-gnp-series",
-    "title": "Lecture 10",
-    "section": "Differenced GNP series",
-    "text": "Differenced GNP series\nDoes the series appear stationary?\n\n\nCode\ntsplot(diff(gnp), xlab = \"Year\", ylab = \"Billions of US Dollars\", \n       main = \"Differenced GNP of US, 1947-2002 (seasonally adjusted)\")",
+    "objectID": "LectureNotes/Lecture11.html#finding-pq-and-pq",
+    "href": "LectureNotes/Lecture11.html#finding-pq-and-pq",
+    "title": "Lecture 11",
+    "section": "Finding \\(p,q\\) and \\(P,Q\\)",
+    "text": "Finding \\(p,q\\) and \\(P,Q\\)\nWe have identified \\(d = 1\\) and \\(D=1\\).\n\nSEASONAL: Check acf/pacf for \\(P,Q\\) and recall the seasonal period (here 12/12 = 1)\nNON-SEASONAL: Check acf/pacf for \\(p,q\\) just like before.",
     "crumbs": [
       "Week 6",
-      "Lecture 10"
+      "Lecture 11"
     ]
   },
   {
-    "objectID": "LectureNotes/Lecture10.html#acf-and-pacf-of-differenced-gnp-series",
-    "href": "LectureNotes/Lecture10.html#acf-and-pacf-of-differenced-gnp-series",
-    "title": "Lecture 10",
-    "section": "ACF and PACF of differenced GNP series",
-    "text": "ACF and PACF of differenced GNP series\n\n\nCode\nacf(diff(gnp))\n\n\n\n\n\n\n\n\n\nCode\npacf(diff(gnp))",
+    "objectID": "LectureNotes/Lecture11.html#pq-and-pq-for-carbon-dioxide",
+    "href": "LectureNotes/Lecture11.html#pq-and-pq-for-carbon-dioxide",
+    "title": "Lecture 11",
+    "section": "\\(p,q\\) and \\(P,Q\\) for Carbon Dioxide",
+    "text": "\\(p,q\\) and \\(P,Q\\) for Carbon Dioxide\n\nSeasonal: ACF appears to cut off at lag 1 (12 months), but tails of at lags 1, 2, 3, 4– implies a seasonal moving average, so \\(Q=1, P= 0\\).\nNon-seasonal: Appears to cut off at lag 1 (1/12) and PACF tails off. Looks like a MA(1), so \\(q = 1, p = 0\\).\n\n\n\nCode\npar(mfrow = c(1,2))\nacf1(diff(diff(cardox, 12)))\n\n\n [1] -0.30 -0.03 -0.06  0.00  0.00 -0.01  0.03 -0.01  0.05 -0.03  0.19 -0.47\n[13]  0.08  0.08  0.00  0.02 -0.05  0.04 -0.04 -0.01 -0.02  0.02 -0.04  0.00\n[25]  0.03 -0.06  0.04 -0.03  0.06 -0.03 -0.04  0.04  0.01  0.02  0.00  0.01\n[37]  0.04 -0.01 -0.01 -0.01 -0.01 -0.03  0.03  0.03 -0.05  0.00  0.02 -0.02\n\n\nCode\npacf(diff(diff(cardox,12)))",
     "crumbs": [
       "Week 6",
-      "Lecture 10"
+      "Lecture 11"
     ]
   },
   {
-    "objectID": "LectureNotes/Lecture10.html#arima-models",
-    "href": "LectureNotes/Lecture10.html#arima-models",
-    "title": "Lecture 10",
-    "section": "ARIMA models",
-    "text": "ARIMA models\nA time series is said to be ARIMA(p,d,q) if\n\\[\n\\nabla^dx_t = (1-B)^dx_t\n\\]\nIs ARMA(p,q)",
+    "objectID": "LectureNotes/Lecture11.html#fit-arima011times011_12",
+    "href": "LectureNotes/Lecture11.html#fit-arima011times011_12",
+    "title": "Lecture 11",
+    "section": "Fit \\(ARIMA(0,1,1)\\times(0,1,1)_{12}\\)",
+    "text": "Fit \\(ARIMA(0,1,1)\\times(0,1,1)_{12}\\)\n\n\nCode\nsarima(cardox, p = 0, d = 1, q = 1, P = 0, D = 1, Q = 1, S = 12)\n\n\ninitial  value -0.826338 \niter   2 value -1.059073\niter   3 value -1.093845\niter   4 value -1.116555\niter   5 value -1.124382\niter   6 value -1.126345\niter   7 value -1.127354\niter   8 value -1.127953\niter   9 value -1.127984\niter  10 value -1.127985\niter  10 value -1.127985\niter  10 value -1.127985\nfinal  value -1.127985 \nconverged\ninitial  value -1.144615 \niter   2 value -1.148048\niter   3 value -1.148645\niter   4 value -1.149895\niter   5 value -1.150013\niter   6 value -1.150021\niter   7 value -1.150021\niter   7 value -1.150021\niter   7 value -1.150021\nfinal  value -1.150021 \nconverged\n&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;\n \nCoefficients: \n     Estimate     SE  t.value p.value\nma1   -0.3869 0.0377 -10.2624       0\nsma1  -0.8655 0.0183 -47.2846       0\n\nsigma^2 estimated as 0.0980908 on 766 degrees of freedom \n \nAIC = 0.5456475  AICc = 0.545668  BIC = 0.5637873",
     "crumbs": [
       "Week 6",
-      "Lecture 10"
+      "Lecture 11"
     ]
   },
   {
-    "objectID": "LectureNotes/Lecture10.html#next-time",
-    "href": "LectureNotes/Lecture10.html#next-time",
-    "title": "Lecture 10",
-    "section": "Next time",
-    "text": "Next time\n\nMore on ARMA vs. ARIMA\nBox-cox transformations\nParameter redundancy\nPortmanteau tests\n(maybe) Seasonal ARIMA?",
+    "objectID": "LectureNotes/Lecture11.html#results",
+    "href": "LectureNotes/Lecture11.html#results",
+    "title": "Lecture 11",
+    "section": "Results",
+    "text": "Results\n\nmay still have some residual autocorrelation (Ljung-box test for small lags)\nTry adding another term? maybe increase order of MA or add AR component?",
     "crumbs": [
       "Week 6",
-      "Lecture 10"
+      "Lecture 11"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture11.html#increase-order-of-ma",
+    "href": "LectureNotes/Lecture11.html#increase-order-of-ma",
+    "title": "Lecture 11",
+    "section": "Increase order of MA",
+    "text": "Increase order of MA\n\n\nCode\nsarima(cardox, p = 0, d = 1, q = 2, P = 0, D = 1, Q = 1, S = 12)\n\n\ninitial  value -0.826338 \niter   2 value -1.061232\niter   3 value -1.098226\niter   4 value -1.120391\niter   5 value -1.127720\niter   6 value -1.129516\niter   7 value -1.130690\niter   8 value -1.130938\niter   9 value -1.130955\niter  10 value -1.130959\niter  11 value -1.130959\niter  12 value -1.130959\niter  12 value -1.130959\niter  12 value -1.130959\nfinal  value -1.130959 \nconverged\ninitial  value -1.147318 \niter   2 value -1.150711\niter   3 value -1.151405\niter   4 value -1.152442\niter   5 value -1.152564\niter   6 value -1.152573\niter   7 value -1.152574\niter   7 value -1.152574\niter   7 value -1.152574\nfinal  value -1.152574 \nconverged\n&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;\n \nCoefficients: \n     Estimate     SE  t.value p.value\nma1   -0.3678 0.0359 -10.2365  0.0000\nma2   -0.0704 0.0354  -1.9911  0.0468\nsma1  -0.8651 0.0182 -47.4548  0.0000\n\nsigma^2 estimated as 0.09759346 on 765 degrees of freedom \n \nAIC = 0.5431467  AICc = 0.5431876  BIC = 0.5673331 \n \n\n\n\n\n\n\n\n\n\n\n\nCode\nsarima(cardox, p = 1, d = 1, q = 1, P = 0, D = 1, Q = 1, S = 12)\n\n\ninitial  value -0.827261 \niter   2 value -1.034332\niter   3 value -1.066295\niter   4 value -1.094823\niter   5 value -1.108013\niter   6 value -1.115246\niter   7 value -1.116173\niter   8 value -1.120248\niter   9 value -1.120892\niter  10 value -1.121657\niter  11 value -1.122186\niter  12 value -1.124590\niter  13 value -1.125269\niter  14 value -1.125654\niter  15 value -1.125685\niter  16 value -1.125685\niter  17 value -1.125687\niter  18 value -1.125689\niter  19 value -1.125689\niter  20 value -1.125689\niter  20 value -1.125689\niter  20 value -1.125689\nfinal  value -1.125689 \nconverged\ninitial  value -1.146682 \niter   2 value -1.150731\niter   3 value -1.152123\niter   4 value -1.152815\niter   5 value -1.153157\niter   6 value -1.153220\niter   7 value -1.153266\niter   8 value -1.153337\niter   9 value -1.153352\niter  10 value -1.153359\niter  11 value -1.153384\niter  12 value -1.153388\niter  13 value -1.153390\niter  14 value -1.153390\niter  14 value -1.153390\niter  14 value -1.153390\nfinal  value -1.153390 \nconverged\n&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;\n \nCoefficients: \n     Estimate     SE  t.value p.value\nar1    0.2203 0.0894   2.4660  0.0139\nma1   -0.5797 0.0753  -7.7029  0.0000\nsma1  -0.8656 0.0182 -47.5947  0.0000\n\nsigma^2 estimated as 0.09742764 on 765 degrees of freedom \n \nAIC = 0.541514  AICc = 0.5415549  BIC = 0.5657004",
+    "crumbs": [
+      "Week 6",
+      "Lecture 11"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture11.html#forecasting",
+    "href": "LectureNotes/Lecture11.html#forecasting",
+    "title": "Lecture 11",
+    "section": "Forecasting",
+    "text": "Forecasting\nLooks like we predict the \\(CO_2\\) to continue to increase…\n\n\nCode\nsarima.for(cardox, 60, 1,1,1, 0,1,1,12)\n\n\n$pred\n          Jan      Feb      Mar      Apr      May      Jun      Jul      Aug\n2023                            422.5365 423.2516 422.6841 420.8017 418.7844\n2024 421.8604 422.7144 423.3343 424.7951 425.4936 424.9223 423.0392 421.0216\n2025 424.0976 424.9517 425.5715 427.0323 427.7308 427.1595 425.2764 423.2588\n2026 426.3348 427.1889 427.8088 429.2695 429.9680 429.3968 427.5136 425.4961\n2027 428.5720 429.4261 430.0460 431.5067 432.2052 431.6340 429.7509 427.7333\n2028 430.8092 431.6633 432.2832                                             \n          Sep      Oct      Nov      Dec\n2023 417.4195 417.6341 419.1994 420.6362\n2024 419.6567 419.8713 421.4367 422.8734\n2025 421.8940 422.1085 423.6739 425.1106\n2026 424.1312 424.3458 425.9111 427.3479\n2027 426.3684 426.5830 428.1483 429.5851\n2028                                    \n\n$se\n           Jan       Feb       Mar       Apr       May       Jun       Jul\n2023                               0.3121340 0.3706892 0.4100237 0.4437896\n2024 0.6057658 0.6286983 0.6508233 0.6839230 0.7112115 0.7366194 0.7609956\n2025 0.8931404 0.9133056 0.9330350 0.9616380 0.9859772 1.0090191 1.0313946\n2026 1.1563743 1.1759118 1.1951299 1.2221148 1.2455209 1.2678703 1.2896982\n2027 1.4134077 1.4329864 1.4523012 1.4786701 1.5018653 1.5241385 1.5459682\n2028 1.6707850 1.6906907 1.7103647                                        \n           Aug       Sep       Oct       Nov       Dec\n2023 0.4747345 0.5036938 0.5310578 0.5570754 0.5819301\n2024 0.7845756 0.8074590 0.8297096 0.8513785 0.8725094\n2025 1.0532622 1.0746779 1.0956735 1.1162740 1.1365011\n2026 1.3111337 1.3322181 1.3529726 1.3734132 1.3935539\n2027 1.5674673 1.5886697 1.6095915 1.6302447 1.6506393\n2028                                                  \n\n\nCode\nabline(v=2018.9, lty=6)",
+    "crumbs": [
+      "Week 6",
+      "Lecture 11"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture11.html#compare-to-auto-arima",
+    "href": "LectureNotes/Lecture11.html#compare-to-auto-arima",
+    "title": "Lecture 11",
+    "section": "Compare to auto arima",
+    "text": "Compare to auto arima\nMay be overparameterized…\n\n\nCode\ncardox |&gt; \n  as_tsibble() |&gt;\n  model(ARIMA(value)) |&gt;\n  report()\n\n\nSeries: value \nModel: ARIMA(1,1,1)(2,1,2)[12] \n\nCoefficients:\n         ar1      ma1     sar1     sar2     sma1     sma2\n      0.2219  -0.5821  -0.3132  -0.0169  -0.5481  -0.2724\ns.e.  0.0891   0.0749   1.4611   0.0421   1.4610   1.2649\n\nsigma^2 estimated as 0.09985:  log likelihood=-203.82\nAIC=421.65   AICc=421.79   BIC=454.15",
+    "crumbs": [
+      "Week 6",
+      "Lecture 11"
     ]
   },
   {

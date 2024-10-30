@@ -319,6 +319,18 @@ window.Quarto = {
  <span class="menu-text">Lecture 10</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../LectureNotes/Lecture11.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 11</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Assignments/Assignment4.pdf" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Assignment 4 due 11/4 at midnight</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -443,17 +455,17 @@ Start = 0
 End = 10 
 Frequency = 1 
           x_t   x_t_lag1
- 0         NA  0.9687306
- 1  0.9687306  1.7137530
- 2  1.7137530 -0.4216498
- 3 -0.4216498 -0.3270390
- 4 -0.3270390  0.1748165
- 5  0.1748165 -1.3931887
- 6 -1.3931887 -1.9872487
- 7 -1.9872487 -1.8572513
- 8 -1.8572513 -0.8162178
- 9 -0.8162178 -0.3622603
-10 -0.3622603         NA</code></pre>
+ 0         NA  1.7298055
+ 1  1.7298055  1.8436377
+ 2  1.8436377  1.5250020
+ 3  1.5250020  3.1826948
+ 4  3.1826948  2.6849235
+ 5  2.6849235  1.3207012
+ 6  1.3207012  0.9004424
+ 7  0.9004424  0.2550636
+ 8  0.2550636 -0.2386291
+ 9 -0.2386291  1.5649764
+10  1.5649764         NA</code></pre>
 </div>
 </div>
 <ol start="4" type="1">
@@ -523,19 +535,19 @@ Call:
 lm(formula = x_t ~ -1 + x_t_lag1)
 
 Residuals:
-     Min       1Q   Median       3Q      Max 
--2.46996 -0.49808 -0.01557  0.64799  1.48602 
+    Min      1Q  Median      3Q     Max 
+-1.8293 -0.4927  0.1799  0.8012  1.7263 
 
 Coefficients:
          Estimate Std. Error t value Pr(&gt;|t|)    
-x_t_lag1  0.67957    0.07415   9.164 7.88e-15 ***
+x_t_lag1  0.67673    0.07732   8.753 6.13e-14 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 0.9326 on 98 degrees of freedom
+Residual standard error: 0.8785 on 98 degrees of freedom
   (1 observation deleted due to missingness)
-Multiple R-squared:  0.4615,    Adjusted R-squared:  0.456 
-F-statistic: 83.99 on 1 and 98 DF,  p-value: 7.88e-15</code></pre>
+Multiple R-squared:  0.4387,    Adjusted R-squared:  0.433 
+F-statistic: 76.61 on 1 and 98 DF,  p-value: 6.129e-14</code></pre>
 </div>
 </div>
 <ol start="8" type="1">
