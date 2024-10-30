@@ -11,6 +11,8 @@
     -   [smoothed weighted monthly average](https://www.sidc.be/SILSO/faq6)
 
         -   yesssssssss
+        
+    -   https://www.statsmodels.org/stable/examples/notebooks/generated/stationarity_detrending_adf_kpss.html
 
 -   2024 storms
 

@@ -42,6 +42,8 @@ website:
       - section: "Week 6"
         contents:
         - href: LectureNotes/Lecture10.qmd
+        - href: LectureNotes/Lecture11.qmd
+        - href: Assignments/Assignment4.qmd
 format:
   html:
     theme: cosmo

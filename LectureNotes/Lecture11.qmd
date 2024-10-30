@@ -1,0 +1,445 @@
+---
+title: Lecture 11
+author: Julia Schedler
+format: html
+execute:
+  echo: true
+code-fold: true
+slide-number: true
+scrollable: true
+---
+
+## Announcements
+
+-   Assignment 4 posted
+
+## Last time
+
+U.S. GNP data-- clearly has a trend, nonstationary
+
+```{r}
+library(fpp3); library(astsa)
+tsplot(gnp)
+```
+
+## Is the trend *linear*?
+
+Not exactly...
+
+```{r}
+tsplot(gnp)
+abline(lm(gnp~time(gnp)), col = "blueviolet", lwd = 2)
+```
+
+## Try taking the log?
+
+Much better! But, still not stationary.
+
+```{r}
+log_gnp <- log(gnp)
+tsplot(log_gnp)
+abline(lm(log_gnp~time(log_gnp)), col = "blueviolet", lwd = 2)
+```
+
+## Try differencing?
+
+Is this stationary? No? Yes? Maybe there's a bit of a trend?
+
+```{r}
+tsplot(diff(log_gnp))
+```
+
+## Unit root tests
+
+::: columns
+::: column
+**Augmented Dickey-Fuller (ADF)**
+
+-   Null hypothesis: random walk (nonstationary)
+
+-   Alternative hypothesis: stationary data
+:::
+
+::: column
+**Kwiatkowski-Phillips-Schmidt-Shin (KPSS)**
+
+-   Null hypothesis: stationary data
+
+-   Alternative hypothesis: nonstationary data
+:::
+:::
+
+## What's a unit?
+
+1 (one)
+
+## What's a root of a polynomial?
+
+Example:Find the roots of $1 - Ax + Bx^2 = 0$
+
+Use the quadratic formula:
+
+$$
+x = \frac{A \pm \sqrt{A^2  - 4B }}{2B}
+$$ A unit root would be where $x = 1$ is a solution.
+
+## What do we care about being one?
+
+For an AR(1),
+
+$$
+x_t = \phi x_{t-1} + w_t
+$$
+
+If $\phi = 1$, we have a random walk (nonstationary). We'd like a hypothesis test that is able to use information about plausible values of $\phi$ so that we can see if 1 is plausible.
+
+## Wait, where's the polynomial? (Advanced topic)
+
+It's the AR polynomial-- the polynomial with respect to the lag operator. If the AR polynomial has a unit root, the data are nonstationary.
+
+But since it corresponds to having $\phi = 1$, we can derive the distribution of our estimate of $\phi$, $\widehat{\phi}$, and use reasonable distributional assumptions so that we can calculate a p-value. If the roots are less than or equal to 1, that's nonstationary.
+
+## [Unit root test in `R` using `features` function]{.r-fit-text}
+
+```{r}
+log_gnp |> 
+  diff() |>
+  as_tsibble() |> 
+  features(value, unitroot_kpss)
+```
+
+Since the p-value is small, we fail to reject the null hypothesis that the data is not stationary.
+
+## Activity 0
+
+```{r}
+#| code-fold: false
+## find the number of differences needed to make the *original* data (not log transformed) stationary
+```
+
+## In practice
+
+Use the `unitroot_ndiffs()` function to figure out how many differences you need.
+
+```{r}
+#| code-fold: false
+ndiffs_lognp <- log_gnp |> 
+  as_tsibble() |> 
+  features(value, unitroot_ndiffs)
+
+ndiffs_lognp
+
+## note-- if we did not take the log, it says we'd need two!
+gnp |> 
+  as_tsibble() |> 
+  features(value, unitroot_ndiffs)
+
+```
+
+## Recall the ARIMA modeling workflow
+
+![](https://otexts.com/fpp3/figs/arimaflowchart.png)
+
+## Activity 1: Manual analysis
+
+-   Find the order of the ARMA(p,q) process for the log differenced GNP.
+
+-   Check the residuals
+
+## Activity 1 Solutions (manual)
+
+Manual: look at ACF and PACF. The ACF maybe cuts at lag 2 and the PACF appears to tail off. So maybe MA(2)?
+
+```{r}
+
+diff_log_gnp <- diff(log_gnp, differences = ndiffs_lognp$ndiffs)
+
+par(mfrow = c(1,2))
+diff_log_gnp |> 
+  acf1()
+
+diff_log_gnp |> 
+  pacf()
+```
+
+## Handy table
+
+|      | AR(p)                | MA(q)                | ARMA(p,q) |
+|------|----------------------|----------------------|-----------|
+| ACF  | Tails off            | Cuts off after lag q | Tails off |
+| PACF | Cuts off after lag p | Tails off            | Tails off |
+
+## Activity 1 Solutions (manual)
+
+```{r}
+diff_log_gnp |> 
+  as_tsibble() |>
+  model(ARIMA(value ~ pdq(0,0,2) + PDQ(0,0,0))) |> ## force nonseasonal
+  report()
+```
+
+## Activity 1 Solutions
+
+```{r}
+manual_fit <- diff_log_gnp |> 
+  as_tsibble() |>
+  model(ARIMA(value ~ pdq(0,0,2) + PDQ(0,0,0)))
+
+residuals(manual_fit) |> gg_tsdisplay(plot_type = "histogram")
+```
+
+The residuals look like white noise
+
+## What about automatic?
+
+Different answer– but, looking at the ACFS, kind of reasonable.
+
+```{r}
+diff_log_gnp |> 
+  as_tsibble() |>
+  model(ARIMA(value)) |>
+  report()
+```
+
+## Specifying $d$ in the `ARIMA` call
+
+Work with the non-differenced data, and specify $d =1$ in `pdq()`. We get the same estimated model.
+
+```{r}
+ar1_fit_fable <- log_gnp |> 
+  as_tsibble() |>
+  model(ARIMA(value ~ pdq(1,1,0) + PDQ(0,0,0))) ## force nonseasonal
+  
+report(ar1_fit_fable)
+```
+
+## Going fully automated
+
+Allow `ARIMA` to choose the order of the differencing $d$ and $p,q$.
+
+Based on corrected AIC, this is slightly better than our model. But this model is quite complicated!
+
+```{r}
+fully_auto_fit <- log_gnp |> 
+  as_tsibble() |>
+  model(ARIMA(value ~ PDQ(0,0,0))) |> ## force nonseasonal
+  
+  report(fully_auto_fit)
+```
+
+## Activity 2: Should we go fully automated??
+
+-   Go to the [ASTSA package github](https://github.com/nickpoison/astsa/blob/master/fun_with_astsa/fun_with_astsa.md) and click "Estimation" under 4.ARIMA
+
+-   Read between the watermelon 🍉 and alien 👽
+
+-   Are they using the `ARIMA` function? Is the function they are using different?
+
+-   Explain how the code under "DON'T BELIEVE IT?? OK... HERE YOU GO" provides evidence that automatic arima functions don't work
+
+## Using the `sarima` function for diagnostics
+
+```{r}
+sarima(log_gnp, p = 1, d = 1, q = 0)
+
+```
+
+## Activity 3: p-values for Ljung-Box statistic
+
+-   When an R function for fitting a model gives you a diagnostic plot by default, it's good to understand that plot– it's probably useful!
+
+-   Use whatever resources you can to figure out what that bottom plot means
+
+## Testing if the residuals are white noise
+
+Portmanteau tests (French for suitcase or coat rack carrying several items of clothing) (do the residuals "carry information"
+
+-   **Null hypothesis**: Residuals are generated by a white noise process.
+
+-   **Alternative hypothesis**: Residuals are not generated by a white noise process.
+
+Lots of options for tests, we will use **Ljung-Box** (default output)
+
+## Ljung-box in `fable`
+
+```{r}
+residuals(ar1_fit_fable) |>
+features(.resid,ljung_box, lag = 10)
+```
+
+# Seasonal Arima models
+
+## Goal: define Seasonal Arima model
+
+Want:
+
+$$
+ARIMA(p, d, q)\times(P,D,Q)_{S}
+$$
+
+-   first part is the same as before– nonseasonal
+
+-   second part is similar to before, but we interpret lags as having a seasonal period.
+
+## Pure Seasonal ARIMA
+
+A time series $x_t$ is said to follow a Pure Seasonal ARIMA model, with parameters $P, D, Q$, and seasonal period $S$ (or $T$), if
+
+-   $x_t$ has a seasonal component with period $S$
+
+-   is ARIMA(P,D,Q) where we interpret the lag as a *seasonal lag*, i.e. lagging by $S$
+
+## Simulating a pure seasonal AR(1) process
+
+Notice the peaks every January– the seasonal period here is 12 (or 1 if we divide by 12).
+
+The same "tailing off"/"cutting off" behavior is the same, but we look for **seasonal spikes**
+
+```{r}
+#| echo: false
+set.seed(111111)
+SAR = sarima.sim(sar=.9, S=12, n=37) + 50
+layout(matrix(c(1,2, 1,3), nc=2), heights=c(1.5,1))
+tsplot(SAR, type="c", xlab="Year")
+ abline(v=1:3, col=4, lty=2)
+ Months = c("J","F","M","A","M","J","J","A","S","O","N","D")
+ points(SAR, pch=Months, cex=1.35, font=4, col=1:6)
+
+phi  = c(rep(0,11),.9)
+ACF  = ARMAacf(ar=phi, ma=0, 100)[-1] # [-1] removes 0 lag
+PACF = ARMAacf(ar=phi, ma=0, 100, pacf=TRUE)
+ LAG = 1:100/12
+tsplot(LAG, ACF, type="h", xlab="LAG", ylim=c(-.04,1))
+ abline(h=0, col=8)
+tsplot(LAG, PACF, type="h", xlab="LAG", ylim=c(-.04,1))
+ abline(h=0, col=8)
+```
+
+## Hawaiian Quarterly Occupancy
+
+The two plots show the time series, and the extracted seasonal component.
+
+```{r}
+#| echo: false
+##-- seasonal persistence --##
+x = window(hor, start=2002)
+par(mfrow = c(2,1))
+tsplot(x, main="Hawaiian Quarterly Occupancy Rate", ylab=" % rooms", ylim=c(62,86), col=8)
+ text(x, labels=1:4, col=c(3,4,2,6), cex=.8)
+ Qx = stl(x,15)$time.series[,1]
+tsplot(Qx, main="Seasonal Component", ylab=" % rooms", ylim=c(-4.7,4.7), col=8)
+ text(Qx, labels=1:4, col=c(3,4,2,6), cex=.8)
+```
+
+## Hawaiian Quarterly Occupancy
+
+```{r}
+#| echo: false
+par(mfrow = c(1,2))
+acf(x)
+pacf(x)
+```
+
+## Carbon Dioxide Readings
+
+Monthly $CO_2$ readings at Mauna Loa Observatory
+
+Do we see a seasonal pattern?
+
+```{r}
+tsplot(cardox, col=4, ylab=expression(CO[2]))
+title("Monthly Carbon Dioxide Readings - Mauna Loa Observatory ", cex.main=1)
+
+```
+
+## What's the acf?
+
+```{r}
+acf(cardox)
+```
+
+## Let's try a seasonal difference!
+
+```{r}
+tsplot(diff(cardox,12), col=4, 
+ylab=expression(nabla[12]~CO[2]))
+```
+
+## Check the acf
+
+Still a trend..difference again?
+
+```{r}
+acf(diff(cardox, 12))
+```
+
+## Difference and Seasonal Difference
+
+Looks pretty stationary!
+
+```{r}
+tsplot(diff(diff(cardox, 12)))
+```
+
+## Finding $p,q$ and $P,Q$
+
+We have identified $d = 1$ and $D=1$.
+
+-   **SEASONAL**: Check acf/pacf for $P,Q$ and recall the seasonal period (here 12/12 = 1)
+
+-   **NON-SEASONAL**: Check acf/pacf for $p,q$ just like before.
+
+## $p,q$ and $P,Q$ for Carbon Dioxide
+
+-   **Seasonal**: ACF appears to cut off at lag 1 (12 months), but tails of at lags 1, 2, 3, 4-- implies a *seasonal* moving average, so $Q=1, P= 0$.
+
+-   **Non-seasonal**: Appears to cut off at lag 1 (1/12) and PACF tails off. Looks like a MA(1), so $q = 1, p = 0$.
+
+```{r}
+par(mfrow = c(1,2))
+acf1(diff(diff(cardox, 12)))
+pacf(diff(diff(cardox,12)))
+```
+
+## Fit $ARIMA(0,1,1)\times(0,1,1)_{12}$
+
+```{r}
+#| message: false
+sarima(cardox, p = 0, d = 1, q = 1, P = 0, D = 1, Q = 1, S = 12)
+```
+
+## Results
+
+-   may still have some residual autocorrelation (Ljung-box test for small lags)
+
+-   Try adding another term? maybe increase order of MA or add AR component?
+
+## Increase order of MA
+
+```{r}
+sarima(cardox, p = 0, d = 1, q = 2, P = 0, D = 1, Q = 1, S = 12)
+```
+
+```{r}
+sarima(cardox, p = 1, d = 1, q = 1, P = 0, D = 1, Q = 1, S = 12)
+```
+
+## Forecasting
+
+Looks like we predict the $CO_2$ to continue to increase...
+
+```{r}
+sarima.for(cardox, 60, 1,1,1, 0,1,1,12)
+abline(v=2018.9, lty=6)
+```
+
+## Compare to auto arima
+
+May be overparameterized...
+
+```{r}
+cardox |> 
+  as_tsibble() |>
+  model(ARIMA(value)) |>
+  report()
+```
