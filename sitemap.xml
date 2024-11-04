@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://juliaSchedler.github.io/Stat416_CourseWebsite/index.html</loc>
-    <lastmod>2024-10-08T23:20:46.476Z</lastmod>
-  </url>
-  <url>
     <loc>https://juliaSchedler.github.io/Stat416_CourseWebsite/LectureNotes/Slides/SimulateRW/index.html</loc>
     <lastmod>2024-10-06T03:09:04.961Z</lastmod>
   </url>
@@ -13,40 +9,84 @@
     <lastmod>2024-10-06T03:08:09.602Z</lastmod>
   </url>
   <url>
+    <loc>https://juliaSchedler.github.io/Stat416_CourseWebsite/LectureNotes/Lecture7.html</loc>
+    <lastmod>2024-10-16T21:06:24.030Z</lastmod>
+  </url>
+  <url>
     <loc>https://juliaSchedler.github.io/Stat416_CourseWebsite/LectureNotes/Slides/Lecture5/index.html</loc>
     <lastmod>2024-10-08T15:56:37.656Z</lastmod>
-  </url>
-  <url>
-    <loc>https://juliaSchedler.github.io/Stat416_CourseWebsite/LectureNotes/Slides/Lecture3/index.html</loc>
-    <lastmod>2024-10-03T21:19:20.188Z</lastmod>
-  </url>
-  <url>
-    <loc>https://juliaSchedler.github.io/Stat416_CourseWebsite/LectureNotes/LectureN.html</loc>
-    <lastmod>2024-10-30T01:37:53.691Z</lastmod>
-  </url>
-  <url>
-    <loc>https://juliaSchedler.github.io/Stat416_CourseWebsite/LectureNotes/Lecture8.html</loc>
-    <lastmod>2024-10-16T20:37:26.330Z</lastmod>
-  </url>
-  <url>
-    <loc>https://juliaSchedler.github.io/Stat416_CourseWebsite/LectureNotes/Lecture6.html</loc>
-    <lastmod>2024-10-10T20:11:39.181Z</lastmod>
-  </url>
-  <url>
-    <loc>https://juliaSchedler.github.io/Stat416_CourseWebsite/LectureNotes/Lecture4.html</loc>
-    <lastmod>2024-10-06T02:45:33.275Z</lastmod>
-  </url>
-  <url>
-    <loc>https://juliaSchedler.github.io/Stat416_CourseWebsite/LectureNotes/Lecture2.html</loc>
-    <lastmod>2024-10-06T15:34:27.723Z</lastmod>
   </url>
   <url>
     <loc>https://juliaSchedler.github.io/Stat416_CourseWebsite/LectureNotes/Lecture10.html</loc>
     <lastmod>2024-10-30T16:47:57.246Z</lastmod>
   </url>
   <url>
+    <loc>https://juliaSchedler.github.io/Stat416_CourseWebsite/LectureNotes/Lecture4.html</loc>
+    <lastmod>2024-10-06T02:45:33.275Z</lastmod>
+  </url>
+  <url>
+    <loc>https://juliaSchedler.github.io/Stat416_CourseWebsite/LectureNotes/Lecture1.html</loc>
+    <lastmod>2024-10-03T21:19:20.186Z</lastmod>
+  </url>
+  <url>
+    <loc>https://juliaSchedler.github.io/Stat416_CourseWebsite/LectureNotes/Lecture8.html</loc>
+    <lastmod>2024-10-16T20:37:26.330Z</lastmod>
+  </url>
+  <url>
+    <loc>https://juliaSchedler.github.io/Stat416_CourseWebsite/Assignments/AssignmentSolutions/Assignment2_updated.html</loc>
+    <lastmod>2024-10-15T23:04:16.861Z</lastmod>
+  </url>
+  <url>
+    <loc>https://juliaSchedler.github.io/Stat416_CourseWebsite/Assignments/Assignment2_updated.html</loc>
+    <lastmod>2024-10-03T21:19:20.185Z</lastmod>
+  </url>
+  <url>
+    <loc>https://juliaSchedler.github.io/Stat416_CourseWebsite/LectureNotes/Lecture5.html</loc>
+    <lastmod>2024-10-08T02:23:06.094Z</lastmod>
+  </url>
+  <url>
+    <loc>https://juliaSchedler.github.io/Stat416_CourseWebsite/LectureNotes/Lecture6.html</loc>
+    <lastmod>2024-10-10T20:11:39.181Z</lastmod>
+  </url>
+  <url>
+    <loc>https://juliaSchedler.github.io/Stat416_CourseWebsite/Assignments/Assignment4_solutions.html</loc>
+    <lastmod>2024-11-02T22:26:05.677Z</lastmod>
+  </url>
+  <url>
+    <loc>https://juliaSchedler.github.io/Stat416_CourseWebsite/LectureNotes/Slides/Aside-Nile/index.html</loc>
+    <lastmod>2024-10-16T07:33:22.061Z</lastmod>
+  </url>
+  <url>
+    <loc>https://juliaSchedler.github.io/Stat416_CourseWebsite/LectureNotes/LectureN.html</loc>
+    <lastmod>2024-10-30T01:37:53.691Z</lastmod>
+  </url>
+  <url>
+    <loc>https://juliaSchedler.github.io/Stat416_CourseWebsite/Exams/Exam1.html</loc>
+    <lastmod>2024-10-10T22:17:42.251Z</lastmod>
+  </url>
+  <url>
     <loc>https://juliaSchedler.github.io/Stat416_CourseWebsite/Exams/PracticeMidterm.html</loc>
     <lastmod>2024-10-09T08:33:10.193Z</lastmod>
+  </url>
+  <url>
+    <loc>https://juliaSchedler.github.io/Stat416_CourseWebsite/index.html</loc>
+    <lastmod>2024-10-08T23:20:46.476Z</lastmod>
+  </url>
+  <url>
+    <loc>https://juliaSchedler.github.io/Stat416_CourseWebsite/about.html</loc>
+    <lastmod>2024-10-03T21:19:20.222Z</lastmod>
+  </url>
+  <url>
+    <loc>https://juliaSchedler.github.io/Stat416_CourseWebsite/Assignments/Assignment1.html</loc>
+    <lastmod>2024-10-03T21:19:20.184Z</lastmod>
+  </url>
+  <url>
+    <loc>https://juliaSchedler.github.io/Stat416_CourseWebsite/LectureNotes/Lecture9.html</loc>
+    <lastmod>2024-10-21T16:43:13.119Z</lastmod>
+  </url>
+  <url>
+    <loc>https://juliaSchedler.github.io/Stat416_CourseWebsite/LectureNotes/Slides/Lecture9/index.html</loc>
+    <lastmod>2024-10-21T20:25:06.525Z</lastmod>
   </url>
   <url>
     <loc>https://juliaSchedler.github.io/Stat416_CourseWebsite/Assignments/AssignmentSolutions/Assignment1_solutions.html</loc>
@@ -57,63 +97,31 @@
     <lastmod>2024-10-10T22:31:06.249Z</lastmod>
   </url>
   <url>
-    <loc>https://juliaSchedler.github.io/Stat416_CourseWebsite/Assignments/Assignment1.html</loc>
-    <lastmod>2024-10-03T21:19:20.184Z</lastmod>
-  </url>
-  <url>
-    <loc>https://juliaSchedler.github.io/Stat416_CourseWebsite/Assignments/Assignment2_updated.html</loc>
-    <lastmod>2024-10-03T21:19:20.185Z</lastmod>
-  </url>
-  <url>
-    <loc>https://juliaSchedler.github.io/Stat416_CourseWebsite/Assignments/AssignmentSolutions/Assignment2_updated.html</loc>
-    <lastmod>2024-10-15T23:04:16.861Z</lastmod>
-  </url>
-  <url>
-    <loc>https://juliaSchedler.github.io/Stat416_CourseWebsite/Exams/Exam1.html</loc>
-    <lastmod>2024-10-10T22:17:42.251Z</lastmod>
-  </url>
-  <url>
-    <loc>https://juliaSchedler.github.io/Stat416_CourseWebsite/LectureNotes/Lecture1.html</loc>
-    <lastmod>2024-10-03T21:19:20.186Z</lastmod>
-  </url>
-  <url>
-    <loc>https://juliaSchedler.github.io/Stat416_CourseWebsite/LectureNotes/Lecture11.html</loc>
-    <lastmod>2024-10-30T16:50:47.304Z</lastmod>
+    <loc>https://juliaSchedler.github.io/Stat416_CourseWebsite/LectureNotes/Lecture12.html</loc>
+    <lastmod>2024-11-04T17:57:08.633Z</lastmod>
   </url>
   <url>
     <loc>https://juliaSchedler.github.io/Stat416_CourseWebsite/LectureNotes/Lecture3.html</loc>
     <lastmod>2024-10-05T22:32:32.813Z</lastmod>
   </url>
   <url>
-    <loc>https://juliaSchedler.github.io/Stat416_CourseWebsite/LectureNotes/Lecture5.html</loc>
-    <lastmod>2024-10-08T02:23:06.094Z</lastmod>
+    <loc>https://juliaSchedler.github.io/Stat416_CourseWebsite/LectureNotes/Lecture2.html</loc>
+    <lastmod>2024-10-06T15:34:27.723Z</lastmod>
   </url>
   <url>
-    <loc>https://juliaSchedler.github.io/Stat416_CourseWebsite/LectureNotes/Lecture7.html</loc>
-    <lastmod>2024-10-16T21:06:24.030Z</lastmod>
+    <loc>https://juliaSchedler.github.io/Stat416_CourseWebsite/LectureNotes/Slides/Lecture3/index.html</loc>
+    <lastmod>2024-10-03T21:19:20.188Z</lastmod>
   </url>
   <url>
-    <loc>https://juliaSchedler.github.io/Stat416_CourseWebsite/LectureNotes/Lecture9.html</loc>
-    <lastmod>2024-10-21T16:43:13.119Z</lastmod>
-  </url>
-  <url>
-    <loc>https://juliaSchedler.github.io/Stat416_CourseWebsite/LectureNotes/Slides/Aside-Nile/index.html</loc>
-    <lastmod>2024-10-16T07:33:22.061Z</lastmod>
+    <loc>https://juliaSchedler.github.io/Stat416_CourseWebsite/LectureNotes/Lecture11.html</loc>
+    <lastmod>2024-11-04T17:47:41.462Z</lastmod>
   </url>
   <url>
     <loc>https://juliaSchedler.github.io/Stat416_CourseWebsite/LectureNotes/Slides/Lecture4/index.html</loc>
     <lastmod>2024-10-03T21:19:20.188Z</lastmod>
   </url>
   <url>
-    <loc>https://juliaSchedler.github.io/Stat416_CourseWebsite/LectureNotes/Slides/Lecture9/index.html</loc>
-    <lastmod>2024-10-21T20:25:06.525Z</lastmod>
-  </url>
-  <url>
     <loc>https://juliaSchedler.github.io/Stat416_CourseWebsite/LectureNotes/Slides/SimulateNonstationary/index.html</loc>
     <lastmod>2024-10-06T03:01:50.377Z</lastmod>
-  </url>
-  <url>
-    <loc>https://juliaSchedler.github.io/Stat416_CourseWebsite/about.html</loc>
-    <lastmod>2024-10-03T21:19:20.222Z</lastmod>
   </url>
 </urlset>

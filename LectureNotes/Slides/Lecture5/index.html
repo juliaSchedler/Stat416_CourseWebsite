@@ -10,10 +10,10 @@
 <link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/quarto-contrib/quarto-timer-1.0.0/timer.js"></script>
 <link href="../../../site_libs/quarto-contrib/quarto-timer-1.0.0/timer.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.555">
+  <meta name="generator" content="quarto-1.5.57">
 
   <meta name="author" content="Julia Schedler">
-  <title>Fall 24 Stat 416 Lecture Notes - Lecture 5</title>
+  <title>Fall 24 Stat 416 Lecture Notes – Lecture 5</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -465,8 +465,7 @@ Julia Schedler
 <p>Can we make the time series stationary by subtracting off the trend?</p>
 </div><div class="column" style="width:70%;">
 <p><img data-src="../../images/TREND.png"></p>
-</div>
-</div>
+</div></div>
 </section>
 <section id="example-subtracting-off-the-trend-1" class="slide level2">
 <h2>Example: Subtracting off the trend</h2>
@@ -605,8 +604,7 @@ F-statistic: 217.9 on 1 and 164 DF,  p-value: &lt; 2.2e-16</code></pre>
                         });
                     </script>
                 
-</div>
-</div>
+</div></div>
 </section>
 <section id="activity-2solutions-assuming-we-are-able-to-estimate-it" class="slide level2 smaller">
 <h2><span class="r-fit-text">Activity 2</span><span style="color:green;">Solutions</span>: “assuming we are able to estimate it”</h2>
@@ -1070,18 +1068,7 @@ x_{t} - x_{t-1} &amp;= (\mu_t + y_t) - (\mu_{t-1} + y_{t-1})\\
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -1113,7 +1100,29 @@ x_{t} - x_{t-1} &amp;= (\mu_t + y_t) - (\mu_{t-1} + y_{t-1})\\
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
         var mailtoRegex = new RegExp(/^mailto:/);
           var filterRegex = new RegExp("https:\/\/juliaSchedler\.github\.io\/Stat416_CourseWebsite\/");
@@ -1121,7 +1130,7 @@ x_{t} - x_{t-1} &amp;= (\mu_t + y_t) - (\mu_{t-1} + y_{t-1})\\
             return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }
         // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
         for (var i=0; i<links.length; i++) {
           const link = links[i];
           if (!isInternal(link.href)) {
