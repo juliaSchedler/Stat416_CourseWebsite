@@ -1916,7 +1916,7 @@
     "href": "Assignments/AssignmentSolutions/Assignment2_updated.html#part-2-code",
     "title": "Solutions: Assignment 2 Due 10/7 at Midnight",
     "section": "Part 2: Code",
-    "text": "Part 2: Code\nNote: I have set the code chunks here to have eval: false in the code chunk. Change that to true so that I can run your code easily.\n\n[5 points] All your code runs without errors (unless that’s the point), and if there is a message, explain what it means. (Bonus: to be nice to me, submit a rendered pdf)\n[5 points] Simulate from an AR(1) process with coefficient 0.7 and 10 data points.\n\n\nlibrary(astsa)\n\n# your code here\n\nw &lt;- rnorm(10) \nx_t &lt;- stats::filter(x = w, filter = 0.7, method = \"recursive\")\n\n\n[6 points] Look at the documentation for the stats::lag function (run ?lag in the console). State what package the function is in and what the function does[4 points]. Using k = 1 compute a lag(1) version of x_t that you simulated above[2 points].\n\n\nx_t_lag1 &lt;- stats::lag(x_t, k = 1)\n\n\n[3 points] Run the following code and compare x_t and x_t_lag1.\n\n\ncbind(x_t, x_t_lag1)\n\nTime Series:\nStart = 0 \nEnd = 10 \nFrequency = 1 \n            x_t     x_t_lag1\n 0           NA  0.775218722\n 1  0.775218722 -0.682125984\n 2 -0.682125984  1.023096364\n 3  1.023096364  0.008444366\n 4  0.008444366 -0.637133599\n 5 -0.637133599 -0.409346575\n 6 -0.409346575 -0.526687498\n 7 -0.526687498 -1.405964727\n 8 -1.405964727 -0.816240808\n 9 -0.816240808 -0.011662047\n10 -0.011662047           NA\n\n\n\nMake a time series plot of x_t and x_t_1. Do you notice the same features as when in the previous question?\n\n\ntsplot(x_t)\n\n\n\n\n\n\n\ntsplot(x_t_lag1)\n\n\n\n\n\n\n\n\n\nRun the below code. Why are the plots different? Are either particularly useful?\n\n\nplot(x_t, x_t_lag1)\nplot(as.vector(x_t), as.vector(x_t_lag1))\n\n\nInstead of using stats::lag, use dplyr::lag to create a new version of x_t_lag. Repeat the code from steps 2-5. Describe how the output has changed.\n\n\nx_t_lag1 &lt;- dplyr::lag(as.vector(x_t), n = 1)\nplot(x_t, x_t_lag1)\n\n\n\n\n\n\n\nplot(as.vector(x_t), as.vector(x_t_lag1))\n\n\n\n\n\n\n\n\n\nRe-simulate an AR(1) process as in number 1, but this time with 100 observations. Also recompute x_t_lag1. Fit an intercept-free regression model to predict x_t from x_t_lag. Provide the value of the slope estimate and interpret the value in the context of this simulation.\n\n\nw &lt;- rnorm(100) \nx_t &lt;- stats::filter(x = w, filter = 0.7, method = \"recursive\")\n\nx_t_lag1 &lt;- dplyr::lag(as.vector(x_t), n = 1)\n\nlinear_model &lt;- lm(x_t ~ -1 + x_t_lag1)\nsummary(linear_model)\n\n\nCall:\nlm(formula = x_t ~ -1 + x_t_lag1)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-1.7875 -0.6459 -0.1773  0.6391  2.6836 \n\nCoefficients:\n         Estimate Std. Error t value Pr(&gt;|t|)    \nx_t_lag1  0.66943    0.07501   8.925  2.6e-14 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 0.9562 on 98 degrees of freedom\n  (1 observation deleted due to missingness)\nMultiple R-squared:  0.4484,    Adjusted R-squared:  0.4427 \nF-statistic: 79.65 on 1 and 98 DF,  p-value: 2.603e-14\n\n\n\n[11 points] Plot the acf of x_t[2 points] and the acf of the residuals from the regression model[4 points]. Which looks more like white noise?[2 points] What does this tell you about the temporal structure in x_t and its residuals?[3 points]\n\n\nacf(x_t)\nacf(residuals(linear_model))"
+    "text": "Part 2: Code\nNote: I have set the code chunks here to have eval: false in the code chunk. Change that to true so that I can run your code easily.\n\n[5 points] All your code runs without errors (unless that’s the point), and if there is a message, explain what it means. (Bonus: to be nice to me, submit a rendered pdf)\n[5 points] Simulate from an AR(1) process with coefficient 0.7 and 10 data points.\n\n\nlibrary(astsa)\n\n# your code here\n\nw &lt;- rnorm(10) \nx_t &lt;- stats::filter(x = w, filter = 0.7, method = \"recursive\")\n\n\n[6 points] Look at the documentation for the stats::lag function (run ?lag in the console). State what package the function is in and what the function does[4 points]. Using k = 1 compute a lag(1) version of x_t that you simulated above[2 points].\n\n\nx_t_lag1 &lt;- stats::lag(x_t, k = 1)\n\n\n[3 points] Run the following code and compare x_t and x_t_lag1.\n\n\ncbind(x_t, x_t_lag1)\n\nTime Series:\nStart = 0 \nEnd = 10 \nFrequency = 1 \n          x_t   x_t_lag1\n 0         NA -1.0657703\n 1 -1.0657703 -1.1775578\n 2 -1.1775578 -0.6001375\n 3 -0.6001375  0.4813133\n 4  0.4813133 -2.5876853\n 5 -2.5876853 -3.3375232\n 6 -3.3375232 -1.5354688\n 7 -1.5354688 -1.1338985\n 8 -1.1338985 -1.4040943\n 9 -1.4040943 -1.4389959\n10 -1.4389959         NA\n\n\n\nMake a time series plot of x_t and x_t_1. Do you notice the same features as when in the previous question?\n\n\ntsplot(x_t)\n\n\n\n\n\n\n\ntsplot(x_t_lag1)\n\n\n\n\n\n\n\n\n\nRun the below code. Why are the plots different? Are either particularly useful?\n\n\nplot(x_t, x_t_lag1)\nplot(as.vector(x_t), as.vector(x_t_lag1))\n\n\nInstead of using stats::lag, use dplyr::lag to create a new version of x_t_lag. Repeat the code from steps 2-5. Describe how the output has changed.\n\n\nx_t_lag1 &lt;- dplyr::lag(as.vector(x_t), n = 1)\nplot(x_t, x_t_lag1)\n\n\n\n\n\n\n\nplot(as.vector(x_t), as.vector(x_t_lag1))\n\n\n\n\n\n\n\n\n\nRe-simulate an AR(1) process as in number 1, but this time with 100 observations. Also recompute x_t_lag1. Fit an intercept-free regression model to predict x_t from x_t_lag. Provide the value of the slope estimate and interpret the value in the context of this simulation.\n\n\nw &lt;- rnorm(100) \nx_t &lt;- stats::filter(x = w, filter = 0.7, method = \"recursive\")\n\nx_t_lag1 &lt;- dplyr::lag(as.vector(x_t), n = 1)\n\nlinear_model &lt;- lm(x_t ~ -1 + x_t_lag1)\nsummary(linear_model)\n\n\nCall:\nlm(formula = x_t ~ -1 + x_t_lag1)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-2.8479 -0.6401  0.1616  0.6902  2.8052 \n\nCoefficients:\n         Estimate Std. Error t value Pr(&gt;|t|)    \nx_t_lag1  0.66089    0.07664   8.623 1.17e-13 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 1.022 on 98 degrees of freedom\n  (1 observation deleted due to missingness)\nMultiple R-squared:  0.4314,    Adjusted R-squared:  0.4256 \nF-statistic: 74.36 on 1 and 98 DF,  p-value: 1.168e-13\n\n\n\n[11 points] Plot the acf of x_t[2 points] and the acf of the residuals from the regression model[4 points]. Which looks more like white noise?[2 points] What does this tell you about the temporal structure in x_t and its residuals?[3 points]\n\n\nacf(x_t)\nacf(residuals(linear_model))"
   },
   {
     "objectID": "Assignments/AssignmentSolutions/Assignment2_updated.html#part-3-reading",
@@ -3142,231 +3142,363 @@
     "href": "LectureNotes/Lecture12.html#announcements",
     "title": "Lecture 12",
     "section": "Announcements",
-    "text": "Announcements\n\nThere will be participation credit today! Make sure you submit.\nAssignment 4 due tonight, extensions through Weds allowed if desired\nAssignment 5 posted soon, will be due Wednesday"
+    "text": "Announcements\n\nThere will be participation credit today! Make sure you submit.\nAssignment 4 due tonight, extensions through Weds allowed if desired\nAssignment 5 posted soon, will be due Wednesday",
+    "crumbs": [
+      "Week 7",
+      "Lecture 12"
+    ]
   },
   {
     "objectID": "LectureNotes/Lecture12.html#midterm-grades",
     "href": "LectureNotes/Lecture12.html#midterm-grades",
     "title": "Lecture 12",
     "section": "Midterm Grades",
-    "text": "Midterm Grades\n\n\nCode\nlibrary(tidyverse)\nmidterm_grades &lt;- read.csv(\"../../Student Data/2024-11-04T0741_Grades-STAT-416-01-2248.csv\", skip = 3, header = F)[,c(5,9)]  \nnames(midterm_grades) &lt;- c(\"Section\", \"Grade\")\n\n## convert section to factor\nmidterm_grades$Section &lt;- factor(as.factor(midterm_grades$Section), labels = c(\"10am\", \"2pm\"))\n\n## density plot add summary statistics to plot as text\nsummary_stats &lt;- midterm_grades |&gt;\n  group_by(Section) |&gt;\n  summarise(mean = mean(Grade), sd = sd(Grade))\n\nsummary_stats_overall &lt;- midterm_grades |&gt;\n  summarise(mean = mean(Grade), sd = sd(Grade))\n\nggplot(midterm_grades, aes(x = Grade)) + geom_density() + \n  geom_text(data = summary_stats, aes(x = c(80,80), y = c(.15, .20), label = paste(\"Section:\", Section, \"\\n Mean: \", round(mean, 2), \"\\nSD: \", round(sd, 2)), vjust = 1)) +\n  geom_text(data = summary_stats_overall, aes(x = 70, y = .17, label = paste(\"Overall:\\nMean: \", round(mean, 2), \"\\nSD: \", round(sd, 2)), vjust = 1)) +\n  ylab(\"~density~\") + xlab(\"Grade (%)\")+ ggtitle(\"Midterm Grades\")"
+    "text": "Midterm Grades\n\n\nCode\nlibrary(tidyverse)\nmidterm_grades &lt;- read.csv(\"../../Student Data/2024-11-04T0741_Grades-STAT-416-01-2248.csv\", skip = 3, header = F)[,c(5,9)]  \nnames(midterm_grades) &lt;- c(\"Section\", \"Grade\")\n\n## convert section to factor\nmidterm_grades$Section &lt;- factor(as.factor(midterm_grades$Section), labels = c(\"10am\", \"2pm\"))\n\n## density plot add summary statistics to plot as text\nsummary_stats &lt;- midterm_grades |&gt;\n  group_by(Section) |&gt;\n  summarise(mean = mean(Grade), sd = sd(Grade))\n\nsummary_stats_overall &lt;- midterm_grades |&gt;\n  summarise(mean = mean(Grade), sd = sd(Grade))\n\nggplot(midterm_grades, aes(x = Grade)) + geom_density() + \n  geom_text(data = summary_stats, aes(x = c(80,80), y = c(.15, .20), label = paste(\"Section:\", Section, \"\\n Mean: \", round(mean, 2), \"\\nSD: \", round(sd, 2)), vjust = 1)) +\n  geom_text(data = summary_stats_overall, aes(x = 70, y = .17, label = paste(\"Overall:\\nMean: \", round(mean, 2), \"\\nSD: \", round(sd, 2)), vjust = 1)) +\n  ylab(\"~density~\") + xlab(\"Grade (%)\")+ ggtitle(\"Midterm Grades\")",
+    "crumbs": [
+      "Week 7",
+      "Lecture 12"
+    ]
   },
   {
     "objectID": "LectureNotes/Lecture12.html#activity-1-review-your-midterm",
     "href": "LectureNotes/Lecture12.html#activity-1-review-your-midterm",
     "title": "Lecture 12",
     "section": "Activity 1: Review your midterm",
-    "text": "Activity 1: Review your midterm\n\nCheck the page totals (bottom corner) and exam totals (first page)\nFind where you lost the most points. What did you do incorrectly?\nWhat was something you did well?\nFill out the canvas Quiz"
+    "text": "Activity 1: Review your midterm\n\nCheck the page totals (bottom corner) and exam totals (first page)\nFind where you lost the most points. What did you do incorrectly?\nWhat was something you did well?\nFill out the canvas Quiz",
+    "crumbs": [
+      "Week 7",
+      "Lecture 12"
+    ]
   },
   {
     "objectID": "LectureNotes/Lecture12.html#r-code-for-sarima-models",
     "href": "LectureNotes/Lecture12.html#r-code-for-sarima-models",
     "title": "Lecture 12",
     "section": "R code for SARIMA models",
-    "text": "R code for SARIMA models\n\nsarima function from the astsa package\nauto.arima function from the forecast package\nmodel function from the fable package\n\nWhich to use??? They all are fine, but output the model object differently, so the model output won’t work with functions from other packages."
+    "text": "R code for SARIMA models\n\nsarima function from the astsa package\nauto.arima function from the forecast package\nmodel function from the fable package\n\nWhich to use??? They all are fine, but output the model object differently, so the model output won’t work with functions from other packages.",
+    "crumbs": [
+      "Week 7",
+      "Lecture 12"
+    ]
   },
   {
     "objectID": "LectureNotes/Lecture12.html#example-trying-to-use-sarima-output-with-fable-diagnostics",
     "href": "LectureNotes/Lecture12.html#example-trying-to-use-sarima-output-with-fable-diagnostics",
     "title": "Lecture 12",
     "section": "Example: Trying to use sarima output with fable diagnostics",
-    "text": "Example: Trying to use sarima output with fable diagnostics\nYou get an error!\n\n\nCode\nlibrary(fpp3)\nlibrary(astsa)\n\nlog_gnp &lt;- log(gnp)\n\nsarima_model &lt;- sarima(log_gnp, p = 1, d = 1, q = 0, P = 0, D = 0, Q = 0, details = FALSE)\n## &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;\n##  \n## Coefficients: \n##          Estimate     SE t.value p.value\n## ar1        0.3467 0.0627  5.5255       0\n## constant   0.0083 0.0010  8.5398       0\n## \n## sigma^2 estimated as 9.029576e-05 on 220 degrees of freedom \n##  \n## AIC = -6.446939  AICc = -6.446692  BIC = -6.400957 \n## \n\ndiagnostics &lt;- sarima_model |&gt;\n  residuals() |&gt;\n  ACF() |&gt;\n  gg_tsdisplay()\n## Error in UseMethod(\"measured_vars\"): no applicable method for 'measured_vars' applied to an object of class \"NULL\""
+    "text": "Example: Trying to use sarima output with fable diagnostics\nYou get an error!\n\n\nCode\nlibrary(fpp3)\nlibrary(astsa)\n\nlog_gnp &lt;- log(gnp)\n\nsarima_model &lt;- sarima(log_gnp, p = 1, d = 1, q = 0, P = 0, D = 0, Q = 0, details = FALSE)\n## &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;\n##  \n## Coefficients: \n##          Estimate     SE t.value p.value\n## ar1        0.3467 0.0627  5.5255       0\n## constant   0.0083 0.0010  8.5398       0\n## \n## sigma^2 estimated as 9.029576e-05 on 220 degrees of freedom \n##  \n## AIC = -6.446939  AICc = -6.446692  BIC = -6.400957 \n## \n\ndiagnostics &lt;- sarima_model |&gt;\n  residuals() |&gt;\n  ACF() |&gt;\n  gg_tsdisplay()\n## Error in UseMethod(\"measured_vars\"): no applicable method for 'measured_vars' applied to an object of class \"NULL\"",
+    "crumbs": [
+      "Week 7",
+      "Lecture 12"
+    ]
   },
   {
     "objectID": "LectureNotes/Lecture12.html#example-trying-to-use-fable-output-with-sarima-diagnostics",
     "href": "LectureNotes/Lecture12.html#example-trying-to-use-fable-output-with-sarima-diagnostics",
     "title": "Lecture 12",
     "section": "Example: trying to use fable output with sarima diagnostics",
-    "text": "Example: trying to use fable output with sarima diagnostics\nSince sarima outputs diagnostics when you fit the model, you could just re-fit the model with sarima and then use the diagnostics.\n\n\nCode\nfable_model &lt;- log_gnp |&gt; \n  as_tsibble() |&gt;\n  model(ARIMA(value ~ pdq(1,1,0) + PDQ(0,0,0))) |&gt; report()\n## Series: value \n## Model: ARIMA(1,1,0) w/ drift \n## \n## Coefficients:\n##          ar1  constant\n##       0.3467    0.0054\n## s.e.  0.0627    0.0006\n## \n## sigma^2 estimated as 9.136e-05:  log likelihood=718.61\n## AIC=-1431.22   AICc=-1431.11   BIC=-1421.01\n\nsarima(fable_model) ## doesn't work\n## Error in sarima(fable_model): argument \"d\" is missing, with no default\n\n\n\n\nCode\n## fit the same model, but with default details = TRUE.\nsarima(log_gnp, p = 1, d = 1, q = 0, P = 0, D = 0, Q = 0)\n\n\ninitial  value -4.589567 \niter   2 value -4.654150\niter   3 value -4.654150\niter   4 value -4.654151\niter   4 value -4.654151\niter   4 value -4.654151\nfinal  value -4.654151 \nconverged\ninitial  value -4.655919 \niter   2 value -4.655921\niter   3 value -4.655921\niter   4 value -4.655922\niter   5 value -4.655922\niter   5 value -4.655922\niter   5 value -4.655922\nfinal  value -4.655922 \nconverged\n&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;\n \nCoefficients: \n         Estimate     SE t.value p.value\nar1        0.3467 0.0627  5.5255       0\nconstant   0.0083 0.0010  8.5398       0\n\nsigma^2 estimated as 9.029576e-05 on 220 degrees of freedom \n \nAIC = -6.446939  AICc = -6.446692  BIC = -6.400957"
+    "text": "Example: trying to use fable output with sarima diagnostics\nSince sarima outputs diagnostics when you fit the model, you could just re-fit the model with sarima and then use the diagnostics.\n\n\nCode\nfable_model &lt;- log_gnp |&gt; \n  as_tsibble() |&gt;\n  model(ARIMA(value ~ pdq(1,1,0) + PDQ(0,0,0))) |&gt; report()\n## Series: value \n## Model: ARIMA(1,1,0) w/ drift \n## \n## Coefficients:\n##          ar1  constant\n##       0.3467    0.0054\n## s.e.  0.0627    0.0006\n## \n## sigma^2 estimated as 9.136e-05:  log likelihood=718.61\n## AIC=-1431.22   AICc=-1431.11   BIC=-1421.01\n\nsarima(fable_model) ## doesn't work\n## Error in sarima(fable_model): argument \"d\" is missing, with no default\n\n\n\n\nCode\n## fit the same model, but with default details = TRUE.\nsarima(log_gnp, p = 1, d = 1, q = 0, P = 0, D = 0, Q = 0)\n\n\ninitial  value -4.589567 \niter   2 value -4.654150\niter   3 value -4.654150\niter   4 value -4.654151\niter   4 value -4.654151\niter   4 value -4.654151\nfinal  value -4.654151 \nconverged\ninitial  value -4.655919 \niter   2 value -4.655921\niter   3 value -4.655921\niter   4 value -4.655922\niter   5 value -4.655922\niter   5 value -4.655922\niter   5 value -4.655922\nfinal  value -4.655922 \nconverged\n&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;\n \nCoefficients: \n         Estimate     SE t.value p.value\nar1        0.3467 0.0627  5.5255       0\nconstant   0.0083 0.0010  8.5398       0\n\nsigma^2 estimated as 9.029576e-05 on 220 degrees of freedom \n \nAIC = -6.446939  AICc = -6.446692  BIC = -6.400957",
+    "crumbs": [
+      "Week 7",
+      "Lecture 12"
+    ]
   },
   {
     "objectID": "LectureNotes/Lecture12.html#activity-2-putting-it-all-together",
     "href": "LectureNotes/Lecture12.html#activity-2-putting-it-all-together",
     "title": "Lecture 12",
     "section": "Activity 2: Putting it all together",
-    "text": "Activity 2: Putting it all together\n\nDownload “ARIMA code cheat sheet.docx” from Canvas\nPick one column\nFill in the blanks with the correct functions"
+    "text": "Activity 2: Putting it all together\n\nDownload “ARIMA code cheat sheet.docx” from Canvas\nPick one column\nFill in the blanks with the correct functions",
+    "crumbs": [
+      "Week 7",
+      "Lecture 12"
+    ]
   },
   {
     "objectID": "LectureNotes/Lecture12.html#forecasting",
     "href": "LectureNotes/Lecture12.html#forecasting",
     "title": "Lecture 12",
     "section": "Forecasting",
-    "text": "Forecasting\nGiven the data and a model that fits the data, we want to predict future values\nHow can we do this - by “hand” (or just “manually” using code) - using fable or astsa functions\nAlso, how do we plot these forecasts?"
+    "text": "Forecasting\nGiven the data and a model that fits the data, we want to predict future values\nHow can we do this - by “hand” (or just “manually” using code) - using fable or astsa functions\nAlso, how do we plot these forecasts?",
+    "crumbs": [
+      "Week 7",
+      "Lecture 12"
+    ]
   },
   {
     "objectID": "LectureNotes/Lecture12.html#forecasting-using-fable-or-astsa-functions",
     "href": "LectureNotes/Lecture12.html#forecasting-using-fable-or-astsa-functions",
     "title": "Lecture 12",
     "section": "Forecasting using fable or astsa functions",
-    "text": "Forecasting using fable or astsa functions\n\n\nfable functions\n\nFit model using model() and ARIMA()\nForecast using forecast() specifying h\n\n\n\nCode\nfit &lt;- log_gnp |&gt; \n  as_tsibble() |&gt;\n  model(ARIMA(value ~ pdq(1,1,0) + PDQ(0,0,0))) ## force nonseasonal\n\nfit |&gt; forecast(h = 10)\n\n\n# A fable: 10 x 4 [1Q]\n# Key:     .model [1]\n   .model                                       index\n   &lt;chr&gt;                                        &lt;qtr&gt;\n 1 ARIMA(value ~ pdq(1, 1, 0) + PDQ(0, 0, 0)) 2002 Q4\n 2 ARIMA(value ~ pdq(1, 1, 0) + PDQ(0, 0, 0)) 2003 Q1\n 3 ARIMA(value ~ pdq(1, 1, 0) + PDQ(0, 0, 0)) 2003 Q2\n 4 ARIMA(value ~ pdq(1, 1, 0) + PDQ(0, 0, 0)) 2003 Q3\n 5 ARIMA(value ~ pdq(1, 1, 0) + PDQ(0, 0, 0)) 2003 Q4\n 6 ARIMA(value ~ pdq(1, 1, 0) + PDQ(0, 0, 0)) 2004 Q1\n 7 ARIMA(value ~ pdq(1, 1, 0) + PDQ(0, 0, 0)) 2004 Q2\n 8 ARIMA(value ~ pdq(1, 1, 0) + PDQ(0, 0, 0)) 2004 Q3\n 9 ARIMA(value ~ pdq(1, 1, 0) + PDQ(0, 0, 0)) 2004 Q4\n10 ARIMA(value ~ pdq(1, 1, 0) + PDQ(0, 0, 0)) 2005 Q1\n# ℹ 2 more variables: value &lt;dist&gt;, .mean &lt;dbl&gt;\n\n\n\n\nastsa functions\n\nDetermine model order using acf/pacf, check model fit using sarima\nUse sarima.for to forecast (with order you chose– re-fits model)\n\n\n\n\nCode\nsarima_model &lt;- sarima(log_gnp, p = 1, d = 1, q = 0, P = 0, D = 0, Q = 0)\n\n\ninitial  value -4.589567 \niter   2 value -4.654150\niter   3 value -4.654150\niter   4 value -4.654151\niter   4 value -4.654151\niter   4 value -4.654151\nfinal  value -4.654151 \nconverged\ninitial  value -4.655919 \niter   2 value -4.655921\niter   3 value -4.655921\niter   4 value -4.655922\niter   5 value -4.655922\niter   5 value -4.655922\niter   5 value -4.655922\nfinal  value -4.655922 \nconverged\n&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;\n \nCoefficients: \n         Estimate     SE t.value p.value\nar1        0.3467 0.0627  5.5255       0\nconstant   0.0083 0.0010  8.5398       0\n\nsigma^2 estimated as 9.029576e-05 on 220 degrees of freedom \n \nAIC = -6.446939  AICc = -6.446692  BIC = -6.400957 \n \n\n\n\n\n\n\n\n\n\nCode\nsarima.for(log_gnp,p = 1, d = 1, q = 0, P = 0, D = 0, Q = 0, n.ahead = 10, plot = F)\n\n\n$pred\n         Qtr1     Qtr2     Qtr3     Qtr4\n2002                            9.165886\n2003 9.174510 9.182946 9.191316 9.199664\n2004 9.208004 9.216342 9.224678 9.233014\n2005 9.241350                           \n\n$se\n            Qtr1        Qtr2        Qtr3        Qtr4\n2002                                     0.009502408\n2003 0.015938787 0.021173624 0.025569341 0.029380482\n2004 0.032772142 0.035850982 0.038687708 0.041330887\n2005 0.043815131"
+    "text": "Forecasting using fable or astsa functions\n\n\nfable functions\n\nFit model using model() and ARIMA()\nForecast using forecast() specifying h\n\n\n\nCode\nfit &lt;- log_gnp |&gt; \n  as_tsibble() |&gt;\n  model(ARIMA(value ~ pdq(1,1,0) + PDQ(0,0,0))) ## force nonseasonal\n\nfit |&gt; forecast(h = 10)\n\n\n# A fable: 10 x 4 [1Q]\n# Key:     .model [1]\n   .model                                       index\n   &lt;chr&gt;                                        &lt;qtr&gt;\n 1 ARIMA(value ~ pdq(1, 1, 0) + PDQ(0, 0, 0)) 2002 Q4\n 2 ARIMA(value ~ pdq(1, 1, 0) + PDQ(0, 0, 0)) 2003 Q1\n 3 ARIMA(value ~ pdq(1, 1, 0) + PDQ(0, 0, 0)) 2003 Q2\n 4 ARIMA(value ~ pdq(1, 1, 0) + PDQ(0, 0, 0)) 2003 Q3\n 5 ARIMA(value ~ pdq(1, 1, 0) + PDQ(0, 0, 0)) 2003 Q4\n 6 ARIMA(value ~ pdq(1, 1, 0) + PDQ(0, 0, 0)) 2004 Q1\n 7 ARIMA(value ~ pdq(1, 1, 0) + PDQ(0, 0, 0)) 2004 Q2\n 8 ARIMA(value ~ pdq(1, 1, 0) + PDQ(0, 0, 0)) 2004 Q3\n 9 ARIMA(value ~ pdq(1, 1, 0) + PDQ(0, 0, 0)) 2004 Q4\n10 ARIMA(value ~ pdq(1, 1, 0) + PDQ(0, 0, 0)) 2005 Q1\n# ℹ 2 more variables: value &lt;dist&gt;, .mean &lt;dbl&gt;\n\n\n\n\nastsa functions\n\nDetermine model order using acf/pacf, check model fit using sarima\nUse sarima.for to forecast (with order you chose– re-fits model)\n\n\n\n\nCode\nsarima_model &lt;- sarima(log_gnp, p = 1, d = 1, q = 0, P = 0, D = 0, Q = 0)\n\n\ninitial  value -4.589567 \niter   2 value -4.654150\niter   3 value -4.654150\niter   4 value -4.654151\niter   4 value -4.654151\niter   4 value -4.654151\nfinal  value -4.654151 \nconverged\ninitial  value -4.655919 \niter   2 value -4.655921\niter   3 value -4.655921\niter   4 value -4.655922\niter   5 value -4.655922\niter   5 value -4.655922\niter   5 value -4.655922\nfinal  value -4.655922 \nconverged\n&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;\n \nCoefficients: \n         Estimate     SE t.value p.value\nar1        0.3467 0.0627  5.5255       0\nconstant   0.0083 0.0010  8.5398       0\n\nsigma^2 estimated as 9.029576e-05 on 220 degrees of freedom \n \nAIC = -6.446939  AICc = -6.446692  BIC = -6.400957 \n \n\n\n\n\n\n\n\n\n\nCode\nsarima.for(log_gnp,p = 1, d = 1, q = 0, P = 0, D = 0, Q = 0, n.ahead = 10, plot = F)\n\n\n$pred\n         Qtr1     Qtr2     Qtr3     Qtr4\n2002                            9.165886\n2003 9.174510 9.182946 9.191316 9.199664\n2004 9.208004 9.216342 9.224678 9.233014\n2005 9.241350                           \n\n$se\n            Qtr1        Qtr2        Qtr3        Qtr4\n2002                                     0.009502408\n2003 0.015938787 0.021173624 0.025569341 0.029380482\n2004 0.032772142 0.035850982 0.038687708 0.041330887\n2005 0.043815131",
+    "crumbs": [
+      "Week 7",
+      "Lecture 12"
+    ]
   },
   {
     "objectID": "LectureNotes/Lecture12.html#compare-predictions",
     "href": "LectureNotes/Lecture12.html#compare-predictions",
     "title": "Lecture 12",
     "section": "Compare predictions",
-    "text": "Compare predictions\nYay! They’re the same :)\n\n\nCode\nfable_forecast &lt;- fit |&gt; forecast(h = 10)\nastsa_forecast &lt;- sarima.for(log_gnp,p = 1, d = 1, q = 0, P = 0, D = 0, Q = 0, n.ahead = 10, plot = F)\n\ncbind(fable_forecast$.mean,astsa_forecast$pred)\n\n\n        fable_forecast$.mean astsa_forecast$pred\n2002 Q4             9.165886            9.165886\n2003 Q1             9.174510            9.174510\n2003 Q2             9.182946            9.182946\n2003 Q3             9.191316            9.191316\n2003 Q4             9.199664            9.199664\n2004 Q1             9.208004            9.208004\n2004 Q2             9.216342            9.216342\n2004 Q3             9.224678            9.224678\n2004 Q4             9.233014            9.233014\n2005 Q1             9.241350            9.241350"
+    "text": "Compare predictions\nYay! They’re the same :)\n\n\nCode\nfable_forecast &lt;- fit |&gt; forecast(h = 10)\nastsa_forecast &lt;- sarima.for(log_gnp,p = 1, d = 1, q = 0, P = 0, D = 0, Q = 0, n.ahead = 10, plot = F)\n\ncbind(fable_forecast$.mean,astsa_forecast$pred)\n\n\n        fable_forecast$.mean astsa_forecast$pred\n2002 Q4             9.165886            9.165886\n2003 Q1             9.174510            9.174510\n2003 Q2             9.182946            9.182946\n2003 Q3             9.191316            9.191316\n2003 Q4             9.199664            9.199664\n2004 Q1             9.208004            9.208004\n2004 Q2             9.216342            9.216342\n2004 Q3             9.224678            9.224678\n2004 Q4             9.233014            9.233014\n2005 Q1             9.241350            9.241350",
+    "crumbs": [
+      "Week 7",
+      "Lecture 12"
+    ]
   },
   {
     "objectID": "LectureNotes/Lecture12.html#plot-the-forecast-fable",
     "href": "LectureNotes/Lecture12.html#plot-the-forecast-fable",
     "title": "Lecture 12",
     "section": "Plot the forecast (fable)",
-    "text": "Plot the forecast (fable)\n\n\nCode\nfable_forecast |&gt; autoplot(log_gnp)"
+    "text": "Plot the forecast (fable)\n\n\nCode\nfable_forecast |&gt; autoplot(log_gnp)",
+    "crumbs": [
+      "Week 7",
+      "Lecture 12"
+    ]
   },
   {
     "objectID": "LectureNotes/Lecture12.html#plot-the-forecast-astsa",
     "href": "LectureNotes/Lecture12.html#plot-the-forecast-astsa",
     "title": "Lecture 12",
     "section": "Plot the forecast (astsa)",
-    "text": "Plot the forecast (astsa)\n\n\nCode\nsarima.for(log_gnp,p = 1, d = 1, q = 0, P = 0, D = 0, Q = 0, n.ahead = 10, plot = T)\n\n\n\n$pred\n         Qtr1     Qtr2     Qtr3     Qtr4\n2002                            9.165886\n2003 9.174510 9.182946 9.191316 9.199664\n2004 9.208004 9.216342 9.224678 9.233014\n2005 9.241350                           \n\n$se\n            Qtr1        Qtr2        Qtr3        Qtr4\n2002                                     0.009502408\n2003 0.015938787 0.021173624 0.025569341 0.029380482\n2004 0.032772142 0.035850982 0.038687708 0.041330887\n2005 0.043815131"
+    "text": "Plot the forecast (astsa)\n\n\nCode\nsarima.for(log_gnp,p = 1, d = 1, q = 0, P = 0, D = 0, Q = 0, n.ahead = 10, plot = T)\n\n\n\n$pred\n         Qtr1     Qtr2     Qtr3     Qtr4\n2002                            9.165886\n2003 9.174510 9.182946 9.191316 9.199664\n2004 9.208004 9.216342 9.224678 9.233014\n2005 9.241350                           \n\n$se\n            Qtr1        Qtr2        Qtr3        Qtr4\n2002                                     0.009502408\n2003 0.015938787 0.021173624 0.025569341 0.029380482\n2004 0.032772142 0.035850982 0.038687708 0.041330887\n2005 0.043815131",
+    "crumbs": [
+      "Week 7",
+      "Lecture 12"
+    ]
   },
   {
     "objectID": "LectureNotes/Lecture12.html#forecasting-by-hand",
     "href": "LectureNotes/Lecture12.html#forecasting-by-hand",
     "title": "Lecture 12",
     "section": "Forecasting “by hand”",
-    "text": "Forecasting “by hand”\n\nWrite down the equation of your model based on the output\nGet the observations you need to populate the forecast\nCalculate the forecast, pushing forward your next forecasted value through the equation"
+    "text": "Forecasting “by hand”\n\nWrite down the equation of your model based on the output\nGet the observations you need to populate the forecast\nCalculate the forecast, pushing forward your next forecasted value through the equation",
+    "crumbs": [
+      "Week 7",
+      "Lecture 12"
+    ]
   },
   {
     "objectID": "LectureNotes/Lecture12.html#forecasting-by-hand-1",
     "href": "LectureNotes/Lecture12.html#forecasting-by-hand-1",
     "title": "Lecture 12",
     "section": "Forecasting “by hand”",
-    "text": "Forecasting “by hand”\n\n\nCode\nastsa_model &lt;- sarima(log_gnp, p = 1, d = 1, q = 0, P = 0, D = 0, Q = 0, details = FALSE)\n\n\n&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;\n \nCoefficients: \n         Estimate     SE t.value p.value\nar1        0.3467 0.0627  5.5255       0\nconstant   0.0083 0.0010  8.5398       0\n\nsigma^2 estimated as 9.029576e-05 on 220 degrees of freedom \n \nAIC = -6.446939  AICc = -6.446692  BIC = -6.400957 \n \n\n\n(apparent) fable forecast equation: \\(\\hat{x_t} = 0.0054 + 0.3467\\cdot x_{t-1}\\)\n(apparent) astsa forecast equation: \\(\\hat{x_t} = 0.0083 + 0.3467\\cdot x_{t-1}\\)"
+    "text": "Forecasting “by hand”\n\n\nCode\nastsa_model &lt;- sarima(log_gnp, p = 1, d = 1, q = 0, P = 0, D = 0, Q = 0, details = FALSE)\n\n\n&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;\n \nCoefficients: \n         Estimate     SE t.value p.value\nar1        0.3467 0.0627  5.5255       0\nconstant   0.0083 0.0010  8.5398       0\n\nsigma^2 estimated as 9.029576e-05 on 220 degrees of freedom \n \nAIC = -6.446939  AICc = -6.446692  BIC = -6.400957 \n \n\n\n(apparent) fable forecast equation: \\(\\hat{x_t} = 0.0054 + 0.3467\\cdot x_{t-1}\\)\n(apparent) astsa forecast equation: \\(\\hat{x_t} = 0.0083 + 0.3467\\cdot x_{t-1}\\)",
+    "crumbs": [
+      "Week 7",
+      "Lecture 12"
+    ]
   },
   {
     "objectID": "LectureNotes/Lecture12.html#activity-forecasting-by-hand",
     "href": "LectureNotes/Lecture12.html#activity-forecasting-by-hand",
     "title": "Lecture 12",
     "section": "Activity: Forecasting “by hand”",
-    "text": "Activity: Forecasting “by hand”\nfable forecast equation: \\(\\hat{x_t} = 0.0054 + 0.3467\\cdot x_{t-1}\\)\nastsa forecast equation: \\(\\hat{x_t} = 0.0083 + 0.3467\\cdot x_{t-1}\\)"
+    "text": "Activity: Forecasting “by hand”\nfable forecast equation: \\(\\hat{x_t} = 0.0054 + 0.3467\\cdot x_{t-1}\\)\nastsa forecast equation: \\(\\hat{x_t} = 0.0083 + 0.3467\\cdot x_{t-1}\\)",
+    "crumbs": [
+      "Week 7",
+      "Lecture 12"
+    ]
   },
   {
     "objectID": "LectureNotes/Lecture12.html#activity-solution-forecasting-by-hand",
     "href": "LectureNotes/Lecture12.html#activity-solution-forecasting-by-hand",
     "title": "Lecture 12",
     "section": "Activity Solution: Forecasting “by hand”",
-    "text": "Activity Solution: Forecasting “by hand”\n\n\nCode\ndata.frame(time = tail(time(log_gnp)), log_gnp = tail(log_gnp), diff_log_gnp = tail(diff(log_gnp)))\n\n\n     time  log_gnp  diff_log_gnp\n1 2001.25 9.129597 -0.0018845451\n2 2001.50 9.126937 -0.0026595616\n3 2001.75 9.135994  0.0090568862\n4 2002.00 9.145002  0.0090076208\n5 2002.25 9.145983  0.0009816371\n6 2002.50 9.156718  0.0107348840\n\n\nfable forecast equation: \\(\\hat{x_t} = 0.0054 + 0.3467\\cdot x_{t-1}\\)\n\n\\(\\hat{x}_{2002 Q4} = 0.0054 + 0.3467\\cdot x_{2002 Q3} = 0.0054 + 0.3467\\cdot 9.156718 = 3.1800034\\)\n\nastsa forecast equation: \\(\\hat{x_t} = 0.0083 + 0.3467\\cdot x_{t-1}\\)\n\n\\(\\hat{x}_{2002 Q4} = 0.0083 + 0.3467\\cdot x_{2002 Q3} = 0.0083 + 0.3467\\cdot 9.156718 = 3.182934\\)\n\nThese values don’t make sense, and don’t match?"
+    "text": "Activity Solution: Forecasting “by hand”\n\n\nCode\ndata.frame(time = tail(time(log_gnp)), log_gnp = tail(log_gnp), diff_log_gnp = tail(diff(log_gnp)))\n\n\n     time  log_gnp  diff_log_gnp\n1 2001.25 9.129597 -0.0018845451\n2 2001.50 9.126937 -0.0026595616\n3 2001.75 9.135994  0.0090568862\n4 2002.00 9.145002  0.0090076208\n5 2002.25 9.145983  0.0009816371\n6 2002.50 9.156718  0.0107348840\n\n\nfable forecast equation: \\(\\hat{x_t} = 0.0054 + 0.3467\\cdot x_{t-1}\\)\n\n\\(\\hat{x}_{2002 Q4} = 0.0054 + 0.3467\\cdot x_{2002 Q3} = 0.0054 + 0.3467\\cdot 9.156718 = 3.1800034\\)\n\nastsa forecast equation: \\(\\hat{x_t} = 0.0083 + 0.3467\\cdot x_{t-1}\\)\n\n\\(\\hat{x}_{2002 Q4} = 0.0083 + 0.3467\\cdot x_{2002 Q3} = 0.0083 + 0.3467\\cdot 9.156718 = 3.182934\\)\n\nThese values don’t make sense, and don’t match?",
+    "crumbs": [
+      "Week 7",
+      "Lecture 12"
+    ]
   },
   {
     "objectID": "LectureNotes/Lecture12.html#reconciling-the-by-hand-difference",
     "href": "LectureNotes/Lecture12.html#reconciling-the-by-hand-difference",
     "title": "Lecture 12",
     "section": "Reconciling the by hand difference",
-    "text": "Reconciling the by hand difference\nFor our AR(1) model, we have\n\\[\n(1 - \\phi B)(1-B)y_t = c + error\n\\] Ignoring the error since we want a forecast of the mean, applying the backwards shift operator, F.O.I.L., using our estimate of \\(\\phi\\), and solving for \\(y_t\\) we get:\n\\[\n\\hat{x}_t = x_{t-1} + \\hat{\\phi}(x_{t-1} - x_{t-2}))+ c\n\\]"
+    "text": "Reconciling the by hand difference\nFor our AR(1) model, we have\n\\[\n(1 - \\phi B)(1-B)y_t = c + error\n\\] Ignoring the error since we want a forecast of the mean, applying the backwards shift operator, F.O.I.L., using our estimate of \\(\\phi\\), and solving for \\(y_t\\) we get:\n\\[\n\\hat{x}_t = x_{t-1} + \\hat{\\phi}(x_{t-1} - x_{t-2}))+ c\n\\]",
+    "crumbs": [
+      "Week 7",
+      "Lecture 12"
+    ]
   },
   {
     "objectID": "LectureNotes/Lecture12.html#lets-try-this-equation",
     "href": "LectureNotes/Lecture12.html#lets-try-this-equation",
     "title": "Lecture 12",
     "section": "Let’s try this equation!",
-    "text": "Let’s try this equation!\n\\[\n\\hat{x}_{2002 Q4} = x_{2002 Q3} + \\hat{\\phi}(x_{2002 Q3} - x_{2002 Q2}))+ c\n\\]\n\n\nCode\n## for fable\n9.156718 + 0.3467*(9.156718 - 9.145983) + 0.0054\n\n\n[1] 9.16584\n\n\nCode\n## for sarima\n9.156718 + 0.3467*(9.156718 - 9.145983) + 0.0083\n\n\n[1] 9.16874\n\n\nThat’s better, but only fable matches the forecast functions?"
+    "text": "Let’s try this equation!\n\\[\n\\hat{x}_{2002 Q4} = x_{2002 Q3} + \\hat{\\phi}(x_{2002 Q3} - x_{2002 Q2}))+ c\n\\]\n\n\nCode\n## for fable\n9.156718 + 0.3467*(9.156718 - 9.145983) + 0.0054\n\n\n[1] 9.16584\n\n\nCode\n## for sarima\n9.156718 + 0.3467*(9.156718 - 9.145983) + 0.0083\n\n\n[1] 9.16874\n\n\nThat’s better, but only fable matches the forecast functions?",
+    "crumbs": [
+      "Week 7",
+      "Lecture 12"
+    ]
   },
   {
     "objectID": "LectureNotes/Lecture12.html#comparing-constants",
     "href": "LectureNotes/Lecture12.html#comparing-constants",
     "title": "Lecture 12",
     "section": "Comparing constants",
-    "text": "Comparing constants\nTakeaway: Different packages estimate the “constant” differently!\nSee https://otexts.com/fpp3/arima-r.html#understanding-constants-in-r.\n\n\nCode\nlibrary(fpp3)\nlibrary(astsa)\nlog_gnp &lt;- log(gnp)\n\nfable_model &lt;- log_gnp |&gt; \n  as_tsibble() |&gt;\n  model(ARIMA(value ~ pdq(1,1,0) + PDQ(0,0,0))) ## force nonseasonal\n\nfable_model |&gt; report()\n## Series: value \n## Model: ARIMA(1,1,0) w/ drift \n## \n## Coefficients:\n##          ar1  constant\n##       0.3467    0.0054\n## s.e.  0.0627    0.0006\n## \n## sigma^2 estimated as 9.136e-05:  log likelihood=718.61\n## AIC=-1431.22   AICc=-1431.11   BIC=-1421.01\nsarima_model &lt;- sarima(log_gnp, p = 1, d = 1, q = 0, P = 0, D = 0, Q = 0, details = F)\n## &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;\n##  \n## Coefficients: \n##          Estimate     SE t.value p.value\n## ar1        0.3467 0.0627  5.5255       0\n## constant   0.0083 0.0010  8.5398       0\n## \n## sigma^2 estimated as 9.029576e-05 on 220 degrees of freedom \n##  \n## AIC = -6.446939  AICc = -6.446692  BIC = -6.400957 \n## \n\nmu = mean(diff(log_gnp))\n\nmu*(1-sarima_model$fit$coef[1])\n##         ar1 \n## 0.005447277"
+    "text": "Comparing constants\nTakeaway: Different packages estimate the “constant” differently!\nSee https://otexts.com/fpp3/arima-r.html#understanding-constants-in-r.\n\n\nCode\nlibrary(fpp3)\nlibrary(astsa)\nlog_gnp &lt;- log(gnp)\n\nfable_model &lt;- log_gnp |&gt; \n  as_tsibble() |&gt;\n  model(ARIMA(value ~ pdq(1,1,0) + PDQ(0,0,0))) ## force nonseasonal\n\nfable_model |&gt; report()\n## Series: value \n## Model: ARIMA(1,1,0) w/ drift \n## \n## Coefficients:\n##          ar1  constant\n##       0.3467    0.0054\n## s.e.  0.0627    0.0006\n## \n## sigma^2 estimated as 9.136e-05:  log likelihood=718.61\n## AIC=-1431.22   AICc=-1431.11   BIC=-1421.01\nsarima_model &lt;- sarima(log_gnp, p = 1, d = 1, q = 0, P = 0, D = 0, Q = 0, details = F)\n## &lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;\n##  \n## Coefficients: \n##          Estimate     SE t.value p.value\n## ar1        0.3467 0.0627  5.5255       0\n## constant   0.0083 0.0010  8.5398       0\n## \n## sigma^2 estimated as 9.029576e-05 on 220 degrees of freedom \n##  \n## AIC = -6.446939  AICc = -6.446692  BIC = -6.400957 \n## \n\nmu = mean(diff(log_gnp))\n\nmu*(1-sarima_model$fit$coef[1])\n##         ar1 \n## 0.005447277",
+    "crumbs": [
+      "Week 7",
+      "Lecture 12"
+    ]
   },
   {
     "objectID": "LectureNotes/Lecture12.html#actual-by-hand-forecast-equations",
     "href": "LectureNotes/Lecture12.html#actual-by-hand-forecast-equations",
     "title": "Lecture 12",
     "section": "Actual by-hand forecast equations:",
-    "text": "Actual by-hand forecast equations:\nFor fable, where \\(c\\) is the constant outputted. \\[\n\\hat{x}_{2002 Q4} = x_{2002 Q3} + \\hat{\\phi}(x_{2002 Q3} - x_{2002 Q2}))+ c_{fable}\n\\]\nFor astsa, where \\(c\\) is the constant outputted. \\[\n\\hat{x}_{2002 Q4} = x_{2002 Q3} + \\phi(x_{2002 Q3} - x_{2002 Q2}))+ mean(diff(x_t))(1 - \\hat{\\phi})\n\\]\n\n\nCode\n## for astsa\n\n9.156718 + 0.3467*(9.156718 - 9.145983) + mean(diff(log_gnp))*(1- 0.3467) \n\n\n[1] 9.165887"
+    "text": "Actual by-hand forecast equations:\nFor fable, where \\(c\\) is the constant outputted. \\[\n\\hat{x}_{2002 Q4} = x_{2002 Q3} + \\hat{\\phi}(x_{2002 Q3} - x_{2002 Q2}))+ c_{fable}\n\\]\nFor astsa, where \\(c\\) is the constant outputted. \\[\n\\hat{x}_{2002 Q4} = x_{2002 Q3} + \\phi(x_{2002 Q3} - x_{2002 Q2}))+ mean(diff(x_t))(1 - \\hat{\\phi})\n\\]\n\n\nCode\n## for astsa\n\n9.156718 + 0.3467*(9.156718 - 9.145983) + mean(diff(log_gnp))*(1- 0.3467) \n\n\n[1] 9.165887",
+    "crumbs": [
+      "Week 7",
+      "Lecture 12"
+    ]
   },
   {
     "objectID": "LectureNotes/Lecture12.html#more-on-the-ljung-box-statistic",
     "href": "LectureNotes/Lecture12.html#more-on-the-ljung-box-statistic",
     "title": "Lecture 12",
     "section": "More on the Ljung-box statistic",
-    "text": "More on the Ljung-box statistic\n\n“another way to view the ACF of the residuals”\n“not a bunch of highly dependent tests”\n“accumulation of autocorrelation”\n“considers the magnitudes” of the autocorrelations all together\n\n\\[\nQ = n(n+2) + \\sum_{h=1}^H \\frac{\\hat{\\rho}_{resid}(h)^2}{n-h}\n\\] Test statistic used to calcualte p-values in the sarima output– the \\(\\hat{\\rho}_{resid}(h)\\) is the sample acf we plot using acf or acf1."
+    "text": "More on the Ljung-box statistic\n\n“another way to view the ACF of the residuals”\n“not a bunch of highly dependent tests”\n“accumulation of autocorrelation”\n“considers the magnitudes” of the autocorrelations all together\n\n\\[\nQ = n(n+2) + \\sum_{h=1}^H \\frac{\\hat{\\rho}_{resid}(h)^2}{n-h}\n\\] Test statistic used to calcualte p-values in the sarima output– the \\(\\hat{\\rho}_{resid}(h)\\) is the sample acf we plot using acf or acf1.",
+    "crumbs": [
+      "Week 7",
+      "Lecture 12"
+    ]
   },
   {
     "objectID": "LectureNotes/Lecture12.html#ets-models",
     "href": "LectureNotes/Lecture12.html#ets-models",
     "title": "Lecture 12",
     "section": "ETS Models",
-    "text": "ETS Models\nStepping away from ARIMA for the time being…"
+    "text": "ETS Models\nStepping away from ARIMA for the time being…",
+    "crumbs": [
+      "Week 7",
+      "Lecture 12"
+    ]
   },
   {
     "objectID": "LectureNotes/Lecture12.html#smoothing",
     "href": "LectureNotes/Lecture12.html#smoothing",
     "title": "Lecture 12",
     "section": "Smoothing",
-    "text": "Smoothing\nWe have seen several smoothers:\n\nMoving Average\nLoess\nKernel\n\nWe have also seen the decompose function, but emphasized it is an exploratory data analysis tool.\nWhat if we wanted to use these equations for forecasting?"
+    "text": "Smoothing\nWe have seen several smoothers:\n\nMoving Average\nLoess\nKernel\n\nWe have also seen the decompose function, but emphasized it is an exploratory data analysis tool.\nWhat if we wanted to use these equations for forecasting?",
+    "crumbs": [
+      "Week 7",
+      "Lecture 12"
+    ]
   },
   {
     "objectID": "LectureNotes/Lecture12.html#simple-exponential-smoothing",
     "href": "LectureNotes/Lecture12.html#simple-exponential-smoothing",
     "title": "Lecture 12",
     "section": "Simple exponential smoothing",
-    "text": "Simple exponential smoothing\n\nuseful for forecasting data with no trend or seasonal component\nPredicts the future as a weighted average of the past, where the weights decrease exponentially the further back in time you go"
+    "text": "Simple exponential smoothing\n\nuseful for forecasting data with no trend or seasonal component\nPredicts the future as a weighted average of the past, where the weights decrease exponentially the further back in time you go",
+    "crumbs": [
+      "Week 7",
+      "Lecture 12"
+    ]
   },
   {
     "objectID": "LectureNotes/Lecture12.html#example-algerian-exports-fpp-8.1",
     "href": "LectureNotes/Lecture12.html#example-algerian-exports-fpp-8.1",
     "title": "Lecture 12",
     "section": "Example: Algerian Exports (FPP 8.1)",
-    "text": "Example: Algerian Exports (FPP 8.1)\n\n\nCode\nalgeria_economy &lt;- global_economy |&gt;\n  filter(Country == \"Algeria\")\nalgeria_economy |&gt;\n  autoplot(Exports) +\n  labs(y = \"% of GDP\", title = \"Exports: Algeria\")"
+    "text": "Example: Algerian Exports (FPP 8.1)\n\n\nCode\nalgeria_economy &lt;- global_economy |&gt;\n  filter(Country == \"Algeria\")\nalgeria_economy |&gt;\n  autoplot(Exports) +\n  labs(y = \"% of GDP\", title = \"Exports: Algeria\")",
+    "crumbs": [
+      "Week 7",
+      "Lecture 12"
+    ]
   },
   {
     "objectID": "LectureNotes/Lecture12.html#we-want-a-forecast-equation-here-it-is",
     "href": "LectureNotes/Lecture12.html#we-want-a-forecast-equation-here-it-is",
     "title": "Lecture 12",
     "section": "We want a forecast equation… here it is",
-    "text": "We want a forecast equation… here it is\n\\[\n\\begin{equation}\n  \\hat{y}_{T+1|T} = \\alpha y_T + \\alpha(1-\\alpha) y_{T-1} + \\alpha(1-\\alpha)^2 y_{T-2}+ \\cdots,   \\tag{8.1}\n\\end{equation}\n\\]\n\n\\(\\alpha\\) is the smoothing parameter\nthe weights are the coefficients in front of the \\(y_{T-h}\\) terms."
+    "text": "We want a forecast equation… here it is\n\\[\n\\begin{equation}\n  \\hat{y}_{T+1|T} = \\alpha y_T + \\alpha(1-\\alpha) y_{T-1} + \\alpha(1-\\alpha)^2 y_{T-2}+ \\cdots,   \\tag{8.1}\n\\end{equation}\n\\]\n\n\\(\\alpha\\) is the smoothing parameter\nthe weights are the coefficients in front of the \\(y_{T-h}\\) terms.",
+    "crumbs": [
+      "Week 7",
+      "Lecture 12"
+    ]
   },
   {
     "objectID": "LectureNotes/Lecture12.html#forecast-equation-weighted-average-form",
     "href": "LectureNotes/Lecture12.html#forecast-equation-weighted-average-form",
     "title": "Lecture 12",
     "section": "Forecast equation (weighted average form)",
-    "text": "Forecast equation (weighted average form)\nWe can rewrite the equation as:\n\\[\n\\hat{y}_{T+1|T} = \\alpha y_T + (1-\\alpha) \\hat{y}_{T|T-1},\n\\] In order to forecast the next point, we need to just keep track of the data for the last time point, and the forecast for the last time point.\nEasy to update as new data comes in!"
+    "text": "Forecast equation (weighted average form)\nWe can rewrite the equation as:\n\\[\n\\hat{y}_{T+1|T} = \\alpha y_T + (1-\\alpha) \\hat{y}_{T|T-1},\n\\] In order to forecast the next point, we need to just keep track of the data for the last time point, and the forecast for the last time point.\nEasy to update as new data comes in!",
+    "crumbs": [
+      "Week 7",
+      "Lecture 12"
+    ]
   },
   {
     "objectID": "LectureNotes/Lecture12.html#forecast-equation-component-form",
     "href": "LectureNotes/Lecture12.html#forecast-equation-component-form",
     "title": "Lecture 12",
     "section": "Forecast equation (component form)",
-    "text": "Forecast equation (component form)\nMore notation, but essentially the same thing as the last slide. This representation will be helpful later on.\n\\[\n\\begin{align*}\n  \\text{Forecast equation}  && \\hat{y}_{t+h|t} & = \\ell_{t}\\\\\n  \\text{Smoothing equation} && \\ell_{t}        & = \\alpha y_{t} + (1 - \\alpha)\\ell_{t-1},\n\\end{align*}\n\\]"
+    "text": "Forecast equation (component form)\nMore notation, but essentially the same thing as the last slide. This representation will be helpful later on.\n\\[\n\\begin{align*}\n  \\text{Forecast equation}  && \\hat{y}_{t+h|t} & = \\ell_{t}\\\\\n  \\text{Smoothing equation} && \\ell_{t}        & = \\alpha y_{t} + (1 - \\alpha)\\ell_{t-1},\n\\end{align*}\n\\]",
+    "crumbs": [
+      "Week 7",
+      "Lecture 12"
+    ]
   },
   {
     "objectID": "LectureNotes/Lecture12.html#fitting-simple-exponential-smoothing-in-fable",
     "href": "LectureNotes/Lecture12.html#fitting-simple-exponential-smoothing-in-fable",
     "title": "Lecture 12",
     "section": "Fitting simple exponential smoothing in fable",
-    "text": "Fitting simple exponential smoothing in fable\nA is for additive, N is for none (we’ll cover this more next time)\n\n\nCode\nfit &lt;- algeria_economy |&gt;\n  model(ETS(Exports ~ error(\"A\") + trend(\"N\") + season(\"N\")))\n\nreport(fit)\n\n\nSeries: Exports \nModel: ETS(A,N,N) \n  Smoothing parameters:\n    alpha = 0.8399875 \n\n  Initial states:\n   l[0]\n 39.539\n\n  sigma^2:  35.6301\n\n     AIC     AICc      BIC \n446.7154 447.1599 452.8968 \n\n\nCode\nfc &lt;- fit |&gt;\n  forecast(h = 1)"
+    "text": "Fitting simple exponential smoothing in fable\nA is for additive, N is for none (we’ll cover this more next time)\n\n\nCode\nfit &lt;- algeria_economy |&gt;\n  model(ETS(Exports ~ error(\"A\") + trend(\"N\") + season(\"N\")))\n\nreport(fit)\n\n\nSeries: Exports \nModel: ETS(A,N,N) \n  Smoothing parameters:\n    alpha = 0.8399875 \n\n  Initial states:\n   l[0]\n 39.539\n\n  sigma^2:  35.6301\n\n     AIC     AICc      BIC \n446.7154 447.1599 452.8968 \n\n\nCode\nfc &lt;- fit |&gt;\n  forecast(h = 1)",
+    "crumbs": [
+      "Week 7",
+      "Lecture 12"
+    ]
   },
   {
     "objectID": "LectureNotes/Lecture12.html#plot-the-forecast",
     "href": "LectureNotes/Lecture12.html#plot-the-forecast",
     "title": "Lecture 12",
     "section": "Plot the forecast",
-    "text": "Plot the forecast\n\nNote the “flat” forecast (because of no trend/seasonal assumption)\nWhere did the uncertainty estimates come from??\n\n\n\nCode\nfc |&gt;\n  autoplot(algeria_economy) +\n  geom_line(aes(y = .fitted), col=\"#D55E00\",\n            data = augment(fit)) +\n  labs(y=\"% of GDP\", title=\"Exports: Algeria\") +\n  guides(colour = \"none\")"
+    "text": "Plot the forecast\n\nNote the “flat” forecast (because of no trend/seasonal assumption)\nWhere did the uncertainty estimates come from??\n\n\n\nCode\nfc |&gt;\n  autoplot(algeria_economy) +\n  geom_line(aes(y = .fitted), col=\"#D55E00\",\n            data = augment(fit)) +\n  labs(y=\"% of GDP\", title=\"Exports: Algeria\") +\n  guides(colour = \"none\")",
+    "crumbs": [
+      "Week 7",
+      "Lecture 12"
+    ]
   },
   {
     "objectID": "LectureNotes/Lecture12.html#next-time-holts-linear-method",
     "href": "LectureNotes/Lecture12.html#next-time-holts-linear-method",
     "title": "Lecture 12",
     "section": "Next time: Holt’s Linear Method",
-    "text": "Next time: Holt’s Linear Method\n\nforecast data with a trend\ninvolves three equations: forecast, level, and trend\n\n\\[\n\\begin{aligned}\n  \\text{Forecast equation}&& \\hat{y}_{t+h|t} &= \\ell_{t} + hb_{t} \\\\\n  \\text{Level equation}   && \\ell_{t} &= \\alpha y_{t} + (1 - \\alpha)(\\ell_{t-1} + b_{t-1})\\\\\n  \\text{Trend equation}   && b_{t}    &= \\beta^*(\\ell_{t} - \\ell_{t-1}) + (1 -\\beta^*)b_{t-1},\n\\end{aligned}\n\\]"
+    "text": "Next time: Holt’s Linear Method\n\nforecast data with a trend\ninvolves three equations: forecast, level, and trend\n\n\\[\n\\begin{aligned}\n  \\text{Forecast equation}&& \\hat{y}_{t+h|t} &= \\ell_{t} + hb_{t} \\\\\n  \\text{Level equation}   && \\ell_{t} &= \\alpha y_{t} + (1 - \\alpha)(\\ell_{t-1} + b_{t-1})\\\\\n  \\text{Trend equation}   && b_{t}    &= \\beta^*(\\ell_{t} - \\ell_{t-1}) + (1 -\\beta^*)b_{t-1},\n\\end{aligned}\n\\]",
+    "crumbs": [
+      "Week 7",
+      "Lecture 12"
+    ]
   },
   {
     "objectID": "LectureNotes/Lecture12.html#example-australian-population-fpp-8.2",
     "href": "LectureNotes/Lecture12.html#example-australian-population-fpp-8.2",
     "title": "Lecture 12",
     "section": "Example: Australian Population (FPP 8.2)",
-    "text": "Example: Australian Population (FPP 8.2)\n\n\nCode\naus_economy &lt;- global_economy |&gt;\n  filter(Code == \"AUS\") |&gt;\n  mutate(Pop = Population / 1e6)\nautoplot(aus_economy, Pop) +\n  labs(y = \"Millions\", title = \"Australian population\")"
+    "text": "Example: Australian Population (FPP 8.2)\n\n\nCode\naus_economy &lt;- global_economy |&gt;\n  filter(Code == \"AUS\") |&gt;\n  mutate(Pop = Population / 1e6)\nautoplot(aus_economy, Pop) +\n  labs(y = \"Millions\", title = \"Australian population\")",
+    "crumbs": [
+      "Week 7",
+      "Lecture 12"
+    ]
   },
   {
     "objectID": "LectureNotes/Lecture12.html#example-australian-population-fpp-8.2-1",
     "href": "LectureNotes/Lecture12.html#example-australian-population-fpp-8.2-1",
     "title": "Lecture 12",
     "section": "Example: Australian Population (FPP 8.2)",
-    "text": "Example: Australian Population (FPP 8.2)\nFit the Holt Linear Method (exponential smoothing w/trend)\n\n\nCode\nfit &lt;- aus_economy |&gt;\n  model(\n    AAN = ETS(Pop ~ error(\"A\") + trend(\"A\") + season(\"N\"))\n  )\nfc &lt;- fit |&gt; forecast(h = 10)"
+    "text": "Example: Australian Population (FPP 8.2)\nFit the Holt Linear Method (exponential smoothing w/trend)\n\n\nCode\nfit &lt;- aus_economy |&gt;\n  model(\n    AAN = ETS(Pop ~ error(\"A\") + trend(\"A\") + season(\"N\"))\n  )\nfc &lt;- fit |&gt; forecast(h = 10)",
+    "crumbs": [
+      "Week 7",
+      "Lecture 12"
+    ]
   },
   {
     "objectID": "LectureNotes/Lecture3.html",
@@ -3802,7 +3934,7 @@
     "href": "LectureNotes/Lecture2.html#notation-and-data--white-noise",
     "title": "Lecture 2",
     "section": "Notation and Data- White noise",
-    "text": "Notation and Data- White noise\n“Let \\(w_t\\) be a white noise series”\n\n\n\nt\nRandom Variable\nExample data\n\n\n\n\n1\n\\(w_1 \\sim N(0, \\sigma_w^2)\\)\n0.3927316\n\n\n2\n\\(w_2 \\sim N(0, \\sigma_w^2)\\)\n0.5473104\n\n\n\n\\(\\vdots\\)\n\\(\\vdots\\)\n\n\nt\n\\(w_t \\sim N(0, \\sigma^2_w)\\)\n0.3974222\n\n\n\\(\\vdots\\)\n\\(\\vdots\\)\n\\(\\vdots\\)\n\n\nn\n\\(w_n \\sim N(0, \\sigma_w^2)\\)\n0.6360605\n\n\n\nIf we interpret the collection of \\(w_t\\) as a random vector, then \\(w_t \\sim MVN(\\vec{0}, I)\\) (why \\(I\\)?)\nNote: sometimes \\(w_t\\) could mean a (univariate) value of a white noise series for a particular time \\(t\\) (kind of like how you refer to an arbitrary \\(x_i\\) when you have a sample \\(x_1, \\dots, x_n\\)).",
+    "text": "Notation and Data- White noise\n“Let \\(w_t\\) be a white noise series”\n\n\n\nt\nRandom Variable\nExample data\n\n\n\n\n1\n\\(w_1 \\sim N(0, \\sigma_w^2)\\)\n1.0666158\n\n\n2\n\\(w_2 \\sim N(0, \\sigma_w^2)\\)\n-1.7775245\n\n\n\n\\(\\vdots\\)\n\\(\\vdots\\)\n\n\nt\n\\(w_t \\sim N(0, \\sigma^2_w)\\)\n0.0192456\n\n\n\\(\\vdots\\)\n\\(\\vdots\\)\n\\(\\vdots\\)\n\n\nn\n\\(w_n \\sim N(0, \\sigma_w^2)\\)\n-1.2639526\n\n\n\nIf we interpret the collection of \\(w_t\\) as a random vector, then \\(w_t \\sim MVN(\\vec{0}, I)\\) (why \\(I\\)?)\nNote: sometimes \\(w_t\\) could mean a (univariate) value of a white noise series for a particular time \\(t\\) (kind of like how you refer to an arbitrary \\(x_i\\) when you have a sample \\(x_1, \\dots, x_n\\)).",
     "crumbs": [
       "Week 1",
       "Lecture 2"

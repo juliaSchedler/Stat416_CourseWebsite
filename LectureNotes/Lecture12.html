@@ -414,7 +414,7 @@ Julia Schedler
 <section id="midterm-grades" class="slide level2">
 <h2>Midterm Grades</h2>
 <div class="cell">
-<details class="code-fold">
+<details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a></a>midterm_grades <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"../../Student Data/2024-11-04T0741_Grades-STAT-416-01-2248.csv"</span>, <span class="at">skip =</span> <span class="dv">3</span>, <span class="at">header =</span> F)[,<span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">9</span>)]  </span>
@@ -514,7 +514,7 @@ Julia Schedler
 </details>
 </div>
 <div class="cell">
-<details class="code-fold">
+<details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="do">## fit the same model, but with default details = TRUE.</span></span>
 <span id="cb4-2"><a></a><span class="fu">sarima</span>(log_gnp, <span class="at">p =</span> <span class="dv">1</span>, <span class="at">d =</span> <span class="dv">1</span>, <span class="at">q =</span> <span class="dv">0</span>, <span class="at">P =</span> <span class="dv">0</span>, <span class="at">D =</span> <span class="dv">0</span>, <span class="at">Q =</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -576,7 +576,7 @@ AIC = -6.446939  AICc = -6.446692  BIC = -6.400957
 <li><p>Forecast using <code>forecast()</code> specifying <code>h</code></p></li>
 </ol>
 <div class="cell">
-<details class="code-fold">
+<details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>fit <span class="ot">&lt;-</span> log_gnp <span class="sc">|&gt;</span> </span>
 <span id="cb6-2"><a></a>  <span class="fu">as_tsibble</span>() <span class="sc">|&gt;</span></span>
@@ -611,7 +611,7 @@ AIC = -6.446939  AICc = -6.446692  BIC = -6.400957
 </ol></li>
 </ul>
 <div class="cell">
-<details class="code-fold">
+<details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>sarima_model <span class="ot">&lt;-</span> <span class="fu">sarima</span>(log_gnp, <span class="at">p =</span> <span class="dv">1</span>, <span class="at">d =</span> <span class="dv">1</span>, <span class="at">q =</span> <span class="dv">0</span>, <span class="at">P =</span> <span class="dv">0</span>, <span class="at">D =</span> <span class="dv">0</span>, <span class="at">Q =</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -652,7 +652,7 @@ AIC = -6.446939  AICc = -6.446692  BIC = -6.400957
 </figure>
 </div>
 </div>
-<details class="code-fold">
+<details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">sarima.for</span>(log_gnp,<span class="at">p =</span> <span class="dv">1</span>, <span class="at">d =</span> <span class="dv">1</span>, <span class="at">q =</span> <span class="dv">0</span>, <span class="at">P =</span> <span class="dv">0</span>, <span class="at">D =</span> <span class="dv">0</span>, <span class="at">Q =</span> <span class="dv">0</span>, <span class="at">n.ahead =</span> <span class="dv">10</span>, <span class="at">plot =</span> F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -678,7 +678,7 @@ $se
 <h2>Compare predictions</h2>
 <p>Yay! They’re the same :)</p>
 <div class="cell">
-<details class="code-fold">
+<details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>fable_forecast <span class="ot">&lt;-</span> fit <span class="sc">|&gt;</span> <span class="fu">forecast</span>(<span class="at">h =</span> <span class="dv">10</span>)</span>
 <span id="cb12-2"><a></a>astsa_forecast <span class="ot">&lt;-</span> <span class="fu">sarima.for</span>(log_gnp,<span class="at">p =</span> <span class="dv">1</span>, <span class="at">d =</span> <span class="dv">1</span>, <span class="at">q =</span> <span class="dv">0</span>, <span class="at">P =</span> <span class="dv">0</span>, <span class="at">D =</span> <span class="dv">0</span>, <span class="at">Q =</span> <span class="dv">0</span>, <span class="at">n.ahead =</span> <span class="dv">10</span>, <span class="at">plot =</span> F)</span>
@@ -703,7 +703,7 @@ $se
 <section id="plot-the-forecast-fable" class="slide level2">
 <h2>Plot the forecast (<code>fable</code>)</h2>
 <div class="cell">
-<details class="code-fold">
+<details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>fable_forecast <span class="sc">|&gt;</span> <span class="fu">autoplot</span>(log_gnp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -713,7 +713,7 @@ $se
 <section id="plot-the-forecast-astsa" class="slide level2">
 <h2>Plot the forecast (<code>astsa</code>)</h2>
 <div class="cell">
-<details class="code-fold">
+<details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">sarima.for</span>(log_gnp,<span class="at">p =</span> <span class="dv">1</span>, <span class="at">d =</span> <span class="dv">1</span>, <span class="at">q =</span> <span class="dv">0</span>, <span class="at">P =</span> <span class="dv">0</span>, <span class="at">D =</span> <span class="dv">0</span>, <span class="at">Q =</span> <span class="dv">0</span>, <span class="at">n.ahead =</span> <span class="dv">10</span>, <span class="at">plot =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -746,7 +746,7 @@ $se
 <section id="forecasting-by-hand-1" class="slide level2 smaller">
 <h2>Forecasting “by hand”</h2>
 <div class="cell">
-<details class="code-fold">
+<details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>astsa_model <span class="ot">&lt;-</span> <span class="fu">sarima</span>(log_gnp, <span class="at">p =</span> <span class="dv">1</span>, <span class="at">d =</span> <span class="dv">1</span>, <span class="at">q =</span> <span class="dv">0</span>, <span class="at">P =</span> <span class="dv">0</span>, <span class="at">D =</span> <span class="dv">0</span>, <span class="at">Q =</span> <span class="dv">0</span>, <span class="at">details =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -775,7 +775,7 @@ AIC = -6.446939  AICc = -6.446692  BIC = -6.400957
 <section id="activity-solution-forecasting-by-hand" class="slide level2">
 <h2>Activity Solution: Forecasting “by hand”</h2>
 <div class="cell">
-<details class="code-fold">
+<details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="fu">data.frame</span>(<span class="at">time =</span> <span class="fu">tail</span>(<span class="fu">time</span>(log_gnp)), <span class="at">log_gnp =</span> <span class="fu">tail</span>(log_gnp), <span class="at">diff_log_gnp =</span> <span class="fu">tail</span>(<span class="fu">diff</span>(log_gnp)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -815,7 +815,7 @@ AIC = -6.446939  AICc = -6.446692  BIC = -6.400957
 \hat{x}_{2002 Q4} = x_{2002 Q3} + \hat{\phi}(x_{2002 Q3} - x_{2002 Q2}))+ c
 \]</span></p>
 <div class="cell">
-<details class="code-fold">
+<details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="do">## for fable</span></span>
 <span id="cb21-2"><a></a><span class="fl">9.156718</span> <span class="sc">+</span> <span class="fl">0.3467</span><span class="sc">*</span>(<span class="fl">9.156718</span> <span class="sc">-</span> <span class="fl">9.145983</span>) <span class="sc">+</span> <span class="fl">0.0054</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -823,7 +823,7 @@ AIC = -6.446939  AICc = -6.446692  BIC = -6.400957
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 9.16584</code></pre>
 </div>
-<details class="code-fold">
+<details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a><span class="do">## for sarima</span></span>
 <span id="cb23-2"><a></a><span class="fl">9.156718</span> <span class="sc">+</span> <span class="fl">0.3467</span><span class="sc">*</span>(<span class="fl">9.156718</span> <span class="sc">-</span> <span class="fl">9.145983</span>) <span class="sc">+</span> <span class="fl">0.0083</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -890,7 +890,7 @@ AIC = -6.446939  AICc = -6.446692  BIC = -6.400957
 \hat{x}_{2002 Q4} = x_{2002 Q3} + \phi(x_{2002 Q3} - x_{2002 Q2}))+ mean(diff(x_t))(1 - \hat{\phi})
 \]</span></p>
 <div class="cell">
-<details class="code-fold">
+<details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a><span class="do">## for astsa</span></span>
 <span id="cb26-2"><a></a></span>
@@ -938,7 +938,7 @@ Q = n(n+2) + \sum_{h=1}^H \frac{\hat{\rho}_{resid}(h)^2}{n-h}
 <section id="example-algerian-exports-fpp-8.1" class="slide level2">
 <h2>Example: Algerian Exports (FPP 8.1)</h2>
 <div class="cell">
-<details class="code-fold">
+<details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a>algeria_economy <span class="ot">&lt;-</span> global_economy <span class="sc">|&gt;</span></span>
 <span id="cb28-2"><a></a>  <span class="fu">filter</span>(Country <span class="sc">==</span> <span class="st">"Algeria"</span>)</span>
@@ -983,7 +983,7 @@ Q = n(n+2) + \sum_{h=1}^H \frac{\hat{\rho}_{resid}(h)^2}{n-h}
 <h2>Fitting simple exponential smoothing in <code>fable</code></h2>
 <p>A is for additive, N is for none (we’ll cover this more next time)</p>
 <div class="cell">
-<details class="code-fold">
+<details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a>fit <span class="ot">&lt;-</span> algeria_economy <span class="sc">|&gt;</span></span>
 <span id="cb29-2"><a></a>  <span class="fu">model</span>(<span class="fu">ETS</span>(Exports <span class="sc">~</span> <span class="fu">error</span>(<span class="st">"A"</span>) <span class="sc">+</span> <span class="fu">trend</span>(<span class="st">"N"</span>) <span class="sc">+</span> <span class="fu">season</span>(<span class="st">"N"</span>)))</span>
@@ -1005,7 +1005,7 @@ Model: ETS(A,N,N)
      AIC     AICc      BIC 
 446.7154 447.1599 452.8968 </code></pre>
 </div>
-<details class="code-fold">
+<details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a>fc <span class="ot">&lt;-</span> fit <span class="sc">|&gt;</span></span>
 <span id="cb31-2"><a></a>  <span class="fu">forecast</span>(<span class="at">h =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1019,7 +1019,7 @@ Model: ETS(A,N,N)
 <li><p>Where did the uncertainty estimates come from??</p></li>
 </ul>
 <div class="cell">
-<details class="code-fold">
+<details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a>fc <span class="sc">|&gt;</span></span>
 <span id="cb32-2"><a></a>  <span class="fu">autoplot</span>(algeria_economy) <span class="sc">+</span></span>
@@ -1048,7 +1048,7 @@ Model: ETS(A,N,N)
 <section id="example-australian-population-fpp-8.2" class="slide level2">
 <h2>Example: Australian Population (FPP 8.2)</h2>
 <div class="cell">
-<details class="code-fold">
+<details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a>aus_economy <span class="ot">&lt;-</span> global_economy <span class="sc">|&gt;</span></span>
 <span id="cb33-2"><a></a>  <span class="fu">filter</span>(Code <span class="sc">==</span> <span class="st">"AUS"</span>) <span class="sc">|&gt;</span></span>
@@ -1063,7 +1063,7 @@ Model: ETS(A,N,N)
 <h2>Example: Australian Population (FPP 8.2)</h2>
 <p>Fit the Holt Linear Method (exponential smoothing w/trend)</p>
 <div class="cell">
-<details class="code-fold">
+<details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a>fit <span class="ot">&lt;-</span> aus_economy <span class="sc">|&gt;</span></span>
 <span id="cb34-2"><a></a>  <span class="fu">model</span>(</span>

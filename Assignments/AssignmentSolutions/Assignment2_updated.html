@@ -333,6 +333,23 @@ window.Quarto = {
 </li>
       </ul>
   </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
+ <span class="menu-text">Week 7</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../LectureNotes/Lecture12.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 12</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -454,18 +471,18 @@ y_t = x_t - 2\cos(2\pi\frac{t+15}{50})
 Start = 0 
 End = 10 
 Frequency = 1 
-            x_t     x_t_lag1
- 0           NA  0.775218722
- 1  0.775218722 -0.682125984
- 2 -0.682125984  1.023096364
- 3  1.023096364  0.008444366
- 4  0.008444366 -0.637133599
- 5 -0.637133599 -0.409346575
- 6 -0.409346575 -0.526687498
- 7 -0.526687498 -1.405964727
- 8 -1.405964727 -0.816240808
- 9 -0.816240808 -0.011662047
-10 -0.011662047           NA</code></pre>
+          x_t   x_t_lag1
+ 0         NA -1.0657703
+ 1 -1.0657703 -1.1775578
+ 2 -1.1775578 -0.6001375
+ 3 -0.6001375  0.4813133
+ 4  0.4813133 -2.5876853
+ 5 -2.5876853 -3.3375232
+ 6 -3.3375232 -1.5354688
+ 7 -1.5354688 -1.1338985
+ 8 -1.1338985 -1.4040943
+ 9 -1.4040943 -1.4389959
+10 -1.4389959         NA</code></pre>
 </div>
 </div>
 <ol start="4" type="1">
@@ -536,18 +553,18 @@ lm(formula = x_t ~ -1 + x_t_lag1)
 
 Residuals:
     Min      1Q  Median      3Q     Max 
--1.7875 -0.6459 -0.1773  0.6391  2.6836 
+-2.8479 -0.6401  0.1616  0.6902  2.8052 
 
 Coefficients:
          Estimate Std. Error t value Pr(&gt;|t|)    
-x_t_lag1  0.66943    0.07501   8.925  2.6e-14 ***
+x_t_lag1  0.66089    0.07664   8.623 1.17e-13 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 0.9562 on 98 degrees of freedom
+Residual standard error: 1.022 on 98 degrees of freedom
   (1 observation deleted due to missingness)
-Multiple R-squared:  0.4484,    Adjusted R-squared:  0.4427 
-F-statistic: 79.65 on 1 and 98 DF,  p-value: 2.603e-14</code></pre>
+Multiple R-squared:  0.4314,    Adjusted R-squared:  0.4256 
+F-statistic: 74.36 on 1 and 98 DF,  p-value: 1.168e-13</code></pre>
 </div>
 </div>
 <ol start="8" type="1">
