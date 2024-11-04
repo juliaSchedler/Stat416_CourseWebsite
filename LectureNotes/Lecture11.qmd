@@ -1,7 +1,7 @@
 ---
 title: Lecture 11
 author: Julia Schedler
-format: html
+format: revealjs
 execute:
   echo: true
 code-fold: true
@@ -51,7 +51,7 @@ tsplot(diff(log_gnp))
 
 ## Unit root tests
 
-::: columns
+::::: columns
 ::: column
 **Augmented Dickey-Fuller (ADF)**
 
@@ -67,7 +67,7 @@ tsplot(diff(log_gnp))
 
 -   Alternative hypothesis: nonstationary data
 :::
-:::
+:::::
 
 ## What's a unit?
 
@@ -108,7 +108,7 @@ log_gnp |>
   features(value, unitroot_kpss)
 ```
 
-Since the p-value is small, we fail to reject the null hypothesis that the data is not stationary.
+Since the p-value is not very small, we fail to reject the null hypothesis that the data is stationary.
 
 ## Activity 0
 
@@ -430,7 +430,7 @@ Looks like we predict the $CO_2$ to continue to increase...
 
 ```{r}
 sarima.for(cardox, 60, 1,1,1, 0,1,1,12)
-abline(v=2018.9, lty=6)
+sarima.for(cardox, 60, 1,1,1, 0,1,1,12)
 ```
 
 ## Compare to auto arima

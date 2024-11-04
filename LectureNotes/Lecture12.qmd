@@ -1,0 +1,426 @@
+---
+title: Lecture 12
+author: Julia Schedler
+format: revealjs
+execute:
+  echo: true
+code-fold: true
+slide-number: true
+scrollable: true
+---
+
+## Announcements
+
+- There will be participation credit today! Make sure you submit. 
+
+- Assignment 4 due tonight, extensions through Weds allowed if desired
+
+- Assignment 5 posted soon, will be due **Wednesday**
+
+
+## Midterm Grades
+```{r}
+library(tidyverse)
+midterm_grades <- read.csv("../../Student Data/2024-11-04T0741_Grades-STAT-416-01-2248.csv", skip = 3, header = F)[,c(5,9)]  
+names(midterm_grades) <- c("Section", "Grade")
+
+## convert section to factor
+midterm_grades$Section <- factor(as.factor(midterm_grades$Section), labels = c("10am", "2pm"))
+
+## density plot add summary statistics to plot as text
+summary_stats <- midterm_grades |>
+  group_by(Section) |>
+  summarise(mean = mean(Grade), sd = sd(Grade))
+
+summary_stats_overall <- midterm_grades |>
+  summarise(mean = mean(Grade), sd = sd(Grade))
+
+ggplot(midterm_grades, aes(x = Grade)) + geom_density() + 
+  geom_text(data = summary_stats, aes(x = c(80,80), y = c(.15, .20), label = paste("Section:", Section, "\n Mean: ", round(mean, 2), "\nSD: ", round(sd, 2)), vjust = 1)) +
+  geom_text(data = summary_stats_overall, aes(x = 70, y = .17, label = paste("Overall:\nMean: ", round(mean, 2), "\nSD: ", round(sd, 2)), vjust = 1)) +
+  ylab("~density~") + xlab("Grade (%)")+ ggtitle("Midterm Grades")
+
+
+```
+
+## Activity 1: Review your midterm
+
+- Check the page totals (bottom corner) and exam totals (first page)
+
+- Find where you lost the most points. What did you do incorrectly?
+
+- What was something you did well?
+
+- Fill out the canvas Quiz  
+
+
+## R code for SARIMA models
+
+- `sarima` function from the `astsa` package
+- `auto.arima` function from the `forecast` package
+- `model` function from the `fable` package
+
+Which to use??? They all are fine, but output the model object differently, so the model output won't work with functions from other packages.
+
+## [Example: Trying to use `sarima` output with `fable` diagnostics]{.r-fit-text}{.smaller}
+
+You get an error!
+```{r}
+#| error: true
+#| code-fold: show
+#| collapse: true
+library(fpp3)
+library(astsa)
+
+log_gnp <- log(gnp)
+
+sarima_model <- sarima(log_gnp, p = 1, d = 1, q = 0, P = 0, D = 0, Q = 0, details = FALSE)
+
+diagnostics <- sarima_model |>
+  residuals() |>
+  ACF() |>
+  gg_tsdisplay()
+```
+
+## Example: trying to use `fable` output with `sarima` diagnostics
+
+Since `sarima` outputs diagnostics when you fit the model, you could just re-fit the model with `sarima` and then use the diagnostics.
+
+```{r}
+#| error: true
+#| code-fold: show
+#| collapse: true
+
+fable_model <- log_gnp |> 
+  as_tsibble() |>
+  model(ARIMA(value ~ pdq(1,1,0) + PDQ(0,0,0))) |> report()
+
+sarima(fable_model) ## doesn't work
+```
+
+```{r}
+## fit the same model, but with default details = TRUE.
+sarima(log_gnp, p = 1, d = 1, q = 0, P = 0, D = 0, Q = 0)
+```
+
+## Activity 2: Putting it all together 
+
+- Download "ARIMA code cheat sheet.docx" from Canvas
+- Pick one column
+- Fill in the blanks with the correct functions
+
+## Forecasting
+
+Given the data and a model that fits the data, we want to predict future values
+
+How can we do this
+- by "hand" (or just "manually" using code)
+- using `fable` or `astsa` functions
+
+Also, how do we plot these forecasts?
+
+## [Forecasting using `fable` or `astsa` functions]{.r-fit-text}{.smaller}
+
+::: {.columns}
+::: {.column}
+`fable` functions
+
+  1. Fit model using `model()` and `ARIMA()`
+  
+  2. Forecast using `forecast()` specifying `h`
+  
+```{r}
+fit <- log_gnp |> 
+  as_tsibble() |>
+  model(ARIMA(value ~ pdq(1,1,0) + PDQ(0,0,0))) ## force nonseasonal
+
+fit |> forecast(h = 10)
+
+```
+:::
+::: {.column}
+- `astsa` functions
+
+  1.  Determine model order using acf/pacf, check model fit using `sarima`
+  2. Use `sarima.for` to forecast (with order you chose-- re-fits model)
+  
+```{r}
+sarima_model <- sarima(log_gnp, p = 1, d = 1, q = 0, P = 0, D = 0, Q = 0)
+
+sarima.for(log_gnp,p = 1, d = 1, q = 0, P = 0, D = 0, Q = 0, n.ahead = 10, plot = F)
+```
+  
+:::
+:::
+
+## Compare predictions
+Yay! They're the same :)
+```{r}
+fable_forecast <- fit |> forecast(h = 10)
+astsa_forecast <- sarima.for(log_gnp,p = 1, d = 1, q = 0, P = 0, D = 0, Q = 0, n.ahead = 10, plot = F)
+
+cbind(fable_forecast$.mean,astsa_forecast$pred)
+
+```
+## Plot the forecast (`fable`)
+```{r}
+fable_forecast |> autoplot(log_gnp)
+```
+
+## Plot the forecast (`astsa`)
+```{r}
+sarima.for(log_gnp,p = 1, d = 1, q = 0, P = 0, D = 0, Q = 0, n.ahead = 10, plot = T)
+
+```
+## Forecasting "by hand"{.smaller}
+
+1. Write down the equation of your model based on the output
+2. Get the observations you need to populate the forecast
+3. Calculate the forecast, pushing forward your next forecasted value through the equation
+
+## Forecasting "by hand"{.smaller}
+
+```{r}
+astsa_model <- sarima(log_gnp, p = 1, d = 1, q = 0, P = 0, D = 0, Q = 0, details = FALSE)
+
+
+```
+
+(apparent) `fable` forecast equation: $\hat{x_t} = 0.0054 + 0.3467\cdot x_{t-1}$
+
+(apparent) `astsa` forecast equation: $\hat{x_t} = 0.0083 + 0.3467\cdot x_{t-1}$
+
+## Activity: Forecasting "by hand"
+
+`fable` forecast equation: $\hat{x_t} = 0.0054 + 0.3467\cdot x_{t-1}$
+
+`astsa` forecast equation: $\hat{x_t} = 0.0083 + 0.3467\cdot x_{t-1}$
+
+## Activity Solution: Forecasting "by hand"
+```{r}
+data.frame(time = tail(time(log_gnp)), log_gnp = tail(log_gnp), diff_log_gnp = tail(diff(log_gnp)))
+```
+
+`fable` forecast equation: $\hat{x_t} = 0.0054 + 0.3467\cdot x_{t-1}$
+
+- $\hat{x}_{2002 Q4} = 0.0054 + 0.3467\cdot x_{2002 Q3} = 0.0054 + 0.3467\cdot 9.156718 = 3.1800034$
+
+`astsa` forecast equation: $\hat{x_t} = 0.0083 + 0.3467\cdot x_{t-1}$
+
+- $\hat{x}_{2002 Q4} = 0.0083 + 0.3467\cdot x_{2002 Q3} = 0.0083 + 0.3467\cdot 9.156718 = 3.182934$
+
+These values don't make sense, and don't match?
+
+## Reconciling the by hand difference
+
+For our AR(1) model, we have 
+
+$$
+(1 - \phi B)(1-B)y_t = c + error
+$$
+Ignoring the error since we want a forecast of the mean, applying the backwards shift operator, F.O.I.L., using our estimate of $\phi$, and solving for $y_t$ we get:
+
+$$
+\hat{x}_t = x_{t-1} + \hat{\phi}(x_{t-1} - x_{t-2}))+ c
+$$
+
+## Let's try this equation!
+
+$$
+\hat{x}_{2002 Q4} = x_{2002 Q3} + \hat{\phi}(x_{2002 Q3} - x_{2002 Q2}))+ c
+$$
+```{r}
+## for fable
+9.156718 + 0.3467*(9.156718 - 9.145983) + 0.0054
+## for sarima
+9.156718 + 0.3467*(9.156718 - 9.145983) + 0.0083
+```
+
+That's better, but only `fable` matches the forecast functions?
+
+## Comparing constants
+
+Takeaway: Different packages estimate the "constant" differently!
+
+See https://otexts.com/fpp3/arima-r.html#understanding-constants-in-r. 
+
+```{r}
+#| collapse: true
+#| code-fold: show 
+
+library(fpp3)
+library(astsa)
+log_gnp <- log(gnp)
+
+fable_model <- log_gnp |> 
+  as_tsibble() |>
+  model(ARIMA(value ~ pdq(1,1,0) + PDQ(0,0,0))) ## force nonseasonal
+
+fable_model |> report()
+sarima_model <- sarima(log_gnp, p = 1, d = 1, q = 0, P = 0, D = 0, Q = 0, details = F)
+
+mu = mean(diff(log_gnp))
+
+mu*(1-sarima_model$fit$coef[1])
+
+```
+
+## Actual by-hand forecast equations:
+
+For `fable`, where $c$ is the constant outputted.
+$$
+\hat{x}_{2002 Q4} = x_{2002 Q3} + \hat{\phi}(x_{2002 Q3} - x_{2002 Q2}))+ c_{fable}
+$$
+
+For `astsa`, where $c$ is the constant outputted.
+$$
+\hat{x}_{2002 Q4} = x_{2002 Q3} + \phi(x_{2002 Q3} - x_{2002 Q2}))+ mean(diff(x_t))(1 - \hat{\phi})
+$$
+```{r}
+## for astsa
+
+9.156718 + 0.3467*(9.156718 - 9.145983) + mean(diff(log_gnp))*(1- 0.3467) 
+```
+
+## More on the Ljung-box statistic{.smaller}
+
+- "another way to view the ACF of the residuals"
+- "not a bunch of highly dependent tests"
+- "accumulation of autocorrelation"
+- "considers the magnitudes" of the autocorrelations all together
+
+$$
+Q = n(n+2) + \sum_{h=1}^H \frac{\hat{\rho}_{resid}(h)^2}{n-h}
+$$
+Test statistic used to calcualte p-values in the `sarima` output-- the $\hat{\rho}_{resid}(h)$ is the sample acf we plot using `acf` or `acf1`.
+
+
+## ETS Models
+
+Stepping away from ARIMA for the time being...
+
+## Smoothing
+
+We have seen several smoothers:
+
+- Moving Average
+- Loess
+- Kernel 
+
+We have also seen the `decompose` function, but emphasized it is an exploratory data analysis tool.
+
+What if we wanted to use these equations for forecasting?
+
+## Simple exponential smoothing
+
+- useful for forecasting data with no trend or seasonal component
+
+- Predicts the future as a weighted average of the past, where the weights decrease exponentially the further back in time you go
+
+
+## Example: Algerian Exports (FPP 8.1)
+
+```{r}
+algeria_economy <- global_economy |>
+  filter(Country == "Algeria")
+algeria_economy |>
+  autoplot(Exports) +
+  labs(y = "% of GDP", title = "Exports: Algeria")
+```
+
+## We want a forecast equation... here it is {.smaller}
+
+$$
+\begin{equation}
+  \hat{y}_{T+1|T} = \alpha y_T + \alpha(1-\alpha) y_{T-1} + \alpha(1-\alpha)^2 y_{T-2}+ \cdots,   \tag{8.1}
+\end{equation}
+$$
+
+- $\alpha$ is the smoothing parameter
+- the weights are the coefficients in front of the $y_{T-h}$ terms.
+
+## Forecast equation (weighted average form)
+
+We can rewrite the equation as:
+
+$$
+\hat{y}_{T+1|T} = \alpha y_T + (1-\alpha) \hat{y}_{T|T-1},
+$$
+In order to forecast the next point, we need to just keep track of the data for the last time point, and the forecast for the last time point. 
+
+Easy to update as new data comes in!
+
+## Forecast equation (component form)
+
+More notation, but essentially the same thing as the last slide. This representation will be helpful later on.
+
+$$
+\begin{align*}
+  \text{Forecast equation}  && \hat{y}_{t+h|t} & = \ell_{t}\\
+  \text{Smoothing equation} && \ell_{t}        & = \alpha y_{t} + (1 - \alpha)\ell_{t-1},
+\end{align*}
+$$
+
+## Fitting simple exponential smoothing in `fable`
+
+A is for additive, N is for none (we'll cover this more next time)
+
+```{r}
+fit <- algeria_economy |>
+  model(ETS(Exports ~ error("A") + trend("N") + season("N")))
+
+report(fit)
+
+fc <- fit |>
+  forecast(h = 1)
+```
+## Plot the forecast
+
+- Note the "flat" forecast (because of no trend/seasonal assumption)
+
+- Where did the uncertainty estimates come from??
+
+```{r}
+fc |>
+  autoplot(algeria_economy) +
+  geom_line(aes(y = .fitted), col="#D55E00",
+            data = augment(fit)) +
+  labs(y="% of GDP", title="Exports: Algeria") +
+  guides(colour = "none")
+```
+
+
+## Next time: Holt's Linear Method
+- forecast data with a trend
+- involves three equations: forecast, level, and trend
+
+$$
+\begin{aligned}
+  \text{Forecast equation}&& \hat{y}_{t+h|t} &= \ell_{t} + hb_{t} \\
+  \text{Level equation}   && \ell_{t} &= \alpha y_{t} + (1 - \alpha)(\ell_{t-1} + b_{t-1})\\
+  \text{Trend equation}   && b_{t}    &= \beta^*(\ell_{t} - \ell_{t-1}) + (1 -\beta^*)b_{t-1},
+\end{aligned}
+$$
+
+## Example: Australian Population (FPP 8.2)
+```{r}
+aus_economy <- global_economy |>
+  filter(Code == "AUS") |>
+  mutate(Pop = Population / 1e6)
+autoplot(aus_economy, Pop) +
+  labs(y = "Millions", title = "Australian population")
+
+```
+
+## Example: Australian Population (FPP 8.2)
+Fit the Holt Linear Method (exponential smoothing w/trend)
+
+```{r}
+fit <- aus_economy |>
+  model(
+    AAN = ETS(Pop ~ error("A") + trend("A") + season("N"))
+  )
+fc <- fit |> forecast(h = 10)
+
+```
+

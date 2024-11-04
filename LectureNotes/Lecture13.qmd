@@ -1,0 +1,53 @@
+## Activity: Write the equations
+Use the output stored in `fit` to write the estimated values of the parameters.
+
+## Holt-Winters 
+
+- allows for the use of exponenetial smoothing 
+
+$$
+\begin{aligned}
+  \hat{y}_{t+h|t} &= \ell_{t} + hb_{t} + s_{t+h-m(k+1)} \\
+  \ell_{t} &= \alpha(y_{t} - s_{t-m}) + (1 - \alpha)(\ell_{t-1} + b_{t-1})\\
+  b_{t} &= \beta^*(\ell_{t} - \ell_{t-1}) + (1 - \beta^*)b_{t-1}\\
+  s_{t} &= \gamma (y_{t}-\ell_{t-1}-b_{t-1}) + (1-\gamma)s_{t-m},
+\end{aligned}
+$$
+
+## Example: Australian Domestic Tourism
+
+```{r}
+aus_holidays <- tourism |>
+  filter(Purpose == "Holiday") |>
+  summarise(Trips = sum(Trips)/1e3)
+fit <- aus_holidays |>
+  model(
+    additive = ETS(Trips ~ error("A") + trend("A") +
+                                                season("A")),
+    multiplicative = ETS(Trips ~ error("M") + trend("A") +
+                                                season("M"))
+  )
+fc <- fit |> forecast(h = "3 years")
+fc |>
+  autoplot(aus_holidays, level = NULL) +
+  labs(title="Australian domestic tourism",
+       y="Overnight trips (millions)") +
+  guides(colour = guide_legend(title = "Forecast"))
+
+```
+
+## Activity
+
+- Go line-by-line in the previous code example and explain what the code is doing.
+
+## ETS Models
+All the exponential smoothing methods we have covered fall under the ETS framework. 
+
+- E: error
+- T: trend
+- S: seasonality
+
+## Next time: 
+
+- adding uncertainty estimates
+- Connections between SARIMA and ETS models

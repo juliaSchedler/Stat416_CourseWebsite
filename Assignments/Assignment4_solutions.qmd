@@ -1,0 +1,65 @@
+---
+title: Assignment 4 Solutions
+author: Julia Schedler 
+---
+
+Remember, you are allowed to use AI on this assignment. However, you must provide a link to a transcript. If you are working with a classmate, please include the name of that classmate.
+
+## Snowshoe hare furs
+
+Consider the number of snowshoe hare furs sold by the Hudson Bay Company between 1845 and 1935. You can access the dataset, `pelt`, in `R` by loading the `fpp3` package.
+
+1. Produce a well-labeled time series plot of the Snowshoe Hare furs. 
+
+```{r}
+#| label: p1-1
+#| collapse: true
+#| message: false
+library(fpp3)
+library(astsa)
+
+tsplot(x = pelt$Year, y = pelt$Hare, main = "Snowshoe Hare Pelts", 
+       ylab = "Number of Pelts", 
+       xlab = "Year", 
+       type = "b", 
+       pch = 17)
+```
+
+2. Describe the plot produced in number 1.
+
+The snowshoe hare pelt does not appear to have an increasing/decreasing trend nor a seasonal trend-- the peaks and valleys are not equally spaced. There is clearly some time dependence, however, because the series does not look like white noise.
+
+3. Make an acf and pacf of the data. Suggest a model for the snowshoe hare fur *based on the acf/pacf*.
+
+```{r}
+par(mfrow = c(1,2))
+acf1(pelt$Hare)
+pacf(pelt$Hare)
+```
+The acf appears to taper off and the pacf appears to spike and then cut off at a lag of 2. This suggests an AR(2) process.
+
+4. Fit the model you suggested in number 3.
+
+```{r}
+ar2_hare <- sarima(pelt$Hare, p = 2, d = 0, q = 0, details = FALSE)
+
+```
+
+5. Write the equation of the model you fit in number 4. 
+If $x_t$ is the number of snowshoe hare pelts sold at time $t$, then 
+
+$$
+x_t = 44638.3226 
+$$
+
+6. Provide and interpret 3-5 diagnostic plots or tests and comment on whether the model fits well.
+
+4. **By hand**, calculate forcasts for the years 1936-1939.
+
+5. Using R, calculate forecasts for the years 1936-1939. 
+
+6. Plot the forecasts on the same plot as the data, and interpret the forecast.
+
+7. Use the automatic algorithm in the `ARIMA()` function to fit a model to the snowshoe hare time series.
+
+8. Compare the models and provide a recommendation on choice of model (use a 2 pieces of "evidence" for your recommendation). Make sure to mention differences in forecasts, if any.
