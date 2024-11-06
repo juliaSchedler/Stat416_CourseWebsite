@@ -151,7 +151,7 @@ sarima.for(log_gnp,p = 1, d = 1, q = 0, P = 0, D = 0, Q = 0, n.ahead = 10, plot 
 :::
 :::::
 
-## Compare predictions
+## Compare predictions 
 
 Yay! They're the same :)
 

@@ -47,6 +47,7 @@ website:
       - section: "Week 7"
         contents:
         - href: LectureNotes/Lecture12.qmd
+        - href: LectureNotes/Lecture13.qmd
 format:
   html:
     theme: cosmo

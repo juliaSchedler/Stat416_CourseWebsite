@@ -1,0 +1,76 @@
+---
+title: Lecture 13
+author: Julia Schedler
+format: revealjs
+execute:
+  echo: true
+code-fold: true
+slide-number: true
+scrollable: true
+---
+
+## Agenda
+
+-   SARIMA simulation activity
+
+-   FPP sections 8.1-8.3 (Also 9.10 if time)
+
+-   Sign up for Github Copilot
+
+## SARIMA simulation activity setup
+
+-   Log on to the lab computer
+
+-   Launch R and install whichever package you want to use
+
+- Let me know when you are ready
+
+
+## SARIMA simulation activity{.smaller}
+
+::: {.columns}
+::: {.column width="70%"}
+- Choose a pecan
+- Whether $p,q, P, Q$ are nonzero are determined on the pecan (dot goes on the left)
+- Choose $d$ yourself 
+- I will come around and assign you seasonal or nonseasonal
+- If you get seasonal, choose $D$ yourself
+- simulate from your model using `arima.sim`, then try to recover your model using tools from class.
+:::
+::: {.column width="30%"}
+![](https://live.staticflickr.com/2385/2393780266_69f50d23f5_b.jpg)
+:::
+:::
+
+## SARIMA simulation activity
+- Hide your simulation code and leave just the output you generated
+- Switch computers with a partner
+- Can you recover the model your partner used to simulate the data?
+
+## Record your result
+- In the big ledger book, use a stamp of your choice
+- Use purple if you were not able to recover the model order, and green if you were
+
+## FPP 8.1-8.3
+We will work through these examples collaboratively. 
+
+## Github copilot
+- Make a github account (or log in)-- USE A PERSONAL EMAIL (or add one to your account)
+- Sign up for the copilot beta
+- In Rstudio, go to Tools --> Global Options --> copilot and sign in with your github account
+- When you get approved, you will be able to use copilot in Rstudio (you might have to go through the Global options setup again)
+
+## If time-- Sunspot data
+
+```{r}
+library(astsa)
+tsplot(sunspots)
+?sunspots
+```
+
+[https://www.sidc.be/SILSO/faq2]()
+
+[python code](https://www.statsmodels.org/stable/examples/notebooks/generated/stationarity_detrending_adf_kpss.html)
+
+
+
