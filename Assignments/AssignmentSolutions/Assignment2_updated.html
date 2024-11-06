@@ -348,6 +348,12 @@ window.Quarto = {
  <span class="menu-text">Lecture 12</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../LectureNotes/Lecture13.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture 13</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -472,17 +478,17 @@ Start = 0
 End = 10 
 Frequency = 1 
           x_t   x_t_lag1
- 0         NA -1.0657703
- 1 -1.0657703 -1.1775578
- 2 -1.1775578 -0.6001375
- 3 -0.6001375  0.4813133
- 4  0.4813133 -2.5876853
- 5 -2.5876853 -3.3375232
- 6 -3.3375232 -1.5354688
- 7 -1.5354688 -1.1338985
- 8 -1.1338985 -1.4040943
- 9 -1.4040943 -1.4389959
-10 -1.4389959         NA</code></pre>
+ 0         NA  1.5872141
+ 1  1.5872141  1.6155588
+ 2  1.6155588  1.6278149
+ 3  1.6278149  1.0085886
+ 4  1.0085886  0.3615098
+ 5  0.3615098 -0.8558621
+ 6 -0.8558621 -1.0844129
+ 7 -1.0844129  1.5401594
+ 8  1.5401594  1.7176992
+ 9  1.7176992  0.3935758
+10  0.3935758         NA</code></pre>
 </div>
 </div>
 <ol start="4" type="1">
@@ -553,18 +559,18 @@ lm(formula = x_t ~ -1 + x_t_lag1)
 
 Residuals:
     Min      1Q  Median      3Q     Max 
--2.8479 -0.6401  0.1616  0.6902  2.8052 
+-2.6999 -0.8144 -0.2351  0.4099  2.7279 
 
 Coefficients:
          Estimate Std. Error t value Pr(&gt;|t|)    
-x_t_lag1  0.66089    0.07664   8.623 1.17e-13 ***
+x_t_lag1   0.6440     0.0809    7.96 3.08e-12 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 1.022 on 98 degrees of freedom
+Residual standard error: 0.9572 on 98 degrees of freedom
   (1 observation deleted due to missingness)
-Multiple R-squared:  0.4314,    Adjusted R-squared:  0.4256 
-F-statistic: 74.36 on 1 and 98 DF,  p-value: 1.168e-13</code></pre>
+Multiple R-squared:  0.3927,    Adjusted R-squared:  0.3865 
+F-statistic: 63.37 on 1 and 98 DF,  p-value: 3.083e-12</code></pre>
 </div>
 </div>
 <ol start="8" type="1">

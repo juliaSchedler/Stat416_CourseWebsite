@@ -1,24 +1,22 @@
 <!DOCTYPE html>
 <html lang="en"><head>
-<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../../site_libs/quarto-html/tabby.min.js"></script>
-<script src="../../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../../site_libs/quarto-contrib/quarto-timer-1.0.0/timer.js"></script>
-<link href="../../../site_libs/quarto-contrib/quarto-timer-1.0.0/timer.css" rel="stylesheet"><meta charset="utf-8">
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.5.57">
 
   <meta name="author" content="Julia Schedler">
-  <title>Fall 24 Stat 416 Lecture Notes – Moving average autocovariance</title>
+  <title>Fall 24 Stat 416 Lecture Notes – Lecture 13</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="../../../site_libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="../../../site_libs/revealjs/dist/reveal.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -31,12 +29,77 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../../../site_libs/revealjs/dist/theme/quarto.css">
-  <link href="../../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="../../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="../../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="../../../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
+  <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
 
   .callout {
@@ -323,22 +386,13 @@
       margin-right: 0; 
     }
   </style>
-  <link href="../../../site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
-  <script src="../../../site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
-  <script src="../../../site_libs/plotly-binding-4.10.4/plotly.js"></script>
-  <script src="../../../site_libs/typedarray-0.1/typedarray.min.js"></script>
-  <script src="../../../site_libs/jquery-3.5.1/jquery.min.js"></script>
-  <link href="../../../site_libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
-  <script src="../../../site_libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
-  <link href="../../../site_libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
-  <script src="../../../site_libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
 </head>
 <body class="quarto-light">
   <div class="reveal">
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Moving average autocovariance</h1>
+  <h1 class="title">Lecture 13</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -349,159 +403,106 @@ Julia Schedler
 </div>
 
 </section>
-<section>
-<section id="simulations" class="title-slide slide level1 center">
-<h1>Simulations</h1>
-
-<img data-src="index_files/figure-revealjs/unnamed-chunk-1-1.png" width="960" class="r-stretch"></section>
-<section id="all-simulated-time-series" class="slide level2">
-<h2>All Simulated Time Series</h2>
-
-<img data-src="index_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"></section>
-<section id="marginal-and-joint-distributions-t8-and-s-1" class="slide level2 smaller">
-<h2><span class="r-fit-text">Marginal and Joint Distributions t=8 and s = 1</span></h2>
-
-<img data-src="index_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"></section>
-<section id="all-simulated-time-series-1" class="slide level2">
-<h2>All Simulated Time Series</h2>
-
-<img data-src="index_files/figure-revealjs/unnamed-chunk-4-1.png" width="960" class="r-stretch"></section>
-<section id="marginal-and-joint-distributions-t8-and-s-2" class="slide level2 smaller">
-<h2><span class="r-fit-text">Marginal and Joint Distributions t=8 and s = 2</span></h2>
-
-<img data-src="index_files/figure-revealjs/unnamed-chunk-5-1.png" width="960" class="r-stretch"></section>
-<section id="all-simulated-time-series-2" class="slide level2">
-<h2>All Simulated Time Series</h2>
-
-<img data-src="index_files/figure-revealjs/unnamed-chunk-6-1.png" width="960" class="r-stretch"></section>
-<section id="marginal-and-joint-distributions-t8-and-s-3" class="slide level2 smaller">
-<h2><span class="r-fit-text">Marginal and Joint Distributions t=8 and s = 3</span></h2>
-
-<img data-src="index_files/figure-revealjs/unnamed-chunk-7-1.png" width="960" class="r-stretch"></section>
-<section id="all-simulated-time-series-3" class="slide level2">
-<h2>All Simulated Time Series</h2>
-
-<img data-src="index_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch"></section>
-<section id="marginal-and-joint-distributions-t8-and-s-4" class="slide level2 smaller">
-<h2><span class="r-fit-text">Marginal and Joint Distributions t=8 and s = 4</span></h2>
-
-<img data-src="index_files/figure-revealjs/unnamed-chunk-9-1.png" width="960" class="r-stretch"></section>
-<section id="all-simulated-time-series-4" class="slide level2">
-<h2>All Simulated Time Series</h2>
-
-<img data-src="index_files/figure-revealjs/unnamed-chunk-10-1.png" width="960" class="r-stretch"></section>
-<section id="marginal-and-joint-distributions-t8-and-s-5" class="slide level2 smaller">
-<h2><span class="r-fit-text">Marginal and Joint Distributions t=8 and s = 5</span></h2>
-
-<img data-src="index_files/figure-revealjs/unnamed-chunk-11-1.png" width="960" class="r-stretch"></section>
-<section id="all-simulated-time-series-5" class="slide level2">
-<h2>All Simulated Time Series</h2>
-
-<img data-src="index_files/figure-revealjs/unnamed-chunk-12-1.png" width="960" class="r-stretch"></section>
-<section id="marginal-and-joint-distributions-t8-and-s-6" class="slide level2 smaller">
-<h2><span class="r-fit-text">Marginal and Joint Distributions t=8 and s = 6</span></h2>
-
-<img data-src="index_files/figure-revealjs/unnamed-chunk-13-1.png" width="960" class="r-stretch"></section>
-<section id="all-simulated-time-series-6" class="slide level2">
-<h2>All Simulated Time Series</h2>
-
-<img data-src="index_files/figure-revealjs/unnamed-chunk-14-1.png" width="960" class="r-stretch"></section>
-<section id="marginal-and-joint-distributions-t8-and-s-7" class="slide level2 smaller">
-<h2><span class="r-fit-text">Marginal and Joint Distributions t=8 and s = 7</span></h2>
-
-<img data-src="index_files/figure-revealjs/unnamed-chunk-15-1.png" width="960" class="r-stretch"></section>
-<section id="all-simulated-time-series-7" class="slide level2">
-<h2>All Simulated Time Series</h2>
-
-<img data-src="index_files/figure-revealjs/unnamed-chunk-16-1.png" width="960" class="r-stretch"></section>
-<section id="marginal-and-joint-distributions-t8-and-s-8" class="slide level2 smaller">
-<h2><span class="r-fit-text">Marginal and Joint Distributions t=8 and s = 8</span></h2>
-
-<img data-src="index_files/figure-revealjs/unnamed-chunk-17-1.png" width="960" class="r-stretch"></section>
-<section id="all-simulated-time-series-8" class="slide level2">
-<h2>All Simulated Time Series</h2>
-
-<img data-src="index_files/figure-revealjs/unnamed-chunk-18-1.png" width="960" class="r-stretch"></section>
-<section id="marginal-and-joint-distributions-t8-and-s-9" class="slide level2 smaller">
-<h2><span class="r-fit-text">Marginal and Joint Distributions t=8 and s = 9</span></h2>
-
-<img data-src="index_files/figure-revealjs/unnamed-chunk-19-1.png" width="960" class="r-stretch"></section>
-<section id="all-simulated-time-series-9" class="slide level2">
-<h2>All Simulated Time Series</h2>
-
-<img data-src="index_files/figure-revealjs/unnamed-chunk-20-1.png" width="960" class="r-stretch"></section>
-<section id="marginal-and-joint-distributions-t8-and-s-10" class="slide level2 smaller">
-<h2><span class="r-fit-text">Marginal and Joint Distributions t=8 and s = 10</span></h2>
-
-<img data-src="index_files/figure-revealjs/unnamed-chunk-21-1.png" width="960" class="r-stretch"></section>
-<section id="visualizing-the-correlations" class="slide level2">
-<h2>Visualizing the correlations</h2>
-
-<img data-src="index_files/figure-revealjs/unnamed-chunk-22-1.png" width="960" class="r-stretch"></section>
-<section id="are-these-all-the-correlations" class="slide level2">
-<h2>Are these all the correlations?</h2>
-<p>No, just pairwise with <span class="math inline">\(x_8\)</span>. We could do all possible pairs:</p>
-
-<img data-src="index_files/figure-revealjs/unnamed-chunk-23-1.png" width="960" class="r-stretch"></section>
-<section id="distribution-of-all-the-correlations" class="slide level2">
-<h2>Distribution of all the correlations:</h2>
-
-<img data-src="index_files/figure-revealjs/unnamed-chunk-24-1.png" width="960" class="r-stretch"></section></section>
-<section>
-<section id="d-plots" class="title-slide slide level1 center">
-<h1>3D plots</h1>
-
+<section id="agenda" class="slide level2">
+<h2>Agenda</h2>
+<ul>
+<li><p>SARIMA simulation activity</p></li>
+<li><p>FPP sections 8.1-8.3 (Also 9.10 if time)</p></li>
+<li><p>Sign up for Github Copilot</p></li>
+</ul>
 </section>
-<section id="d-version-of-histogram-includes-s-t-plane" class="slide level2">
-<h2>3D version of histogram (includes <span class="math inline">\(s-t\)</span> plane)</h2>
-<div class="cell">
-<div class="cell-output-display">
-<div class="plotly html-widget html-fill-item" id="htmlwidget-82b23520729d0adf9a03" style="width:960px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-82b23520729d0adf9a03">{"x":{"visdat":{"1556eb02e376":["function () ","plotlyVisDat"]},"cur_data":"1556eb02e376","attrs":{"1556eb02e376":{"x":{},"y":{},"z":{},"mode":"markers","size":0.10000000000000001,"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter3d"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"scene":{"xaxis":{"title":"s"},"yaxis":{"title":"t"},"zaxis":{"title":"cor"}},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":[1,2,3,4,5,6,7,8,9,10,1,2,3,4,5,6,7,8,9,10,1,2,3,4,5,6,7,8,9,10,1,2,3,4,5,6,7,8,9,10,1,2,3,4,5,6,7,8,9,10,1,2,3,4,5,6,7,8,9,10,1,2,3,4,5,6,7,8,9,10,1,2,3,4,5,6,7,8,9,10,1,2,3,4,5,6,7,8,9,10,1,2,3,4,5,6,7,8,9,10],"y":[1,1,1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,3,3,3,3,3,3,3,3,3,3,4,4,4,4,4,4,4,4,4,4,5,5,5,5,5,5,5,5,5,5,6,6,6,6,6,6,6,6,6,6,7,7,7,7,7,7,7,7,7,7,8,8,8,8,8,8,8,8,8,8,9,9,9,9,9,9,9,9,9,9,10,10,10,10,10,10,10,10,10,10],"z":[1,0.77078932331333228,0.57202245429907772,0.49453491511559028,0.46014375453967421,0.43155238408944629,0.45078285018828507,0.43890234441614601,0.40847983935418486,0.37445347345295038,0.77078932331333228,1,0.81860990949582157,0.67438579233390439,0.59508110377922474,0.52350663893504656,0.49365933865890804,0.4692034810477213,0.43881870961125419,0.39414418530800105,0.57202245429907772,0.81860990949582157,1,0.87433184102608075,0.80452633139354979,0.6874711338636712,0.60782472981243341,0.58894187076587612,0.53308184573359141,0.47875797674842091,0.49453491511559028,0.67438579233390439,0.87433184102608075,1,0.90265972196522015,0.78611323054904625,0.71282771722607152,0.67085108857843168,0.64556672225447109,0.5805435804173108,0.46014375453967421,0.59508110377922474,0.80452633139354979,0.90265972196522015,1,0.89951561769188404,0.81789945181137025,0.75154918726901965,0.72432215797466448,0.65402305641293146,0.43155238408944629,0.52350663893504656,0.6874711338636712,0.78611323054904625,0.89951561769188404,1,0.92690907538344747,0.862943949885567,0.85549830251577164,0.79639013454152974,0.45078285018828507,0.49365933865890804,0.60782472981243341,0.71282771722607152,0.81789945181137025,0.92690907538344747,1,0.93620295618584104,0.89645058313252146,0.84969615403226051,0.43890234441614601,0.4692034810477213,0.58894187076587612,0.67085108857843168,0.75154918726901965,0.862943949885567,0.93620295618584104,1,0.94859785877433545,0.91129368706108571,0.40847983935418486,0.43881870961125419,0.53308184573359141,0.64556672225447109,0.72432215797466448,0.85549830251577164,0.89645058313252146,0.94859785877433545,1,0.95059475689653805,0.37445347345295038,0.39414418530800105,0.47875797674842091,0.5805435804173108,0.65402305641293146,0.79639013454152974,0.84969615403226051,0.91129368706108571,0.95059475689653805,1],"mode":"markers","type":"scatter3d","marker":{"color":"rgba(31,119,180,1)","size":[55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55,55],"sizemode":"area","line":{"color":"rgba(31,119,180,1)"}},"textfont":{"size":55},"error_y":{"color":"rgba(31,119,180,1)","width":55},"error_x":{"color":"rgba(31,119,180,1)","width":55},"line":{"color":"rgba(31,119,180,1)","width":55},"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
-</div>
-</div>
+<section id="sarima-simulation-activity-setup" class="slide level2">
+<h2>SARIMA simulation activity setup</h2>
+<ul>
+<li><p>Log on to the lab computer</p></li>
+<li><p>Launch R and install whichever package you want to use</p></li>
+<li><p>Let me know when you are ready</p></li>
+</ul>
 </section>
-<section id="simulated-auto-correlation-function-hatgamma_xh-with-a-blanket" class="slide level2">
-<h2><span class="r-fit-text">Simulated auto correlation function <span class="math inline">\(\hat{\gamma}_x(h)\)</span> (with a blanket)</span></h2>
-<div class="cell">
-<div class="cell-output-display">
-<div class="plotly html-widget html-fill-item" id="htmlwidget-8a3e9d830ac4ebba540c" style="width:960px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-8a3e9d830ac4ebba540c">{"x":{"visdat":{"1556eb57a86b":["function () ","plotlyVisDat"]},"cur_data":"1556eb57a86b","attrs":{"1556eb57a86b":{"z":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"surface","inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"scene":{"zaxis":{"title":"cor_mat"}},"hovermode":"closest","showlegend":false,"legend":{"yanchor":"top","y":0.5}},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"colorbar":{"title":"cor_mat","ticklen":2,"len":0.5,"lenmode":"fraction","y":1,"yanchor":"top"},"colorscale":[["0","rgba(68,1,84,1)"],["0.0416666666666667","rgba(70,19,97,1)"],["0.0833333333333333","rgba(72,32,111,1)"],["0.125","rgba(71,45,122,1)"],["0.166666666666667","rgba(68,58,128,1)"],["0.208333333333333","rgba(64,70,135,1)"],["0.25","rgba(60,82,138,1)"],["0.291666666666667","rgba(56,93,140,1)"],["0.333333333333333","rgba(49,104,142,1)"],["0.375","rgba(46,114,142,1)"],["0.416666666666667","rgba(42,123,142,1)"],["0.458333333333333","rgba(38,133,141,1)"],["0.5","rgba(37,144,140,1)"],["0.541666666666667","rgba(33,154,138,1)"],["0.583333333333333","rgba(39,164,133,1)"],["0.625","rgba(47,174,127,1)"],["0.666666666666667","rgba(53,183,121,1)"],["0.708333333333333","rgba(79,191,110,1)"],["0.75","rgba(98,199,98,1)"],["0.791666666666667","rgba(119,207,85,1)"],["0.833333333333333","rgba(147,214,70,1)"],["0.875","rgba(172,220,52,1)"],["0.916666666666667","rgba(199,225,42,1)"],["0.958333333333333","rgba(226,228,40,1)"],["1","rgba(253,231,37,1)"]],"showscale":true,"z":[[1,0.77078932331333228,0.57202245429907772,0.49453491511559028,0.46014375453967421,0.43155238408944629,0.45078285018828507,0.43890234441614601,0.40847983935418486,0.37445347345295038],[0.77078932331333228,1,0.81860990949582157,0.67438579233390439,0.59508110377922474,0.52350663893504656,0.49365933865890804,0.4692034810477213,0.43881870961125419,0.39414418530800105],[0.57202245429907772,0.81860990949582157,1,0.87433184102608075,0.80452633139354979,0.6874711338636712,0.60782472981243341,0.58894187076587612,0.53308184573359141,0.47875797674842091],[0.49453491511559028,0.67438579233390439,0.87433184102608075,1,0.90265972196522015,0.78611323054904625,0.71282771722607152,0.67085108857843168,0.64556672225447109,0.5805435804173108],[0.46014375453967421,0.59508110377922474,0.80452633139354979,0.90265972196522015,1,0.89951561769188404,0.81789945181137025,0.75154918726901965,0.72432215797466448,0.65402305641293146],[0.43155238408944629,0.52350663893504656,0.6874711338636712,0.78611323054904625,0.89951561769188404,1,0.92690907538344747,0.862943949885567,0.85549830251577164,0.79639013454152974],[0.45078285018828507,0.49365933865890804,0.60782472981243341,0.71282771722607152,0.81789945181137025,0.92690907538344747,1,0.93620295618584104,0.89645058313252146,0.84969615403226051],[0.43890234441614601,0.4692034810477213,0.58894187076587612,0.67085108857843168,0.75154918726901965,0.862943949885567,0.93620295618584104,1,0.94859785877433545,0.91129368706108571],[0.40847983935418486,0.43881870961125419,0.53308184573359141,0.64556672225447109,0.72432215797466448,0.85549830251577164,0.89645058313252146,0.94859785877433545,1,0.95059475689653805],[0.37445347345295038,0.39414418530800105,0.47875797674842091,0.5805435804173108,0.65402305641293146,0.79639013454152974,0.84969615403226051,0.91129368706108571,0.95059475689653805,1]],"type":"surface","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
-</div>
-</div>
+<section id="sarima-simulation-activity" class="slide level2 smaller">
+<h2>SARIMA simulation activity</h2>
+<div class="columns">
+<div class="column" style="width:70%;">
+<ul>
+<li>Choose a pecan</li>
+<li>Whether <span class="math inline">\(p,q, P, Q\)</span> are nonzero are determined on the pecan (dot goes on the left)</li>
+<li>Choose <span class="math inline">\(d\)</span> yourself</li>
+<li>I will come around and assign you seasonal or nonseasonal</li>
+<li>If you get seasonal, choose <span class="math inline">\(D\)</span> yourself</li>
+<li>simulate from your model using <code>arima.sim</code>, then try to recover your model using tools from class.</li>
+</ul>
+</div><div class="column" style="width:30%;">
+<p><img data-src="https://live.staticflickr.com/2385/2393780266_69f50d23f5_b.jpg"></p>
+</div></div>
 </section>
-<section id="theoretical-hatgamma_xh-using-the-derived-formula-with-a-blanket" class="slide level2">
-<h2><span class="r-fit-text">Theoretical <span class="math inline">\(\hat{\gamma}_x(h)\)</span> (using the derived formula (with a blanket)</span></h2>
+<section id="sarima-simulation-activity-1" class="slide level2">
+<h2>SARIMA simulation activity</h2>
+<ul>
+<li>Hide your simulation code and leave just the output you generated</li>
+<li>Switch computers with a partner</li>
+<li>Can you recover the model your partner used to simulate the data?</li>
+</ul>
+</section>
+<section id="record-your-result" class="slide level2">
+<h2>Record your result</h2>
+<ul>
+<li>In the big ledger book, use a stamp of your choice</li>
+<li>Use purple if you were not able to recover the model order, and green if you were</li>
+</ul>
+</section>
+<section id="fpp-8.1-8.3" class="slide level2">
+<h2>FPP 8.1-8.3</h2>
+<p>We will work through these examples collaboratively.</p>
+</section>
+<section id="github-copilot" class="slide level2">
+<h2>Github copilot</h2>
+<ul>
+<li>Make a github account (or log in)– USE A PERSONAL EMAIL (or add one to your account)</li>
+<li>Sign up for the copilot beta</li>
+<li>In Rstudio, go to Tools –&gt; Global Options –&gt; copilot and sign in with your github account</li>
+<li>When you get approved, you will be able to use copilot in Rstudio (you might have to go through the Global options setup again)</li>
+</ul>
+</section>
+<section id="if-time-sunspot-data" class="slide level2">
+<h2>If time– Sunspot data</h2>
 <div class="cell">
-<div class="cell-output-display">
-<div class="plotly html-widget html-fill-item" id="htmlwidget-bb84844169e8c974da9d" style="width:960px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-bb84844169e8c974da9d">{"x":{"visdat":{"1556e49dbb8f":["function () ","plotlyVisDat"]},"cur_data":"1556e49dbb8f","attrs":{"1556e49dbb8f":{"z":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"surface","inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"scene":{"zaxis":{"title":"cor_mat_theoretical"}},"hovermode":"closest","showlegend":false,"legend":{"yanchor":"top","y":0.5}},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"colorbar":{"title":"cor_mat_theoretical","ticklen":2,"len":0.5,"lenmode":"fraction","y":1,"yanchor":"top"},"colorscale":[["0","rgba(68,1,84,1)"],["0.0416666666666667","rgba(70,19,97,1)"],["0.0833333333333333","rgba(72,32,111,1)"],["0.125","rgba(71,45,122,1)"],["0.166666666666667","rgba(68,58,128,1)"],["0.208333333333333","rgba(64,70,135,1)"],["0.25","rgba(60,82,138,1)"],["0.291666666666667","rgba(56,93,140,1)"],["0.333333333333333","rgba(49,104,142,1)"],["0.375","rgba(46,114,142,1)"],["0.416666666666667","rgba(42,123,142,1)"],["0.458333333333333","rgba(38,133,141,1)"],["0.5","rgba(37,144,140,1)"],["0.541666666666667","rgba(33,154,138,1)"],["0.583333333333333","rgba(39,164,133,1)"],["0.625","rgba(47,174,127,1)"],["0.666666666666667","rgba(53,183,121,1)"],["0.708333333333333","rgba(79,191,110,1)"],["0.75","rgba(98,199,98,1)"],["0.791666666666667","rgba(119,207,85,1)"],["0.833333333333333","rgba(147,214,70,1)"],["0.875","rgba(172,220,52,1)"],["0.916666666666667","rgba(199,225,42,1)"],["0.958333333333333","rgba(226,228,40,1)"],["1","rgba(253,231,37,1)"]],"showscale":true,"z":[[1,0.5,0.33333333333333331,0.25,0.20000000000000001,0.16666666666666666,0.14285714285714285,0.125,0.1111111111111111,0.10000000000000001],[0.5,1,0.33333333333333331,0.25,0.20000000000000001,0.16666666666666666,0.14285714285714285,0.125,0.1111111111111111,0.10000000000000001],[0.33333333333333331,0.33333333333333331,1,0.25,0.20000000000000001,0.16666666666666666,0.14285714285714285,0.125,0.1111111111111111,0.10000000000000001],[0.25,0.25,0.25,1,0.20000000000000001,0.16666666666666666,0.14285714285714285,0.125,0.1111111111111111,0.10000000000000001],[0.20000000000000001,0.20000000000000001,0.20000000000000001,0.20000000000000001,1,0.16666666666666666,0.14285714285714285,0.125,0.1111111111111111,0.10000000000000001],[0.16666666666666666,0.16666666666666666,0.16666666666666666,0.16666666666666666,0.16666666666666666,1,0.14285714285714285,0.125,0.1111111111111111,0.10000000000000001],[0.14285714285714285,0.14285714285714285,0.14285714285714285,0.14285714285714285,0.14285714285714285,0.14285714285714285,1,0.125,0.1111111111111111,0.10000000000000001],[0.125,0.125,0.125,0.125,0.125,0.125,0.125,1,0.1111111111111111,0.10000000000000001],[0.1111111111111111,0.1111111111111111,0.1111111111111111,0.1111111111111111,0.1111111111111111,0.1111111111111111,0.1111111111111111,0.1111111111111111,1,0.10000000000000001],[0.10000000000000001,0.10000000000000001,0.10000000000000001,0.10000000000000001,0.10000000000000001,0.10000000000000001,0.10000000000000001,0.10000000000000001,0.10000000000000001,1]],"type":"surface","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(astsa)</span>
+<span id="cb1-2"><a></a><span class="fu">tsplot</span>(sunspots)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>?sunspots</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
-</div>
+<img data-src="Lecture13_files/figure-revealjs/unnamed-chunk-1-1.png" width="960" class="r-stretch"><p><a href="">https://www.sidc.be/SILSO/faq2</a></p>
+<p><a href="https://www.statsmodels.org/stable/examples/notebooks/generated/stationarity_detrending_adf_kpss.html">python code</a></p>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
 </div>
 </div>
-</section></section>
+</section>
     </div>
   </div>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="../../../site_libs/revealjs/dist/reveal.js"></script>
+  <script src="../site_libs/revealjs/dist/reveal.js"></script>
   <!-- reveal.js plugins -->
-  <script src="../../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="../../../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="../../../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="../../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="../../../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  <script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
-  <script src="../../../site_libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="../../../site_libs/revealjs/plugin/search/search.js"></script>
-  <script src="../../../site_libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="../../../site_libs/revealjs/plugin/math/math.js"></script>
+  <script src="../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../site_libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>

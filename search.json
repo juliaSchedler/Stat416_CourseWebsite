@@ -1916,7 +1916,7 @@
     "href": "Assignments/AssignmentSolutions/Assignment2_updated.html#part-2-code",
     "title": "Solutions: Assignment 2 Due 10/7 at Midnight",
     "section": "Part 2: Code",
-    "text": "Part 2: Code\nNote: I have set the code chunks here to have eval: false in the code chunk. Change that to true so that I can run your code easily.\n\n[5 points] All your code runs without errors (unless that’s the point), and if there is a message, explain what it means. (Bonus: to be nice to me, submit a rendered pdf)\n[5 points] Simulate from an AR(1) process with coefficient 0.7 and 10 data points.\n\n\nlibrary(astsa)\n\n# your code here\n\nw &lt;- rnorm(10) \nx_t &lt;- stats::filter(x = w, filter = 0.7, method = \"recursive\")\n\n\n[6 points] Look at the documentation for the stats::lag function (run ?lag in the console). State what package the function is in and what the function does[4 points]. Using k = 1 compute a lag(1) version of x_t that you simulated above[2 points].\n\n\nx_t_lag1 &lt;- stats::lag(x_t, k = 1)\n\n\n[3 points] Run the following code and compare x_t and x_t_lag1.\n\n\ncbind(x_t, x_t_lag1)\n\nTime Series:\nStart = 0 \nEnd = 10 \nFrequency = 1 \n          x_t   x_t_lag1\n 0         NA -1.0657703\n 1 -1.0657703 -1.1775578\n 2 -1.1775578 -0.6001375\n 3 -0.6001375  0.4813133\n 4  0.4813133 -2.5876853\n 5 -2.5876853 -3.3375232\n 6 -3.3375232 -1.5354688\n 7 -1.5354688 -1.1338985\n 8 -1.1338985 -1.4040943\n 9 -1.4040943 -1.4389959\n10 -1.4389959         NA\n\n\n\nMake a time series plot of x_t and x_t_1. Do you notice the same features as when in the previous question?\n\n\ntsplot(x_t)\n\n\n\n\n\n\n\ntsplot(x_t_lag1)\n\n\n\n\n\n\n\n\n\nRun the below code. Why are the plots different? Are either particularly useful?\n\n\nplot(x_t, x_t_lag1)\nplot(as.vector(x_t), as.vector(x_t_lag1))\n\n\nInstead of using stats::lag, use dplyr::lag to create a new version of x_t_lag. Repeat the code from steps 2-5. Describe how the output has changed.\n\n\nx_t_lag1 &lt;- dplyr::lag(as.vector(x_t), n = 1)\nplot(x_t, x_t_lag1)\n\n\n\n\n\n\n\nplot(as.vector(x_t), as.vector(x_t_lag1))\n\n\n\n\n\n\n\n\n\nRe-simulate an AR(1) process as in number 1, but this time with 100 observations. Also recompute x_t_lag1. Fit an intercept-free regression model to predict x_t from x_t_lag. Provide the value of the slope estimate and interpret the value in the context of this simulation.\n\n\nw &lt;- rnorm(100) \nx_t &lt;- stats::filter(x = w, filter = 0.7, method = \"recursive\")\n\nx_t_lag1 &lt;- dplyr::lag(as.vector(x_t), n = 1)\n\nlinear_model &lt;- lm(x_t ~ -1 + x_t_lag1)\nsummary(linear_model)\n\n\nCall:\nlm(formula = x_t ~ -1 + x_t_lag1)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-2.8479 -0.6401  0.1616  0.6902  2.8052 \n\nCoefficients:\n         Estimate Std. Error t value Pr(&gt;|t|)    \nx_t_lag1  0.66089    0.07664   8.623 1.17e-13 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 1.022 on 98 degrees of freedom\n  (1 observation deleted due to missingness)\nMultiple R-squared:  0.4314,    Adjusted R-squared:  0.4256 \nF-statistic: 74.36 on 1 and 98 DF,  p-value: 1.168e-13\n\n\n\n[11 points] Plot the acf of x_t[2 points] and the acf of the residuals from the regression model[4 points]. Which looks more like white noise?[2 points] What does this tell you about the temporal structure in x_t and its residuals?[3 points]\n\n\nacf(x_t)\nacf(residuals(linear_model))"
+    "text": "Part 2: Code\nNote: I have set the code chunks here to have eval: false in the code chunk. Change that to true so that I can run your code easily.\n\n[5 points] All your code runs without errors (unless that’s the point), and if there is a message, explain what it means. (Bonus: to be nice to me, submit a rendered pdf)\n[5 points] Simulate from an AR(1) process with coefficient 0.7 and 10 data points.\n\n\nlibrary(astsa)\n\n# your code here\n\nw &lt;- rnorm(10) \nx_t &lt;- stats::filter(x = w, filter = 0.7, method = \"recursive\")\n\n\n[6 points] Look at the documentation for the stats::lag function (run ?lag in the console). State what package the function is in and what the function does[4 points]. Using k = 1 compute a lag(1) version of x_t that you simulated above[2 points].\n\n\nx_t_lag1 &lt;- stats::lag(x_t, k = 1)\n\n\n[3 points] Run the following code and compare x_t and x_t_lag1.\n\n\ncbind(x_t, x_t_lag1)\n\nTime Series:\nStart = 0 \nEnd = 10 \nFrequency = 1 \n          x_t   x_t_lag1\n 0         NA  1.5872141\n 1  1.5872141  1.6155588\n 2  1.6155588  1.6278149\n 3  1.6278149  1.0085886\n 4  1.0085886  0.3615098\n 5  0.3615098 -0.8558621\n 6 -0.8558621 -1.0844129\n 7 -1.0844129  1.5401594\n 8  1.5401594  1.7176992\n 9  1.7176992  0.3935758\n10  0.3935758         NA\n\n\n\nMake a time series plot of x_t and x_t_1. Do you notice the same features as when in the previous question?\n\n\ntsplot(x_t)\n\n\n\n\n\n\n\ntsplot(x_t_lag1)\n\n\n\n\n\n\n\n\n\nRun the below code. Why are the plots different? Are either particularly useful?\n\n\nplot(x_t, x_t_lag1)\nplot(as.vector(x_t), as.vector(x_t_lag1))\n\n\nInstead of using stats::lag, use dplyr::lag to create a new version of x_t_lag. Repeat the code from steps 2-5. Describe how the output has changed.\n\n\nx_t_lag1 &lt;- dplyr::lag(as.vector(x_t), n = 1)\nplot(x_t, x_t_lag1)\n\n\n\n\n\n\n\nplot(as.vector(x_t), as.vector(x_t_lag1))\n\n\n\n\n\n\n\n\n\nRe-simulate an AR(1) process as in number 1, but this time with 100 observations. Also recompute x_t_lag1. Fit an intercept-free regression model to predict x_t from x_t_lag. Provide the value of the slope estimate and interpret the value in the context of this simulation.\n\n\nw &lt;- rnorm(100) \nx_t &lt;- stats::filter(x = w, filter = 0.7, method = \"recursive\")\n\nx_t_lag1 &lt;- dplyr::lag(as.vector(x_t), n = 1)\n\nlinear_model &lt;- lm(x_t ~ -1 + x_t_lag1)\nsummary(linear_model)\n\n\nCall:\nlm(formula = x_t ~ -1 + x_t_lag1)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-2.6999 -0.8144 -0.2351  0.4099  2.7279 \n\nCoefficients:\n         Estimate Std. Error t value Pr(&gt;|t|)    \nx_t_lag1   0.6440     0.0809    7.96 3.08e-12 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 0.9572 on 98 degrees of freedom\n  (1 observation deleted due to missingness)\nMultiple R-squared:  0.3927,    Adjusted R-squared:  0.3865 \nF-statistic: 63.37 on 1 and 98 DF,  p-value: 3.083e-12\n\n\n\n[11 points] Plot the acf of x_t[2 points] and the acf of the residuals from the regression model[4 points]. Which looks more like white noise?[2 points] What does this tell you about the temporal structure in x_t and its residuals?[3 points]\n\n\nacf(x_t)\nacf(residuals(linear_model))"
   },
   {
     "objectID": "Assignments/AssignmentSolutions/Assignment2_updated.html#part-3-reading",
@@ -2545,18 +2545,116 @@
     "text": "Snowshoe hare furs\nConsider the number of snowshoe hare furs sold by the Hudson Bay Company between 1845 and 1935. You can access the dataset, pelt, in R by loading the fpp3 package.\n\nProduce a well-labeled time series plot of the Snowshoe Hare furs.\n\n\nlibrary(fpp3)\nlibrary(astsa)\n\ntsplot(x = pelt$Year, y = pelt$Hare, main = \"Snowshoe Hare Pelts\", \n       ylab = \"Number of Pelts\", \n       xlab = \"Year\", \n       type = \"b\", \n       pch = 17)\n\n\n\n\n\n\n\n\n\nDescribe the plot produced in number 1.\n\nThe snowshoe hare pelt does not appear to have an increasing/decreasing trend nor a seasonal trend– the peaks and valleys are not equally spaced. There is clearly some time dependence, however, because the series does not look like white noise.\n\nMake an acf and pacf of the data. Suggest a model for the snowshoe hare fur based on the acf/pacf.\n\n\npar(mfrow = c(1,2))\nacf1(pelt$Hare)\n\n [1]  0.66  0.21 -0.15 -0.40 -0.49 -0.40 -0.17  0.11  0.31  0.34  0.30  0.21\n[13]  0.04 -0.15 -0.28 -0.29 -0.20 -0.07  0.10  0.19\n\npacf(pelt$Hare)\n\n\n\n\n\n\n\n\nThe acf appears to taper off and the pacf appears to spike and then cut off at a lag of 2. This suggests an AR(2) process.\n\nFit the model you suggested in number 3.\n\n\nar2_hare &lt;- sarima(pelt$Hare, p = 2, d = 0, q = 0, details = FALSE)\n\n&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;&lt;&gt;\n \nCoefficients: \n        Estimate        SE t.value p.value\nar1       0.9454    0.0966  9.7901       0\nar2      -0.4219    0.0967 -4.3631       0\nxmean 44638.3226 5406.5566  8.2563       0\n\nsigma^2 estimated as 605680745 on 88 degrees of freedom \n \nAIC = 23.15837  AICc = 23.1614  BIC = 23.26874 \n \n\n\n\nWrite the equation of the model you fit in number 4. If \\(x_t\\) is the number of snowshoe hare pelts sold at time \\(t\\), then\n\n\\[\nx_t = 44638.3226\n\\]\n\nProvide and interpret 3-5 diagnostic plots or tests and comment on whether the model fits well.\nBy hand, calculate forcasts for the years 1936-1939.\nUsing R, calculate forecasts for the years 1936-1939.\nPlot the forecasts on the same plot as the data, and interpret the forecast.\nUse the automatic algorithm in the ARIMA() function to fit a model to the snowshoe hare time series.\nCompare the models and provide a recommendation on choice of model (use a 2 pieces of “evidence” for your recommendation). Make sure to mention differences in forecasts, if any."
   },
   {
-    "objectID": "LectureNotes/Slides/Aside-Nile/index.html",
-    "href": "LectureNotes/Slides/Aside-Nile/index.html",
-    "title": "Fall 24 Stat 416 Lecture Notes",
-    "section": "",
-    "text": "title: Interesting note on the Nile data"
+    "objectID": "LectureNotes/Lecture13.html#agenda",
+    "href": "LectureNotes/Lecture13.html#agenda",
+    "title": "Lecture 13",
+    "section": "Agenda",
+    "text": "Agenda\n\nSARIMA simulation activity\nFPP sections 8.1-8.3 (Also 9.10 if time)\nSign up for Github Copilot",
+    "crumbs": [
+      "Week 7",
+      "Lecture 13"
+    ]
   },
   {
-    "objectID": "LectureNotes/Slides/Aside-Nile/index.html#the-nile-data",
-    "href": "LectureNotes/Slides/Aside-Nile/index.html#the-nile-data",
+    "objectID": "LectureNotes/Lecture13.html#sarima-simulation-activity-setup",
+    "href": "LectureNotes/Lecture13.html#sarima-simulation-activity-setup",
+    "title": "Lecture 13",
+    "section": "SARIMA simulation activity setup",
+    "text": "SARIMA simulation activity setup\n\nLog on to the lab computer\nLaunch R and install whichever package you want to use\nLet me know when you are ready",
+    "crumbs": [
+      "Week 7",
+      "Lecture 13"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture13.html#sarima-simulation-activity",
+    "href": "LectureNotes/Lecture13.html#sarima-simulation-activity",
+    "title": "Lecture 13",
+    "section": "SARIMA simulation activity",
+    "text": "SARIMA simulation activity\n\n\n\nChoose a pecan\nWhether \\(p,q, P, Q\\) are nonzero are determined on the pecan (dot goes on the left)\nChoose \\(d\\) yourself\nI will come around and assign you seasonal or nonseasonal\nIf you get seasonal, choose \\(D\\) yourself\nsimulate from your model using arima.sim, then try to recover your model using tools from class.",
+    "crumbs": [
+      "Week 7",
+      "Lecture 13"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture13.html#sarima-simulation-activity-1",
+    "href": "LectureNotes/Lecture13.html#sarima-simulation-activity-1",
+    "title": "Lecture 13",
+    "section": "SARIMA simulation activity",
+    "text": "SARIMA simulation activity\n\nHide your simulation code and leave just the output you generated\nSwitch computers with a partner\nCan you recover the model your partner used to simulate the data?",
+    "crumbs": [
+      "Week 7",
+      "Lecture 13"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture13.html#record-your-result",
+    "href": "LectureNotes/Lecture13.html#record-your-result",
+    "title": "Lecture 13",
+    "section": "Record your result",
+    "text": "Record your result\n\nIn the big ledger book, use a stamp of your choice\nUse purple if you were not able to recover the model order, and green if you were",
+    "crumbs": [
+      "Week 7",
+      "Lecture 13"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture13.html#fpp-8.1-8.3",
+    "href": "LectureNotes/Lecture13.html#fpp-8.1-8.3",
+    "title": "Lecture 13",
+    "section": "FPP 8.1-8.3",
+    "text": "FPP 8.1-8.3\nWe will work through these examples collaboratively.",
+    "crumbs": [
+      "Week 7",
+      "Lecture 13"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture13.html#github-copilot",
+    "href": "LectureNotes/Lecture13.html#github-copilot",
+    "title": "Lecture 13",
+    "section": "Github copilot",
+    "text": "Github copilot\n\nMake a github account (or log in)– USE A PERSONAL EMAIL (or add one to your account)\nSign up for the copilot beta\nIn Rstudio, go to Tools –&gt; Global Options –&gt; copilot and sign in with your github account\nWhen you get approved, you will be able to use copilot in Rstudio (you might have to go through the Global options setup again)",
+    "crumbs": [
+      "Week 7",
+      "Lecture 13"
+    ]
+  },
+  {
+    "objectID": "LectureNotes/Lecture13.html#if-time-sunspot-data",
+    "href": "LectureNotes/Lecture13.html#if-time-sunspot-data",
+    "title": "Lecture 13",
+    "section": "If time– Sunspot data",
+    "text": "If time– Sunspot data\n\n\nCode\nlibrary(astsa)\ntsplot(sunspots)\n\n\n\nCode\n?sunspots\n\n\nhttps://www.sidc.be/SILSO/faq2\npython code",
+    "crumbs": [
+      "Week 7",
+      "Lecture 13"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Welcome to Time Series!",
+    "section": "",
+    "text": "Welcome to Time Series!\nThe lecture slides and code here are heavily drawn from examples in book I have selected for this course: Time Series Analysis: A Data Analysis Approach Using R. I am extremely grateful to the authors for doing the heavy lifting of curating the data sets, code, and problem sets. Please consider purchasing this book for reference— it’s wonderful, and there’s a more technical graduate version as well for those of you that yearn for more technical detail.\n\nI have also added some additional examples from my own work and visualizations of simulations, covariance functions, etc., that I think would be helpful for learning these important concepts.\nAlso, big thanks to our Lab Assistant, Bena Smith, for serving as editor for these notes (assuming I get them to her in time. Don’t blame Bena for missed typos).",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "Exams/PracticeMidterm.html",
+    "href": "Exams/PracticeMidterm.html",
     "title": "Fall 24 Stat 416 Lecture Notes",
-    "section": "The nile data",
-    "text": "The nile data\n\nlibrary(astsa)\ntsplot(Nile)\n\n\n\n\n\n\n\n\nLink to article (needs Cal Poly login)\nThe data are the yearly volume of the Nile at"
+    "section": "",
+    "text": "idea: a moving average itself is stationary. Is a moving average of an arbitrary time series stationary?\ntwo moving average, with different weights"
+  },
+  {
+    "objectID": "Exams/Exam1.html",
+    "href": "Exams/Exam1.html",
+    "title": "Fall 24 Stat 416 Lecture Notes",
+    "section": "",
+    "text": "Gotcha!"
   },
   {
     "objectID": "LectureNotes/LectureN.html",
@@ -2573,28 +2671,18 @@
     "text": "The moon\n\nhttps://science.nasa.gov/moon/weather-on-the-moon/\n\nskimpy?! barely there?&gt;"
   },
   {
-    "objectID": "Exams/Exam1.html",
-    "href": "Exams/Exam1.html",
+    "objectID": "LectureNotes/Slides/Aside-Nile/index.html",
+    "href": "LectureNotes/Slides/Aside-Nile/index.html",
     "title": "Fall 24 Stat 416 Lecture Notes",
     "section": "",
-    "text": "Gotcha!"
+    "text": "title: Interesting note on the Nile data"
   },
   {
-    "objectID": "Exams/PracticeMidterm.html",
-    "href": "Exams/PracticeMidterm.html",
+    "objectID": "LectureNotes/Slides/Aside-Nile/index.html#the-nile-data",
+    "href": "LectureNotes/Slides/Aside-Nile/index.html#the-nile-data",
     "title": "Fall 24 Stat 416 Lecture Notes",
-    "section": "",
-    "text": "idea: a moving average itself is stationary. Is a moving average of an arbitrary time series stationary?\ntwo moving average, with different weights"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Welcome to Time Series!",
-    "section": "",
-    "text": "Welcome to Time Series!\nThe lecture slides and code here are heavily drawn from examples in book I have selected for this course: Time Series Analysis: A Data Analysis Approach Using R. I am extremely grateful to the authors for doing the heavy lifting of curating the data sets, code, and problem sets. Please consider purchasing this book for reference— it’s wonderful, and there’s a more technical graduate version as well for those of you that yearn for more technical detail.\n\nI have also added some additional examples from my own work and visualizations of simulations, covariance functions, etc., that I think would be helpful for learning these important concepts.\nAlso, big thanks to our Lab Assistant, Bena Smith, for serving as editor for these notes (assuming I get them to her in time. Don’t blame Bena for missed typos).",
-    "crumbs": [
-      "Home"
-    ]
+    "section": "The nile data",
+    "text": "The nile data\n\nlibrary(astsa)\ntsplot(Nile)\n\n\n\n\n\n\n\n\nLink to article (needs Cal Poly login)\nThe data are the yearly volume of the Nile at"
   },
   {
     "objectID": "about.html",
@@ -3934,7 +4022,7 @@
     "href": "LectureNotes/Lecture2.html#notation-and-data--white-noise",
     "title": "Lecture 2",
     "section": "Notation and Data- White noise",
-    "text": "Notation and Data- White noise\n“Let \\(w_t\\) be a white noise series”\n\n\n\nt\nRandom Variable\nExample data\n\n\n\n\n1\n\\(w_1 \\sim N(0, \\sigma_w^2)\\)\n1.0666158\n\n\n2\n\\(w_2 \\sim N(0, \\sigma_w^2)\\)\n-1.7775245\n\n\n\n\\(\\vdots\\)\n\\(\\vdots\\)\n\n\nt\n\\(w_t \\sim N(0, \\sigma^2_w)\\)\n0.0192456\n\n\n\\(\\vdots\\)\n\\(\\vdots\\)\n\\(\\vdots\\)\n\n\nn\n\\(w_n \\sim N(0, \\sigma_w^2)\\)\n-1.2639526\n\n\n\nIf we interpret the collection of \\(w_t\\) as a random vector, then \\(w_t \\sim MVN(\\vec{0}, I)\\) (why \\(I\\)?)\nNote: sometimes \\(w_t\\) could mean a (univariate) value of a white noise series for a particular time \\(t\\) (kind of like how you refer to an arbitrary \\(x_i\\) when you have a sample \\(x_1, \\dots, x_n\\)).",
+    "text": "Notation and Data- White noise\n“Let \\(w_t\\) be a white noise series”\n\n\n\nt\nRandom Variable\nExample data\n\n\n\n\n1\n\\(w_1 \\sim N(0, \\sigma_w^2)\\)\n-0.6100677\n\n\n2\n\\(w_2 \\sim N(0, \\sigma_w^2)\\)\n0.207556\n\n\n\n\\(\\vdots\\)\n\\(\\vdots\\)\n\n\nt\n\\(w_t \\sim N(0, \\sigma^2_w)\\)\n-0.8756262\n\n\n\\(\\vdots\\)\n\\(\\vdots\\)\n\\(\\vdots\\)\n\n\nn\n\\(w_n \\sim N(0, \\sigma_w^2)\\)\n-0.8783702\n\n\n\nIf we interpret the collection of \\(w_t\\) as a random vector, then \\(w_t \\sim MVN(\\vec{0}, I)\\) (why \\(I\\)?)\nNote: sometimes \\(w_t\\) could mean a (univariate) value of a white noise series for a particular time \\(t\\) (kind of like how you refer to an arbitrary \\(x_i\\) when you have a sample \\(x_1, \\dots, x_n\\)).",
     "crumbs": [
       "Week 1",
       "Lecture 2"
